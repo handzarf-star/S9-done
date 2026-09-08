@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shape9.agency/sitemap.xml

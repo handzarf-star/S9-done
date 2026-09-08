@@ -1,0 +1,20 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Not the website. These stay on disk and never deploy.
+shape9-motion/
+lead-discovery-platform/
+
+# Local editor and agent config
+.claude/
+.vscode/
+.mcp.json
+
+# The previous repository's history, parked rather than deleted
+.git-old-s91-backup/
