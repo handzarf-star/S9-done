@@ -1,0 +1,1113 @@
+@import "tailwindcss";
+
+/* ============================================================
+   SHADCN TOKEN BRIDGE
+   Added 2026-09-01 when shadcn primitives came in for Dialog,
+   DropdownMenu, Tabs and Card.
+
+   `shadcn init` was deliberately NOT run. Init writes its own palette into
+   this file, and the palette here is not a default: it is built in OKLCH
+   around one hue, 224.5, taken from the brand hex #659BB0. Letting init
+   overwrite that would have thrown away the whole colour system to gain a
+   set of generic slate values.
+
+   So the names are bridged instead of adopted. Tailwind v4 resolves the
+   utility `bg-background` through `--color-background`, not through
+   `--background`, which is what makes this safe: every mapping below is a
+   new name pointing at a colour that already exists. Nothing is redefined,
+   and no existing class reads `--color-*`, so this cannot change how any
+   current markup renders.
+
+   The one collision worth naming: shadcn's `--accent` means a subtle hover
+   background. Shape9's `--accent` means the current product's colour, and
+   is the spine of the per-product theming. They are not the same idea, so
+   shadcn's accent is pointed at the raised panel and Shape9's `--accent` is
+   left completely alone.
+   ============================================================ */
+@theme inline {
+  --color-background:          var(--ground);
+  --color-foreground:          var(--ink);
+
+  --color-card:                var(--panel);
+  --color-card-foreground:     var(--ink);
+
+  --color-popover:             var(--panel);
+  --color-popover-foreground:  var(--ink);
+
+  --color-primary:             var(--accent-signal);
+  --color-primary-foreground:  var(--ground);
+
+  --color-secondary:           var(--panel-raise);
+  --color-secondary-foreground:var(--ink);
+
+  --color-muted:               var(--panel-raise);
+  --color-muted-foreground:    var(--muted);
+
+  /* Not Shape9's --accent. See the note above. */
+  --color-accent:              var(--panel-raise);
+  --color-accent-foreground:   var(--ink);
+
+  --color-destructive:         #E5484D;
+  --color-destructive-foreground: var(--ink);
+
+  --color-border:              var(--line);
+  --color-input:               var(--line-hover);
+  --color-ring:                var(--accent-signal);
+
+  /* shadcn derives sm/md/lg/xl from one --radius. Ours already has a
+     three step scale, so --radius is set to the middle step and the
+     derived names point at the steps that exist. */
+  --radius:                    var(--r-md);
+  --radius-sm:                 var(--r-sm);
+  --radius-md:                 var(--r-md);
+  --radius-lg:                 var(--r-lg);
+  --radius-xl:                 var(--r-lg);
+}
+
+/* ============================================================
+   SHAPE9
+
+   Four products, four instruments. Pulse is a trace, Atlas a map,
+   Sonar an echo, Libra a scale. Each exists to show something that
+   was not visible. The page is built from that, not from dark mode.
+
+   The idea: instruments face a horizon. One precise arc sits at the
+   bottom of the home page hero, a crisp line with no blur behind it, the
+   way a real horizon line reads on an instrument rather than as a glow.
+   It started as a soft-bloom effect and got cut back to a stroke, which
+   fits the metaphor better than the glow ever did: an instrument's
+   horizon is not lit, it is measured. It is the single signature, spent
+   once, on the one page that opens the site.
+
+   Everywhere else is quiet on purpose. An earlier pass gave every section
+   a repeating tick pattern, ruler marks under every heading, across every
+   product card, closing every hero. Four places, one motif: it stopped
+   reading as considered and started reading as a texture the CSS applied
+   automatically, which is its own kind of cliche. What is left is the
+   register, a label rail beside a content column, doing the same job
+   through information structure instead of decoration, and a plain
+   hairline everywhere a rule is needed.
+
+   JetBrains Mono loads via <link> in index.html. An @import placed after
+   the Tailwind import is ignored by the browser and the face never
+   arrives. Inter is self-hosted below via @font-face instead, which is
+   not @import and is not subject to that ordering rule.
+   ============================================================ */
+
+/* Inter, the whole family, one variable file per style instead of a
+   Google Fonts link. This is what lets a heading and body text share one
+   family and still read as different things: the weight axis carries the
+   hierarchy that used to come from switching typefaces. */
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Variable.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Italic-Variable.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* ---------- The palette, built as one system, not four decisions ----
+     Everything below the brand colour is generated from it, in OKLCH, not
+     picked by eye in hex. Two earlier passes moved ground and panel by
+     guessing a plausible-looking hex and checking the contrast after the
+     fact; both guesses were wrong in opposite directions, one too flat,
+     the next too light, because HSL lightness is not perceptually even,
+     especially in this part of the wheel; a "+7% lightness" step reads as
+     a completely different amount of lift depending on the hue it starts
+     from. OKLCH lightness does not have that problem, which is also why
+     Tailwind v4, already the build tool here, moved its own default
+     palette to OKLCH.
+
+     The brand colour, #659BB0, decodes to OKLCH L0.660 C0.065 H224.5. That
+     hue, 224.5, is the one number every step below is built from: ground,
+     panel and panel-raise are the same hue at low lightness and low
+     chroma, the accent ramp is the same hue at higher lightness and
+     chroma. One hue backbone, several lightness and chroma steps off it,
+     which is the actual, current way a UI palette gets built around a
+     single brand colour rather than a family of separately eyeballed
+     "dark enough" hexes that happen to be roughly the same blue. */
+
+  --ground:      #010D13;  /* OKLCH L0.150 C0.026 H224.5, deeper, same family */
+  --panel:       #061A21;  /* L0.205, contrast to ground 1.10:1 */
+  --panel-raise: #122A33;  /* L0.270, contrast to ground 1.31:1 */
+  --panel2:      var(--panel-raise);
+  --deck:        var(--panel);
+  --deck-raise:  var(--panel-raise);
+
+  /* The house colour, unchanged, exactly what is on the logo and the
+     printed card: OKLCH L0.660 C0.065 H224.5. This stays the literal
+     brand hex, used where a mark needs to be brand-exact: the logo, small
+     eyebrow labels, anywhere the point is "this is Shape9's colour," not
+     "make this element pop." */
+  --horizon:     #659BB0;
+  --horizon-rgb: 101, 155, 176;
+
+  /* Alias kept so existing markup using var(--cyan) still resolves. */
+  --cyan:        var(--horizon);
+  --cyan-rgb:    var(--horizon-rgb);
+  --cyan-deep:   #4A7B8C;
+  --navy:        var(--ground);
+
+  /* The signal ramp: same H224.5, more chroma and a lightness tuned per
+     role instead of one flat value doing every job. This is what a
+     button, a focus ring or a hover border actually needs, and it is not
+     the same requirement as a small brand-coloured label, which is why
+     the two are separate tokens instead of one colour asked to do both
+     jobs, which was the whole problem three passes ago. */
+  --accent-signal:      #4EACCD;  /* L0.700 C0.100, default interactive */
+  --accent-signal-rgb:  78, 172, 205;
+  --accent-signal-hover: #74C4E2; /* L0.780, lighten-on-hover step */
+  --accent-signal-deep:  #006E8B; /* L0.500, pressed / active step */
+
+  --ink:         #F2F5F7;
+  --ink-dim:     #C2C9D3;
+  --body:        #98A1AE;
+  --muted:       #6C7583;
+
+  /* A panel now leans on its border as much as its fill, since the fill
+     step is deliberately tight; 0.10 was tuned for a wider fill jump than
+     this one ended up being. */
+  --line:        rgba(255, 255, 255, 0.12);
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-hover:  rgba(255, 255, 255, 0.20);
+
+  /* Every component in this file reaches for --accent, not --horizon
+     directly, so repointing it here is what makes buttons, focus states
+     and hover borders punch again in one change instead of thirty. */
+  --accent:      var(--accent-signal);
+  --accent-rgb:  var(--accent-signal-rgb);
+
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+
+  /* One shadow, for the one context that needs it: a surface floating
+     above arbitrary page content, not a card living inside the page flow.
+     Cards get a hairline. This is for the dropdown, the mobile drawer and
+     the modal, because those genuinely have to read as being in front of
+     everything else, and a border alone does not achieve that. */
+  --shadow-overlay: 0 16px 40px -12px rgba(0, 0, 0, 0.55);
+
+  --grid: 32px;
+
+  /* ---------- Motion ----------
+     A scale, not ad hoc numbers. Before this the file carried 140, 160,
+     180, 200, 300 and 380ms transitions chosen one at a time, which is why
+     nothing felt like it belonged to the same product: every element moved
+     at its own speed.
+
+     Both references the brief names solve this the same way. Apple and
+     Material both publish a small duration scale and one easing family and
+     then never deviate, because consistent motion is what makes an
+     interface feel like one machine rather than a pile of components.
+
+     --ease is an ease-out: fast at the start, settling at the end. Motion
+     that decelerates reads as a physical object coming to rest. Nothing
+     here eases in, because an element that starts slowly reads as
+     hesitant, and nothing bounces, because bounce is personality and this
+     is instrumentation. */
+  --dur-1: 140ms;  /* state flips: colour, border, opacity */
+  --dur-2: 260ms;  /* size and position: accordion, dropdown, slide */
+  --dur-3: 420ms;  /* entrances: reveal on scroll, hero */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+
+  /* Display and body are the same family now. Instrument Sans is gone;
+     what used to separate a heading from a paragraph is weight, set
+     explicitly per role below, not a second typeface. */
+  --f-display: 'Inter', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --f-sans:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --f-mono:    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* Product colours are unchanged in hue, per instruction: modify only if it
+   serves the new ground, don't replace. None needed it. Pulse and Atlas
+   sit far enough from teal-blue to still read as their own thing. Libra's
+   green is likewise clear of the new ground. Sonar is worth a note: its
+   blue used to sit uncomfortably close to the old cyan house colour,
+   53,198,227 against 53,182,240, nearly the same hue. That collision is
+   gone now that the house colour is a muted, desaturated teal rather than
+   a vivid cyan, so Sonar reads as its own colour again without having
+   been touched at all. */
+.accent-pulse { --accent: #A98CFF; --accent-rgb: 169, 140, 255; }
+.accent-atlas { --accent: #FF8A3D; --accent-rgb: 255, 138, 61; }
+.accent-sonar { --accent: #35B6F0; --accent-rgb: 53, 182, 240; }
+.accent-libra { --accent: #3DD68C; --accent-rgb: 61, 214, 140; }
+/* Not the literal brand hex on purpose, same reasoning as repointing
+   --accent at :root: this class exists so a house-coloured block matches
+   the same punch as the four product accents next to it, not the muted
+   value that only belongs on the logo and small brand-coloured labels. */
+.accent-house { --accent: var(--accent-signal); --accent-rgb: var(--accent-signal-rgb); }
+
+/* overflow-x is `clip`, not `hidden`, everywhere it appears on an
+   ancestor of page content.
+
+   They look identical: both stop sideways overflow. The difference is that
+   `hidden` makes the element a scroll container, which silently makes
+   `overflow-y` compute to `auto`, and a `position: sticky` descendant then
+   sticks to that container instead of to the viewport. With five of these
+   stacked between the page and the body, the pinned video hero simply
+   scrolled away as a normal element and never stuck at all.
+
+   `clip` does no scrolling, so it never becomes a scroll container, and
+   sticky keeps resolving against the viewport. Same visual result, and it
+   is the property that was added for exactly this problem. */
+html {
+  background-color: var(--ground);
+  color: var(--body);
+  font-family: var(--f-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  max-width: 100vw;
+  width: 100%;
+  scroll-behavior: auto;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: clip;
+  max-width: 100vw;
+  width: 100%;
+  background-color: var(--ground);
+  min-height: 100vh;
+  color: var(--body);
+  font-family: var(--f-sans);
+  font-size: 15px;
+  position: relative;
+  letter-spacing: -0.006em;
+  font-variant-numeric: tabular-nums;
+  /* Chapter numbering for .section-head. Reset here, not per page: a route
+     change swaps the whole page subtree, so the counter recomputes from
+     the sections actually present on whichever page is on screen. */
+  counter-reset: s9-section;
+}
+
+#root { overflow-x: clip; max-width: 100vw; width: 100%; }
+
+::selection { background: rgba(var(--accent-rgb), 0.28); color: var(--ink); }
+
+html[data-lang="en"] .l-bs { display: none !important; }
+html[data-lang="bs"] .l-en { display: none !important; }
+
+/* ---------- Focus, skip link ---------- */
+.focus-ring:focus-visible,
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+.skip-link {
+  position: absolute;
+  top: 12px; left: 50%;
+  transform: translate(-50%, -200%);
+  transition: transform 0.15s ease;
+  z-index: 100;
+  background: var(--ink);
+  color: var(--ground);
+  font-weight: 600;
+  font-size: 13px;
+  padding: 10px 18px;
+  border-radius: var(--r-sm);
+  text-decoration: none;
+}
+.skip-link:focus { transform: translate(-50%, 0); }
+
+/* ---------- Ground ---------- */
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-size: var(--grid) var(--grid);
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.026) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.026) 1px, transparent 1px);
+  mask-image: linear-gradient(to bottom, black 0%, black 34%, transparent 82%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 34%, transparent 82%);
+}
+
+.bg-horizon-beam { display: none; }
+
+/* ---------- The horizon ----------
+   A dark disc wider than the viewport whose rim catches the light. It
+   sits just under the hero so only the top of the curve shows. */
+.horizon {
+  position: relative;
+  height: 84px;
+  margin-top: 40px;
+  overflow: hidden;
+  pointer-events: none;
+}
+@media (min-width: 768px) { .horizon { height: 110px; margin-top: 52px; } }
+
+/* A drawn line, not a lit sphere, and now not a glow either. The first
+   version carried a wide, blurred box-shadow under the line to suggest
+   light spilling from behind it, 44px of blur at 0.55 opacity, and lit up
+   the whole top of the page. That is a soft-bloom treatment, the same
+   family as a neon button glow, just spread over a horizon instead of a
+   pill, and it is exactly the kind of thing this system has been cutting
+   everywhere else it showed up. An instrument's horizon line, an actual
+   one, on an attitude indicator, is not a glow. It is a precise line
+   against a flat field, and it reads as engineered because nothing about
+   it is soft. That is the treatment here now: a crisp stroke, no blur,
+   confident opacity instead of a halo doing the work. */
+.horizon-disc {
+  position: absolute;
+  left: 50%;
+  top: 12px;
+  transform: translateX(-50%);
+  /* Very wide relative to its height, so the slice on screen is a gentle
+     curve and never a dome. The drop from the centre to the edge of the
+     viewport stays around 30px at any width. */
+  width: 320vw;
+  max-width: 5200px;
+  height: 1200px;
+  border-radius: 50%;
+  background: transparent;
+  border-top: 1.5px solid rgba(var(--accent-signal-rgb), 0.95);
+}
+
+/* ---------- The rule ----------
+   A plain hairline. This used to carry a repeating tick pattern, the same
+   32px marks reproduced under the section headers, across every bento
+   card, and closing every page hero, all from three lines of CSS that
+   never touched the markup. That is how a single deliberate flourish
+   turns into wallpaper: nobody chose to put it in four places, the
+   selectors just kept matching. A decorative micro-pattern repeated
+   everywhere is its own cliche, no different from the glow and the grid
+   it was meant to be an alternative to.
+
+   The horizon on the home page is the one signature now. Everywhere else
+   is a plain line, and it is quieter for it. */
+.tick-rule {
+  height: 1px;
+  background: var(--line);
+  border: 0;
+  margin: 0;
+}
+
+/* ---------- Type ---------- */
+/* ---------- One heading scale ----------
+   The pages were carrying eight different size and weight combinations for
+   what are really three roles. These rules sit outside any cascade layer,
+   so they win over the Tailwind size utilities already in the markup and
+   the whole site lands on one scale without editing every heading. */
+h1, h2 {
+  color: var(--ink);
+  font-family: var(--f-display);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.04;
+  margin: 0;
+  text-wrap: balance;
+}
+
+/* Was clamp(1.75rem, 3.2vw, 2.5rem). On a phone that resolved to a flat
+   28px regardless of how narrow the screen got, and the hero next to it
+   was pinned at 38.4px, a 1.37x step that read as barely a step at all,
+   subheadings felt oversized and the hero felt undersized at the same
+   time because they were nearly the same size. The new floor is lower and
+   the hero's is higher, so mobile gets close to a 2x ratio between them
+   instead of one that rounds to "basically the same". */
+h2 { font-size: clamp(1.4rem, 3.6vw, 2.25rem); }
+
+/* The `margin: 0` on h1 and h2 above sits outside any cascade layer, so it
+   also cancels every mb-* utility the markup puts on a heading. Spacing
+   under a heading therefore has to come from here. Section headers are a
+   grid and use `gap`, so the hero is the only place that needs a margin. */
+.hero-title {
+  font-family: var(--f-display);
+  /* Heavier than h2's 600 on purpose: display and body are the same
+     family now, Inter, not Instrument Sans against Inter, so the weight
+     step is what tells a reader "this is the headline" instead of a
+     second typeface's own character doing that job. */
+  font-weight: 700;
+  /* Was clamp(2.4rem, 6.2vw, 4.5rem), pinned at 38.4px on every phone
+     regardless of width. See the note on h2 just above, same fix, other
+     end: the hero's floor moves up so it reads as a hero on a phone
+     instead of a slightly large paragraph. */
+  font-size: clamp(2.75rem, 8vw, 4.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  /* Left by default, because a case study heading is an article
+     heading. The centred hero opts in below. */
+  margin: 0 0 30px;
+}
+
+.page-hero .hero-title { margin-inline: auto; }
+
+h3, h4, h5, h6 {
+  color: var(--ink);
+  font-family: var(--f-sans);
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  line-height: 1.35;
+  margin: 0;
+  text-wrap: balance;
+}
+
+h3 { font-size: 1.125rem; }
+h4, h5, h6 { font-size: 1rem; }
+
+/* ---------- One radius scale ----------
+   The markup mixes five radii across 191 places: rounded-lg, xl, 2xl, 3xl
+   and full. These map the Tailwind utilities onto the three step scale so
+   corners agree everywhere. `rounded-full` is left alone because pills and
+   avatars genuinely want it, and the button rules already override it. */
+.rounded-lg, .rounded-xl { border-radius: var(--r-md); }
+.rounded-2xl, .rounded-3xl { border-radius: var(--r-lg); }
+@media (min-width: 640px) {
+  .sm\:rounded-2xl, .sm\:rounded-3xl { border-radius: var(--r-lg); }
+  .sm\:rounded-xl, .sm\:rounded-lg { border-radius: var(--r-md); }
+}
+
+/* ---------- One badge ----------
+   There were 25 hand rolled copies of the same eyebrow pill across eight
+   pages, differing in padding, tracking and border alpha. This owns the
+   shape and the type; the colour utilities in the markup still decide the
+   hue, so the red warning badge stays red and product badges stay theirs. */
+.s9-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, currentColor 40%, transparent);
+  padding: 7px 14px;
+  background: transparent;
+}
+.s9-badge svg { width: 13px; height: 13px; }
+
+p {
+  color: var(--body);
+  font-family: var(--f-sans);
+  line-height: 1.65;
+  letter-spacing: -0.006em;
+  text-wrap: pretty;
+}
+
+strong, b { color: var(--ink-dim); font-weight: 600; }
+a { color: inherit; }
+
+/* Every measured value on the site is set in mono. Numbers, product
+   labels, eyebrows. If it is a readout, it looks like one. */
+.readout, .eyebrow, .kick-line {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: var(--muted);
+  display: block;
+}
+.kick-line { text-align: center; margin: 0 auto 22px; }
+.eyebrow { color: var(--accent); }
+
+.eyebrow-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 16px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* ---------- Two alignments, and only two ----------
+   The opening block of any page is centred. Everything after it is left,
+   on the column axis. That is the whole rule, and `.page-hero` and
+   `.section-head` are the two primitives that carry it.
+
+   This is also what fixes the product pages. Their hero used to be centred
+   only because the section wrapper said text-center; when that came off
+   for the section headers, the heading went left while `.lead` stayed
+   centred, so the two disagreed. Now the hero owns its own centring and
+   does not depend on anything above it. */
+.page-hero {
+  position: relative;
+  text-align: center;
+}
+.page-hero .lead,
+.page-hero .micro-copy,
+.page-hero .kick-line { text-align: center; margin-left: auto; margin-right: auto; }
+.page-hero .s9-badge { margin-left: auto; margin-right: auto; }
+
+/* A product or case hero that is not the home page just ends. It does not
+   need its own closing mark; the section-head that follows already opens
+   on a rule, and a signature repeated on every page stops being one. */
+.page-hero:not(:has(.horizon)) { padding-bottom: 8px; }
+
+/* ---------- One axis ----------
+   Every section header starts at the same left edge as the content column.
+   Before this the page had four different left edges, 147, 251, 299 and
+   302px at a 1280 viewport, because each block centred itself inside a
+   different max width. The badge alone sat at five different positions.
+
+   The heading measure is wider than the reading measure and both are
+   anchored left, so the relationship between them is visible instead of
+   accidental. The hero is the one centred moment on the page. */
+/* ---------- The register ----------
+   Every section is a measured register: a narrow rail on the left carrying
+   a chapter number and a label, and one content column holding the heading
+   and the copy.
+
+   The rail is the reason this works. The label stops being a pill floating
+   above a centred stack and becomes a legend, the way a legend sits beside
+   a gauge rather than on top of it. The heading and the body then live in
+   the same grid cell, so they share a left edge by construction and cannot
+   drift apart again.
+
+   That drift is what kept coming back: headings and paragraphs carried
+   `max-w-2xl mx-auto`, so each one centred itself inside its parent while
+   the label did not. `margin-inline: 0` below cancels every one of them,
+   and the grid decides position instead of the markup.
+
+   There used to be a rule across the top of every one of these, first as a
+   repeating tick pattern, then, once that was cut for being its own kind
+   of wallpaper, as a plain hairline. A plain line repeated at every one of
+   twenty nine section starts is a quieter version of the same mistake: a
+   device applied by a selector rather than chosen for the place it lands.
+   There is no line now. What marks a new section is the chapter number
+   below, and it cannot become wallpaper the way a line can, because the
+   one thing about it is that it is never the same twice. */
+.section-head {
+  display: grid;
+  grid-template-columns: 168px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  column-gap: 32px;
+  row-gap: 22px;
+  align-items: start;
+  text-align: left;
+  max-width: none;
+  padding-top: 8px;
+  /* 32px, the grid unit, not 52. A heading and the thing it introduces are
+     one unit of meaning, and 52px of air between them read as two separate
+     blocks that happened to land near each other. The space between whole
+     sections is what separates ideas; this gap only has to separate a
+     label from its content. */
+  margin-bottom: 24px;
+  counter-increment: s9-section;
+}
+
+/* The chapter number. Generated, not typed: every .section-head on the
+   page counts itself, in document order, so the numbering cannot drift
+   from what is actually on the page and nothing had to be hand numbered
+   across eight pages and twenty nine sections. */
+.section-head::before {
+  content: counter(s9-section, decimal-leading-zero);
+  grid-column: 1;
+  grid-row: 1;
+  font-family: var(--f-mono);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--ink-dim);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+/* Content column by default. Nothing centres itself in here, and nothing
+   carries its own margins either: the grid row gap is the only spacing,
+   otherwise default paragraph margins stack on top of it and the gap under
+   a heading doubles. */
+.section-head > * { grid-column: 2; margin: 0; }
+/* 30ch, not 24. Twenty four is a good measure for a three or four word
+   heading and too tight for the rest: the median heading on this site is
+   38 characters, so at 24ch most of them were wrapping to two lines that
+   did not need to. Thirty is still inside the range a display line should
+   sit in and takes a line off most headings without touching the short
+   ones, which never reach the limit either way. */
+.section-head > h2 { grid-row: 1; max-width: 30ch; }
+
+/* An escape hatch for the one case that is not really a heading. The about
+   block on the home page is a 198 character sentence set as an h2; the
+   next longest on the site is 92. At any sensible heading measure it
+   stacks into a tall narrow column. This lets that one run at a reading
+   width instead, which is what it actually is. */
+.section-head > h2.h2-wide { max-width: 52ch; }
+.section-head > p { max-width: 62ch; font-size: 15px; }
+@media (min-width: 640px) { .section-head > p { font-size: 16px; } }
+
+/* The label sits under the number in the same rail cell, not beside the
+   heading any more. */
+.section-head > .s9-badge {
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: start;
+  align-self: start;
+  border: 0;
+  padding: 0;
+  background: none;
+  line-height: 1.4;
+  white-space: normal;
+  text-align: left;
+}
+.section-head > .s9-badge svg { margin-top: 1px; }
+
+@media (max-width: 899px) {
+  .section-head { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; row-gap: 10px; }
+  .section-head::before { grid-column: 1; grid-row: auto; }
+  .section-head > *, .section-head > .s9-badge { grid-column: 1; }
+  .section-head > .s9-badge { grid-row: auto; }
+  .section-head > h2 { grid-row: auto; max-width: none; }
+}
+
+/* Anything that follows a register and should line up with its content
+   column rather than with the rail. */
+.section-body > * { margin-inline: 0; }
+@media (min-width: 900px) { .section-body { padding-left: 200px; } }
+
+.rule { height: 1px; background: var(--line); border: 0; margin: 0; }
+
+/* The hero lead is exactly three quarters of the h1 measure, 672 against
+   896. A clean ratio reads as a decision; 58ch read as an accident. 672 is
+   also the measure the rest of the page uses, so the hero is tied to the
+   same system rather than floating on its own width. */
+.lead {
+  font-size: 17px;
+  color: var(--body);
+  text-align: center;
+  margin: 0 auto 34px;
+  max-width: 672px;
+  line-height: 1.6;
+}
+@media (min-width: 640px) { .lead { font-size: 18.5px; } }
+
+.micro-copy {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.13em;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 16px;
+}
+
+/* ---------- Surfaces ---------- */
+.s9-card, .product-card {
+  background: var(--deck);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 22px 20px;
+  transition: border-color var(--dur-1) var(--ease), background-color var(--dur-1) var(--ease);
+  max-width: 100%;
+  box-sizing: border-box;
+}
+@media (min-width: 640px) { .s9-card, .product-card { padding: 28px 26px; } }
+
+.s9-card:hover, .product-card:hover {
+  border-color: rgba(var(--accent-rgb), 0.4);
+  background: var(--deck-raise);
+}
+a.s9-card, a.product-card { transition: border-color var(--dur-1) var(--ease), background-color var(--dur-1) var(--ease), transform var(--dur-1) var(--ease); }
+a.s9-card:hover, a.product-card:hover { transform: translateY(-1px); }
+
+.s9-card-nested {
+  background: transparent;
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--r-md);
+  padding: 20px 18px;
+  transition: border-color var(--dur-1) var(--ease), background-color var(--dur-1) var(--ease);
+  max-width: 100%;
+  box-sizing: border-box;
+}
+@media (min-width: 640px) { .s9-card-nested { padding: 24px 22px; } }
+.s9-card-nested:hover { border-color: var(--line-hover); background: rgba(255, 255, 255, 0.018); }
+
+/* ---------- Client logos ----------
+   Six client marks in six brand colours, and most of them are dark artwork
+   drawn for white paper: Icarus is solid black, Rekontiva's wordmark is dark
+   navy. On this ground they would be invisible or nearly so.
+
+   brightness(0) crushes every logo to pure black regardless of its original
+   colour, invert(1) then lifts it to pure white. The result is one white
+   monochrome family. That fixes the contrast, and it stops a row of client
+   marks from competing with each other and with the page. They sit slightly
+   back at rest and come forward on hover, which is the usual treatment for
+   borrowed marks: present, credited, not shouting. */
+.client-logo {
+  filter: brightness(0) invert(1);
+  opacity: 0.62;
+  transition: opacity var(--dur-1) var(--ease);
+}
+.s9-card-nested:hover .client-logo,
+.client-logo:hover { opacity: 0.92; }
+
+@media (prefers-reduced-motion: reduce) {
+  .client-logo { transition: none; }
+  .animate-marquee, .animate-marquee-vertical { animation: none !important; }
+}
+
+/* ---------- Marquee ----------
+   Keyframes for the logo strip. Tailwind v4 has no built in marquee, and the
+   component prompt that introduced this pattern shipped the consumer without
+   the animation, so both live here.
+
+   The strip translates exactly one child width plus one gap, which is why
+   the children are repeated: at the end of a cycle the next copy is already
+   sitting where the first one started, so the reset is invisible. */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-100% - var(--gap))); }
+}
+@keyframes marquee-vertical {
+  from { transform: translateY(0); }
+  to   { transform: translateY(calc(-100% - var(--gap))); }
+}
+.animate-marquee          { animation: marquee var(--duration) linear infinite; }
+.animate-marquee-vertical { animation: marquee-vertical var(--duration) linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee, .animate-marquee-vertical { animation: none !important; }
+}
+
+/* ---------- Process steps ----------
+   A sequence, not a grid of four. The arrows are real elements in the flow
+   rather than decoration on the cards, so the direction survives the
+   breakpoint: they point right while the steps sit in a row and down once
+   the row becomes a column, which is the direction the page is read at
+   that width. */
+.process-steps {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(0, 1fr);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: stretch;
+}
+@media (min-width: 900px) {
+  .process-steps {
+    /* four steps with an arrow between each pair */
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 8px;
+  }
+}
+
+.process-step { display: flex; flex-direction: column; }
+
+.process-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 14px;
+  border-radius: var(--r-md);
+  border: 1px solid rgba(var(--cyan-rgb), 0.22);
+  background: rgba(var(--cyan-rgb), 0.09);
+  color: var(--cyan);
+  font-family: var(--f-mono);
+  font-size: 13px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.process-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  /* Pointing down while the steps are stacked. */
+  transform: rotate(90deg);
+  padding: 2px 0;
+}
+@media (min-width: 900px) {
+  .process-arrow { transform: none; padding: 0 2px; align-self: center; }
+}
+
+/* Staggered entrance, tied to the existing reveal so it inherits the same
+   safety net: if the observer never fires, the backstop makes everything
+   visible and the steps are simply already there. */
+.js-reveal .reveal .process-step,
+.js-reveal .reveal .process-arrow {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.js-reveal .reveal .process-arrow { transform: translateY(10px) rotate(90deg); }
+@media (min-width: 900px) {
+  .js-reveal .reveal .process-arrow { transform: translateY(10px); }
+}
+
+.js-reveal .reveal.is-visible .process-step,
+.js-reveal .reveal.is-visible .process-arrow {
+  opacity: 1;
+  transform: none;
+  transition: opacity var(--dur-3) var(--ease), transform var(--dur-3) var(--ease);
+}
+.js-reveal .reveal.is-visible .process-arrow { transform: rotate(90deg); }
+@media (min-width: 900px) {
+  .js-reveal .reveal.is-visible .process-arrow { transform: none; }
+}
+
+/* ---------- Bento ----------
+   A card is a gauge face: the reading in mono at the corner, the accent
+   belonging to that instrument, a single line at rest that fills solid on
+   hover. It used to be a strip of ticks across the top, the same 32px
+   pattern reproduced from the section rule. Four cards side by side then
+   read as a swatch of one texture rather than four instruments, so the
+   accent moved into a plain top edge instead: still legible per card,
+   without the repetition. */
+.bento-card {
+  position: relative;
+  background: var(--deck);
+  border: 1px solid var(--line);
+  border-top: 2px solid rgba(var(--accent-rgb), 0.3);
+  border-radius: var(--r-lg);
+  padding: 24px 22px;
+  min-height: 260px;
+  text-decoration: none;
+  transition: border-color var(--dur-1) var(--ease), background-color var(--dur-1) var(--ease);
+}
+@media (min-width: 768px) { .bento-card { padding: 28px 26px; min-height: 300px; } }
+
+.bento-card:hover {
+  border-color: rgba(var(--accent-rgb), 0.45);
+  border-top-color: var(--accent);
+  background: var(--deck-raise);
+}
+
+.bento-name {
+  font-family: var(--f-sans);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+}
+@media (min-width: 768px) { .bento-name { font-size: 1.15rem; } }
+
+.bento-desc { font-size: 14px; color: var(--body); line-height: 1.6; }
+
+.bento-cta {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ---------- Buttons ---------- */
+.btn-pill, .btn-primary, .btn-ghost {
+  border-radius: var(--r-sm);
+  font-family: var(--f-sans);
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: 0 20px;
+  transition: background-color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease), transform var(--dur-1) var(--ease);
+}
+
+/* Press feedback. Both references do this and it is the cheapest real
+   quality-of-life win available: the control acknowledges the press at the
+   moment of the press, rather than leaving the reader to wonder whether it
+   registered while the next view loads. One percent is deliberately almost
+   invisible; it is felt more than seen, which is the point. A larger number
+   turns a button into a toy. */
+.btn-pill:active, .btn-primary:active, .btn-ghost:active { transform: scale(0.99); }
+
+.btn-primary {
+  background: var(--accent-signal);
+  color: var(--ground);
+  border: 1px solid var(--accent-signal);
+  font-weight: 600;
+}
+.btn-primary:hover { background: var(--accent-signal-hover); border-color: var(--accent-signal-hover); }
+.btn-primary:active { background: var(--accent-signal-deep); border-color: var(--accent-signal-deep); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink-dim);
+  border: 1px solid var(--line);
+}
+.btn-ghost:hover { border-color: var(--line-hover); color: var(--ink); background: rgba(255, 255, 255, 0.03); }
+
+.btn-accent {
+  background: var(--accent);
+  color: var(--ground);
+  border: 1px solid var(--accent);
+  border-radius: var(--r-sm);
+  font-weight: 600;
+  font-size: 13.5px;
+  min-height: 44px;
+  padding: 0 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: filter var(--dur-1) var(--ease);
+}
+.btn-accent:hover { filter: brightness(1.08); }
+
+.pill-cyan {
+  background: transparent;
+  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  color: var(--accent);
+  font-family: var(--f-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  border-radius: var(--r-sm);
+  padding: 5px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: border-color var(--dur-1) var(--ease);
+}
+.pill-cyan:hover { border-color: rgba(var(--accent-rgb), 0.5); }
+
+/* ---------- Figures ----------
+   Three readings on a rule, not three cards. */
+.proof-strip {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  box-sizing: border-box;
+}
+.proof-strip > * + * { border-top: 1px solid var(--line); }
+@media (min-width: 768px) {
+  .proof-strip { grid-template-columns: repeat(3, 1fr); }
+  .proof-strip > * + * { border-top: 0; border-left: 1px solid var(--line); }
+}
+
+.proof-item { text-align: left; padding: 22px 24px 22px 0; }
+@media (min-width: 768px) { .proof-item { padding: 24px 28px; } .proof-item:first-child { padding-left: 0; } }
+
+.proof-val {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.proof-label {
+  font-size: 12.5px;
+  color: var(--muted);
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 30ch;
+}
+
+/* ---------- Inputs ---------- */
+.s9-input, .s9-select {
+  background-color: var(--deck);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  border-radius: var(--r-sm);
+  padding: 12px 14px;
+  font-size: 14.5px;
+  font-family: var(--f-sans);
+  width: 100%;
+  outline: none;
+  transition: border-color var(--dur-1) var(--ease);
+  box-sizing: border-box;
+}
+.s9-input:focus, .s9-select:focus { border-color: var(--accent); }
+.s9-input::placeholder { color: var(--muted); }
+textarea.s9-input { min-height: 120px; line-height: 1.6; }
+
+/* ---------- Motion ----------
+   Content is never hidden waiting for JavaScript. The reveal only ever
+   runs as an enhancement, and only once the script is confirmed alive. */
+.reveal { opacity: 1; transform: none; }
+
+.js-reveal .reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--dur-3) var(--ease),
+              transform var(--dur-3) var(--ease);
+}
+.js-reveal .reveal.is-visible { opacity: 1; transform: none; }
+
+.hero-animate-1, .hero-animate-2, .hero-animate-3, .hero-animate-4 {
+  animation: heroEntrance var(--dur-3) var(--ease) both;
+}
+.hero-animate-1 { animation-delay: 0ms; }
+.hero-animate-2 { animation-delay: 60ms; }
+.hero-animate-3 { animation-delay: 120ms; }
+.hero-animate-4 { animation-delay: 180ms; }
+
+@keyframes heroEntrance {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.pulse-border { box-shadow: inset 0 0 0 1px rgba(var(--accent-rgb), 0.25); }
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--ground); }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.18); }
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal, .js-reveal .reveal,
+  .hero-animate-1, .hero-animate-2, .hero-animate-3, .hero-animate-4,
+  .js-reveal .reveal .process-step {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  /* The arrow keeps its rotation: that is orientation, not motion. */
+  .js-reveal .reveal .process-arrow { opacity: 1 !important; transition: none !important; }
+  .js-reveal .reveal .process-arrow { transform: rotate(90deg) !important; }
+  @media (min-width: 900px) {
+    .js-reveal .reveal .process-arrow { transform: none !important; }
+  }
+}
