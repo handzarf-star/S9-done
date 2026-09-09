@@ -519,7 +519,17 @@ p {
 }
 
 strong, b { color: var(--ink-dim); font-weight: 600; }
-a { color: inherit; }
+/* In `@layer base`, not bare, and the distinction is not cosmetic.
+   Unlayered CSS beats every layered rule regardless of specificity, so as a
+   bare rule this quietly overrode `text-[...]` utilities on anchors. Every
+   product page's primary call to action asks for `text-[#0A0E15]` on a full
+   accent fill and was rendering in `--ink-dim` instead: contrast 1.19 on
+   Libra, 1.22 on Atlas, 1.46 on Sonar, 1.68 on Pulse, all of them unreadable.
+   Inside the base layer the rule still gives anchors their inherited colour by
+   default, and a utility class now wins the way anyone writing one expects. */
+@layer base {
+  a { color: inherit; }
+}
 
 /* Every measured value on the site is set in mono. Numbers, product
    labels, eyebrows. If it is a readout, it looks like one. */
