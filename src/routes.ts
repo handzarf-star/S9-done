@@ -1,6 +1,6 @@
 import { SITE_URL } from './config';
 
-export type RouteKey = 'home' | 'pulse' | 'atlas' | 'sonar' | 'libra' | 'radovi' | 'radoviWms' | 'radoviMonad' | 'custom' | 'about' | 'privacy';
+export type RouteKey = 'home' | 'pulse' | 'atlas' | 'sonar' | 'mode' | 'libra' | 'radovi' | 'radoviWms' | 'radoviMonad' | 'custom' | 'about' | 'privacy';
 
 export interface RouteMeta {
   path: string;
@@ -72,6 +72,20 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     description: {
       bs: 'Sonar sam prati vaše brojke, primijeti odstupanje i otvori tiket prije nego što propust postane skup. Uhvatio je tihi pad prometa za 15 minuta.',
       en: 'Sonar watches your numbers on its own, spots deviations and opens a ticket before the miss gets expensive. It caught a silent traffic drop in 15 minutes.',
+    },
+  },
+  mode: {
+    path: '/mode',
+    accent: '#FF6170',
+    accentRgb: '255, 97, 112',
+    accentDeep: '#D6293D',
+    title: {
+      bs: 'Shape9 Mode · sistem za butike',
+      en: 'Shape9 Mode · built for boutiques',
+    },
+    description: {
+      bs: 'Od skeniranja artikla do isporuke kupcu, bez papira i bez Excela. Kasa, magacin i radnje u jednom sistemu, sa stanjem koje se mijenja u trenutku prodaje.',
+      en: 'From scanning an item to the customer\'s door, with no paper and no spreadsheet. Till, stockroom and shops in one system, with stock that changes at the moment of sale.',
     },
   },
   libra: {

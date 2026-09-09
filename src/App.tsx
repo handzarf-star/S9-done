@@ -7,6 +7,7 @@ import { PulsePage } from './pages/PulsePage';
 import { AtlasPage } from './pages/AtlasPage';
 import { SonarPage } from './pages/SonarPage';
 import { LibraPage } from './pages/LibraPage';
+import { ModePage } from './pages/ModePage';
 import { RadoviPage } from './pages/RadoviPage';
 import { RadoviWmsPage } from './pages/RadoviWmsPage';
 import { RadoviMonadPage } from './pages/RadoviMonadPage';
@@ -129,6 +130,8 @@ export const App: React.FC = () => {
         return <AtlasPage onNavigate={navigate} />;
       case 'sonar':
         return <SonarPage onNavigate={navigate} />;
+      case 'mode':
+        return <ModePage onNavigate={navigate} />;
       case 'libra':
         return <LibraPage onNavigate={navigate} />;
       case 'radovi':

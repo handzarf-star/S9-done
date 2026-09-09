@@ -18,7 +18,7 @@ import {
   SheetTitle,
 } from '@/components/ui/sheet';
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Menu, X, ArrowRight, PhoneCall, Package, LineChart, FileStack, Calendar } from 'lucide-react';
+import { ChevronDown, Menu, X, ArrowRight, PhoneCall, Package, LineChart, Shirt, Calendar } from 'lucide-react';
 import { MeetingScheduler } from './MeetingScheduler';
 
 interface HeaderProps {
@@ -60,14 +60,14 @@ const PRODUCTS = [
     descEn: 'Numbers watched non-stop',
   },
   {
-    path: '/libra',
-    name: 'Shape9 Libra',
-    shortName: 'Libra',
-    color: '#3DD68C',
-    rgb: '61, 214, 140',
-    icon: FileStack,
-    descBs: 'Dokumenti koji se sami razvrstaju',
-    descEn: 'Docs that sort themselves',
+    path: '/mode',
+    name: 'Shape9 Mode',
+    shortName: 'Mode',
+    color: '#FF6170',
+    rgb: '255, 97, 112',
+    icon: Shirt,
+    descBs: 'Kasa, magacin i radnje u jednom sistemu',
+    descEn: 'Till, stockroom and shops in one system',
   },
 ];
 

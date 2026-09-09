@@ -5,7 +5,7 @@ import {
   PhoneCall,
   Package,
   LineChart,
-  FileStack,
+  Shirt,
   Sparkles,
   HelpCircle,
   MessageSquare,
@@ -98,19 +98,19 @@ const SYMPTOMS = [
     ctaEn: 'See Sonar',
   },
   {
-    id: 'libra',
-    nameBs: 'Računovodstvo i administracija',
-    nameEn: 'Accounting & administration',
-    product: 'Libra',
-    color: '#3DD68C',
-    icon: FileStack,
-    path: '/libra',
-    symptomBs: 'Dokumenti stižu mailom, sa telefona i iz banke. Neko ih svaki dan mora otvoriti i rasporediti u pravi folder.',
-    symptomEn: 'Paperwork arrives by email, from a phone and from the bank. Every day someone has to open it, work out what it is and file it.',
-    solutionBs: 'Libra pročita šta je stiglo, prepozna dokument i rasporedi ga u pravi folder.',
-    solutionEn: 'Libra reads what arrived, recognises whose it is and files it in the right folder.',
+    id: 'mode',
+    nameBs: 'Butici i maloprodaja',
+    nameEn: 'Boutiques and retail',
+    product: 'Mode',
+    color: '#FF6170',
+    icon: Shirt,
+    path: '/mode',
+    symptomBs: 'Kupac pita ima li model u drugoj veličini. Neko zove drugu radnju, a kupac za to vrijeme gubi interes.',
+    symptomEn: 'A customer asks for another size. Someone rings the other shop, and the sale slips away while they wait.',
+    solutionBs: 'Stanje po radnjama i veličinama na jednom ekranu, i transfer koji se napravi sam.',
+    solutionEn: 'Stock by shop and by size on one screen, and a transfer that creates itself.',
     ctaBs: 'Saznajte više',
-    ctaEn: 'See Libra',
+    ctaEn: 'See Mode',
   },
 ];
 
@@ -155,15 +155,15 @@ const ASSUMPTIONS: HoverStackCard[] = [
     ),
   },
   {
-    bg: 'color-mix(in oklab, var(--panel-raise) 93%, #3DD68C)',
-    fg: '#3DD68C',
-    border: 'rgba(61, 214, 140, 0.30)',
-    href: '/libra',
-    cta: 'Libra',
+    bg: 'color-mix(in oklab, var(--panel-raise) 93%, #FF6170)',
+    fg: '#FF6170',
+    border: 'rgba(255, 97, 112, 0.30)',
+    href: '/mode',
+    cta: 'Mode',
     quote: (
       <>
-        <span className="l-bs">Koliko bitnih dokumenata je greškom u pogrešnom folderu, a da to i ne znate?</span>
-        <span className="l-en">How many documents that matter are sitting in the wrong folder without you knowing?</span>
+        <span className="l-bs">Koliko je kupaca otišlo jer niko nije znao imate li njihov broj?</span>
+        <span className="l-en">How many customers left because nobody knew whether you had their size?</span>
       </>
     ),
   },

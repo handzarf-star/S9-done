@@ -241,6 +241,7 @@
 .accent-atlas { --accent: #FFA658; --accent-rgb: 255, 166, 88; }
 .accent-sonar { --accent: #35B6F0; --accent-rgb: 53, 182, 240; }
 .accent-libra { --accent: #3DD68C; --accent-rgb: 61, 214, 140; }
+.accent-mode  { --accent: #FF6170; --accent-rgb: 255, 97, 112; }
 /* Not the literal brand hex on purpose, same reasoning as repointing
    --accent at :root: this class exists so a house-coloured block matches
    the same punch as the four product accents next to it, not the muted
