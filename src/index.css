@@ -458,7 +458,7 @@ h2 { font-size: clamp(1.4rem, 3.6vw, 2.25rem); }
    sentence lands in two. Scoped, because `hero-title` is shared with nine other
    pages whose heroes have nothing under them and should stay large. */
 .hero-title--compact {
-  font-size: clamp(2rem, 5vw, 3.15rem);
+  font-size: clamp(2.25rem, 5.6vw, 3.9rem);
   line-height: 1.06;
   letter-spacing: -0.03em;
 }
