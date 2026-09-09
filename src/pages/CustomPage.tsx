@@ -139,16 +139,16 @@ export const CustomPage: React.FC<CustomPageProps> = ({ onNavigate }) => {
         </div>
 
         <h1 className="hero-animate-2 hero-title max-w-4xl">
-          <span className="l-bs">Usluge razvoja softvera izgrađene oko vaših poslovnih potreba.</span>
-          <span className="l-en">Custom development services built around your business needs.</span>
+          <span className="l-bs">Razvoj softvera koji prati Vaše poslovanje, a ne tuđe šablone.</span>
+          <span className="l-en">Software built around how your business already works.</span>
         </h1>
 
         <p className="hero-animate-3 lead mx-auto mb-8 sm:mb-12 text-[var(--body)] max-w-3xl leading-relaxed">
           <span className="l-bs">
-            Kada nijedan gotov alat ne odgovara vašim procesima, mi preuzimamo kompletan tehnički ciklus: od početne analize i arhitekture do pouzdane produkcije i dugoročnog održavanja.
+            Kada gotova rješenja sa tržišta postanu ograničenje za Vaš rast, projektujemo namjenske digitalne platforme: od arhitekture i dizajna do stabilne produkcije i dugoročnog održavanja.
           </span>
           <span className="l-en">
-            When off-the-shelf software falls short, we engineer bespoke digital platforms: from architecture and UI/UX design to robust production scaling and dedicated maintenance.
+            When ready made software becomes the thing holding you back, we build the platform instead: architecture and design through to stable production and long term upkeep.
           </span>
         </p>
 

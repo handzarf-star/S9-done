@@ -36,10 +36,10 @@ export const RadoviPage: React.FC<RadoviPageProps> = ({ onNavigate }) => {
 
         <p className="hero-animate-3 lead mx-auto mb-8 sm:mb-12 max-w-3xl text-[var(--body)]">
           <span className="l-bs">
-            Pregled sistema i digitalnih proizvoda koje smo razvili i uspješno pustili u rad. Spoj naših cloud proizvoda (Pulse, Atlas, Sonar, Libra) i namjenskog softvera razvijenog po specifičnim zahtjevima klijenata.
+            Odabrani digitalni sistemi koje smo projektovali, razvili i pustili u puni rad. Spoj naših gotovih operativnih proizvoda i namjenskog softvera razvijenog po narudžbi.
           </span>
           <span className="l-en">
-            Selected systems and digital products we built and deployed into production. A combination of our specialized cloud products (Pulse, Atlas, Sonar, Libra) and bespoke software engineered for unique client workflows.
+            Selected systems we designed, built and put into full production. A mix of our own operational products and software built to order.
           </span>
         </p>
       </section>

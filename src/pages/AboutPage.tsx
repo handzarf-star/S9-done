@@ -40,25 +40,25 @@ const AI_PRINCIPLES = [
   {
     id: 'helps',
     icon: Sparkles,
-    titleBs: 'Koristimo je gdje stvarno pomaže',
+    titleBs: 'Koristimo AI samo tamo gdje rješava stvaran problem',
     titleEn: 'We use it where it genuinely helps',
-    descBs: 'Tamo gdje skida ponavljajući posao s vašeg tima ili ubrzava odluku koju ionako donosite. To je jedini razlog koji priznajemo.',
+    descBs: 'Ne uvodimo vještačku inteligenciju zato što je u trendu, već isključivo ako timu štedi radne sate ili sprečava finansijske gubitke.',
     descEn: 'Not because it is trending, but because it takes repetitive work off your team, or speeds up a decision you already make.',
   },
   {
     id: 'tool',
     icon: Wrench,
-    titleBs: 'Jedan je od alata, ne rješenje za sve',
+    titleBs: 'AI je alat, a ne čarobni štapić',
     titleEn: 'One tool among several, not a cure-all',
-    descBs: 'Nekad je odgovor obično pravilo, izvještaj ili integracija. Predlažemo ono što rješava problem, bez obzira kako se zove.',
+    descBs: 'Ponekad je optimalno rješenje dobro definisano poslovno pravilo ili jednostavna integracija, a ne složen jezički model. Uvijek predlažemo ono što je najisplativije za Vas.',
     descEn: 'Sometimes the answer is a rule, a report, or an integration, not a model. We propose what actually solves the problem.',
   },
   {
     id: 'honest',
     icon: ShieldCheck,
-    titleBs: 'Iskreni smo oko granica',
+    titleBs: 'Iskreni smo oko tehničkih limita',
     titleEn: 'Honest about where it stops',
-    descBs: 'Ako procijenimo da se vama ne isplati ili da tehnologija još nije spremna, čut ćete to od nas prije nego potrošite budžet.',
+    descBs: 'Ako smatramo da Vaš proces još uvijek nije spreman za automatizaciju, reći ćemo Vam to otvoreno prije nego što potrošite budžet.',
     descEn: 'If we think a solution is not ready or worth it for your case, we say so before you spend the budget.',
   },
 ];
@@ -89,16 +89,16 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
         </div>
 
         <h1 className="hero-animate-2 hero-title max-w-4xl">
-          <span className="l-bs">Razumijemo biznis. Tehnologija je naš alat.</span>
+          <span className="l-bs">Razumijemo poslovanje. Tehnologija je naš alat.</span>
           <span className="l-en">We understand business. Technology is our tool.</span>
         </h1>
 
         <p className="hero-animate-3 lead mx-auto mb-8 sm:mb-12 text-[var(--body)] max-w-3xl leading-relaxed">
           <span className="l-bs">
-            Prvo analiziramo vaše poslovanje: prodaju, marketing i operacije. Tek onda gradimo rješenje. Suštinsko razumijevanje vašeg modela poslovanja dolazi prije rješenja koje nudimo.
+            Razvoj započinjemo od Vaših stvarnih operacija: prodaje, logistike i upravljanja troškovima. Tek kada u potpunosti razumijemo kako Vaš posao diše, prelazimo na programiranje.
           </span>
           <span className="l-en">
-            We start with your business: sales, marketing, operations. Only then do we build. Understanding how you actually work comes before whatever we propose.
+            We start with your actual operations: sales, logistics, what things cost. Only once we understand how the business breathes do we start writing anything.
           </span>
         </p>
 

@@ -126,7 +126,7 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
       en: 'About Us · Shape9',
     },
     description: {
-      bs: 'Znamo poslovanje, inženjering nam je alat. Deset godina, dvjesto plus isporučenih projekata i pristup kako radimo.',
+      bs: 'Razumijemo poslovne operacije, inženjering je naš alat. Deset godina rada, preko dvije stotine isporučenih sistema i pristup bez praznih obećanja.',
       en: 'We know business, engineering is our tool. Ten years, two hundred plus delivered projects, and how we actually work.',
     },
   },
