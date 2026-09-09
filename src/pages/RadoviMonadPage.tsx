@@ -47,7 +47,7 @@ export const RadoviMonadPage: React.FC<RadoviMonadPageProps> = ({ onNavigate }) 
 
         <h1 className="hero-title">
           <span className="l-bs">
-            Kako smo implementirali autonomni AI analitički sistem za affiliate platformu, uz trošak od <span className="text-[#35B6F0]">50$ mjesečno</span>
+            Kako smo izgradili kompletan AI analitički sistem za <span className="text-[#35B6F0]">50 USD mjesečno</span>
           </span>
           <span className="l-en">
             How we built a full AI analytics system for an affiliate platform, for <span className="text-[#35B6F0]">50 dollars a month</span>

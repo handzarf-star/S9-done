@@ -258,7 +258,7 @@ export const PulsePage: React.FC<PulsePageProps> = ({ onNavigate }) => {
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
               <span className="l-bs">Vaš tim obavi stotine razgovora svakog dana. Šta je u njima zaista dogovoreno?</span>
-              <span className="l-en">Your team runs hundreds of conversations a day. What actually gets agreed in them?</span>
+              <span className="l-en">Your agents handle hundreds of calls daily. How many commitments, compliance breaches, or churn risks slip through unheard?</span>
             </h2>
 
             <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed max-w-2xl mx-auto">

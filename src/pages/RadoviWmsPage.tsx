@@ -48,7 +48,7 @@ export const RadoviWmsPage: React.FC<RadoviWmsPageProps> = ({ onNavigate }) => {
 
         <h1 className="hero-title">
           <span className="l-bs">
-            Implementacija WMS sistema za 12 regionalnih centara i postizanje tačnosti zaliha od <span className="text-[#FFA658]">99,4%</span>
+            Skladišni sistem kroz dvanaest država i tačnost zaliha od <span className="text-[#FFA658]">99,4%</span>
           </span>
           <span className="l-en">
             A warehouse system across twelve countries, and inventory accuracy of <span className="text-[#FFA658]">99.4 percent</span>
@@ -57,7 +57,7 @@ export const RadoviWmsPage: React.FC<RadoviWmsPageProps> = ({ onNavigate }) => {
 
         <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed max-w-4xl">
           <span className="l-bs">
-            12 distributivnih skladišta u 12 država, preko 10.000 artikala i 1.500 zaposlenika. Centralizacijom logističkih operacija kroz namjenski WMS sistem, u roku od 6 sedmica greške u komisioniranju su smanjene za 91%, dok je tačnost stanja zaliha podignuta sa 81% na 99,4%.
+            12 država. 12 skladišnih centara. Preko 10.000 artikala na stanju. Više od 1.500 zaposlenih. I operativni haos koji je postao nemoguć za ručno vođenje. Šest sedmica od početka rada do pune implementacije. Greške pri pakovanju smanjene za 91%. Tačnost zaliha podignuta sa 81% na 99,4%.
           </span>
           <span className="l-en">
             Twelve countries. Twelve warehouses. Over ten thousand product lines. More than fifteen hundred people across twenty five nationalities. And a stock operation that had quietly become impossible to run. Six weeks from kickoff to live. Picking errors down by 91 percent. Inventory accuracy from 81 to 99.4 percent.
