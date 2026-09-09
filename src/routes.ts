@@ -38,11 +38,11 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '169, 140, 255',
     accentDeep: '#6D3BF0',
     title: {
-      bs: 'Shape9 Pulse · provjera svakog poziva, ne uzorka od dva posto',
+      bs: 'Shape9 Pulse · provjera svakog poziva, a ne slučajnog uzorka',
       en: 'Shape9 Pulse · every call checked, not a two percent sample',
     },
     description: {
-      bs: 'Vaš QA tim stigne preslušati dva poziva od stotinu. Pulse provjerava svaki snimljeni poziv po vašim pravilima i vraća jasan izvještaj.',
+      bs: 'Kontrola kvaliteta fizički presluša tek dva od sto poziva. Pulse automatski provjerava svaki obavljeni razgovor prema Vašim pravilima i isporučuje pregledan izvještaj.',
       en: 'Your QA team gets to two calls in a hundred. Pulse checks every recorded call against your own rules and returns a clear report.',
     },
   },
@@ -52,11 +52,11 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '255, 166, 88',
     accentDeep: '#E3831F',
     title: {
-      bs: 'Shape9 Atlas · skladište u kojem se roba ne gubi',
+      bs: 'Shape9 Atlas · skladište u kojem roba prestaje nestajati',
       en: 'Shape9 Atlas · a warehouse where stock stops going missing',
     },
     description: {
-      bs: 'Tačno stanje, tačna lokacija i tačka narudžbe, na svakoj lokaciji. Kod jednog klijenta tačnost zaliha je podignuta sa 81 na 99,4 posto.',
+      bs: 'Tačno stanje zaliha, tačna lokacija police i automatizovano ponovno naručivanje na svim lokacijama. Kod jednog klijenta, tačnost zaliha porasla je sa 81 na 99,4 posto.',
       en: 'Exact stock, exact location and reorder point across every site. With one client, inventory accuracy went from 81 to 99.4 percent.',
     },
   },
@@ -66,11 +66,11 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '53, 182, 240',
     accentDeep: '#1180C5',
     title: {
-      bs: 'Shape9 Sonar · brojke koje neko prati i kad niko ne gleda',
+      bs: 'Shape9 Sonar · autonomni nadzor poslovnih parametara dok Vi vodite firmu',
       en: 'Shape9 Sonar · someone watching the numbers when nobody is looking',
     },
     description: {
-      bs: 'Sonar sam prati vaše brojke, primijeti odstupanje i otvori tiket prije nego što propust postane skup. Uhvatio je tihi pad prometa za 15 minuta.',
+      bs: 'Sonar neprekidno prati Vaše podatke, detektuje devijacije i automatski otvara radni nalog prije nego što nastane finansijski minus. Otkrio je tihi pad posjeta za samo 15 minuta.',
       en: 'Sonar watches your numbers on its own, spots deviations and opens a ticket before the miss gets expensive. It caught a silent traffic drop in 15 minutes.',
     },
   },
@@ -80,11 +80,11 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '255, 97, 112',
     accentDeep: '#D6293D',
     title: {
-      bs: 'Shape9 Mode · sistem za butike',
+      bs: 'Shape9 Mode · razvijeno za butike i maloprodajne lance',
       en: 'Shape9 Mode · built for boutiques',
     },
     description: {
-      bs: 'Od skeniranja artikla do isporuke kupcu, bez papira i bez Excela. Kasa, magacin i radnje u jednom sistemu, sa stanjem koje se mijenja u trenutku prodaje.',
+      bs: 'Od skeniranja artikla do vrata kupca, bez papira i Excel tabela. Kasa, magacin i maloprodajni objekti uvezani u realnom vremenu.',
       en: 'From scanning an item to the customer\'s door, with no paper and no spreadsheet. Till, stockroom and shops in one system, with stock that changes at the moment of sale.',
     },
   },
@@ -94,11 +94,11 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '61, 214, 140',
     accentDeep: '#17A56B',
     title: {
-      bs: 'Shape9 Libra · pošta koja se sama razvrsta',
+      bs: 'Shape9 Libra · pošta i računi koji se sortiraju sami',
       en: 'Shape9 Libra · post that sorts itself',
     },
     description: {
-      bs: 'Dokumenti stižu mailom, sa telefona i iz banke. Libra pročita šta je stiglo, prepozna čije je i spusti ga u pravi folder.',
+      bs: 'Dokumenti stižu putem emaila, fotografija sa telefona i bankovnih izvoda. Libra prepoznaje sadržaj, pronalazi klijenta i automatski arhivira fajl u tačan folder.',
       en: 'Documents arrive by email, from a phone and from the bank. Libra reads what arrived, recognises whose it is and files it in the right folder.',
     },
   },

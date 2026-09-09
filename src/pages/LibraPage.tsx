@@ -124,7 +124,7 @@ export const LibraPage: React.FC<LibraPageProps> = ({ onNavigate }) => {
 
         <h1 className="hero-animate-2 hero-title max-w-4xl">
           <span className="l-bs">
-            Dokumentacija pristiže cijeli dan. Zašto je vaš tim ručno <span className="text-[#3DD68C]">razvrstava?</span>
+            Dokumenti pristižu cijeli dan. Neko mora ručno otvoriti i <span className="text-[#3DD68C]">razvrstati svaki od njih.</span>
           </span>
           <span className="l-en">
             Documents arrive all day. Someone has to <span className="text-[#3DD68C]">sort</span> every single one.
@@ -133,7 +133,7 @@ export const LibraPage: React.FC<LibraPageProps> = ({ onNavigate }) => {
 
         <p className="hero-animate-3 lead mx-auto mb-8 sm:mb-12 text-[var(--body)] max-w-3xl">
           <span className="l-bs">
-            Bilo da stižu emailom, skenom, bankarskim izvodom ili slikom sa telefona, <span className="text-[#3DD68C] font-mono">Libra</span> prepozna tip dokumenta, prepozna čiji je i spusti ga u pravi folder. Klijent ubaci sam, s telefona ili računara, i vidi dokle je stiglo.
+            Skenirani računi, PDF ugovori, bankovni izvodi ili fotografije troškova sa terena. <span className="text-[#3DD68C] font-mono">Libra</span> prepoznaje o čemu je riječ, čiji je dokument i odmah ga pohranjuje u odgovarajući folder. Vi otvarate fasciklu klijenta, a dokument je već tamo.
           </span>
           <span className="l-en">
             By email, as a photo from a phone, from the bank, in an envelope. <span className="text-[#3DD68C] font-mono">Libra</span> reads what arrived, recognises whose it is and files it in the right folder. You open the client's folder and it is already there.
@@ -146,7 +146,7 @@ export const LibraPage: React.FC<LibraPageProps> = ({ onNavigate }) => {
             onClick={(e) => go(e, '#libra-form')}
             className="btn-pill font-semibold text-sm text-[#0A0E15] bg-[#3DD68C] hover:bg-[#5be09f] py-3.5 px-8 transition-colors inline-flex items-center justify-center gap-2 focus-ring w-full sm:w-auto"
           >
-            <span className="l-bs">Automatizujte obradu dokumentacije</span>
+            <span className="l-bs">Pokažite nam kako Vam danas stiže dokumentacija</span>
             <span className="l-en">Tell us how your paperwork arrives</span>
             <ArrowRight className="w-4 h-4 ml-1" />
           </a>

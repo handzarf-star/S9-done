@@ -170,13 +170,13 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
         </div>
 
         <h1 className="hero-animate-2 hero-title max-w-4xl">
-          <span className="l-bs">Skladište u kojem svaka stavka ima tačnu lokaciju.</span>
+          <span className="l-bs">Skladište u kojem roba prestaje nestajati.</span>
           <span className="l-en">A warehouse where stock stops going missing.</span>
         </h1>
 
         <p className="hero-animate-3 lead mx-auto mb-8 sm:mb-12 text-[var(--body)] max-w-3xl">
           <span className="l-bs">
-            Trenutno stanje zaliha, tačne pozicije na policama i automatizovano naručivanje u realnom vremenu, za jedno skladište ili kompleksnu mrežu u više država.
+            Tačno stanje zaliha, tačna polica na kojoj se artikal nalazi i pravovremeno obavještenje o nabavci. Za jedno skladište ili regionalnu mrežu od dvanaest objekata.
           </span>
           <span className="l-en">
             Exact stock, the exact shelf it sits on, and the point at which something needs reordering. For one warehouse or for twelve, across countries.
@@ -189,7 +189,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
             onClick={(e) => go(e, '#atlas-form')}
             className="btn-pill font-semibold text-sm text-[#0A0E15] bg-[#FFA658] hover:bg-[#ff9c58] py-3.5 px-8 transition-colors focus-ring w-full sm:w-auto"
           >
-            <span className="l-bs">Razgovarajmo o vašem skladištu</span>
+            <span className="l-bs">Zakažite analizu Vašeg skladišta</span>
             <span className="l-en">Let us talk about your warehouse</span>
             <ArrowRight className="w-4 h-4 ml-1" />
           </a>

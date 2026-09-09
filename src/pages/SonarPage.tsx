@@ -170,13 +170,13 @@ export const SonarPage: React.FC<SonarPageProps> = ({ onNavigate }) => {
         </div>
 
         <h1 className="hero-animate-2 hero-title max-w-4xl">
-          <span className="l-bs">Rano upozorenje, dok je problem još rješiv.</span>
-          <span className="l-en">Early warning, while the problem is still small.</span>
+          <span className="l-bs">Pravovremeno upozorenje, dok je problem još uvijek rješiv.</span>
+          <span className="l-en">Early operational warning, before minor deviations become month end deficits.</span>
         </h1>
 
         <p className="hero-animate-3 lead mx-auto mb-8 sm:mb-12 text-[var(--body)] max-w-3xl">
           <span className="l-bs">
-            <span className="text-[#35B6F0] font-mono">Sonar</span> kontinuirano nadzire vaše ključne podatke u pozadini i šalje precizno upozorenje u trenutku nastanka anomalije, prije nego što postane gubitak na mjesečnom bilansu.
+            <span className="text-[#35B6F0] font-mono">Sonar</span> u pozadini prati Vaše ključne parametre i obavještava Vas istog trenutka kada dođe do odstupanja, mnogo prije nego što se to pretvori u gubitak na kraju mjeseca.
           </span>
           <span className="l-en">
             <span className="text-[#35B6F0] font-mono">Sonar</span> tracks your numbers in the background and alerts you the moment something changes. Before it turns into a deficit at month end.
@@ -189,7 +189,7 @@ export const SonarPage: React.FC<SonarPageProps> = ({ onNavigate }) => {
             onClick={(e) => go(e, '#sonar-form')}
             className="btn-pill font-semibold text-sm text-[#0A0E15] bg-[#35B6F0] hover:bg-[#53c3f3] py-3.5 px-8 transition-colors focus-ring w-full sm:w-auto"
           >
-            <span className="l-bs">Povežimo vaše ključne metrike</span>
+            <span className="l-bs">Pokažite nam koje Vas brojke najviše brinu</span>
             <span className="l-en">Show us which numbers worry you</span>
             <ArrowRight className="w-4 h-4 ml-1" />
           </a>

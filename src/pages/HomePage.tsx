@@ -230,8 +230,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         title={
           <>
             <span className="l-bs">
-              Vaša kompanija ne smije poslovati na osnovu{' '}
-              <span className="text-[var(--accent-signal)]">pretpostavki.</span>
+              Vaša kompanija ne treba poslovati na{' '}
+              <span className="text-[var(--accent-signal)]">pretpostavkama.</span>
             </span>
             <span className="l-en">
               Your company should not run on{' '}

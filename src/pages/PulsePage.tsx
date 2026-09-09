@@ -178,16 +178,16 @@ export const PulsePage: React.FC<PulsePageProps> = ({ onNavigate }) => {
         </div>
 
         <h1 className="hero-animate-2 hero-title max-w-4xl">
-          <span className="l-bs">Snimate svaki poziv. Koliko ih zaista analizirate?</span>
+          <span className="l-bs">Snimate svaki razgovor. Ko ih zaista preslušava?</span>
           <span className="l-en">You record every call. Who listens to them?</span>
         </h1>
 
         <p className="hero-animate-3 lead mx-auto mb-8 sm:mb-12 text-[var(--body)] max-w-3xl">
           <span className="l-bs">
-            <span className="text-[#A98CFF] font-mono">Pulse</span> automatski analizira sve snimljene razgovore, prema vašim pravilima i donosi strukturirane izvještaje, bez opterećenja vašeg internog tima.
+            <span className="text-[#A98CFF] font-mono">Pulse</span> automatski provjerava svaki snimljeni poziv prema parametrima koje sami postavite i vraća precizan analitički izvještaj. Nema novih programa za operatere i nema potrebe za internim inženjerima.
           </span>
           <span className="l-en">
-            <span className="text-[#A98CFF] font-mono">Pulse</span> checks every recorded call against rules you set and hands back a clear report. No new program for your team, and no technical person needed on your side.
+            <span className="text-[#A98CFF] font-mono">Pulse</span> checks every recorded call against the rules you set and returns a precise report. No new program for your agents, and no engineer needed on your side.
           </span>
         </p>
 
@@ -197,7 +197,7 @@ export const PulsePage: React.FC<PulsePageProps> = ({ onNavigate }) => {
             onClick={(e) => go(e, '#pulse-form')}
             className="btn-pill font-semibold text-sm text-[#0A0E15] bg-[#A98CFF] hover:bg-[#b89eff] py-3.5 px-8 transition-colors focus-ring w-full sm:w-auto"
           >
-            <span className="l-bs">Zatražite analizu 50 poziva</span>
+            <span className="l-bs">Pošaljite 50 poziva na besplatnu analizu</span>
             <span className="l-en">Send 50 calls for a free check</span>
             <ArrowRight className="w-4 h-4 ml-1" />
           </a>
@@ -219,7 +219,7 @@ export const PulsePage: React.FC<PulsePageProps> = ({ onNavigate }) => {
             <div className="p-3 sm:p-4">
               <div className="text-3xl sm:text-4xl font-bold text-[#A98CFF] font-mono">1-2%</div>
               <div className="text-xs uppercase font-semibold text-[var(--muted)] mt-2">
-                <span className="l-bs">poziva presluša prosječan QA tim</span>
+                <span className="l-bs">poziva koje ručni QA uspije preslušati</span>
                 <span className="l-en">of calls an average QA team reviews</span>
               </div>
             </div>
@@ -227,7 +227,7 @@ export const PulsePage: React.FC<PulsePageProps> = ({ onNavigate }) => {
             <div className="p-3 sm:p-4 sm:border-x border-[var(--line)]">
               <div className="text-3xl sm:text-4xl font-bold text-[#A98CFF] font-mono">100%</div>
               <div className="text-xs uppercase font-semibold text-[var(--muted)] mt-2">
-                <span className="l-bs">poziva provjeri <span className="text-[#A98CFF]">Pulse</span></span>
+                <span className="l-bs">poziva koje <span className="text-[#A98CFF]">Pulse</span> provjeri</span>
                 <span className="l-en">of calls <span className="text-[#A98CFF]">Pulse</span> checks</span>
               </div>
             </div>
@@ -235,14 +235,14 @@ export const PulsePage: React.FC<PulsePageProps> = ({ onNavigate }) => {
             <div className="p-3 sm:p-4">
               <div className="text-3xl sm:text-4xl font-bold text-[#A98CFF] font-mono">0</div>
               <div className="text-xs uppercase font-semibold text-[var(--muted)] mt-2">
-                <span className="l-bs">novih programa za vaš tim</span>
+                <span className="l-bs">novih programa koje agenti moraju učiti</span>
                 <span className="l-en">new programs for your team</span>
               </div>
             </div>
           </div>
 
           <p className="mt-4 text-xs text-[var(--muted)] italic text-center">
-            <span className="l-bs">Podatak od 1 do 2 posto je industrijski prosjek za ručnu kontrolu kvaliteta, ne naša procjena.</span>
+            <span className="l-bs">Podatak od jedan do dva posto je industrijski prosjek za ručnu kontrolu kvaliteta, ne naša procjena.</span>
             <span className="l-en">The 1 to 2 percent figure is the industry average for manual quality control, not our own estimate.</span>
           </p>
         </div>
@@ -257,13 +257,13 @@ export const PulsePage: React.FC<PulsePageProps> = ({ onNavigate }) => {
               <span className="l-en">The problem</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
-              <span className="l-bs">Vaš tim obavi stotine razgovora dnevno. Šta se u njima krije?</span>
+              <span className="l-bs">Vaš tim obavi stotine razgovora svakog dana. Šta je u njima zaista dogovoreno?</span>
               <span className="l-en">Your team runs hundreds of conversations a day. What actually gets agreed in them?</span>
             </h2>
 
             <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed max-w-2xl mx-auto">
               <span className="l-bs">
-                Klasična kontrola kvaliteta uspijeva preslušati jedva 1 do 2 posto razgovora. Sve ostalo ostaje neiskorišteno u arhivi: prigovori klijenata koji se ponavljaju, pitanja na koja agenti nemaju spreman odgovor i propuštene prilike za prodaju.
+                Interna kontrola kvaliteta uspijeva obraditi jedva jedan do dva posto. Ostatak ostaje zaključan u arhivi koju niko ne otvara: ponovljene reklamacije kupaca, pitanja na koja agenti nemaju odgovor, kupci koji odustaju i propuštene prodajne prilike.
               </span>
               <span className="l-en">
                 Quality control gets through one to two percent of conversations. The rest sits in an archive nobody opens: repeated complaints, questions agents cannot answer, customers who walk away, and openings that passed unnoticed.
@@ -271,7 +271,7 @@ export const PulsePage: React.FC<PulsePageProps> = ({ onNavigate }) => {
             </p>
 
             <p className="text-sm sm:text-base font-semibold text-[#A98CFF] max-w-xl mx-auto">
-              <span className="l-bs">Umjesto nasumičnog uzorka, <span className="text-[#A98CFF] font-mono">Pulse</span> vam pruža potpunu sliku svakog poziva.</span>
+              <span className="l-bs">Umjesto nasumičnog uzorka, <span className="text-[#A98CFF] font-mono">Pulse</span> Vam daje potpunu sliku svakog razgovora.</span>
               <span className="l-en">Instead of a sample, <span className="text-[#A98CFF] font-mono">Pulse</span> gives you the picture of every call.</span>
             </p>
           </div>
