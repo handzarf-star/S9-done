@@ -87,30 +87,30 @@ export const ProcessSteps: React.FC<ProcessStepsProps> = ({ steps, className = '
 export const APPROACH_STEPS: ProcessStep[] = [
   {
     id: 'analyze',
-    titleBs: 'Analiziramo i educiramo',
+    titleBs: 'Analiziramo i otvoreno prolazimo kroz sve opcije',
     titleEn: 'We analyze, then walk you through it',
-    descBs: 'Mapiramo vaše procese i prolazimo s vašim timom kroz stvarne mogućnosti, uključujući AI gdje ima smisla, i realna ograničenja.',
+    descBs: 'Mapiramo Vaše stvarne operacije i jasno Vam pokazujemo šta je tehnički izvodivo, uključujući AI gdje donosi pravu vrijednost, a šta nije.',
     descEn: 'We map your processes and walk your team through what is actually possible, AI included where it fits, and what is not.',
   },
   {
     id: 'roadmap',
-    titleBs: 'Roadmap i brze pobjede',
+    titleBs: 'Plan uvođenja sa brzim rezultatima',
     titleEn: 'A roadmap, quick wins first',
-    descBs: 'Definišemo šta donosi najviše vrijednosti uz najmanje rizika i krećemo odatle, da rezultate vidite odmah, prije težih projekata.',
+    descBs: 'Definišemo korake koji donose najveću operativnu uštedu uz najmanji rizik i krećemo od njih, kako biste vidjeli konkretan pomak odmah.',
     descEn: 'We define what brings the most value for the least risk and start there, so you see results immediately, before the harder work.',
   },
   {
     id: 'build',
-    titleBs: 'Agilna i nezavisna izvedba',
+    titleBs: 'Bez dodatnog opterećenja za Vaš IT',
     titleEn: 'No extra load on your IT',
-    descBs: 'Ne morate širiti vaš IT tim. Arhitektura, integracija postojećih baza i održavanje infrastrukture je na nama.',
+    descBs: 'Ne morate zapošljavati nove inženjere. Postavku, integraciju i tehničko održavanje preuzimamo mi. Vaš tim radi svoj primarni posao.',
     descEn: 'You do not need to hire an IT person for this to work. Setup, integration and upkeep are our job. You do yours.',
   },
   {
     id: 'support',
-    titleBs: 'Dugoročna podrška i obuka',
+    titleBs: 'Ostajemo uz Vas nakon puštanja u rad',
     titleEn: 'We stay after it goes live',
-    descBs: 'Aktivno vodimo vaš tim kroz period tranzicije, obučavamo korisnike i ostajemo uz vas kako bi sistem donosio stvarne rezultate.',
+    descBs: 'Vodimo Vaš tim kroz svaku izmjenu, jednostavnim rječnikom, onoliko puta koliko je potrebno. Ne ostavljamo nedovršen sistem na Vašem stolu.',
     descEn: 'We walk you through every change, in plain language, as many times as it takes. We will not drop a system on your desk and leave.',
   },
 ];

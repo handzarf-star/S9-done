@@ -104,6 +104,18 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </li>
               <li>
                 <a
+                  href="/mode"
+                  onClick={(e) => go(e, '/mode')}
+                  className="hover:text-[var(--ink)] transition-colors focus-ring"
+                >
+                  Shape9 Mode
+                </a>
+              </li>
+              {/* Libra sits below Mode rather than being dropped. It is out of
+                  the header while the focus is elsewhere, but the page is live
+                  and a footer is where a backgrounded product stays findable. */}
+              <li>
+                <a
                   href="/libra"
                   onClick={(e) => go(e, '/libra')}
                   className="hover:text-[var(--ink)] transition-colors focus-ring"

@@ -36,8 +36,8 @@ const PRODUCTS = [
     color: '#A98CFF',
     rgb: '169, 140, 255',
     icon: PhoneCall,
-    descBs: 'Analiza svakog poziva, ne samo uzorka',
-    descEn: 'Every call checked, not just a sample',
+    descBs: 'Provjera svakog poziva, a ne slučajnog uzorka',
+    descEn: 'Every call checked, not a random sample',
   },
   {
     path: '/atlas',
@@ -46,8 +46,8 @@ const PRODUCTS = [
     color: '#FFA658',
     rgb: '255, 166, 88',
     icon: Package,
-    descBs: 'Stanje i lokacija robe na policama',
-    descEn: 'Stock and shelf location',
+    descBs: 'Tačna lokacija svakog artikla na polici',
+    descEn: 'The exact shelf every item sits on',
   },
   {
     path: '/sonar',
@@ -56,8 +56,8 @@ const PRODUCTS = [
     color: '#35B6F0',
     rgb: '53, 182, 240',
     icon: LineChart,
-    descBs: 'Nadzor brojki bez pauze',
-    descEn: 'Numbers watched non-stop',
+    descBs: 'Neprekidno praćenje poslovnih pokazatelja',
+    descEn: 'Business numbers watched without a break',
   },
   {
     path: '/mode',
@@ -66,7 +66,7 @@ const PRODUCTS = [
     color: '#FF6170',
     rgb: '255, 97, 112',
     icon: Shirt,
-    descBs: 'Kasa, magacin i radnje u jednom sistemu',
+    descBs: 'Kasa, magacin i maloprodajni objekti u jednom sistemu',
     descEn: 'Till, stockroom and shops in one system',
   },
 ];
@@ -464,12 +464,12 @@ export const Header: React.FC<HeaderProps> = ({
         >
           <DialogHeader className="mb-6 pb-4 border-b border-[var(--line)] text-left space-y-1">
             <DialogTitle className="text-xl sm:text-2xl font-bold text-[var(--ink)]">
-              <span className="l-bs">Zakažite 25-minutni sastanak</span>
+              <span className="l-bs">Zakažite 25-minutni razgovor</span>
               <span className="l-en">Schedule a 25-min Call</span>
             </DialogTitle>
             <DialogDescription className="text-xs sm:text-sm text-[var(--muted)]">
               <span className="l-bs">
-                Odaberite slobodan termin za online video razgovor sa Shape9 timom.
+                Odaberite slobodan termin za kratak video poziv sa Shape9 timom.
               </span>
               <span className="l-en">
                 Pick an available time slot for a video call with the Shape9 team.

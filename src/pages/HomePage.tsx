@@ -30,23 +30,23 @@ interface HomePageProps {
 const FAQ_ITEMS: AccordionItem[] = [
   {
     id: 'faq-1',
-    qBs: 'Nemamo interni IT tim. Da li su vaša rješenja prikladna za nas?',
+    qBs: 'U firmi nemamo tehničkih lica. Možemo li koristiti ove sisteme?',
     qEn: 'Nobody here is technical. Is this still for us?',
-    aBs: 'Apsolutno, to je profil većine naših klijenata. Naša rješenja svakodnevno koriste direktori operacija, voditelji skladišta i vlasnici kompanija. Kompletnu implementaciju, integraciju i održavanje vodimo mi. Vi dobijete jasne uvide i automatizovane procese, bez komplikovanih programa koje vaš tim mora iznova učiti.',
+    aBs: 'Da, i to je slučaj sa većinom naših klijenata. Naše sisteme svakodnevno koriste direktori kontakt centara, voditelji skladišta i vlasnici preduzeća. Tehnički dio posla vodimo mi. Vi dobijate jasne odgovore, a ne još jedan komplikovan program koji morate učiti.',
     aEn: 'Yes, because that describes most of our clients. The people using this are call centre directors, warehouse managers and owners. Setup and upkeep sit with us. You get answers, not another program somebody has to learn.',
   },
   {
     id: 'faq-2',
-    qBs: 'Kako se formira cijena implementacije?',
+    qBs: 'Koliko to košta?',
     qEn: 'How much does it cost?',
-    aBs: 'Cijena zavisi od obima vaših procesa, broja lokacija i specifičnih integracija. Zato prvo analiziramo vaše trenutne izazove i usko grlo, pa predlažemo rješenje s jasnom procjenom povrata investicije (ROI).',
+    aBs: 'Nemamo fiksni cjenovnik jer trošak zavisi od obima Vaših operacija i složenosti integracije. Zato prvo analiziramo gdje gubite najviše vremena i novca, pa Vam prezentujemo tačan plan i strukturu investicije.',
     aEn: 'There is no price list, because the price depends on what you need and how much of it there is. So we ask what is holding you back first, then tell you what a solution would involve.',
   },
   {
     id: 'faq-3',
-    qBs: 'Koliko traje proces uvođenja rješenja?',
+    qBs: 'Koliko brzo sistem počinje raditi u praksi?',
     qEn: 'How long until something actually works?',
-    aBs: 'Vremenski okvir zavisi od rješenja. Pulse se integriše direktno s postojećim snimcima poziva i pokreće se u roku od nekoliko dana. Atlas WMS podrazumijeva mapiranje lokacija na policama, postavljanje mobilnih uređaja i obuku radnika na terenu. Kod klijenta sa 12 skladišta kompletan sistem je bio potpuno operativan za šest sedmica.',
+    aBs: 'Zavisi od proizvoda. Pulse se povezuje na Vaše postojeće audio arhive i kreće odmah. Atlas traži uvođenje na terenu: označavanje polica, postavljanje mobilne aplikacije i kratku obuku magacionera. Kod klijenta sa 12 međunarodnih skladišta, kompletan sistem je proradio u roku od šest sedmica.',
     aEn: 'It depends on the product. Pulse runs on recordings you already have, so it starts quickly. Atlas is a roll-out: tagging shelf locations, a mobile app and training the warehouse team. With one client the whole system was running in six weeks.',
   },
 ];
@@ -60,9 +60,9 @@ const SYMPTOMS = [
     color: '#A98CFF',
     icon: PhoneCall,
     path: '/pulse',
-    symptomBs: 'Vaš tim obavi stotine poziva dnevno. Svi se snimaju, ali se ručno presluša tek mali procenat.',
+    symptomBs: 'Vaš tim obavi stotine razgovora dnevno. Svi se uredno snimaju, ali kontrola kvaliteta fizički presluša jedva dva posto.',
     symptomEn: 'Your team runs hundreds of calls a day. All of them are recorded. Small percentage gets heard.',
-    solutionBs: 'Automatska analiza svih razgovora prema vašim pravilima i kristalno jasan izvještaj.',
+    solutionBs: 'Automatska analiza svih realizovanih poziva prema Vašim internim pravilima, uz jasne izvještaje spremne za trenutno djelovanje.',
     solutionEn: 'Automated 100% call checking against custom rules with immediate actionable insights.',
     ctaBs: 'Saznajte više',
     ctaEn: 'See Pulse',
@@ -75,9 +75,9 @@ const SYMPTOMS = [
     color: '#FFA658',
     icon: Package,
     path: '/atlas',
-    symptomBs: 'Robu gubite u skladištu, inventure traju danima, a stanje na papiru i policama se ne slaže.',
+    symptomBs: 'Roba se nalazi negdje u hali. Popis traje danima. Stanje u evidenciji i stanje na polici nikada se ne poklapaju.',
     symptomEn: 'The stock is somewhere in the warehouse. Counting takes days. Paper and shelf never quite match.',
-    solutionBs: 'Tačna lokacija na policama, skeniranje barkodova i automatska dopuna zaliha u realnom vremenu.',
+    solutionBs: 'Prikaz tačne lokacije police u realnom vremenu, mobilno skeniranje barkodova i automatsko naručivanje čim zalihe padnu ispod minimuma.',
     solutionEn: 'Real-time shelf locations, barcode mobile scanning, and automatic replenishment triggers.',
     ctaBs: 'Saznajte više',
     ctaEn: 'See Atlas',
@@ -90,9 +90,9 @@ const SYMPTOMS = [
     color: '#35B6F0',
     icon: LineChart,
     path: '/sonar',
-    symptomBs: 'Izvještaj vidite tek krajem mjeseca, kada je šteta već nastala i pad prometa uveliko traje.',
+    symptomBs: 'Finansijske pokazatelje analizirate tek početkom narednog mjeseca. Tek tada uočavate pad prihoda i trenutak kada je problem počeo.',
     symptomEn: 'You look at the numbers at month end. Only then do you see what slipped, and when it started.',
-    solutionBs: 'Kontinuirani nadzor metrika i instant alarmi pri pojavi statističkih anomalija.',
+    solutionBs: 'Neprekidno praćenje poslovnih parametara, uz trenutno prepoznavanje anomalija prije nego što nastane trajna šteta.',
     solutionEn: 'Continuous 24/7 metric monitoring with immediate anomaly detection before damage compounds.',
     ctaBs: 'Saznajte više',
     ctaEn: 'See Sonar',
@@ -105,9 +105,9 @@ const SYMPTOMS = [
     color: '#FF6170',
     icon: Shirt,
     path: '/mode',
-    symptomBs: 'Kupac pita ima li model u drugoj veličini. Neko zove drugu radnju, a kupac za to vrijeme gubi interes.',
+    symptomBs: 'Kupac traži drugi broj. Prodavač telefonira drugu radnju, a kupac odlazi dok čeka provjeru.',
     symptomEn: 'A customer asks for another size. Someone rings the other shop, and the sale slips away while they wait.',
-    solutionBs: 'Stanje po radnjama i veličinama na jednom ekranu, i transfer koji se napravi sam.',
+    solutionBs: 'Prikaz stanja zaliha po radnjama i veličinama na jednom ekranu, uz međuskladišnicu koja se formira automatski.',
     solutionEn: 'Stock by shop and by size on one screen, and a transfer that creates itself.',
     ctaBs: 'Saznajte više',
     ctaEn: 'See Mode',
@@ -136,8 +136,8 @@ const ASSUMPTIONS: HoverStackCard[] = [
     cta: 'Pulse',
     quote: (
       <>
-        <span className="l-bs">Koliko puta se u vašem pozivu nije ispoštovala procedura, a da to niko nije primijetio?</span>
-        <span className="l-en">How many of your calls skipped the procedure without anyone noticing?</span>
+        <span className="l-bs">Koliko je poziva završeno mimo operativnih procedura, a da to niko u menadžmentu nije saznao?</span>
+        <span className="l-en">How many calls ended outside your own procedures without anyone in management finding out?</span>
       </>
     ),
   },
@@ -149,8 +149,8 @@ const ASSUMPTIONS: HoverStackCard[] = [
     cta: 'Atlas',
     quote: (
       <>
-        <span className="l-bs">Koliko narudžbi je propalo zato što stanje artikla na papiru nije bilo tačno?</span>
-        <span className="l-en">How many orders fell through because the stock figure on paper was wrong?</span>
+        <span className="l-bs">Koliko je narudžbi otkazano jer se stanje robe na papiru razlikovalo od stvarnog stanja na polici?</span>
+        <span className="l-en">How many orders were cancelled because the figure on paper did not match what was on the shelf?</span>
       </>
     ),
   },
@@ -162,8 +162,8 @@ const ASSUMPTIONS: HoverStackCard[] = [
     cta: 'Mode',
     quote: (
       <>
-        <span className="l-bs">Koliko je kupaca otišlo jer niko nije znao imate li njihov broj?</span>
-        <span className="l-en">How many customers left because nobody knew whether you had their size?</span>
+        <span className="l-bs">Koliko je kupaca izašlo iz radnje jer osoblje nije znalo imate li traženi broj na stanju?</span>
+        <span className="l-en">How many customers walked out because nobody knew whether their size was in stock?</span>
       </>
     ),
   },
@@ -175,8 +175,8 @@ const ASSUMPTIONS: HoverStackCard[] = [
     cta: 'Sonar',
     quote: (
       <>
-        <span className="l-bs">Koliko dana bi prošlo dok neko ne primijeti pad prodaje ili grešku u sistemu?</span>
-        <span className="l-en">How many days would pass before anyone noticed a drop in sales or a fault in the system?</span>
+        <span className="l-bs">Koliko dana prođe prije nego što primijetite pad prodaje ili prekid rada ključnog sistema?</span>
+        <span className="l-en">How many days pass before you notice a drop in sales or a key system going down?</span>
       </>
     ),
   },
@@ -193,8 +193,8 @@ const ASSUMPTIONS: HoverStackCard[] = [
     ),
     quote: (
       <>
-        <span className="l-bs">Koliko sati Vaši ljudi gube na zadatke koje možete prepustiti softverskom rješenju?</span>
-        <span className="l-en">How many hours do your people lose on work that software could take over?</span>
+        <span className="l-bs">Koliko radnih sati Vaš tim gubi na manuelne poslove koje softver može preuzeti u sekundi?</span>
+        <span className="l-en">How many working hours does your team lose on manual jobs software could take over in seconds?</span>
       </>
     ),
   },
@@ -223,15 +223,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       <Hero
         eyebrow={
           <>
-            <span className="l-bs">Gradimo digitalna iskustva koja prave razliku</span>
-            <span className="l-en">We Build Digital Experiences That Matter</span>
+            <span className="l-bs">Gradimo digitalna rješenja koja donose opipljive rezultate</span>
+            <span className="l-en">We build digital systems that produce measurable results</span>
           </>
         }
         title={
           <>
             <span className="l-bs">
-              Vaša kompanija ne treba poslovati na{' '}
-              <span className="text-[var(--accent-signal)]">pretpostavkama.</span>
+              Vaša kompanija ne smije poslovati na osnovu{' '}
+              <span className="text-[var(--accent-signal)]">pretpostavki.</span>
             </span>
             <span className="l-en">
               Your company should not run on{' '}
@@ -278,7 +278,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           question a visitor has after the claim: who else. */}
       <section className="px-4 sm:px-6 max-w-5xl mx-auto">
         <p className="text-xs font-mono uppercase tracking-[0.13em] text-[var(--muted)] text-center mb-6">
-          <span className="l-bs">Sistemi koje smo izgradili rade kod</span>
+          <span className="l-bs">Naši sistemi svakodnevno pokreću operacije u preduzećima širom regije i Evrope</span>
           <span className="l-en">Systems we built are running at</span>
         </p>
         <ClientLogos />
@@ -290,8 +290,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           <div className="section-head">
             <div className="s9-badge bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-semibold uppercase tracking-wider">
               <ShieldAlert className="w-3.5 h-3.5" />
-              <span className="l-bs">Zašto radimo ovako?</span>
-              <span className="l-en">Why are we doing it like this?</span>
+              <span className="l-bs">Naš pristup razvoju</span>
+              <span className="l-en">How we build</span>
             </div>
 
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight max-w-2xl mx-auto leading-snug">
@@ -301,16 +301,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
             <p className="text-base sm:text-lg text-[var(--cyan)] font-medium leading-relaxed max-w-2xl mx-auto">
               <span className="l-bs">
-                Kupite generički alat. Prođete sedmice obuka. Vaš tim je prisiljen mijenjati način na koji godinama efikasno radi. Nakon tri mjeseca, svi se tiho vrate Excel tabelama, a kompaniji ostaju nepotrebne mjesečne pretplate.
+                Kupite generički alat. Pošaljete ljude na sedmice obuka. Prisilite ih da mijenjaju radne navike koje su gradili godinama. Tri mjeseca kasnije, operativci se potajno vrate Excel tabelama, dok Vi svakog mjeseca nastavljate plaćati skupe licence.
               </span>
               <span className="l-en">
-                You buy a tool. You sit through training. Your people have to change how they have done their jobs for years. Three months later everyone quietly goes back to Excel, and you are still paying monthly.
+                You buy a generic tool. You send people on weeks of training. You make them change working habits they built over years. Three months later the floor is quietly back in Excel, and you are still paying for the licences every month.
               </span>
             </p>
 
             <p className="text-sm sm:text-base text-[var(--body)] max-w-2xl mx-auto leading-relaxed">
-              <span className="l-bs">Problem nije u vašem timu ili tehnologiji. On nastaje kada rješenje nije prilagođeno vašim stvarnim procesima.</span>
-              <span className="l-en">The problem is not that you don't know technology. The problem is that nobody fitted it to you.</span>
+              <span className="l-bs">Problem nije u tome što Vaš tim ne razumije tehnologiju. Problem je u tome što niko nije prilagodio tehnologiju Vašim ljudima.</span>
+              <span className="l-en">The problem is not that your team does not understand technology. It is that nobody fitted the technology to your people.</span>
             </p>
           </div>
         </ScrollReveal>
@@ -384,16 +384,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </div>
 
             <h2 className="leading-tight">
-              <span className="l-bs">Vaš proces je specifičan? Gradimo rješenja po vašoj mjeri.</span>
-              <span className="l-en">Have a unique workflow? We build custom solutions tailored to you.</span>
+              <span className="l-bs">Imate specifične operativne procese? Gradimo namjenska rješenja po Vašoj mjeri.</span>
+              <span className="l-en">Do your operations work in a way no ready made tool follows? We build for that.</span>
             </h2>
 
             <p className="leading-relaxed">
               <span className="l-bs">
-                Ako se ne prepoznajete u našim gotovim proizvodima, s vama razvijamo namjenski softver od temelja: web i mobilne aplikacije, AI sisteme, prilagođeni ERP/CRM ili naprednu poslovnu analitiku.
+                Kada gotovi alati sa tržišta ne mogu pratiti Vaš način rada, razvijamo softver direktno sa Vama: web i mobilne aplikacije, AI sisteme, namjenska ERP i CRM rješenja i naprednu analitiku.
               </span>
               <span className="l-en">
-                If your operations don't fit into ready-made platforms, we engineer bespoke software with you: web & mobile apps, AI systems, custom ERP/CRM, and data analytics.
+                When tools off the shelf cannot follow how you work, we build software with you: web and mobile apps, AI systems, purpose built ERP and CRM, and analytics.
               </span>
             </p>
           </div>
@@ -402,9 +402,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             {/* Quick Service Pills */}
             <div className="flex flex-wrap items-center gap-2">
               {[
-                { bs: 'Web & Mobilne aplikacije', en: 'Web & Mobile Apps' },
-                { bs: 'AI & Automatizacija', en: 'AI & Automation' },
-                { bs: 'Prilagođeni ERP / CRM', en: 'Custom ERP / CRM' },
+                { bs: 'Web i mobilne aplikacije', en: 'Web and mobile apps' },
+                { bs: 'AI i automatizacija', en: 'AI and automation' },
+                { bs: 'Namjenski ERP / CRM', en: 'Purpose built ERP / CRM' },
                 { bs: 'Cloud infrastruktura', en: 'Cloud Infrastructure' },
                 { bs: 'Poslovna analitika', en: 'Data Analytics' },
               ].map((pill, idx) => (
@@ -603,7 +603,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <span className="l-en">How we work</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-4 sm:mb-6 leading-tight">
-              <span className="l-bs">Prilagodimo se vašem poslovanju, ne obrnuto.</span>
+              <span className="l-bs">Mi se prilagođavamo Vama, a ne obrnuto.</span>
               <span className="l-en">We fit to you, not the other way round.</span>
             </h2>
           </div>
@@ -622,7 +622,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <span className="l-en">FAQ</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight">
-              <span className="l-bs">Pitanja koja vjerovatno imate</span>
+              <span className="l-bs">Česta pitanja</span>
               <span className="l-en">What you are probably wondering</span>
             </h2>
           </div>
