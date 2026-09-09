@@ -16,10 +16,24 @@
 //    button. Height follows content instead, so the same cards read as a list
 //    of questions.
 //
+// 5. The desktop stack scales down to fit its container. Its width is the sum
+//    of the card overlaps, in fixed pixels, so a stack sized to look right on a
+//    wide screen is simply cut off on a narrower one. A measured scale factor
+//    keeps the whole arrangement on screen at any width above the touch
+//    breakpoint, and is exactly 1 whenever there is room.
+//
 // Everything else, the stack maths, the push-apart on hover, the rotations,
 // the reduced-motion branch, is the component as supplied.
 
-import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from "react";
+import {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 
 type CSSVars = CSSProperties & Record<string, string | number | undefined>;
 
@@ -107,20 +121,20 @@ function CardFooter({
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-2.5">
           <span
-            className="flex size-7 shrink-0 items-center justify-center rounded-full"
+            className="flex size-8 shrink-0 items-center justify-center rounded-full"
             style={{ background: accent, color: "var(--ground)" }}
           >
-            <ArrowUpRight className="size-[13px]" />
+            <ArrowUpRight className="size-[15px]" />
           </span>
           <span
-            className="text-[10px] font-semibold uppercase tracking-[0.16em]"
+            className="text-[11px] font-semibold uppercase tracking-[0.16em]"
             style={{ fontFamily: "var(--f-mono)", color: accent }}
           >
             {cta ?? "Explore"}
           </span>
         </div>
         <span
-          className="text-[10px] font-medium uppercase tabular-nums tracking-[0.16em] opacity-45"
+          className="text-[11px] font-medium uppercase tabular-nums tracking-[0.16em] opacity-45"
           style={{ fontFamily: "var(--f-mono)" }}
         >
           {String(index + 1).padStart(2, "0")}
@@ -264,6 +278,30 @@ function HoverStack({
       ? preparedCards.at(-1)!._baseX + cardWidth
       : cardWidth;
 
+  /* Scale to fit.
+     Measured against the resting width, not the hovered one. The hover state
+     pushes the outer cards a further `pushDistance` each way, but that is a
+     transient state the page already clips, and reserving room for it would
+     shrink the cards on every screen including wide ones.
+     `hasMounted` is in the dependencies because this component renders null
+     until it is set, so on the first pass there is no element to measure. */
+  const outerRef = useRef<HTMLDivElement>(null);
+  const [fitScale, setFitScale] = useState(1);
+
+  useLayoutEffect(() => {
+    const el = outerRef.current;
+    if (!el || typeof ResizeObserver === "undefined") return;
+    const measure = () => {
+      const available = el.clientWidth;
+      if (!available) return;
+      setFitScale(Math.min(1, available / totalWidth));
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [totalWidth, hasMounted, isTouch]);
+
   if (!hasMounted) {
     return null;
   }
@@ -315,7 +353,7 @@ function HoverStack({
   }
 
   return (
-    <div className={`relative w-full ${className}`}>
+    <div ref={outerRef} className={`relative w-full ${className}`}>
       <div
         className="relative mx-auto"
         style={{
@@ -323,6 +361,12 @@ function HoverStack({
           "--stack-height": `${cardHeight + (reduceMotion ? 0 : hoverLift) + 24}px`,
           width: "var(--stack-width)",
           height: "var(--stack-height)",
+          transform: fitScale < 1 ? `scale(${fitScale})` : undefined,
+          transformOrigin: "center top",
+          marginBottom:
+            fitScale < 1
+              ? `-${Math.round((cardHeight + hoverLift + 24) * (1 - fitScale))}px`
+              : undefined,
         } as CSSVars}
       >
         {preparedCards.map((card, index) => {
@@ -331,7 +375,7 @@ function HoverStack({
             <Tag
               key={card.id ?? index}
               {...rest}
-              className={`absolute left-0 top-0 flex h-[var(--card-height)] w-[var(--card-width)] origin-[center_center] cursor-pointer select-none flex-col justify-between overflow-hidden rounded-2xl border p-5 no-underline will-change-transform ${card.accent || ""}`}
+              className={`absolute left-0 top-0 flex h-[var(--card-height)] w-[var(--card-width)] origin-[center_center] cursor-pointer select-none flex-col justify-between overflow-hidden rounded-2xl border p-6 no-underline will-change-transform ${card.accent || ""}`}
               style={getCardStyle(card, index)}
               onMouseEnter={() => setActiveIndex(index)}
               onMouseLeave={() => setActiveIndex(null)}
@@ -340,7 +384,7 @@ function HoverStack({
 
               <div className="relative z-[2] flex flex-1 items-center">
                 <p
-                  className="m-0 text-[0.82rem] leading-[1.45] tracking-[-0.005em]"
+                  className="m-0 text-[1.05rem] leading-[1.5] tracking-[-0.01em]"
                   style={{ color: card.fg, fontFamily: "var(--f-mono)" }}
                 >
                   {card.quote}

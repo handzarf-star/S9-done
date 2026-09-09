@@ -245,9 +245,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         feature={
           <HoverStack
             cards={ASSUMPTIONS}
-            cardWidth={250}
-            cardHeight={236}
-            overlap={90}
+            cardWidth={336}
+            cardHeight={296}
+            overlap={138}
             accentColor="var(--accent-signal)"
             onCardClick={(href, event) => go(event as React.MouseEvent<HTMLAnchorElement>, href)}
           />
