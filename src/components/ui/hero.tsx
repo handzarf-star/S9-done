@@ -27,9 +27,29 @@ interface HeroProps {
   children?: React.ReactNode;
   /** Sits on the rule below the horizon. Used for the proof figures. */
   readout?: React.ReactNode;
+  /**
+   * Sits between the title and the actions. Wider than the text column, since
+   * what goes here is a figure rather than a sentence.
+   */
+  feature?: React.ReactNode;
+  /**
+   * The horizon disc. On by default. The home page turns it off, because the
+   * cards it puts in `feature` are the light source there and two competing
+   * focal points in one hero is one too many.
+   */
+  showHorizon?: boolean;
 }
 
-export function Hero({ eyebrow, title, subtitle, microcopy, children, readout }: HeroProps) {
+export function Hero({
+  eyebrow,
+  title,
+  subtitle,
+  microcopy,
+  children,
+  readout,
+  feature,
+  showHorizon = true,
+}: HeroProps) {
   return (
     <section id="hero" className="page-hero w-full overflow-hidden">
       <div className="relative z-10 mx-auto w-full max-w-5xl px-4 pt-28 pb-0 text-center sm:px-6 sm:pt-36">
@@ -41,7 +61,9 @@ export function Hero({ eyebrow, title, subtitle, microcopy, children, readout }:
 
         <h1 className="hero-animate-2 hero-title mx-auto mb-7 max-w-4xl">{title}</h1>
 
-        <p className="hero-animate-3 lead mx-auto mb-9">{subtitle}</p>
+        {subtitle && <p className="hero-animate-3 lead mx-auto mb-9">{subtitle}</p>}
+
+        {feature && <div className="hero-animate-3 mb-8">{feature}</div>}
 
         {children && (
           <div className="hero-animate-4 mb-4 flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row">
@@ -54,9 +76,11 @@ export function Hero({ eyebrow, title, subtitle, microcopy, children, readout }:
 
       {/* The horizon. A dark disc whose rim is the only bright edge on the
           page, so the light appears to rise from behind the fold. */}
-      <div className="horizon" aria-hidden="true">
-        <div className="horizon-disc" />
-      </div>
+      {showHorizon && (
+        <div className="horizon" aria-hidden="true">
+          <div className="horizon-disc" />
+        </div>
+      )}
 
       {readout && (
         <div className="relative z-10 mx-auto w-full max-w-5xl px-4 sm:px-6">{readout}</div>

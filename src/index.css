@@ -238,7 +238,7 @@
    a vivid cyan, so Sonar reads as its own colour again without having
    been touched at all. */
 .accent-pulse { --accent: #A98CFF; --accent-rgb: 169, 140, 255; }
-.accent-atlas { --accent: #FF8A3D; --accent-rgb: 255, 138, 61; }
+.accent-atlas { --accent: #FFA658; --accent-rgb: 255, 166, 88; }
 .accent-sonar { --accent: #35B6F0; --accent-rgb: 53, 182, 240; }
 .accent-libra { --accent: #3DD68C; --accent-rgb: 61, 214, 140; }
 /* Not the literal brand hex on purpose, same reasoning as repointing

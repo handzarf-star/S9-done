@@ -156,18 +156,25 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                   <span className="l-en">Projects Delivered</span>
                 </div>
               </div>
+              {/* These two came off the home page hero, where the cards now
+                  carry the opening. Both replace vaguer versions of themselves
+                  that used to sit here: "15+ zemalja poslovanja" became the
+                  twelve the warehouse system actually runs in, which is the
+                  number the WMS case study can show, and "98% zadovoljstvo
+                  klijenata" gave way to a figure that describes the product
+                  rather than our own opinion of ourselves. */}
               <div className="p-4 sm:p-5 rounded-2xl bg-[rgba(255,255,255,0.02)] border border-[var(--line)] text-center flex flex-col items-center justify-center h-full">
-                <div className="text-2xl sm:text-3xl font-bold text-[var(--cyan)] font-mono leading-tight">15+</div>
+                <div className="text-2xl sm:text-3xl font-bold text-[var(--cyan)] font-mono leading-tight">12</div>
                 <div className="text-xs text-[var(--muted)] mt-1.5 font-medium leading-snug">
-                  <span className="l-bs">Zemalja poslovanja</span>
-                  <span className="l-en">Countries Served</span>
+                  <span className="l-bs">Država u kojima radi naš skladišni sistem</span>
+                  <span className="l-en">Countries running our warehouse system</span>
                 </div>
               </div>
               <div className="p-4 sm:p-5 rounded-2xl bg-[rgba(255,255,255,0.02)] border border-[var(--line)] text-center flex flex-col items-center justify-center h-full">
-                <div className="text-2xl sm:text-3xl font-bold text-[var(--cyan)] font-mono leading-tight">98%</div>
+                <div className="text-2xl sm:text-3xl font-bold text-[var(--cyan)] font-mono leading-tight">100%</div>
                 <div className="text-xs text-[var(--muted)] mt-1.5 font-medium leading-snug">
-                  <span className="l-bs">Zadovoljstvo klijenata</span>
-                  <span className="l-en">Client Satisfaction</span>
+                  <span className="l-bs">Analiziranih poziva, umjesto uzorka od 2%</span>
+                  <span className="l-en">Of calls checked, instead of a 2% sample</span>
                 </div>
               </div>
             </div>

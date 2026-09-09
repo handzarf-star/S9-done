@@ -13,8 +13,8 @@ import {
   Calendar,
 } from 'lucide-react';
 
-import { AnimatedCounter } from '../components/AnimatedCounter';
 import { Hero } from '../components/ui/hero';
+import HoverStack, { type HoverStackCard } from '../components/ui/hover-stack';
 import { BentoCard, BentoGrid } from '../components/ui/bento-grid';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { ContactForm } from '../components/ContactForm';
@@ -72,7 +72,7 @@ const SYMPTOMS = [
     nameBs: 'Skladište i logistika',
     nameEn: 'Warehouse & Logistics',
     product: 'Atlas',
-    color: '#FF8A3D',
+    color: '#FFA658',
     icon: Package,
     path: '/atlas',
     symptomBs: 'Robu gubite u skladištu, inventure traju danima, a stanje na papiru i policama se ne slaže.',
@@ -115,6 +115,91 @@ const SYMPTOMS = [
 ];
 
 
+/* The hero's own argument. The line above them says the company should not
+   run on assumptions; these are the assumptions, one per system, phrased as
+   questions the reader cannot answer off the top of their head. That inability
+   is the point, and it does more work than any figure of ours would.
+   Each card links to the product that answers it.
+
+   The cards are not the product colours themselves. Five saturated fills
+   shouted over the headline and read as a different site. They are the page's
+   own raised panel with a trace of the product's accent mixed in, and the
+   accent then does its work where it carries meaning: the question text, the
+   arrow and the product's name. Mono, because everything instrument-like on
+   this site is mono. */
+const ASSUMPTIONS: HoverStackCard[] = [
+  {
+    bg: 'color-mix(in oklab, var(--panel-raise) 93%, #A98CFF)',
+    fg: '#A98CFF',
+    border: 'rgba(169, 140, 255, 0.30)',
+    href: '/pulse',
+    cta: 'Pulse',
+    quote: (
+      <>
+        <span className="l-bs">Koliko puta je poziv prošao mimo procedure, a da to niko nije primijetio?</span>
+        <span className="l-en">How many calls went outside the procedure without anyone noticing?</span>
+      </>
+    ),
+  },
+  {
+    bg: 'color-mix(in oklab, var(--panel-raise) 93%, #FFA658)',
+    fg: '#FFA658',
+    border: 'rgba(255, 166, 88, 0.30)',
+    href: '/atlas',
+    cta: 'Atlas',
+    quote: (
+      <>
+        <span className="l-bs">Koliko narudžbi vam je propalo zato što stanje u sistemu nije bilo tačno?</span>
+        <span className="l-en">How many orders fell through because the stock figure was wrong?</span>
+      </>
+    ),
+  },
+  {
+    bg: 'color-mix(in oklab, var(--panel-raise) 93%, #3DD68C)',
+    fg: '#3DD68C',
+    border: 'rgba(61, 214, 140, 0.30)',
+    href: '/libra',
+    cta: 'Libra',
+    quote: (
+      <>
+        <span className="l-bs">Koliko dokumenata čeka zato što ih otvara i raspoređuje jedna osoba?</span>
+        <span className="l-en">How many documents are waiting because one person opens and files them all?</span>
+      </>
+    ),
+  },
+  {
+    bg: 'color-mix(in oklab, var(--panel-raise) 93%, #35B6F0)',
+    fg: '#35B6F0',
+    border: 'rgba(53, 182, 240, 0.30)',
+    href: '/sonar',
+    cta: 'Sonar',
+    quote: (
+      <>
+        <span className="l-bs">Koliko dana prođe prije nego primijetite da je nešto počelo padati?</span>
+        <span className="l-en">How many days pass before you notice something started slipping?</span>
+      </>
+    ),
+  },
+  {
+    bg: 'color-mix(in oklab, var(--panel-raise) 93%, #4EACCD)',
+    fg: '#4EACCD',
+    border: 'rgba(78, 172, 205, 0.30)',
+    href: '/po-mjeri',
+    cta: (
+      <>
+        <span className="l-bs">Po mjeri</span>
+        <span className="l-en">Custom built</span>
+      </>
+    ),
+    quote: (
+      <>
+        <span className="l-bs">Šta u firmi stane kad čovjek koji to jedini zna ode na godišnji?</span>
+        <span className="l-en">What stops when the one person who knows it goes on holiday?</span>
+      </>
+    ),
+  },
+];
+
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
   const go = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
@@ -132,7 +217,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
   return (
     <div className="space-y-20 sm:space-y-28 pb-24 sm:pb-28 relative z-10 w-full max-w-full overflow-x-clip">
-      {/* 1. HERO. The horizon disc is the only light source on the page. */}
+      {/* 1. HERO. The assumptions are the hero. The line states the claim,
+          the cards are the evidence for it, then the two actions. The horizon
+          disc is off here: the cards carry the eye now. */}
       <Hero
         eyebrow={
           <>
@@ -152,38 +239,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </span>
           </>
         }
-        subtitle={
-          <>
-            <span className="l-bs">
-              Pretpostavka nije samo ono što ne vidite. Pretpostavka je i svako mjesto gdje posao drži jedan čovjek koji pamti. Gotovim platformama ili rješenjem po mjeri to prevodimo u sistem, pa ostaje manje izgubljenog vremena i novca.
-            </span>
-            <span className="l-en">
-              An assumption is not only what you cannot see. It is also every place the work holds together because one person remembers. With ready platforms or something built for you, we turn that into a system, and less time and money goes missing.
-            </span>
-          </>
-        }
-        readout={
-          <>
-            <hr className="tick-rule" />
-            <div className="proof-strip">
-              <AnimatedCounter
-                targetValue="10+"
-                labelBs="godina rada, od 2015."
-                labelEn="years in business, since 2015"
-              />
-              <AnimatedCounter
-                targetValue="12"
-                labelBs="država u kojima radi naš skladišni sistem"
-                labelEn="countries running our warehouse system"
-              />
-              <AnimatedCounter
-                targetValue="100%"
-                labelBs="analiziranih poziva, umjesto uzorka od 2%"
-                labelEn="of calls checked, instead of a 2% sample"
-              />
-            </div>
-            <hr className="tick-rule" />
-          </>
+        subtitle={null}
+        showHorizon={false}
+        feature={
+          <HoverStack
+            cards={ASSUMPTIONS}
+            cardWidth={218}
+            cardHeight={196}
+            overlap={80}
+            accentColor="var(--accent-signal)"
+            onCardClick={(href, event) => go(event as React.MouseEvent<HTMLAnchorElement>, href)}
+          />
         }
       >
         <button
@@ -429,7 +495,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <div className="s9-card-nested p-5 sm:p-6 flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="px-2.5 py-1 rounded-full text-xs font-semibold text-[#FF8A3D] bg-[rgba(255,138,61,0.1)] border border-[rgba(255,138,61,0.25)]">
+                  <span className="px-2.5 py-1 rounded-full text-xs font-semibold text-[#FFA658] bg-[rgba(255,166,88,0.1)] border border-[rgba(255,166,88,0.25)]">
                     <span className="l-bs">Shape9 Atlas · Skladišna logistika</span>
                     <span className="l-en">Shape9 Atlas · Warehouse</span>
                   </span>
@@ -446,7 +512,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <a
                 href="/radovi/wms"
                 onClick={(e) => go(e, '/radovi/wms')}
-                className="text-xs font-semibold text-[#FF8A3D] hover:underline inline-flex items-center gap-1.5 pt-3 border-t border-[var(--line)]"
+                className="text-xs font-semibold text-[#FFA658] hover:underline inline-flex items-center gap-1.5 pt-3 border-t border-[var(--line)]"
               >
                 <span className="l-bs">Pogledajte studiju slučaja</span>
                 <span className="l-en">Read case study</span>

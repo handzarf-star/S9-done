@@ -150,8 +150,8 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
         srcPortrait="/video/atlas-port.mp4"
         posterLandscape="/video/atlas-land.webp"
         posterPortrait="/video/atlas-port.webp"
-        accent="#FF8A3D"
-        accentRgb="255, 138, 61"
+        accent="#FFA658"
+        accentRgb="255, 166, 88"
         eyebrow={<>
           <span className="l-bs">Shape9 Atlas</span>
           <span className="l-en">Shape9 Atlas</span>
@@ -162,7 +162,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
           the top padding the page wrapper used to provide. */}
       <section className="page-hero px-4 sm:px-6 max-w-5xl mx-auto relative pt-16 sm:pt-24">
         <div className="hero-animate-1 mb-4 sm:mb-6">
-          <span className="s9-badge text-[#FF8A3D] bg-[rgba(255,138,61,0.1)] border border-[rgba(255,138,61,0.25)] inline-flex items-center gap-2 mx-auto">
+          <span className="s9-badge text-[#FFA658] bg-[rgba(255,166,88,0.1)] border border-[rgba(255,166,88,0.25)] inline-flex items-center gap-2 mx-auto">
             <Package className="w-3.5 h-3.5" />
             <span className="l-bs">Shape9 Atlas · Napredno upravljanje skladištem (WMS)</span>
             <span className="l-en">Shape9 Atlas · warehouse</span>
@@ -187,7 +187,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
           <a
             href="#atlas-form"
             onClick={(e) => go(e, '#atlas-form')}
-            className="btn-pill font-semibold text-sm text-[#0A0E15] bg-[#FF8A3D] hover:bg-[#ff9c58] py-3.5 px-8 transition-colors focus-ring w-full sm:w-auto"
+            className="btn-pill font-semibold text-sm text-[#0A0E15] bg-[#FFA658] hover:bg-[#ff9c58] py-3.5 px-8 transition-colors focus-ring w-full sm:w-auto"
           >
             <span className="l-bs">Razgovarajmo o vašem skladištu</span>
             <span className="l-en">Let us talk about your warehouse</span>
@@ -199,15 +199,15 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
             onClick={triggerMeetingModal}
             className="btn-ghost py-3 px-7 text-sm font-semibold focus-ring cursor-pointer inline-flex items-center justify-center gap-2 w-full sm:w-auto"
           >
-            <Calendar className="w-4 h-4 text-[#FF8A3D]" />
+            <Calendar className="w-4 h-4 text-[#FFA658]" />
             <span className="l-bs">Zakažite razgovor</span>
             <span className="l-en">Book a Call</span>
           </button>
         </div>
 
         {/* REAL CASE STATS */}
-        <div className="s9-card border-[rgba(255,138,61,0.18)] bg-[var(--panel)]/60 text-center w-full">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[rgba(255,138,61,0.1)] text-[#FF8A3D] text-xs font-semibold uppercase tracking-wider mb-4 mx-auto">
+        <div className="s9-card border-[rgba(255,166,88,0.18)] bg-[var(--panel)]/60 text-center w-full">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[rgba(255,166,88,0.1)] text-[#FFA658] text-xs font-semibold uppercase tracking-wider mb-4 mx-auto">
             <span className="l-bs">Rezultati iz prakse</span>
             <span className="l-en">With one client</span>
           </div>
@@ -219,7 +219,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 text-center">
             <div className="p-3 sm:p-4">
-              <div className="text-3xl sm:text-4xl font-bold text-[#FF8A3D] font-mono">
+              <div className="text-3xl sm:text-4xl font-bold text-[#FFA658] font-mono">
                 <span className="l-bs">81% → 99,4%</span>
                 <span className="l-en">81% → 99.4%</span>
               </div>
@@ -230,7 +230,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
             </div>
 
             <div className="p-3 sm:p-4 sm:border-x border-[var(--line)]">
-              <div className="text-3xl sm:text-4xl font-bold text-[#FF8A3D] font-mono">−91%</div>
+              <div className="text-3xl sm:text-4xl font-bold text-[#FFA658] font-mono">−91%</div>
               <div className="text-xs uppercase font-semibold text-[var(--muted)] mt-2">
                 <span className="l-bs">manje grešaka pri komisioniranju</span>
                 <span className="l-en">fewer order picking errors</span>
@@ -238,7 +238,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
             </div>
 
             <div className="p-3 sm:p-4">
-              <div className="text-3xl sm:text-4xl font-bold text-[#FF8A3D] font-mono">6</div>
+              <div className="text-3xl sm:text-4xl font-bold text-[#FFA658] font-mono">6</div>
               <div className="text-xs uppercase font-semibold text-[var(--muted)] mt-2">
                 <span className="l-bs">sedmica do pune operativnosti</span>
                 <span className="l-en">weeks to go live</span>
@@ -257,7 +257,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
       <section className="px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
           <div className="section-head">
-            <div className="s9-badge bg-[rgba(255,138,61,0.08)] border border-[rgba(255,138,61,0.2)] text-[#FF8A3D] text-xs font-semibold uppercase tracking-wider">
+            <div className="s9-badge bg-[rgba(255,166,88,0.08)] border border-[rgba(255,166,88,0.2)] text-[#FFA658] text-xs font-semibold uppercase tracking-wider">
               <span className="l-bs">Problem</span>
               <span className="l-en">The problem</span>
             </div>
@@ -275,7 +275,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
               </span>
             </p>
 
-            <p className="text-sm sm:text-base font-semibold text-[#FF8A3D] max-w-xl mx-auto">
+            <p className="text-sm sm:text-base font-semibold text-[#FFA658] max-w-xl mx-auto">
               <span className="l-bs"><span className="font-mono">Atlas</span> pruža uvid u tačno stanje i lokaciju svakog artikla u realnom vremenu.</span>
               <span className="l-en"><span className="font-mono">Atlas</span> shows the exact state every second, at every location.</span>
             </p>
@@ -287,7 +287,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
       <section className="px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
           <div className="section-body">
-            <div className="s9-card border-[rgba(255,138,61,0.2)] bg-[rgba(255,138,61,0.02)] text-center">
+            <div className="s9-card border-[rgba(255,166,88,0.2)] bg-[rgba(255,166,88,0.02)] text-center">
               <h2 className="text-xl sm:text-2xl font-bold text-[var(--ink)] mb-4 leading-tight">
                 <span className="l-bs">Iskren pristup: WMS zahtijeva disciplinovanu implementaciju.</span>
                 <span className="l-en">To be straight with you: this is not a tool you just switch on.</span>
@@ -310,7 +310,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
       <section className="px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
           <div className="section-head">
-            <div className="s9-badge bg-[rgba(255,138,61,0.08)] border border-[rgba(255,138,61,0.2)] text-[#FF8A3D] text-xs font-semibold uppercase tracking-wider">
+            <div className="s9-badge bg-[rgba(255,166,88,0.08)] border border-[rgba(255,166,88,0.2)] text-[#FFA658] text-xs font-semibold uppercase tracking-wider">
               <span className="l-bs">Za koga je</span>
               <span className="l-en">Who it is for</span>
             </div>
@@ -327,7 +327,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
           {/* NARROW SCREEN: tabs. See ProductTabs for why the wide
               screen grid below is deliberately left as a grid. */}
           <div className="section-body block md:hidden mb-6">
-            <ProductTabs items={AUDIENCES} accent="#FF8A3D" accentRgb="255, 138, 61" />
+            <ProductTabs items={AUDIENCES} accent="#FFA658" accentRgb="255, 166, 88" />
           </div>
 
 {/* DESKTOP 2x2 GRID */}
@@ -352,7 +352,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
       <section className="px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
           <div className="section-head">
-            <div className="s9-badge bg-[rgba(255,138,61,0.08)] border border-[rgba(255,138,61,0.2)] text-[#FF8A3D] text-xs font-semibold uppercase tracking-wider">
+            <div className="s9-badge bg-[rgba(255,166,88,0.08)] border border-[rgba(255,166,88,0.2)] text-[#FFA658] text-xs font-semibold uppercase tracking-wider">
               <span className="l-bs">Mogućnosti</span>
               <span className="l-en">What it does</span>
             </div>
@@ -367,7 +367,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
               const IconComponent = feat.icon;
               return (
                 <div key={idx} className="s9-card">
-                  <IconComponent className="w-6 h-6 text-[#FF8A3D] mb-4" />
+                  <IconComponent className="w-6 h-6 text-[#FFA658] mb-4" />
                   <h3 className="text-base font-bold text-[var(--ink)] mb-2.5">
                     <span className="l-bs">{feat.titleBs}</span>
                     <span className="l-en">{feat.titleEn}</span>
@@ -387,8 +387,8 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
       <section className="px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
           <div className="section-body">
-            <div className="s9-card border-[rgba(255,138,61,0.28)] bg-[rgba(255,138,61,0.035)] text-center">
-              <div className="s9-badge bg-[rgba(255,138,61,0.12)] border border-[rgba(255,138,61,0.3)] text-[#FF8A3D] text-xs font-semibold uppercase tracking-wider mb-4 sm:mb-6">
+            <div className="s9-card border-[rgba(255,166,88,0.28)] bg-[rgba(255,166,88,0.035)] text-center">
+              <div className="s9-badge bg-[rgba(255,166,88,0.12)] border border-[rgba(255,166,88,0.3)] text-[#FFA658] text-xs font-semibold uppercase tracking-wider mb-4 sm:mb-6">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span className="l-bs">Prvi korak</span>
                 <span className="l-en">First step</span>
@@ -411,7 +411,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
               <a
                 href="#atlas-form"
                 onClick={(e) => go(e, '#atlas-form')}
-                className="btn-pill font-semibold text-sm text-[#0A0E15] bg-[#FF8A3D] hover:bg-[#ff9c58] py-3.5 px-8 transition-colors inline-flex items-center gap-2 focus-ring"
+                className="btn-pill font-semibold text-sm text-[#0A0E15] bg-[#FFA658] hover:bg-[#ff9c58] py-3.5 px-8 transition-colors inline-flex items-center gap-2 focus-ring"
               >
                 <span className="l-bs">Zakažite konsultacije</span>
                 <span className="l-en">Book a conversation</span>
@@ -426,7 +426,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
       <section className="px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
           <div className="section-head">
-            <div className="s9-badge bg-[rgba(255,138,61,0.08)] border border-[rgba(255,138,61,0.2)] text-[#FF8A3D] text-xs font-semibold uppercase tracking-wider">
+            <div className="s9-badge bg-[rgba(255,166,88,0.08)] border border-[rgba(255,166,88,0.2)] text-[#FFA658] text-xs font-semibold uppercase tracking-wider">
               <span className="l-bs">Iz prakse</span>
               <span className="l-en">In practice</span>
             </div>
@@ -445,7 +445,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
       <section className="px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
           <div className="section-head">
-            <div className="s9-badge bg-[rgba(255,138,61,0.1)] border border-[rgba(255,138,61,0.25)] text-[#FF8A3D] text-xs font-semibold uppercase tracking-wider mb-4 sm:mb-6">
+            <div className="s9-badge bg-[rgba(255,166,88,0.1)] border border-[rgba(255,166,88,0.25)] text-[#FFA658] text-xs font-semibold uppercase tracking-wider mb-4 sm:mb-6">
               <HelpCircle className="w-3.5 h-3.5" />
               <span className="l-bs">Pitanja o Atlasu</span>
               <span className="l-en">Questions about Atlas</span>
@@ -464,7 +464,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
       <section id="atlas-form" className="px-4 sm:px-6 max-w-5xl mx-auto scroll-mt-24">
         <ScrollReveal>
           <div className="section-head">
-            <div className="s9-badge bg-[rgba(255,138,61,0.12)] text-[#FF8A3D] text-xs font-semibold uppercase tracking-wider mb-4 sm:mb-6 border border-[rgba(255,138,61,0.25)]">
+            <div className="s9-badge bg-[rgba(255,166,88,0.12)] text-[#FFA658] text-xs font-semibold uppercase tracking-wider mb-4 sm:mb-6 border border-[rgba(255,166,88,0.25)]">
               <MessageSquare className="w-3.5 h-3.5" />
               <span className="l-bs">Testirajte Atlas</span>
               <span className="l-en">Test Atlas</span>

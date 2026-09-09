@@ -48,9 +48,9 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
   },
   atlas: {
     path: '/atlas',
-    accent: '#FF8A3D',
-    accentRgb: '255, 138, 61',
-    accentDeep: '#E9691B',
+    accent: '#FFA658',
+    accentRgb: '255, 166, 88',
+    accentDeep: '#E3831F',
     title: {
       bs: 'Shape9 Atlas · skladište u kojem se roba ne gubi',
       en: 'Shape9 Atlas · a warehouse where stock stops going missing',
@@ -132,9 +132,9 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
   },
   radoviWms: {
     path: '/radovi/wms',
-    accent: '#FF8A3D',
-    accentRgb: '255, 138, 61',
-    accentDeep: '#E9691B',
+    accent: '#FFA658',
+    accentRgb: '255, 166, 88',
+    accentDeep: '#E3831F',
     title: {
       bs: 'Skladište u dvanaest država · Shape9',
       en: 'A warehouse across twelve countries · Shape9',

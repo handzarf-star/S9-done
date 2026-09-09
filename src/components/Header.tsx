@@ -43,8 +43,8 @@ const PRODUCTS = [
     path: '/atlas',
     name: 'Shape9 Atlas',
     shortName: 'Atlas',
-    color: '#FF8A3D',
-    rgb: '255, 138, 61',
+    color: '#FFA658',
+    rgb: '255, 166, 88',
     icon: Package,
     descBs: 'Stanje i lokacija robe na policama',
     descEn: 'Stock and shelf location',
@@ -303,15 +303,47 @@ export const Header: React.FC<HeaderProps> = ({
               })}
             </div>
 
-            {/* MAIN HEADER CTA */}
+            {/* MAIN HEADER CTA
+                The responsive hiding sits on a wrapper rather than on the
+                button itself. `.btn-primary` in index.css is unlayered CSS and
+                sets `display: inline-flex`; unlayered rules beat Tailwind's
+                layered utilities, so `hidden` on the button never applied and
+                the full width label rendered on phones, pushing the logo off
+                the header. The wrapper carries no button class, so its display
+                utilities work. Same trap applies to `.btn-pill` and
+                `.btn-ghost` anywhere else. */}
+            <div className="hidden sm:block">
+              <button
+                type="button"
+                onClick={() => setIsMeetingModalOpen(true)}
+                className="btn-primary px-4 py-2 text-xs font-semibold rounded-full gap-2 focus-ring cursor-pointer"
+              >
+                <Calendar className="w-3.5 h-3.5" />
+                <span className="l-bs">Zakažite sastanak</span>
+                <span className="l-en">Book a Call</span>
+              </button>
+            </div>
+
+            {/* The same action on phones, as an icon only.
+                Dropping it entirely would leave booking a meeting reachable
+                only from inside the menu, which is one tap too many for the
+                thing the page exists to do. At 40px it costs the logo nothing.
+                Deliberately not `.btn-primary`: that class also hardcodes
+                `padding: 0 20px` and `min-height: 44px` unlayered, which on a
+                square button crushes the icon to nothing. Colours come from the
+                same variables it uses. */}
             <button
               type="button"
               onClick={() => setIsMeetingModalOpen(true)}
-              className="hidden sm:inline-flex btn-primary px-4 py-2 text-xs font-semibold rounded-full items-center gap-2 focus-ring cursor-pointer"
+              aria-label={lang === 'bs' ? 'Zakažite sastanak' : 'Book a call'}
+              className="sm:hidden inline-flex items-center justify-center w-10 h-10 rounded-full focus-ring cursor-pointer"
+              style={{
+                background: 'var(--accent-signal)',
+                color: 'var(--ground)',
+                transition: 'background-color var(--dur-1) var(--ease)',
+              }}
             >
-              <Calendar className="w-3.5 h-3.5" />
-              <span className="l-bs">Zakažite sastanak</span>
-              <span className="l-en">Book a Call</span>
+              <Calendar className="w-[18px] h-[18px]" />
             </button>
 
             {/* MOBILE HAMBURGER TOGGLE */}

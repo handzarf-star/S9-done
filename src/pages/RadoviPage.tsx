@@ -97,10 +97,10 @@ export const RadoviPage: React.FC<RadoviPageProps> = ({ onNavigate }) => {
             </div>
 
             {/* CARD 2: Warehouse (Atlas) */}
-            <div className="s9-card p-7 sm:p-8 border-[rgba(255,138,61,0.2)] flex flex-col justify-between h-full group hover:border-[#FF8A3D]/60 transition-all rounded-3xl">
+            <div className="s9-card p-7 sm:p-8 border-[rgba(255,166,88,0.2)] flex flex-col justify-between h-full group hover:border-[#FFA658]/60 transition-all rounded-3xl">
               <div className="flex-1 flex flex-col">
                 <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                  <span className="px-3 py-1 rounded-full text-xs font-semibold text-[#FF8A3D] bg-[rgba(255,138,61,0.1)] border border-[rgba(255,138,61,0.25)]">
+                  <span className="px-3 py-1 rounded-full text-xs font-semibold text-[#FFA658] bg-[rgba(255,166,88,0.1)] border border-[rgba(255,166,88,0.25)]">
                     <span className="l-bs">Shape9 Atlas · WMS sistem</span>
                     <span className="l-en">Shape9 Atlas · WMS</span>
                   </span>
@@ -134,7 +134,7 @@ export const RadoviPage: React.FC<RadoviPageProps> = ({ onNavigate }) => {
                 <a
                   href="/radovi/wms"
                   onClick={(e) => go(e, '/radovi/wms')}
-                  className="btn-ghost w-full justify-between text-sm font-semibold text-[#FF8A3D] hover:text-[var(--ink)] focus-ring rounded-full"
+                  className="btn-ghost w-full justify-between text-sm font-semibold text-[#FFA658] hover:text-[var(--ink)] focus-ring rounded-full"
                 >
                   <span>
                     <span className="l-bs">Pogledajte studiju slučaja</span>

@@ -26,7 +26,7 @@ export const RadoviWmsPage: React.FC<RadoviWmsPageProps> = ({ onNavigate }) => {
           <a
             href="/radovi"
             onClick={(e) => go(e, '/radovi')}
-            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--muted)] hover:text-[#FF8A3D] transition-colors focus-ring"
+            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--muted)] hover:text-[#FFA658] transition-colors focus-ring"
           >
             <ArrowLeft className="w-4 h-4" />
             <span className="l-bs">Nazad na portfolio</span>
@@ -35,7 +35,7 @@ export const RadoviWmsPage: React.FC<RadoviWmsPageProps> = ({ onNavigate }) => {
         </div>
 
         <div className="flex flex-wrap items-center gap-3 mb-4">
-          <span className="s9-badge text-[#FF8A3D] bg-[rgba(255,138,61,0.1)] border border-[rgba(255,138,61,0.25)] inline-flex items-center gap-2">
+          <span className="s9-badge text-[#FFA658] bg-[rgba(255,166,88,0.1)] border border-[rgba(255,166,88,0.25)] inline-flex items-center gap-2">
             <Warehouse className="w-3.5 h-3.5" />
             <span className="l-bs">Skladište</span>
             <span className="l-en">Warehouse</span>
@@ -48,10 +48,10 @@ export const RadoviWmsPage: React.FC<RadoviWmsPageProps> = ({ onNavigate }) => {
 
         <h1 className="hero-title">
           <span className="l-bs">
-            Implementacija WMS sistema za 12 regionalnih centara i postizanje tačnosti zaliha od <span className="text-[#FF8A3D]">99,4%</span>
+            Implementacija WMS sistema za 12 regionalnih centara i postizanje tačnosti zaliha od <span className="text-[#FFA658]">99,4%</span>
           </span>
           <span className="l-en">
-            A warehouse system across twelve countries, and inventory accuracy of <span className="text-[#FF8A3D]">99.4 percent</span>
+            A warehouse system across twelve countries, and inventory accuracy of <span className="text-[#FFA658]">99.4 percent</span>
           </span>
         </h1>
 
@@ -68,9 +68,9 @@ export const RadoviWmsPage: React.FC<RadoviWmsPageProps> = ({ onNavigate }) => {
       {/* 2. IMAGE SLOT */}
       <section className="px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
-          <div className="w-full aspect-video rounded-3xl bg-[var(--panel)] border border-[rgba(255,138,61,0.2)] flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
-            <div className="absolute inset-0 bg-[rgba(255,138,61,0.04)] pointer-events-none" />
-            <Warehouse className="w-12 h-12 text-[#FF8A3D] opacity-40 mb-3" />
+          <div className="w-full aspect-video rounded-3xl bg-[var(--panel)] border border-[rgba(255,166,88,0.2)] flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
+            <div className="absolute inset-0 bg-[rgba(255,166,88,0.04)] pointer-events-none" />
+            <Warehouse className="w-12 h-12 text-[#FFA658] opacity-40 mb-3" />
             <p className="text-sm text-[var(--muted)] font-mono max-w-md">
               <span className="l-bs">Kontrolna tabla skladišnog sistema za dvanaest lokacija</span>
               <span className="l-en">Warehouse system dashboard across twelve locations</span>
@@ -179,7 +179,7 @@ export const RadoviWmsPage: React.FC<RadoviWmsPageProps> = ({ onNavigate }) => {
               },
             ].map((step) => (
               <div key={step.num} className="s9-card-nested p-5 border-[var(--line)] flex items-start gap-4 rounded-2xl">
-                <div className="w-9 h-9 rounded-xl bg-[rgba(255,138,61,0.1)] text-[#FF8A3D] font-mono font-bold text-xs flex items-center justify-center shrink-0 border border-[rgba(255,138,61,0.2)]">
+                <div className="w-9 h-9 rounded-xl bg-[rgba(255,166,88,0.1)] text-[#FFA658] font-mono font-bold text-xs flex items-center justify-center shrink-0 border border-[rgba(255,166,88,0.2)]">
                   {step.num}
                 </div>
                 <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed pt-1">
@@ -203,8 +203,8 @@ export const RadoviWmsPage: React.FC<RadoviWmsPageProps> = ({ onNavigate }) => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="s9-card p-5 border-[rgba(255,138,61,0.2)] bg-[var(--panel)] text-center rounded-2xl">
-              <div className="text-3xl sm:text-4xl font-bold text-[#FF8A3D] mb-1.5 font-mono">
+            <div className="s9-card p-5 border-[rgba(255,166,88,0.2)] bg-[var(--panel)] text-center rounded-2xl">
+              <div className="text-3xl sm:text-4xl font-bold text-[#FFA658] mb-1.5 font-mono">
                 <span className="l-bs">99,4%</span>
                 <span className="l-en">99.4%</span>
               </div>
@@ -214,8 +214,8 @@ export const RadoviWmsPage: React.FC<RadoviWmsPageProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            <div className="s9-card p-5 border-[rgba(255,138,61,0.2)] bg-[var(--panel)] text-center rounded-2xl">
-              <div className="text-3xl sm:text-4xl font-bold text-[#FF8A3D] mb-1.5 font-mono">
+            <div className="s9-card p-5 border-[rgba(255,166,88,0.2)] bg-[var(--panel)] text-center rounded-2xl">
+              <div className="text-3xl sm:text-4xl font-bold text-[#FFA658] mb-1.5 font-mono">
                 91%
               </div>
               <div className="text-xs text-[var(--muted)] leading-tight">
@@ -224,8 +224,8 @@ export const RadoviWmsPage: React.FC<RadoviWmsPageProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            <div className="s9-card p-5 border-[rgba(255,138,61,0.2)] bg-[var(--panel)] text-center rounded-2xl">
-              <div className="text-3xl sm:text-4xl font-bold text-[#FF8A3D] mb-1.5 font-mono">
+            <div className="s9-card p-5 border-[rgba(255,166,88,0.2)] bg-[var(--panel)] text-center rounded-2xl">
+              <div className="text-3xl sm:text-4xl font-bold text-[#FFA658] mb-1.5 font-mono">
                 12
               </div>
               <div className="text-xs text-[var(--muted)] leading-tight">
@@ -234,8 +234,8 @@ export const RadoviWmsPage: React.FC<RadoviWmsPageProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            <div className="s9-card p-5 border-[rgba(255,138,61,0.2)] bg-[var(--panel)] text-center rounded-2xl">
-              <div className="text-2xl sm:text-3xl font-bold text-[#FF8A3D] mb-1.5 font-mono">
+            <div className="s9-card p-5 border-[rgba(255,166,88,0.2)] bg-[var(--panel)] text-center rounded-2xl">
+              <div className="text-2xl sm:text-3xl font-bold text-[#FFA658] mb-1.5 font-mono">
                 <span className="l-bs">6 sedmica</span>
                 <span className="l-en">6 weeks</span>
               </div>
@@ -321,11 +321,11 @@ export const RadoviWmsPage: React.FC<RadoviWmsPageProps> = ({ onNavigate }) => {
                 <thead>
                   <tr className="border-b border-[var(--line)] text-xs font-semibold uppercase tracking-wider text-[var(--muted)]">
                     <th className="pb-3 pr-4"></th>
-                    <th className="pb-3 px-4 text-[#FF8A3D]/70">
+                    <th className="pb-3 px-4 text-[#FFA658]/70">
                       <span className="l-bs">Prije Atlasa</span>
                       <span className="l-en">Before</span>
                     </th>
-                    <th className="pb-3 pl-4 text-[#FF8A3D]">
+                    <th className="pb-3 pl-4 text-[#FFA658]">
                       <span className="l-bs">Nakon uvođenja</span>
                       <span className="l-en">After</span>
                     </th>
@@ -338,7 +338,7 @@ export const RadoviWmsPage: React.FC<RadoviWmsPageProps> = ({ onNavigate }) => {
                       <span className="l-en">Inventory accuracy</span>
                     </td>
                     <td className="py-3 px-4 text-[var(--muted)]">81%</td>
-                    <td className="py-3 pl-4 font-semibold text-[#FF8A3D]">
+                    <td className="py-3 pl-4 font-semibold text-[#FFA658]">
                       <span className="l-bs">99,4%</span>
                       <span className="l-en">99.4%</span>
                     </td>
@@ -352,7 +352,7 @@ export const RadoviWmsPage: React.FC<RadoviWmsPageProps> = ({ onNavigate }) => {
                       <span className="l-bs">visoka stopa</span>
                       <span className="l-en">high</span>
                     </td>
-                    <td className="py-3 pl-4 font-semibold text-[#FF8A3D]">
+                    <td className="py-3 pl-4 font-semibold text-[#FFA658]">
                       <span className="l-bs">smanjene za 91%</span>
                       <span className="l-en">down 91%</span>
                     </td>
@@ -366,7 +366,7 @@ export const RadoviWmsPage: React.FC<RadoviWmsPageProps> = ({ onNavigate }) => {
                       <span className="l-bs">izolovano po skladištima</span>
                       <span className="l-en">per location, manual</span>
                     </td>
-                    <td className="py-3 pl-4 font-semibold text-[#FF8A3D]">
+                    <td className="py-3 pl-4 font-semibold text-[#FFA658]">
                       <span className="l-bs">12 skladišta u realnom vremenu</span>
                       <span className="l-en">12 warehouses, real time</span>
                     </td>
@@ -380,7 +380,7 @@ export const RadoviWmsPage: React.FC<RadoviWmsPageProps> = ({ onNavigate }) => {
                       <span className="l-bs">reaktivno, nakon nestašice</span>
                       <span className="l-en">after the problem</span>
                     </td>
-                    <td className="py-3 pl-4 font-semibold text-[#FF8A3D]">
+                    <td className="py-3 pl-4 font-semibold text-[#FFA658]">
                       <span className="l-bs">automatizovano prema pragu</span>
                       <span className="l-en">automatic</span>
                     </td>
@@ -394,7 +394,7 @@ export const RadoviWmsPage: React.FC<RadoviWmsPageProps> = ({ onNavigate }) => {
                       <span className="l-bs">dani za ručnu obradu</span>
                       <span className="l-en">days to compile</span>
                     </td>
-                    <td className="py-3 pl-4 font-semibold text-[#FF8A3D]">
+                    <td className="py-3 pl-4 font-semibold text-[#FFA658]">
                       <span className="l-bs">trenutni, automatizovani uvid</span>
                       <span className="l-en">instant</span>
                     </td>
@@ -409,7 +409,7 @@ export const RadoviWmsPage: React.FC<RadoviWmsPageProps> = ({ onNavigate }) => {
       {/* 8. CLOSING LINE */}
       <section className="px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
-          <div className="p-6 sm:p-8 rounded-3xl bg-[rgba(255,138,61,0.06)] border border-[rgba(255,138,61,0.2)] text-base sm:text-xl font-bold text-[#FF8A3D] leading-snug">
+          <div className="p-6 sm:p-8 rounded-3xl bg-[rgba(255,166,88,0.06)] border border-[rgba(255,166,88,0.2)] text-base sm:text-xl font-bold text-[#FFA658] leading-snug">
             <span className="l-bs">
               Od 81% tačnosti i ručnog haosa do 99,4% preciznosti i potpune kontrole zaliha u samo 6 sedmica.
             </span>
@@ -424,7 +424,7 @@ export const RadoviWmsPage: React.FC<RadoviWmsPageProps> = ({ onNavigate }) => {
       <section id="contact" className="px-4 sm:px-6 max-w-5xl mx-auto scroll-mt-24">
         <ScrollReveal>
           <div className="section-head">
-            <div className="s9-badge bg-[rgba(255,138,61,0.12)] text-[#FF8A3D] text-xs font-semibold uppercase tracking-wider mb-4 border border-[rgba(255,138,61,0.25)]">
+            <div className="s9-badge bg-[rgba(255,166,88,0.12)] text-[#FFA658] text-xs font-semibold uppercase tracking-wider mb-4 border border-[rgba(255,166,88,0.25)]">
               <MessageSquare className="w-3.5 h-3.5" />
               <span className="l-bs">Optimizujte skladište</span>
               <span className="l-en">Let's talk</span>
