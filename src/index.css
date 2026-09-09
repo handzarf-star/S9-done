@@ -1098,6 +1098,19 @@ textarea.s9-input { min-height: 120px; line-height: 1.6; }
 .hero-animate-3 { animation-delay: 120ms; }
 .hero-animate-4 { animation-delay: 180ms; }
 
+/* The nudge under a pinned video hero. Small vertical travel, long pause at
+   rest, so it reads as an invitation rather than a blinking alert. Motion is
+   dropped entirely under prefers-reduced-motion, where the arrow still shows
+   and simply does not move. */
+@keyframes s9-nudge {
+  0%, 62%, 100% { transform: translateY(0); opacity: 0.75; }
+  78%           { transform: translateY(5px); opacity: 1; }
+}
+.s9-scroll-nudge { animation: s9-nudge 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .s9-scroll-nudge { animation: none; }
+}
+
 @keyframes heroEntrance {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: none; }

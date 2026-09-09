@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useEffect, useRef, useState, useCallback } from 'react';
+import { ChevronDown } from 'lucide-react';
 
 /**
  * Full-bleed video hero that pins while you scroll past it, then releases
@@ -63,7 +64,20 @@ export interface VideoHeroProps {
   children?: React.ReactNode;
 }
 
-const HOLD_DEFAULT = 1.6;
+/* How far the page scrolls before the hero lets go.
+ *
+ * Was 1.6 viewports, which is roughly four deliberate scrolls of holding
+ * before the page moves on, and long enough that it reads as the page being
+ * stuck rather than the hero being deliberate. At 0.5 the first scroll is
+ * absorbed, the view does not change while the film keeps playing full
+ * screen, and the second scroll carries the reader into the page.
+ *
+ * Deliberately still `position: sticky` and not a wheel handler. Counting
+ * gestures would mean intercepting the wheel, which breaks the keyboard, the
+ * scrollbar, touch momentum and every assistive tool, to buy an effect the
+ * reader cannot tell apart from this one: during the hold the view is frozen
+ * either way. */
+const HOLD_DEFAULT = 0.5;
 
 export const VideoHero: React.FC<VideoHeroProps> = ({
   srcLandscape,
@@ -249,6 +263,29 @@ export const VideoHero: React.FC<VideoHeroProps> = ({
             </div>
           </div>
         )}
+
+        {/* Scroll nudge. The hairline alone told a reader that something was
+            holding but never that it was theirs to release, so this says it in
+            words. It fades on the same curve as everything else in the hero,
+            because an instruction that outlives the thing it describes is
+            worse than no instruction. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 bottom-5 flex flex-col items-center gap-1.5 sm:bottom-6"
+          style={{ opacity: (1 - fade) * (1 - Math.min(1, progress / 0.35)) }}
+        >
+          <span
+            className="font-mono text-[10px] uppercase tracking-[0.22em]"
+            style={{ color: accent }}
+          >
+            <span className="l-bs">Skrolajte</span>
+            <span className="l-en">Scroll</span>
+          </span>
+          <ChevronDown
+            className="s9-scroll-nudge h-4 w-4"
+            style={{ color: accent }}
+          />
+        </div>
 
         {/* Progress hairline in the product's own colour. It is the only
             indication that the hero is holding, and it disappears with it. */}
