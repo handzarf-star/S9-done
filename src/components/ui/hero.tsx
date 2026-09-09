@@ -38,6 +38,8 @@ interface HeroProps {
    * focal points in one hero is one too many.
    */
   showHorizon?: boolean;
+  /** Extra classes on the h1, for pages that need a different headline size. */
+  titleClassName?: string;
 }
 
 export function Hero({
@@ -49,6 +51,7 @@ export function Hero({
   readout,
   feature,
   showHorizon = true,
+  titleClassName = '',
 }: HeroProps) {
   return (
     <section id="hero" className="page-hero w-full overflow-hidden">
@@ -59,7 +62,7 @@ export function Hero({
           </div>
         )}
 
-        <h1 className="hero-animate-2 hero-title mx-auto mb-7 max-w-4xl">{title}</h1>
+        <h1 className={`hero-animate-2 hero-title mx-auto mb-7 max-w-4xl ${titleClassName}`}>{title}</h1>
 
         {subtitle && <p className="hero-animate-3 lead mx-auto mb-9">{subtitle}</p>}
 

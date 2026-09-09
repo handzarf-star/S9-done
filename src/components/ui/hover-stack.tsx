@@ -340,7 +340,7 @@ function HoverStack({
 
               <div className="relative z-[2] flex flex-1 items-center">
                 <p
-                  className="m-0 text-[0.9rem] leading-[1.5] tracking-[-0.01em]"
+                  className="m-0 text-[0.82rem] leading-[1.45] tracking-[-0.005em]"
                   style={{ color: card.fg, fontFamily: "var(--f-mono)" }}
                 >
                   {card.quote}

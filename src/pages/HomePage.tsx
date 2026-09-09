@@ -136,8 +136,8 @@ const ASSUMPTIONS: HoverStackCard[] = [
     cta: 'Pulse',
     quote: (
       <>
-        <span className="l-bs">Koliko puta je poziv prošao mimo procedure, a da to niko nije primijetio?</span>
-        <span className="l-en">How many calls went outside the procedure without anyone noticing?</span>
+        <span className="l-bs">Koliko puta se u vašem pozivu nije ispoštovala procedura, a da to niko nije primijetio?</span>
+        <span className="l-en">How many of your calls skipped the procedure without anyone noticing?</span>
       </>
     ),
   },
@@ -149,8 +149,8 @@ const ASSUMPTIONS: HoverStackCard[] = [
     cta: 'Atlas',
     quote: (
       <>
-        <span className="l-bs">Koliko narudžbi vam je propalo zato što stanje u sistemu nije bilo tačno?</span>
-        <span className="l-en">How many orders fell through because the stock figure was wrong?</span>
+        <span className="l-bs">Koliko narudžbi je propalo zato što stanje artikla na papiru nije bilo tačno?</span>
+        <span className="l-en">How many orders fell through because the stock figure on paper was wrong?</span>
       </>
     ),
   },
@@ -162,8 +162,8 @@ const ASSUMPTIONS: HoverStackCard[] = [
     cta: 'Libra',
     quote: (
       <>
-        <span className="l-bs">Koliko dokumenata čeka zato što ih otvara i raspoređuje jedna osoba?</span>
-        <span className="l-en">How many documents are waiting because one person opens and files them all?</span>
+        <span className="l-bs">Koliko bitnih dokumenata je greškom u pogrešnom folderu, a da to i ne znate?</span>
+        <span className="l-en">How many documents that matter are sitting in the wrong folder without you knowing?</span>
       </>
     ),
   },
@@ -175,8 +175,8 @@ const ASSUMPTIONS: HoverStackCard[] = [
     cta: 'Sonar',
     quote: (
       <>
-        <span className="l-bs">Koliko dana prođe prije nego primijetite da je nešto počelo padati?</span>
-        <span className="l-en">How many days pass before you notice something started slipping?</span>
+        <span className="l-bs">Koliko dana bi prošlo dok neko ne primijeti pad prodaje ili grešku u sistemu?</span>
+        <span className="l-en">How many days would pass before anyone noticed a drop in sales or a fault in the system?</span>
       </>
     ),
   },
@@ -193,8 +193,8 @@ const ASSUMPTIONS: HoverStackCard[] = [
     ),
     quote: (
       <>
-        <span className="l-bs">Šta u firmi stane kad čovjek koji to jedini zna ode na godišnji?</span>
-        <span className="l-en">What stops when the one person who knows it goes on holiday?</span>
+        <span className="l-bs">Koliko sati Vaši ljudi gube na zadatke koje možete prepustiti softverskom rješenju?</span>
+        <span className="l-en">How many hours do your people lose on work that software could take over?</span>
       </>
     ),
   },
@@ -241,12 +241,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         }
         subtitle={null}
         showHorizon={false}
+        titleClassName="hero-title--compact"
         feature={
           <HoverStack
             cards={ASSUMPTIONS}
-            cardWidth={218}
-            cardHeight={196}
-            overlap={80}
+            cardWidth={250}
+            cardHeight={236}
+            overlap={90}
             accentColor="var(--accent-signal)"
             onCardClick={(href, event) => go(event as React.MouseEvent<HTMLAnchorElement>, href)}
           />

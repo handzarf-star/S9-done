@@ -453,6 +453,16 @@ h2 { font-size: clamp(1.4rem, 3.6vw, 2.25rem); }
 
 .page-hero .hero-title { margin-inline: auto; }
 
+/* The home page headline gives up size to the cards underneath it. Three lines
+   at the full size pushed the actions past the fold; at this size the same
+   sentence lands in two. Scoped, because `hero-title` is shared with nine other
+   pages whose heroes have nothing under them and should stay large. */
+.hero-title--compact {
+  font-size: clamp(2rem, 5vw, 3.15rem);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+}
+
 h3, h4, h5, h6 {
   color: var(--ink);
   font-family: var(--f-sans);
