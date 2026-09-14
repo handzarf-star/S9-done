@@ -2,13 +2,11 @@ import React from 'react';
 import {
   ArrowRight,
   Calendar,
-  CheckCircle2,
   HelpCircle,
   MessageSquare,
   Package,
   ScanLine,
   Shirt,
-  ShoppingBag,
   Store,
   Tag,
   Truck,
@@ -31,46 +29,41 @@ interface ModePageProps {
    salmon. Contrast on the page ground is 6.7:1. */
 const ACCENT = '#FF6170';
 
-/* One day in a shop, which is the page's spine.
-   Every line names something that happened at the counter, not something the
-   software does. The rule for this page, and now for every channel: explain
-   through a scene the reader has lived, never through a capability. */
-const DAY = [
+/* Before and after, which is the page's spine.
+   This replaced a timeline of one working day. The timeline was atmospheric
+   but it only ever showed the good state, so the reader had to supply the pain
+   from memory. A before and after shows the delta, which is the thing that
+   actually persuades. */
+const BEFORE_AFTER = [
   {
-    time: '08:30',
+    id: 'prijem',
     icon: Package,
-    bs: 'Roba stiže iz magacina. Skenirate komade i to je cijeli prijem.',
-    en: 'Stock arrives from the warehouse. You scan the pieces and that is the whole intake.',
+    areaBs: 'Prijem',
+    areaEn: 'Intake',
+    beforeBs: 'Roba stiže, neko je upisuje ručno.',
+    beforeEn: 'Stock arrives and somebody types it in by hand.',
+    afterBs: 'Skenirate artikle, prijem je gotov.',
+    afterEn: 'You scan the items and the intake is done.',
   },
   {
-    time: '11:00',
-    icon: Shirt,
-    bs: 'Prodate dva komada. Stanje se mijenja u tom trenutku, i u ostalim radnjama.',
-    en: 'You sell two pieces. Stock changes in that moment, in the other shops too.',
-  },
-  {
-    time: '13:00',
-    icon: Store,
-    bs: 'Druga radnja traži robu. Magacin vidi zahtjev, odobri količinu i transfer nastane sam.',
-    en: 'Another shop asks for stock. The warehouse sees the request, approves a quantity, and the transfer creates itself.',
-  },
-  {
-    time: '16:00',
+    id: 'dostava',
     icon: Truck,
-    bs: 'Online narudžba je spakovana. Najava kuriru i labela izlaze iz sistema.',
-    en: 'An online order is packed. The courier booking and the label come out of the system.',
+    areaBs: 'Dostava',
+    areaEn: 'Delivery',
+    beforeBs: 'Adresa se ručno prepisuje u kurirski obrazac.',
+    beforeEn: 'The address gets copied into the courier form by hand.',
+    afterBs: 'Adresa i obavještenje kupcu se šalju sami.',
+    afterEn: 'The address and the customer notice go out on their own.',
   },
   {
-    time: '16:05',
-    icon: MessageSquare,
-    bs: 'Kupcu stiže poruka sa brojem pošiljke. Niko je nije kucao.',
-    en: 'The customer gets a message with the tracking number. Nobody typed it.',
-  },
-  {
-    time: '19:00',
+    id: 'marza',
     icon: Tag,
-    bs: 'Zatvarate. Promet, marža i vrijednost zalihe su već izračunati.',
-    en: 'You close. Turnover, margin and stock value are already worked out.',
+    areaBs: 'Marža',
+    areaEn: 'Margin',
+    beforeBs: 'Maržu imate tek na kraju mjeseca.',
+    beforeEn: 'You get the margin at the end of the month.',
+    afterBs: 'Računa se kontinuirano.',
+    afterEn: 'It is worked out continuously.',
   },
 ];
 
@@ -166,10 +159,10 @@ export const ModePage: React.FC<ModePageProps> = ({ onNavigate }) => {
 
         <p className="hero-animate-3 lead mx-auto mb-8 sm:mb-12 text-[var(--body)] max-w-3xl">
           <span className="l-bs">
-            Pitanje koje čujete svaki dan. Odgovor imate prije nego kupac završi rečenicu, i to za sve svoje radnje odjednom.
+            Dok neko zove drugu radnju, kupac već gubi interes. Roba je možda na stanju, ali niko to ne može reći dovoljno brzo.
           </span>
           <span className="l-en">
-            The question you hear every day. You have the answer before the customer finishes asking, and for every one of your shops at once.
+            While somebody rings the other shop, the customer is already losing interest. The stock may well be there. Nobody can say so fast enough.
           </span>
         </p>
 
@@ -196,54 +189,137 @@ export const ModePage: React.FC<ModePageProps> = ({ onNavigate }) => {
         </div>
 
         <span className="micro-copy text-xs text-[var(--muted)] mb-4">
-          <span className="l-bs">Bez prezentacije. Recite nam koliko radnji imate i kako danas provjeravate stanje.</span>
-          <span className="l-en">No slide deck. Tell us how many shops you have and how you check stock today.</span>
+          <span className="l-bs">Bez prezentacije. Recite nam koliko prodajnih objekata imate i kako danas provjeravate stanje i dostavu.</span>
+          <span className="l-en">No slide deck. Tell us how many shops you have and how you check stock and deliveries today.</span>
         </span>
       </section>
 
-      {/* THE DAY. The page's spine and the reason it is not a feature list.
-          Six moments, each one a thing that happened at the counter. */}
+      {/* THE PROBLEM, in the owner's own arithmetic. */}
+      <section className="px-4 sm:px-6 max-w-5xl mx-auto">
+        <ScrollReveal>
+          <div className="section-head">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
+              <span className="l-bs">Tačno stanje imate samo na dan popisa.</span>
+              <span className="l-en">The figure is right on the day you count it.</span>
+            </h2>
+            <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed max-w-2xl mx-auto">
+              <span className="l-bs">Sutradan je procjena, i tako do sljedećeg popisa.</span>
+              <span className="l-en">The next day it is an estimate, and it stays one until you count again.</span>
+            </p>
+            <p className="text-base sm:text-lg font-semibold text-[var(--ink)] max-w-2xl mx-auto leading-snug">
+              <span className="l-bs">Koliko kupaca se predomislilo dok je čekalo pravu informaciju?</span>
+              <span className="l-en">How many customers changed their mind while they waited for a straight answer?</span>
+            </p>
+          </div>
+        </ScrollReveal>
+      </section>
+
+      {/* THE CASE. One scene, before and after, from a client we cannot name
+          yet: consent for our own channels is not confirmed in writing, and a
+          web page travels further than a deck handed to one person. */}
       <section className="px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
           <div className="section-head">
             <div className="s9-badge bg-[rgba(255,97,112,0.08)] border border-[rgba(255,97,112,0.2)] text-[#FF6170] text-xs font-semibold uppercase tracking-wider">
-              <ScanLine className="w-3.5 h-3.5" />
-              <span className="l-bs">Jedan dan</span>
-              <span className="l-en">One day</span>
+              <Store className="w-3.5 h-3.5" />
+              <span className="l-bs">Naš klijent, lanac butika</span>
+              <span className="l-en">Our client, a boutique chain</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
-              <span className="l-bs">Ovako izgleda dan kad se stanje slaže samo</span>
-              <span className="l-en">A day where the stock figure looks after itself</span>
+              <span className="l-bs">Kupac traži broj 52. Na stalku ga nema.</span>
+              <span className="l-en">A customer asks for size 52. It is not on the rail.</span>
+            </h2>
+          </div>
+
+          <div className="section-body grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            <div className="s9-card">
+              <div className="font-mono text-[11px] uppercase tracking-[0.18em] mb-3 text-[var(--muted)]">
+                <span className="l-bs">Prije</span>
+                <span className="l-en">Before</span>
+              </div>
+              <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed m-0">
+                <span className="l-bs">Prodavač zove dva objekta. Kupac gubi interes ili se predomisli dok čeka.</span>
+                <span className="l-en">The assistant rings two other shops. The customer loses interest, or changes their mind while waiting.</span>
+              </p>
+            </div>
+            <div className="s9-card" style={{ borderColor: 'rgba(255, 97, 112, 0.3)' }}>
+              <div className="font-mono text-[11px] uppercase tracking-[0.18em] mb-3" style={{ color: ACCENT }}>
+                <span className="l-bs">Sada</span>
+                <span className="l-en">Now</span>
+              </div>
+              <p className="text-sm sm:text-base text-[var(--ink)] leading-relaxed m-0">
+                <span className="l-bs">Jedan ekran. Dva komada u Sarajevu, transfer kreće odmah.</span>
+                <span className="l-en">One screen. Two in Sarajevo, and the transfer starts straight away.</span>
+              </p>
+            </div>
+          </div>
+        </ScrollReveal>
+      </section>
+
+      {/* THE REST, same shape. Three areas, each one a line of before and a
+          line of after. */}
+      <section className="px-4 sm:px-6 max-w-5xl mx-auto">
+        <ScrollReveal>
+          <div className="section-head">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
+              <span className="l-bs">Ostalo se ažurira samo.</span>
+              <span className="l-en">The rest keeps itself up to date.</span>
             </h2>
           </div>
 
           <div className="section-body space-y-3">
-            {DAY.map((step) => {
-              const Icon = step.icon;
+            {BEFORE_AFTER.map((row) => {
+              const Icon = row.icon;
               return (
-                <div
-                  key={step.time}
-                  className="s9-card flex items-start gap-4 sm:gap-5 !py-4 sm:!py-5"
-                >
-                  <div className="flex items-center gap-3 shrink-0 w-24 sm:w-28">
-                    <span
-                      className="text-sm sm:text-base font-bold font-mono"
-                      style={{ color: ACCENT }}
-                    >
-                      {step.time}
+                <div key={row.id} className="s9-card grid grid-cols-1 sm:grid-cols-[9rem_1fr_1fr] gap-3 sm:gap-5 sm:items-center">
+                  <div className="flex items-center gap-2.5">
+                    <Icon className="w-4 h-4 shrink-0" style={{ color: ACCENT }} />
+                    <span className="font-mono text-[11px] uppercase tracking-[0.18em]" style={{ color: ACCENT }}>
+                      <span className="l-bs">{row.areaBs}</span>
+                      <span className="l-en">{row.areaEn}</span>
                     </span>
                   </div>
-                  <Icon
-                    className="w-5 h-5 shrink-0 mt-0.5 opacity-70"
-                    style={{ color: ACCENT }}
-                  />
-                  <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed m-0">
-                    <span className="l-bs">{step.bs}</span>
-                    <span className="l-en">{step.en}</span>
+                  {/* The two columns are only self evident side by side. Below
+                      `sm` they stack, and a stacked before and after with no
+                      labels is genuinely ambiguous, so the labels appear
+                      exactly where the layout stops explaining itself. */}
+                  <p className="text-sm text-[var(--muted)] leading-relaxed m-0">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] mr-2 sm:hidden">
+                      <span className="l-bs">Prije</span>
+                      <span className="l-en">Before</span>
+                    </span>
+                    <span className="l-bs">{row.beforeBs}</span>
+                    <span className="l-en">{row.beforeEn}</span>
+                  </p>
+                  <p className="text-sm text-[var(--ink)] leading-relaxed m-0">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] mr-2 sm:hidden" style={{ color: ACCENT }}>
+                      <span className="l-bs">Sada</span>
+                      <span className="l-en">Now</span>
+                    </span>
+                    <span className="l-bs">{row.afterBs}</span>
+                    <span className="l-en">{row.afterEn}</span>
                   </p>
                 </div>
               );
             })}
+          </div>
+        </ScrollReveal>
+      </section>
+
+      {/* INTRODUCTION, not softened. Mode is a roll out and the page says so
+          in the same breath as the benefit, because the alternative is a
+          surprise on week one. */}
+      <section className="px-4 sm:px-6 max-w-5xl mx-auto">
+        <ScrollReveal>
+          <div className="section-head">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
+              <span className="l-bs">Uvođenje traži organizaciju.</span>
+              <span className="l-en">Getting it in takes organising.</span>
+            </h2>
+            <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed max-w-2xl mx-auto">
+              <span className="l-bs">Uz artikal ide etiketa, jednom. Artikle možete skenirati i telefonom.</span>
+              <span className="l-en">Every item gets a label, once. You can scan them with a phone.</span>
+            </p>
           </div>
         </ScrollReveal>
       </section>
@@ -299,57 +375,6 @@ export const ModePage: React.FC<ModePageProps> = ({ onNavigate }) => {
         </ScrollReveal>
       </section>
 
-      {/* WHAT IT REPLACES. Naming the incumbent, which is the strongest thing
-          the film's own tagline does. */}
-      <section className="px-4 sm:px-6 max-w-5xl mx-auto">
-        <ScrollReveal>
-          <div className="section-head">
-            <div className="s9-badge bg-[rgba(255,97,112,0.08)] border border-[rgba(255,97,112,0.2)] text-[#FF6170] text-xs font-semibold uppercase tracking-wider">
-              <ShoppingBag className="w-3.5 h-3.5" />
-              <span className="l-bs">Šta prestaje</span>
-              <span className="l-en">What stops</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
-              <span className="l-bs">Poslovi koje više niko ne radi rukom</span>
-              <span className="l-en">The jobs nobody does by hand any more</span>
-            </h2>
-          </div>
-
-          <ul className="section-body space-y-4 max-w-2xl mx-auto">
-            {[
-              {
-                bs: 'Tabela koju neko ažurira uveče, pa je do jutra netačna.',
-                en: 'The spreadsheet someone updates in the evening, wrong again by morning.',
-              },
-              {
-                bs: 'Poziv u drugu radnju da provjeri ima li taj broj.',
-                en: 'The phone call to another shop to ask if they have that size.',
-              },
-              {
-                bs: 'Papirna otpremnica između magacina i radnje.',
-                en: 'The paper docket between the stockroom and the shop.',
-              },
-              {
-                bs: 'Prepisivanje adrese kupca u obrazac kurirske službe.',
-                en: 'Copying the customer address into the courier form.',
-              },
-              {
-                bs: 'Računanje marže na kraju mjeseca, kad je već kasno.',
-                en: 'Working out the margin at month end, when it is already too late.',
-              },
-            ].map((item) => (
-              <li key={item.bs} className="flex items-start gap-3 text-sm sm:text-base text-[var(--body)]">
-                <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5" style={{ color: ACCENT }} />
-                <span>
-                  <span className="l-bs">{item.bs}</span>
-                  <span className="l-en">{item.en}</span>
-                </span>
-              </li>
-            ))}
-          </ul>
-        </ScrollReveal>
-      </section>
-
       {/* WHAT IT DOES. Capabilities, but each one named as a thing the owner
           gets rather than a module the software has. */}
       <section className="px-4 sm:px-6 max-w-5xl mx-auto">
@@ -393,7 +418,7 @@ export const ModePage: React.FC<ModePageProps> = ({ onNavigate }) => {
                 icon: Truck,
                 tBs: 'Kurir bez prepisivanja',
                 tEn: 'Couriers without retyping',
-                bs: 'Najava, labela i praćenje pošiljke izlaze iz iste narudžbe.',
+                bs: 'Najava, adresa i praćenje pošiljke izlaze iz iste narudžbe.',
                 en: 'The booking, the label and the tracking all come out of the same order.',
               },
               {
@@ -486,7 +511,7 @@ export const ModePage: React.FC<ModePageProps> = ({ onNavigate }) => {
             </div>
 
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-4 sm:mb-6 leading-tight">
-              <span className="l-bs">Recite nam koliko radnji imate i kako danas provjeravate stanje</span>
+              <span className="l-bs">Pokažite nam Vaš prodajni objekat</span>
               <span className="l-en">Tell us how many shops you have and how you check stock today</span>
             </h2>
 
