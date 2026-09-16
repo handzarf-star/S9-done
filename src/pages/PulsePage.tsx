@@ -82,8 +82,8 @@ const USE_CASES = [
     id: 'early_warning',
     titleBs: 'Rano prepoznavanje nezadovoljstva',
     titleEn: 'Early warning',
-    descBs: 'Frustracija koja se čuje u tonu prije nego stigne pisana žalba. Isto i kad razgovor krene naopako: klijent spustio u prvoj minuti, a agent nastavio pričati još dvije.',
-    descEn: 'Frustration you can hear in the tone before a written complaint arrives.',
+    descBs: 'Kada isti klijent zove treći put za isti problem, ta informacija se krije u pozivima. Veći problem se može spriječiti.',
+    descEn: 'When the same customer calls a third time about the same thing, it is buried in the calls. The bigger problem can be prevented.',
   },
 ];
 
