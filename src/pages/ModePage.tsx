@@ -3,12 +3,14 @@ import {
   ArrowRight,
   Calendar,
   HelpCircle,
+  LifeBuoy,
   MessageSquare,
   Package,
-  ScanLine,
+  ShoppingBag,
   Shirt,
+  Smartphone,
   Store,
-  Tag,
+  TrendingUp,
   Truck,
   Users,
 } from 'lucide-react';
@@ -29,41 +31,113 @@ interface ModePageProps {
    salmon. Contrast on the page ground is 6.7:1. */
 const ACCENT = '#FF6170';
 
-/* Before and after, which is the page's spine.
-   This replaced a timeline of one working day. The timeline was atmospheric
-   but it only ever showed the good state, so the reader had to supply the pain
-   from memory. A before and after shows the delta, which is the thing that
-   actually persuades. */
-const BEFORE_AFTER = [
+/* The six areas, each one a card in the deck (Shape9_Mode.html, cards 8 to
+   13), carried here in the deck's own order and wording.
+
+   This replaced two separate sections: a single named case study and a three
+   row summary of everything else. The deck treats all six the same way,
+   headline plus before plus after, and that is stronger on a page too. It
+   also drops the "our client, a boutique chain" framing, which was the one
+   place the page leaned on a reference whose written consent for our own
+   channels is still not confirmed. */
+const AREAS = [
   {
     id: 'prijem',
     icon: Package,
-    areaBs: 'Prijem',
+    areaBs: 'Prijem robe',
     areaEn: 'Intake',
-    beforeBs: 'Roba stiže, neko je upisuje ručno.',
-    beforeEn: 'Stock arrives and somebody types it in by hand.',
-    afterBs: 'Skenirate artikle, prijem je gotov.',
-    afterEn: 'You scan the items and the intake is done.',
+    headBs: 'Niko ne potpisuje otpremnicu naslijepo.',
+    headEn: 'Nobody signs a delivery note blind.',
+    beforeBs: 'Roba se prebroji na brzinu, otpremnica se potpiše. Manjak se otkrije kada je već kasno.',
+    beforeEn: 'The goods get counted in a hurry and the note is signed. The shortfall turns up when it is already too late.',
+    afterBs: 'Skenirate, Mode sam utvrdi manjak ili višak. Problem je spriječen pri prijemu robe.',
+    afterEn: 'You scan, and Mode works out the shortfall or the surplus itself. The problem is caught at intake.',
+  },
+  {
+    id: 'prodaja',
+    icon: ShoppingBag,
+    areaBs: 'Prodaja',
+    areaEn: 'Sales',
+    headBs: 'Prodali ste artikal. Šta ste još dobili?',
+    headEn: 'You sold the item. What else did you get?',
+    beforeBs: 'Kupac ode i to je kraj. Sljedeći put počinjete ispočetka.',
+    beforeEn: 'The customer leaves and that is that. Next time you start from nothing.',
+    afterBs: 'Uz prodaju ostaje i profil kupca: veličina, spol, kontakt i još informacija koje Vam trebaju. Kreirate bazu podataka Vaših kupaca.',
+    afterEn: 'The sale leaves a customer profile behind: size, gender, contact and whatever else you need. You build a database of your own customers.',
+  },
+  {
+    id: 'kupci',
+    icon: Users,
+    areaBs: 'Kupci',
+    areaEn: 'Customers',
+    headBs: 'Stigla je nova kolekcija. Ko sve treba znati?',
+    headEn: 'A new collection has arrived. Who needs to know?',
+    beforeBs: 'Objava na Instagramu i nada da će je prava osoba vidjeti.',
+    beforeEn: 'A post on Instagram and the hope that the right person sees it.',
+    afterBs: 'Ponuda ide onima kojima odgovara, po veličini i ranijoj kupovini. Rođendanska čestitka s kuponom ode sama.',
+    afterEn: 'The offer goes to the people it suits, by size and by what they bought before. The birthday note with a coupon goes out on its own.',
+  },
+  {
+    id: 'zalihe',
+    icon: Shirt,
+    areaBs: 'Stanje zaliha',
+    areaEn: 'Stock',
+    headBs: 'Kupac traži broj 52, jer ga ne može pronaći i zove prodavača.',
+    headEn: 'A customer asks for size 52, because they cannot find it and call an assistant over.',
+    beforeBs: 'Prodavač provjerava sa drugim objektima preko poziva ili ide u magacin. Kupac se za to vrijeme predomisli ili gubi interes dok čeka.',
+    beforeEn: 'The assistant rings the other shops or walks to the stockroom. In the meantime the customer changes their mind, or loses interest waiting.',
+    afterBs: 'Prodavač skenira artikal na mobitelu i vidi stanje u svim objektima i magacinu, te druge opcije istog artikla, kako bi zadržao pažnju kupca.',
+    afterEn: 'The assistant scans the item on a phone and sees the stock in every shop and in the stockroom, along with other options for the same item, so the customer stays with them.',
   },
   {
     id: 'dostava',
     icon: Truck,
     areaBs: 'Dostava',
     areaEn: 'Delivery',
-    beforeBs: 'Adresa se ručno prepisuje u kurirski obrazac.',
-    beforeEn: 'The address gets copied into the courier form by hand.',
-    afterBs: 'Adresa i obavještenje kupcu se šalju sami.',
-    afterEn: 'The address and the customer notice go out on their own.',
+    headBs: 'Mode je povezan sa Vašim partnerom za dostavu.',
+    headEn: 'Mode is connected to your delivery partner.',
+    beforeBs: 'Adresa se prepisuje u kurirski obrazac. Greška u adresi je paket koji se vraća.',
+    beforeEn: 'The address is copied into the courier form. A mistake in the address is a parcel that comes back.',
+    afterBs: 'Najava se generiše iz same narudžbe. Kupcu se također šalje notifikacija sa brojem pošiljke i bitnim informacijama.',
+    afterEn: 'The booking is generated from the order itself. The customer also gets a message with the tracking number and what they need to know.',
   },
   {
     id: 'marza',
-    icon: Tag,
-    areaBs: 'Marža',
-    areaEn: 'Margin',
-    beforeBs: 'Maržu imate tek na kraju mjeseca.',
-    beforeEn: 'You get the margin at the end of the month.',
-    afterBs: 'Računa se kontinuirano.',
-    afterEn: 'It is worked out continuously.',
+    icon: TrendingUp,
+    areaBs: 'Promet i marža',
+    areaEn: 'Turnover and margin',
+    headBs: 'Ko je koliko prodao, i na čemu ste zaradili?',
+    headEn: 'Who sold how much, and what did you make money on?',
+    beforeBs: 'Zbir na kraju mjeseca, bez razlaganja. Ne znate koja akcija je radila, a koja nije.',
+    beforeEn: 'A total at the end of the month, with nothing broken out. You do not know which promotion worked and which did not.',
+    afterBs: 'Realtime izvještaj o prodaji po prodavaču, lokaciji, artiklu i još mnogo statistika.',
+    afterEn: 'A live sales report by assistant, by location, by item, and a good deal more.',
+  },
+];
+
+/* Deck card 14. Three readers of the same change, which is the card that
+   answers "and why do I care" without a single sentence about us. */
+const BENEFITS = [
+  {
+    id: 'kupcu',
+    labelBs: 'Kupcu',
+    labelEn: 'To the customer',
+    bs: 'Brže i bolje iskustvo kupovine.',
+    en: 'A faster and better experience when they buy.',
+  },
+  {
+    id: 'vama',
+    labelBs: 'Vama',
+    labelEn: 'To you',
+    bs: 'Bolju organiziranost i pregled poslovanja.',
+    en: 'Better organisation and a view of the business.',
+  },
+  {
+    id: 'biznisu',
+    labelBs: 'Vašem biznisu',
+    labelEn: 'To your business',
+    bs: 'Alat koji svakom radniku čini posao lakšim.',
+    en: "A tool that makes every person's job easier.",
   },
 ];
 
@@ -129,8 +203,8 @@ export const ModePage: React.FC<ModePageProps> = ({ onNavigate }) => {
       />
 
       {/* HERO. The film's own tagline carries the headline, so the page and
-          the video that sits above it say the same sentence. The customer's
-          question underneath it is the film's opening beat, kept word for
+          the video above it say the same sentence. The customer's question
+          and the line under it are the deck's first two cards, word for
           word. */}
       <section className="page-hero px-4 sm:px-6 max-w-5xl mx-auto relative pt-16 sm:pt-24">
         <h1 className="hero-animate-2 hero-title max-w-4xl">
@@ -152,28 +226,28 @@ export const ModePage: React.FC<ModePageProps> = ({ onNavigate }) => {
           </span>
         </div>
 
-        <p className="hero-animate-3 text-xl sm:text-2xl font-semibold text-[var(--ink)] max-w-3xl mx-auto mb-4 leading-snug">
+        <p className="hero-animate-3 text-xl sm:text-2xl font-semibold max-w-3xl mx-auto mb-4 leading-snug" style={{ color: 'var(--ink)' }}>
           <span className="l-bs">„Imate li ovaj model u drugoj veličini?"</span>
           <span className="l-en">"Do you have this one in another size?"</span>
         </p>
 
-        <p className="hero-animate-3 lead mx-auto mb-8 sm:mb-12 text-[var(--body)] max-w-3xl">
+        <p className="hero-animate-3 lead mx-auto mb-8 sm:mb-12">
           <span className="l-bs">
-            Dok neko zove drugu radnju, kupac već gubi interes. Roba je možda na stanju, ali niko to ne može reći dovoljno brzo.
+            Dok Vaš prodavač zove drugu poslovnicu, kupac već gubi interes. Artikal je možda na stanju. Vi to ne možete potvrditi dovoljno brzo.
           </span>
           <span className="l-en">
-            While somebody rings the other shop, the customer is already losing interest. The stock may well be there. Nobody can say so fast enough.
+            While your assistant rings the other shop, the customer is already losing interest. The item may well be in stock. You cannot confirm it fast enough.
           </span>
         </p>
 
-        <div className="hero-animate-4 flex flex-col sm:flex-row items-center justify-center gap-4 mb-4 w-full sm:w-auto">
+        <div className="hero-animate-4 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
           <a
             href="#mode-form"
             onClick={(e) => go(e, '#mode-form')}
             className="btn-pill font-semibold text-sm text-[#0A0E15] bg-[#FF6170] hover:bg-[#ff8391] py-3.5 px-8 transition-colors inline-flex items-center justify-center gap-2 focus-ring w-full sm:w-auto"
           >
-            <span className="l-bs">Pokažite nam svoju radnju</span>
-            <span className="l-en">Show us your shop</span>
+            <span className="l-bs">Prođimo kroz platformu</span>
+            <span className="l-en">Walk through the platform</span>
             <ArrowRight className="w-4 h-4 ml-1" />
           </a>
 
@@ -187,91 +261,48 @@ export const ModePage: React.FC<ModePageProps> = ({ onNavigate }) => {
             <span className="l-en">Book a Call</span>
           </button>
         </div>
-
-        <span className="micro-copy text-xs text-[var(--muted)] mb-4">
-          <span className="l-bs">Bez prezentacije. Recite nam koliko prodajnih objekata imate i kako danas provjeravate stanje i dostavu.</span>
-          <span className="l-en">No slide deck. Tell us how many shops you have and how you check stock and deliveries today.</span>
-        </span>
       </section>
 
-      {/* THE PROBLEM, in the owner's own arithmetic. */}
+      {/* 01 THE PROBLEM. The deck's bridge card: one question the owner cannot
+          answer, and the reason that inability is the whole point. */}
       <section className="px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
           <div className="section-head">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
-              <span className="l-bs">Tačno stanje imate samo na dan popisa.</span>
-              <span className="l-en">The figure is right on the day you count it.</span>
-            </h2>
-            <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed max-w-2xl mx-auto">
-              <span className="l-bs">Sutradan je procjena, i tako do sljedećeg popisa.</span>
-              <span className="l-en">The next day it is an estimate, and it stays one until you count again.</span>
-            </p>
-            <p className="text-base sm:text-lg font-semibold text-[var(--ink)] max-w-2xl mx-auto leading-snug">
+            <h2 className="h2-wide">
               <span className="l-bs">Koliko kupaca se predomislilo dok je čekalo pravu informaciju?</span>
               <span className="l-en">How many customers changed their mind while they waited for a straight answer?</span>
+            </h2>
+            <p>
+              <span className="l-bs">Ako Vas ovaj broj brine, Vaš problem je tačno ono što rješavamo.</span>
+              <span className="l-en">If that number worries you, your problem is exactly the one we solve.</span>
             </p>
           </div>
         </ScrollReveal>
       </section>
 
-      {/* THE CASE. One scene, before and after, from a client we cannot name
-          yet: consent for our own channels is not confirmed in writing, and a
-          web page travels further than a deck handed to one person. */}
+      {/* 02 THE REVEAL, then the six areas. The deck names the product once,
+          lists what it covers, and then walks each area as before and after.
+          The page keeps that order, so the six cards read as the promise
+          above them being paid off one line at a time. */}
       <section className="px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
           <div className="section-head">
             <div className="s9-badge bg-[rgba(255,97,112,0.08)] border border-[rgba(255,97,112,0.2)] text-[#FF6170] text-xs font-semibold uppercase tracking-wider">
               <Store className="w-3.5 h-3.5" />
-              <span className="l-bs">Naš klijent, lanac butika</span>
-              <span className="l-en">Our client, a boutique chain</span>
+              <span className="l-bs">Mode</span>
+              <span className="l-en">Mode</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
-              <span className="l-bs">Kupac traži broj 52. Na stalku ga nema.</span>
-              <span className="l-en">A customer asks for size 52. It is not on the rail.</span>
+            <h2>
+              <span className="l-bs">Cijeli butik na jednom ekranu.</span>
+              <span className="l-en">The whole boutique on one screen.</span>
             </h2>
           </div>
 
-          <div className="section-body grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-            <div className="s9-card">
-              <div className="font-mono text-[11px] uppercase tracking-[0.18em] mb-3 text-[var(--muted)]">
-                <span className="l-bs">Prije</span>
-                <span className="l-en">Before</span>
-              </div>
-              <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed m-0">
-                <span className="l-bs">Prodavač zove dva objekta. Kupac gubi interes ili se predomisli dok čeka.</span>
-                <span className="l-en">The assistant rings two other shops. The customer loses interest, or changes their mind while waiting.</span>
-              </p>
-            </div>
-            <div className="s9-card" style={{ borderColor: 'rgba(255, 97, 112, 0.3)' }}>
-              <div className="font-mono text-[11px] uppercase tracking-[0.18em] mb-3" style={{ color: ACCENT }}>
-                <span className="l-bs">Sada</span>
-                <span className="l-en">Now</span>
-              </div>
-              <p className="text-sm sm:text-base text-[var(--ink)] leading-relaxed m-0">
-                <span className="l-bs">Jedan ekran. Dva komada u Sarajevu, transfer kreće odmah.</span>
-                <span className="l-en">One screen. Two in Sarajevo, and the transfer starts straight away.</span>
-              </p>
-            </div>
-          </div>
-        </ScrollReveal>
-      </section>
-
-      {/* THE REST, same shape. Three areas, each one a line of before and a
-          line of after. */}
-      <section className="px-4 sm:px-6 max-w-5xl mx-auto">
-        <ScrollReveal>
-          <div className="section-head">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
-              <span className="l-bs">Ostalo se ažurira samo.</span>
-              <span className="l-en">The rest keeps itself up to date.</span>
-            </h2>
-          </div>
-
-          <div className="section-body space-y-3">
-            {BEFORE_AFTER.map((row) => {
+          <div className="section-body flex flex-col gap-4 sm:gap-5">
+            {AREAS.map((row) => {
               const Icon = row.icon;
               return (
-                <div key={row.id} className="s9-card grid grid-cols-1 sm:grid-cols-[9rem_1fr_1fr] gap-3 sm:gap-5 sm:items-center">
+                <div key={row.id} className="s9-card flex flex-col gap-3 sm:gap-4">
                   <div className="flex items-center gap-2.5">
                     <Icon className="w-4 h-4 shrink-0" style={{ color: ACCENT }} />
                     <span className="font-mono text-[11px] uppercase tracking-[0.18em]" style={{ color: ACCENT }}>
@@ -279,26 +310,41 @@ export const ModePage: React.FC<ModePageProps> = ({ onNavigate }) => {
                       <span className="l-en">{row.areaEn}</span>
                     </span>
                   </div>
-                  {/* The two columns are only self evident side by side. Below
-                      `sm` they stack, and a stacked before and after with no
-                      labels is genuinely ambiguous, so the labels appear
-                      exactly where the layout stops explaining itself. */}
-                  <p className="text-sm text-[var(--muted)] leading-relaxed m-0">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] mr-2 sm:hidden">
-                      <span className="l-bs">Prije</span>
-                      <span className="l-en">Before</span>
-                    </span>
-                    <span className="l-bs">{row.beforeBs}</span>
-                    <span className="l-en">{row.beforeEn}</span>
-                  </p>
-                  <p className="text-sm text-[var(--ink)] leading-relaxed m-0">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] mr-2 sm:hidden" style={{ color: ACCENT }}>
-                      <span className="l-bs">Sada</span>
-                      <span className="l-en">Now</span>
-                    </span>
-                    <span className="l-bs">{row.afterBs}</span>
-                    <span className="l-en">{row.afterEn}</span>
-                  </p>
+
+                  <h3>
+                    <span className="l-bs">{row.headBs}</span>
+                    <span className="l-en">{row.headEn}</span>
+                  </h3>
+
+                  {/* Labelled at every width, not just below `sm`. Stacked or
+                      side by side, a before and an after are only legible
+                      because something says which is which. */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                    <div className="s9-card-nested flex flex-col gap-2">
+                      <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--muted)]">
+                        <span className="l-bs">Prije</span>
+                        <span className="l-en">Before</span>
+                      </div>
+                      <p className="text-sm leading-relaxed m-0">
+                        <span className="l-bs">{row.beforeBs}</span>
+                        <span className="l-en">{row.beforeEn}</span>
+                      </p>
+                    </div>
+                    <div className="s9-card-nested flex flex-col gap-2" style={{ borderColor: 'rgba(255, 97, 112, 0.3)' }}>
+                      <div className="font-mono text-[10px] uppercase tracking-[0.18em]" style={{ color: ACCENT }}>
+                        <span className="l-bs">Sada</span>
+                        <span className="l-en">Now</span>
+                      </div>
+                      {/* Inline, not `text-[var(--ink)]`. The bare `p` rule in
+                          index.css is unlayered and beats every utility, so
+                          the after column silently rendered in body grey and
+                          lost the contrast that makes the pair work. */}
+                      <p className="text-sm leading-relaxed m-0" style={{ color: 'var(--ink)' }}>
+                        <span className="l-bs">{row.afterBs}</span>
+                        <span className="l-en">{row.afterEn}</span>
+                      </p>
+                    </div>
+                  </div>
                 </div>
               );
             })}
@@ -306,183 +352,81 @@ export const ModePage: React.FC<ModePageProps> = ({ onNavigate }) => {
         </ScrollReveal>
       </section>
 
-      {/* INTRODUCTION, not softened. Mode is a roll out and the page says so
-          in the same breath as the benefit, because the alternative is a
-          surprise on week one. */}
-      <section className="px-4 sm:px-6 max-w-5xl mx-auto">
-        <ScrollReveal>
-          <div className="section-head">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
-              <span className="l-bs">Uvođenje traži organizaciju.</span>
-              <span className="l-en">Getting it in takes organising.</span>
-            </h2>
-            <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed max-w-2xl mx-auto">
-              <span className="l-bs">Uz artikal ide etiketa, jednom. Artikle možete skenirati i telefonom.</span>
-              <span className="l-en">Every item gets a label, once. You can scan them with a phone.</span>
-            </p>
-          </div>
-        </ScrollReveal>
-      </section>
-
-      {/* WHY THE FIGURE HOLDS. The platform's own first rule, and the closest
-          thing on this site to the company's WHY written by somebody else. */}
+      {/* NO HARDWARE. Deliberately carries no chapter number: it is an answer
+          to a question the six cards raise ("so what do we have to buy"),
+          not a chapter of its own. */}
       <section className="px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
           <div className="section-body">
-            <div className="s9-card text-center">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] mb-5 leading-tight max-w-3xl mx-auto">
+            <div className="s9-card text-center flex flex-col gap-4 items-center">
+              <Smartphone className="w-6 h-6" style={{ color: ACCENT }} />
+              <h2 className="max-w-3xl mx-auto leading-tight">
                 <span className="l-bs">
-                  Stanje se nikada ne upisuje <span className="text-[#FF6170]">rukom</span>
+                  Mode ne zahtijeva kupovinu posebnog <span className="text-[#FF6170]">hardvera</span>
                 </span>
                 <span className="l-en">
-                  Stock is never typed in by <span className="text-[#FF6170]">hand</span>
+                  Mode asks you to buy no special <span className="text-[#FF6170]">hardware</span>
                 </span>
               </h2>
-
-              <p className="text-sm sm:text-base text-[var(--body)] max-w-2xl mx-auto leading-relaxed">
-                <span className="l-bs">
-                  Svaka promjena ide kroz nešto što se desilo: prijem, prodaju, transfer ili popis. Zato uvijek postoji odgovor na pitanje zašto je nečega manje, i zato niko ne mora vjerovati tabeli na riječ.
-                </span>
-                <span className="l-en">
-                  Every change comes from something that happened: an intake, a sale, a transfer, a count. So there is always an answer to why there is less of something, and nobody has to take a spreadsheet's word for it.
-                </span>
+              <p className="text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+                <span className="l-bs">Skeniranje, unos i pregled svih podataka radite putem svog mobilnog uređaja.</span>
+                <span className="l-en">Scanning, entering and looking anything up all happen on the phone already in your pocket.</span>
               </p>
-
-              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto text-left">
-                <div className="s9-card-nested p-4">
-                  <div className="text-sm font-semibold text-[var(--ink)] mb-1">
-                    <span className="l-bs">Transfer nije gotov dok ga radnja ne potvrdi</span>
-                    <span className="l-en">A transfer is not done until the shop confirms it</span>
-                  </div>
-                  <p className="text-sm text-[var(--body)] m-0">
-                    <span className="l-bs">Roba stoji u tranzitu, pa se vidi šta je stvarno stiglo, a ne šta je trebalo stići.</span>
-                    <span className="l-en">Goods sit in transit, so you see what actually arrived, not what was meant to.</span>
-                  </p>
-                </div>
-                <div className="s9-card-nested p-4">
-                  <div className="text-sm font-semibold text-[var(--ink)] mb-1">
-                    <span className="l-bs">Svaka veličina i boja je svoja stavka</span>
-                    <span className="l-en">Every size and colour is its own item</span>
-                  </div>
-                  <p className="text-sm text-[var(--body)] m-0">
-                    <span className="l-bs">Nije „ta jakna", nego ta jakna, crna, četrdeset druga, sa svojim stanjem i cijenom.</span>
-                    <span className="l-en">Not "that jacket", but that jacket, black, size 42, with its own stock and price.</span>
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </ScrollReveal>
       </section>
 
-      {/* WHAT IT DOES. Capabilities, but each one named as a thing the owner
-          gets rather than a module the software has. */}
+      {/* 03 WHAT IT BRINGS. Three readers of the same change. */}
       <section className="px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
           <div className="section-head">
-            <div className="s9-badge bg-[rgba(255,97,112,0.08)] border border-[rgba(255,97,112,0.2)] text-[#FF6170] text-xs font-semibold uppercase tracking-wider">
-              <Store className="w-3.5 h-3.5" />
-              <span className="l-bs">Šta pokriva</span>
-              <span className="l-en">What it covers</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
-              <span className="l-bs">Radnja, magacin i kupac, u jednom sistemu</span>
-              <span className="l-en">Shop, stockroom and customer, in one system</span>
+            <h2>
+              <span className="l-bs">A šta sve to donosi?</span>
+              <span className="l-en">And what does all of that bring?</span>
             </h2>
           </div>
 
-          <div className="section-body grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {[
-              {
-                icon: ScanLine,
-                tBs: 'Kasa koja radi na skener',
-                tEn: 'A till that runs on a scanner',
-                bs: 'Skeniraš, dodaš popust ili kupon, naplatiš. Račun izlazi gotov.',
-                en: 'Scan, add a discount or a coupon, take the money. The receipt comes out finished.',
-              },
-              {
-                icon: Package,
-                tBs: 'Stanje po radnjama i veličinama',
-                tEn: 'Stock by shop and by size',
-                bs: 'Vidiš gdje je koji komad, koliko ga ima i kada ga treba dopuniti.',
-                en: 'You see where each piece is, how many are left and when to top it up.',
-              },
-              {
-                icon: Store,
-                tBs: 'Zahtjevi i transferi među radnjama',
-                tEn: 'Requests and transfers between shops',
-                bs: 'Radnja traži, magacin odobri količinu, transfer se napravi sam.',
-                en: 'The shop asks, the warehouse approves a quantity, the transfer makes itself.',
-              },
-              {
-                icon: Truck,
-                tBs: 'Kurir bez prepisivanja',
-                tEn: 'Couriers without retyping',
-                bs: 'Najava, adresa i praćenje pošiljke izlaze iz iste narudžbe.',
-                en: 'The booking, the label and the tracking all come out of the same order.',
-              },
-              {
-                icon: MessageSquare,
-                tBs: 'Poruke koje se šalju same',
-                tEn: 'Messages that send themselves',
-                bs: 'Kupac dobije broj pošiljke, a čestitka za rođendan ode bez da je iko sjetio.',
-                en: 'The customer gets a tracking number, and the birthday note goes out without anyone remembering.',
-              },
-              {
-                icon: Tag,
-                tBs: 'Promet, marža i vrijednost zalihe',
-                tEn: 'Turnover, margin and stock value',
-                bs: 'Brojke su izračunate stalno, ne na kraju mjeseca.',
-                en: 'The numbers are worked out continuously, not at month end.',
-              },
-            ].map((f) => {
-              const Icon = f.icon;
-              return (
-                <div key={f.tBs} className="s9-card">
-                  <div className="flex items-center gap-3 mb-2">
-                    <Icon className="w-5 h-5 shrink-0" style={{ color: ACCENT }} />
-                    <h3 className="text-base font-bold text-[var(--ink)] m-0">
-                      <span className="l-bs">{f.tBs}</span>
-                      <span className="l-en">{f.tEn}</span>
-                    </h3>
-                  </div>
-                  <p className="text-sm text-[var(--body)] m-0 leading-relaxed">
-                    <span className="l-bs">{f.bs}</span>
-                    <span className="l-en">{f.en}</span>
-                  </p>
+          <div className="section-body grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {BENEFITS.map((b) => (
+              <div key={b.id} className="s9-card flex flex-col gap-2">
+                <div className="font-mono text-[11px] uppercase tracking-[0.18em]" style={{ color: ACCENT }}>
+                  <span className="l-bs">{b.labelBs}</span>
+                  <span className="l-en">{b.labelEn}</span>
                 </div>
-              );
-            })}
+                <p className="text-sm leading-relaxed m-0" style={{ color: 'var(--ink)' }}>
+                  <span className="l-bs">{b.bs}</span>
+                  <span className="l-en">{b.en}</span>
+                </p>
+              </div>
+            ))}
           </div>
         </ScrollReveal>
       </section>
 
-      {/* THE STAFF QUESTION. Every owner asks it and it is the one objection
-          the product answers by itself. */}
+      {/* 04 SUPPORT, and the roll-out said out loud in the same breath. Mode
+          is introduced on site and this page never implies otherwise. */}
       <section className="px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
           <div className="section-head">
             <div className="s9-badge bg-[rgba(255,97,112,0.08)] border border-[rgba(255,97,112,0.2)] text-[#FF6170] text-xs font-semibold uppercase tracking-wider">
-              <Users className="w-3.5 h-3.5" />
-              <span className="l-bs">Vaši ljudi</span>
-              <span className="l-en">Your people</span>
+              <LifeBuoy className="w-3.5 h-3.5" />
+              <span className="l-bs">Podrška</span>
+              <span className="l-en">Support</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
-              <span className="l-bs">Svako uči samo svoj posao</span>
-              <span className="l-en">Everyone learns their own job and nothing else</span>
+            <h2>
+              <span className="l-bs">Svaki korak je objašnjen u samoj platformi.</span>
+              <span className="l-en">Every step is explained inside the platform itself.</span>
             </h2>
             <p>
-              <span className="l-bs">
-                Radnica u butiku, magacioner, nabavka i administracija otvore sistem i biraju svoju ulogu. Svako dobije korake za svoj posao i link na ekran gdje se to radi. Niko ne uči tuđe ekrane.
-              </span>
-              <span className="l-en">
-                Shop floor, stockroom, purchasing and admin each pick their own role. Everyone gets the steps for their own job with a link to the screen where it happens. Nobody has to learn anybody else's part.
-              </span>
+              <span className="l-bs">A kad zatreba čovjek, tu je lokalni tim. Uvođenje vodimo s Vama, uz artikal ide etiketa, jednom. I mi smo butik, samo za softver.</span>
+              <span className="l-en">And when it takes a person, the local team is here. We run the roll-out with you, and every item gets a label, once. We are a boutique too, only for software.</span>
             </p>
           </div>
         </ScrollReveal>
       </section>
 
+      {/* 05 FAQ. Unchanged. */}
       <section className="px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
           <div className="section-head">
@@ -491,7 +435,7 @@ export const ModePage: React.FC<ModePageProps> = ({ onNavigate }) => {
               <span className="l-bs">Česta pitanja</span>
               <span className="l-en">FAQ</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight">
+            <h2>
               <span className="l-bs">Ono što vlasnici pitaju prvo</span>
               <span className="l-en">What owners ask first</span>
             </h2>
@@ -501,27 +445,25 @@ export const ModePage: React.FC<ModePageProps> = ({ onNavigate }) => {
         </ScrollReveal>
       </section>
 
+      {/* 06 NEXT STEP. The deck's closing offer, which is a walkthrough rather
+          than a questionnaire. */}
       <section id="mode-form" className="px-4 sm:px-6 max-w-5xl mx-auto scroll-mt-24">
         <ScrollReveal>
           <div className="section-head">
             <div className="s9-badge bg-[rgba(255,97,112,0.12)] text-[#FF6170] text-xs font-semibold uppercase tracking-wider mb-4 sm:mb-6 border border-[rgba(255,97,112,0.25)]">
               <MessageSquare className="w-3.5 h-3.5" />
-              <span className="l-bs">Pokažite nam svoju radnju</span>
-              <span className="l-en">Show us your shop</span>
+              <span className="l-bs">Sljedeći korak</span>
+              <span className="l-en">Next step</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-4 sm:mb-6 leading-tight">
-              <span className="l-bs">Pokažite nam Vaš prodajni objekat</span>
-              <span className="l-en">Tell us how many shops you have and how you check stock today</span>
+            <h2 className="h2-wide">
+              <span className="l-bs">Hajde da zajedno prođemo kroz platformu.</span>
+              <span className="l-en">Let us walk through the platform together.</span>
             </h2>
 
-            <p className="text-sm sm:text-base text-[var(--body)] max-w-2xl mx-auto leading-relaxed">
-              <span className="l-bs">
-                Iz toga se vidi gdje vam odlazi vrijeme i šta bi se prvo promijenilo. Vraćamo se sa konkretnim prijedlogom, bez prezentacije.
-              </span>
-              <span className="l-en">
-                That alone shows where the time goes and what would change first. We come back with a concrete proposal and no slide deck.
-              </span>
+            <p>
+              <span className="l-bs">Testiramo opcije koje bi Vaši zaposlenici koristili.</span>
+              <span className="l-en">We try out the parts your own people would be using.</span>
             </p>
           </div>
 
