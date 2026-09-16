@@ -20,9 +20,6 @@ import { ScrollReveal } from '../components/ScrollReveal';
 import { ProductTabs } from '../components/ProductTabs';
 import { ContactForm } from '../components/ContactForm';
 import { Accordion, AccordionItem } from '../components/Accordion';
-import { CallGrid } from '../components/CallGrid';
-
-const ACCENT = '#A98CFF';
 
 interface PulsePageProps {
   onNavigate?: (path: string) => void;
@@ -83,10 +80,10 @@ const USE_CASES = [
   },
   {
     id: 'early_warning',
-    titleBs: 'Ponovljeni pozivi o istoj stvari',
-    titleEn: 'The same thing, called in twice',
-    descBs: 'Kad isti klijent zove treći put o istom problemu, to stoji u pozivima prije nego stigne pisana žalba.',
-    descEn: 'When the same customer calls a third time about the same thing, it is in the calls before any written complaint arrives.',
+    titleBs: 'Rano prepoznavanje nezadovoljstva',
+    titleEn: 'Early warning',
+    descBs: 'Frustracija koja se čuje u tonu prije nego stigne pisana žalba. Isto i kad razgovor krene naopako: klijent spustio u prvoj minuti, a agent nastavio pričati još dvije.',
+    descEn: 'Frustration you can hear in the tone before a written complaint arrives.',
   },
 ];
 
@@ -130,8 +127,8 @@ const CAPABILITIES = [
     icon: ShieldCheck,
     titleBs: 'Sigurnost i usklađenost',
     titleEn: 'Data protection',
-    descBs: 'Snimci se obrađuju enkriptovano, u mirovanju i u prenosu, i brišu se po retenciji koju klijent definiše. Radni sloj su transkripti i analize.',
-    descEn: 'Recordings are processed encrypted, at rest and in transit, and deleted on the retention the client sets. The working layer is transcripts and analysis.',
+    descBs: 'Napredna enkripcija podataka i automatizovano brisanje u skladu s GDPR propisima.',
+    descEn: 'Encryption at rest and in transit, and deletion on the schedule you set.',
   },
 ];
 
@@ -180,22 +177,17 @@ export const PulsePage: React.FC<PulsePageProps> = ({ onNavigate }) => {
           </span>
         </div>
 
-        {/* The headline is a sentence the owner says to himself as good news.
-            The line under it turns it into the problem, which is why it gets
-            real vertical distance and a lighter weight: the eye has to land on
-            the headline alone first, or the reversal collapses into one glance.
-            The film above the fold has already made one turn of its own. */}
         <h1 className="hero-animate-2 hero-title max-w-4xl">
-          <span className="l-bs">Ovaj mjesec se niko nije žalio.</span>
-          <span className="l-en">Nobody complained this month.</span>
+          <span className="l-bs">Snimate svaki razgovor. Ko ih zaista preslušava?</span>
+          <span className="l-en">You record every call. Who listens to them?</span>
         </h1>
 
-        <p className="hero-animate-3 lead mx-auto mt-10 mb-8 sm:mt-14 sm:mb-12 text-[var(--body)] max-w-2xl">
+        <p className="hero-animate-3 lead mx-auto mb-8 sm:mb-12 text-[var(--body)] max-w-3xl">
           <span className="l-bs">
-            Od sto poziva, dva je neko preslušao. Ostalo nije otvorio niko.
+            <span className="text-[#A98CFF] font-mono">Pulse</span> automatski provjerava svaki snimljeni poziv prema parametrima koje sami postavite i vraća precizan analitički izvještaj. Nema novih programa za operatere i nema potrebe za internim inženjerima.
           </span>
           <span className="l-en">
-            Of a hundred calls, somebody listened to two. Nobody opened the rest.
+            <span className="text-[#A98CFF] font-mono">Pulse</span> checks every recorded call against the rules you set and returns a precise report. No new program for your agents, and no engineer needed on your side.
           </span>
         </p>
 
@@ -221,140 +213,109 @@ export const PulsePage: React.FC<PulsePageProps> = ({ onNavigate }) => {
           </button>
         </div>
 
-        {/* The ratio, drawn. Prose loses this argument and a grid wins it,
-            because the reader counts the dark dots without being asked. The
-            same figure returns twice below with four lit and then a hundred. */}
-        <div className="w-full">
-          <CallGrid
-            filled={2}
-            accent={ACCENT}
-            caption={<>
-              <span className="l-bs">2 od 100 provjereno</span>
-              <span className="l-en">2 of 100 checked</span>
-            </>}
-          />
-          <p className="mt-6 text-xs text-[var(--muted)] italic text-center">
-            <span className="l-bs">Industrijski prosjek za ručnu kontrolu kvaliteta, ne naša procjena.</span>
-            <span className="l-en">The industry average for manual quality control, not our own estimate.</span>
+        {/* HONEST STATS STRIP */}
+        <div className="s9-card border-[rgba(169,140,255,0.18)] bg-[var(--panel)]/60 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 text-center">
+            <div className="p-3 sm:p-4">
+              <div className="text-3xl sm:text-4xl font-bold text-[#A98CFF] font-mono">1-2%</div>
+              <div className="text-xs uppercase font-semibold text-[var(--muted)] mt-2">
+                <span className="l-bs">poziva koje ručni QA uspije preslušati</span>
+                <span className="l-en">of calls an average QA team reviews</span>
+              </div>
+            </div>
+
+            <div className="p-3 sm:p-4 sm:border-x border-[var(--line)]">
+              <div className="text-3xl sm:text-4xl font-bold text-[#A98CFF] font-mono">100%</div>
+              <div className="text-xs uppercase font-semibold text-[var(--muted)] mt-2">
+                <span className="l-bs">poziva koje <span className="text-[#A98CFF]">Pulse</span> provjeri</span>
+                <span className="l-en">of calls <span className="text-[#A98CFF]">Pulse</span> checks</span>
+              </div>
+            </div>
+
+            <div className="p-3 sm:p-4">
+              <div className="text-3xl sm:text-4xl font-bold text-[#A98CFF] font-mono">0</div>
+              <div className="text-xs uppercase font-semibold text-[var(--muted)] mt-2">
+                <span className="l-bs">novih programa koje agenti moraju učiti</span>
+                <span className="l-en">new programs for your team</span>
+              </div>
+            </div>
+          </div>
+
+          <p className="mt-4 text-xs text-[var(--muted)] italic text-center">
+            <span className="l-bs">Podatak od jedan do dva posto je industrijski prosjek za ručnu kontrolu kvaliteta, ne naša procjena.</span>
+            <span className="l-en">The 1 to 2 percent figure is the industry average for manual quality control, not our own estimate.</span>
           </p>
         </div>
       </section>
 
-      {/* PROBLEM. Two scenes, not a capability list. Both are things that
-          happened to a person, and both end with money leaving the building. */}
+      {/* PROBLEM SECTION */}
       <section className="px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
           <div className="section-head">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
-              <span className="l-bs">Ostalih 98% niko nije provjerio.</span>
-              <span className="l-en">Nobody checked the other 98%.</span>
-            </h2>
-            <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed max-w-2xl mx-auto">
-              <span className="l-bs">Šta se krije u tim pozivima? Dvije stvari najčešće, jedna u prodaji i jedna u podršci.</span>
-              <span className="l-en">What is in those calls? Two things most often, one in sales and one in support.</span>
-            </p>
-          </div>
-
-          <div className="section-body grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-            <div className="s9-card">
-              <div className="font-mono text-[11px] uppercase tracking-[0.18em] mb-4" style={{ color: ACCENT }}>
-                <span className="l-bs">Prodaja</span>
-                <span className="l-en">Sales</span>
-              </div>
-              <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed mb-5">
-                <span className="l-bs">Agent kaže jednu cijenu. Stvarna cijena je drugačija. Kupac to sazna na vratima, paket se vraća, a trošak ostaje Vama.</span>
-                <span className="l-en">The agent quotes one price. The real one is different. The customer finds out at the door, the parcel comes back, and the cost stays with you.</span>
-              </p>
-              <div className="s9-card-nested p-4 font-mono text-xs leading-relaxed">
-                <div className="text-[var(--muted)]">
-                  <span className="l-bs">AGENT JE REKAO</span>
-                  <span className="l-en">AGENT SAID</span>
-                </div>
-                <div className="text-[var(--ink)] text-base mt-1">19 KM</div>
-                <div className="mt-3" style={{ color: ACCENT }}>
-                  <span className="l-bs">SA DOSTAVOM</span>
-                  <span className="l-en">WITH DELIVERY</span>
-                </div>
-                <div className="text-base" style={{ color: ACCENT }}>26 KM</div>
-              </div>
+            <div className="s9-badge bg-[rgba(169,140,255,0.08)] border border-[rgba(169,140,255,0.2)] text-[#A98CFF] text-xs font-semibold uppercase tracking-wider">
+              <span className="l-bs">Problem</span>
+              <span className="l-en">The problem</span>
             </div>
-
-            <div className="s9-card">
-              <div className="font-mono text-[11px] uppercase tracking-[0.18em] mb-4" style={{ color: ACCENT }}>
-                <span className="l-bs">Podrška</span>
-                <span className="l-en">Support</span>
-              </div>
-              <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed mb-5">
-                <span className="l-bs">Žalba je stigla u ponedjeljak. Isto je rekao i prije tri sedmice, ali taj poziv niko nije otvorio.</span>
-                <span className="l-en">The complaint arrived on Monday. He said the same thing three weeks earlier, and nobody opened that call.</span>
-              </p>
-              <div className="s9-card-nested p-4 font-mono text-xs leading-relaxed">
-                <div className="text-[var(--muted)]">02:41</div>
-                <div className="text-[var(--ink)] mt-1">
-                  <span className="l-bs">„Treći put zovem za isto."</span>
-                  <span className="l-en">"Third time I am calling about this."</span>
-                </div>
-                <div className="mt-3" style={{ color: ACCENT }}>
-                  <span className="l-bs">RANIJIH POZIVA · 2</span>
-                  <span className="l-en">EARLIER CALLS · 2</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <p className="section-body text-base sm:text-lg font-semibold text-[var(--ink)] max-w-2xl mx-auto text-center leading-snug">
-            <span className="l-bs">To što se niko nije žalio ne znači da je sve bilo u redu. Znači samo da niko nije provjerio.</span>
-            <span className="l-en">Nobody complaining does not mean nothing went wrong. It means nobody checked.</span>
-          </p>
-        </ScrollReveal>
-      </section>
-
-      {/* THE OBJECTION, ANSWERED WITH THE SAME PICTURE. This is the section
-          that earns the grid: hiring a second reviewer moves two dots to four
-          and the image barely changes. */}
-      <section className="px-4 sm:px-6 max-w-5xl mx-auto">
-        <ScrollReveal>
-          <div className="section-head">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
-              <span className="l-bs">Dvostruko veći tim presluša četiri poziva.</span>
-              <span className="l-en">Twice the team gets through four calls.</span>
+              <span className="l-bs">Vaš tim obavi stotine razgovora svakog dana. Šta je u njima zaista dogovoreno?</span>
+              <span className="l-en">Your agents handle hundreds of calls daily. How many commitments, compliance breaches, or churn risks slip through unheard?</span>
             </h2>
+
             <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed max-w-2xl mx-auto">
-              <span className="l-bs">Uzorak raste, sigurnost ne. Devedeset šest poziva niko ne otvori.</span>
-              <span className="l-en">The sample grows, the certainty does not. Ninety six calls stay unopened.</span>
+              <span className="l-bs">
+                Interna kontrola kvaliteta uspijeva obraditi jedva jedan do dva posto. Ostatak ostaje zaključan u arhivi koju niko ne otvara: ponovljene reklamacije kupaca, pitanja na koja agenti nemaju odgovor, kupci koji odustaju i propuštene prodajne prilike.
+              </span>
+              <span className="l-en">
+                Quality control gets through one to two percent of conversations. The rest sits in an archive nobody opens: repeated complaints, questions agents cannot answer, customers who walk away, and openings that passed unnoticed.
+              </span>
             </p>
-          </div>
-          <div className="section-body">
-            <CallGrid
-              filled={4}
-              accent={ACCENT}
-              caption={<>
-                <span className="l-bs">4 od 100 provjereno</span>
-                <span className="l-en">4 of 100 checked</span>
-              </>}
-            />
+
+            <p className="text-sm sm:text-base font-semibold text-[#A98CFF] max-w-xl mx-auto">
+              <span className="l-bs">Umjesto nasumičnog uzorka, <span className="text-[#A98CFF] font-mono">Pulse</span> Vam daje potpunu sliku svakog razgovora.</span>
+              <span className="l-en">Instead of a sample, <span className="text-[#A98CFF] font-mono">Pulse</span> gives you the picture of every call.</span>
+            </p>
           </div>
         </ScrollReveal>
       </section>
 
-      {/* THE ANSWER. Same figure, filled. */}
+{/* USE CASES (Interactive on Mobile & Desktop) */}
       <section className="px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
           <div className="section-head">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
-              <span className="l-bs"><span className="font-mono" style={{ color: ACCENT }}>Pulse</span> presluša i analizira svaki poziv.</span>
-              <span className="l-en"><span className="font-mono" style={{ color: ACCENT }}>Pulse</span> listens to every call and checks it.</span>
+            <div className="s9-badge bg-[rgba(169,140,255,0.08)] border border-[rgba(169,140,255,0.2)] text-[#A98CFF] text-xs font-semibold uppercase tracking-wider">
+              <span className="l-bs">Primjena</span>
+              <span className="l-en">Where it is used</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-4 sm:mb-6 leading-tight">
+              <span className="l-bs">Primjena u svakodnevnom poslovanju</span>
+              <span className="l-en">What clients use it for most</span>
             </h2>
+            <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed">
+              <span className="l-bs">Kako vodeći timovi koriste automatsku analizu u praksi.</span>
+              <span className="l-en">How operations teams leverage automated analysis daily.</span>
+            </p>
           </div>
-          <div className="section-body">
-            <CallGrid
-              filled={100}
-              accent={ACCENT}
-              caption={<>
-                <span className="l-bs">100 od 100 provjereno</span>
-                <span className="l-en">100 of 100 checked</span>
-              </>}
-            />
+
+          {/* NARROW SCREEN: tabs. See ProductTabs for why the wide
+              screen grid below is deliberately left as a grid. */}
+          <div className="section-body block md:hidden mb-6">
+            <ProductTabs items={USE_CASES} accent="#A98CFF" accentRgb="169, 140, 255" />
+          </div>
+
+{/* DESKTOP 2x2 GRID */}
+          <div className="section-body hidden md:grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+            {USE_CASES.map((item) => (
+              <div key={item.id} className="s9-card">
+                <h3 className="text-base font-bold text-[var(--ink)] mb-3">
+                  <span className="l-bs">{item.titleBs}</span>
+                  <span className="l-en">{item.titleEn}</span>
+                </h3>
+                <p className="text-sm text-[var(--body)] leading-relaxed">
+                  <span className="l-bs">{item.descBs}</span>
+                  <span className="l-en">{item.descEn}</span>
+                </p>
+              </div>
+            ))}
           </div>
         </ScrollReveal>
       </section>
@@ -501,27 +462,18 @@ export const PulsePage: React.FC<PulsePageProps> = ({ onNavigate }) => {
             </div>
 
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-4 sm:mb-6 leading-tight">
-              <span className="l-bs">Pošaljite nam 50 poziva. Analiziramo ih besplatno.</span>
-              <span className="l-en">Send us 50 calls. We check them for free.</span>
+              <span className="l-bs">Razgovarajmo o vašem kontakt centru</span>
+              <span className="l-en">Tell us what your calls look like.</span>
             </h2>
 
             <p className="text-sm sm:text-base text-[var(--body)] max-w-2xl mx-auto leading-relaxed">
-              <span className="l-bs">Ne tražimo povjerenje na slijepo. Tačnost procjenjujete na svojim pozivima.</span>
-              <span className="l-en">We are not asking you to take our word for it. You judge the accuracy on your own calls.</span>
+              <span className="l-bs">Navedite broj agenata, prosječan dnevni volumen poziva i ključne izazove u kontroli kvaliteta.</span>
+              <span className="l-en">How many agents, how many calls a day, and what you wish you knew but do not.</span>
             </p>
           </div>
 
           <div className="section-body"><ContactForm productChip="Pulse" /></div>
         </ScrollReveal>
-      </section>
-
-      {/* The page closes on the sentence every launch film closes on, and the
-          company's own WHY. Nothing follows it. */}
-      <section className="px-4 sm:px-6 max-w-5xl mx-auto">
-        <p className="text-center text-xl sm:text-2xl font-extrabold text-[var(--ink)] tracking-tight leading-snug max-w-3xl mx-auto">
-          <span className="l-bs">Vaša kompanija ne treba poslovati na <span style={{ color: ACCENT }}>pretpostavkama</span>.</span>
-          <span className="l-en">Your company should not run on <span style={{ color: ACCENT }}>assumptions</span>.</span>
-        </p>
       </section>
     </div>
   );
