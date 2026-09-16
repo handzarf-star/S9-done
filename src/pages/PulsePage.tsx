@@ -83,10 +83,10 @@ const USE_CASES = [
   },
   {
     id: 'early_warning',
-    titleBs: 'Ponovljeni pozivi o istoj stvari',
-    titleEn: 'The same thing, called in twice',
-    descBs: 'Kad isti klijent zove treći put o istom problemu, to stoji u pozivima prije nego stigne pisana žalba.',
-    descEn: 'When the same customer calls a third time about the same thing, it is in the calls before any written complaint arrives.',
+    titleBs: 'Rano prepoznavanje nezadovoljstva',
+    titleEn: 'Early warning',
+    descBs: 'Kada isti klijent zove treći put za isti problem, ta informacija se krije u pozivima. Veći problem se može spriječiti.',
+    descEn: 'When the same customer calls a third time about the same thing, it is buried in the calls. The bigger problem can be prevented.',
   },
 ];
 
