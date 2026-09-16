@@ -28,46 +28,51 @@ interface HeaderProps {
   onToggleLang: () => void;
 }
 
+/* The menu names the job, not the product.
+   Pulse, Atlas, Sonar and Mode are words we invented. A boutique owner
+   looking for stock control has no way to know that Mode is theirs, and the
+   menu used to lead with the invented word and push the job into a grey
+   subtitle that `truncate` then cut off mid word at this menu's width. So
+   the job is the label and the name sits under it, small, in its own colour.
+
+   `job` is three words, deliberately: it has to be readable at a glance in a
+   list of four, and anything longer wraps to two lines here. */
 const PRODUCTS = [
   {
     path: '/pulse',
-    name: 'Shape9 Pulse',
     shortName: 'Pulse',
     color: '#A98CFF',
     rgb: '169, 140, 255',
     icon: PhoneCall,
-    descBs: 'Provjera svakog poziva, a ne slučajnog uzorka',
-    descEn: 'Every call checked, not a random sample',
+    jobBs: 'Kontrola telefonskih poziva',
+    jobEn: 'Phone call checks',
   },
   {
     path: '/atlas',
-    name: 'Shape9 Atlas',
     shortName: 'Atlas',
     color: '#FFA658',
     rgb: '255, 166, 88',
     icon: Package,
-    descBs: 'Tačna lokacija svakog artikla na polici',
-    descEn: 'The exact shelf every item sits on',
+    jobBs: 'Skladište i zalihe',
+    jobEn: 'Warehouse and stock',
   },
   {
     path: '/sonar',
-    name: 'Shape9 Sonar',
     shortName: 'Sonar',
     color: '#35B6F0',
     rgb: '53, 182, 240',
     icon: LineChart,
-    descBs: 'Neprekidno praćenje poslovnih pokazatelja',
-    descEn: 'Business numbers watched without a break',
+    jobBs: 'Praćenje poslovnih brojki',
+    jobEn: 'Tracking business numbers',
   },
   {
     path: '/mode',
-    name: 'Shape9 Mode',
     shortName: 'Mode',
     color: '#FF6170',
     rgb: '255, 97, 112',
     icon: Shirt,
-    descBs: 'Kasa, magacin i maloprodajni objekti u jednom sistemu',
-    descEn: 'Till, stockroom and shops in one system',
+    jobBs: 'Butici i maloprodaja',
+    jobEn: 'Boutiques and retail',
   },
 ];
 
@@ -185,7 +190,7 @@ export const Header: React.FC<HeaderProps> = ({
               <DropdownMenuContent
                 align="start"
                 sideOffset={8}
-                className="w-72 p-2 rounded-2xl bg-[var(--panel)] border-[var(--line)]"
+                className="w-80 p-2 rounded-2xl bg-[var(--panel)] border-[var(--line)]"
                 style={{ boxShadow: 'var(--shadow-overlay)' }}
               >
                 {PRODUCTS.map((prod) => {
@@ -204,19 +209,26 @@ export const Header: React.FC<HeaderProps> = ({
                           >
                             <IconComponent className="w-4 h-4" />
                           </div>
+                          {/* The arrow is a sibling of the text column, not a
+                              flex partner of the label. Inside the label it
+                              forced `justify-between`, which is why the label
+                              could never be allowed to wrap. */}
                           <div className="flex-1 min-w-0">
                             <div
-                              className="text-sm font-semibold text-[var(--ink)] flex items-center justify-between"
-                              style={{ color: currentPath === prod.path ? prod.color : undefined }}
+                              className="text-sm font-semibold leading-snug"
+                              style={{ color: currentPath === prod.path ? prod.color : 'var(--ink)' }}
                             >
-                              <span>{prod.name}</span>
-                              <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                              <span className="l-bs">{prod.jobBs}</span>
+                              <span className="l-en">{prod.jobEn}</span>
                             </div>
-                            <div className="text-xs text-[var(--muted)] truncate mt-0.5">
-                              <span className="l-bs">{prod.descBs}</span>
-                              <span className="l-en">{prod.descEn}</span>
+                            <div
+                              className="font-mono text-[10px] uppercase tracking-[0.2em] mt-1"
+                              style={{ color: prod.color }}
+                            >
+                              {prod.shortName}
                             </div>
                           </div>
+                          <ArrowRight className="w-3.5 h-3.5 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
                         </div>
                       </a>
                     </DropdownMenuItem>
@@ -381,18 +393,43 @@ export const Header: React.FC<HeaderProps> = ({
               </SheetHeader>
 
               <div className="px-4 pb-4 space-y-3">
+                {/* Same order as the desktop menu: the job, then the name.
+                    This list used to carry only „Shape9 Pulse" and the like,
+                    so on a phone the product's job was nowhere at all. */}
                 <div className="space-y-1">
-                  {PRODUCTS.map((prod) => (
-                    <a
-                      key={prod.path}
-                      href={prod.path}
-                      onClick={(e) => go(e, prod.path)}
-                      className="block px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors focus-ring hover:bg-white/5"
-                      style={{ color: currentPath === prod.path ? prod.color : 'var(--ink)' }}
-                    >
-                      {prod.name}
-                    </a>
-                  ))}
+                  {PRODUCTS.map((prod) => {
+                    const IconComponent = prod.icon;
+                    return (
+                      <a
+                        key={prod.path}
+                        href={prod.path}
+                        onClick={(e) => go(e, prod.path)}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors focus-ring hover:bg-white/5"
+                      >
+                        <div
+                          className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+                          style={{ backgroundColor: `rgba(${prod.rgb}, 0.12)`, color: prod.color }}
+                        >
+                          <IconComponent className="w-4 h-4" />
+                        </div>
+                        <div className="min-w-0">
+                          <div
+                            className="text-sm font-semibold leading-snug"
+                            style={{ color: currentPath === prod.path ? prod.color : 'var(--ink)' }}
+                          >
+                            <span className="l-bs">{prod.jobBs}</span>
+                            <span className="l-en">{prod.jobEn}</span>
+                          </div>
+                          <div
+                            className="font-mono text-[10px] uppercase tracking-[0.2em] mt-1"
+                            style={{ color: prod.color }}
+                          >
+                            {prod.shortName}
+                          </div>
+                        </div>
+                      </a>
+                    );
+                  })}
                 </div>
 
                 <div className="border-t border-[var(--line)] pt-3 space-y-1">
