@@ -68,6 +68,21 @@ const SYMPTOMS = [
     ctaEn: 'See Pulse',
   },
   {
+    id: 'mode',
+    nameBs: 'Butici i maloprodaja',
+    nameEn: 'Boutiques and retail',
+    product: 'Mode',
+    color: '#FF6170',
+    icon: Shirt,
+    path: '/mode',
+    symptomBs: 'Kupac traži drugi broj. Prodavač telefonira drugu radnju, a kupac odlazi dok čeka provjeru.',
+    symptomEn: 'A customer asks for another size. Someone rings the other shop, and the sale slips away while they wait.',
+    solutionBs: 'Prikaz stanja zaliha po radnjama i veličinama na jednom ekranu, uz međuskladišnicu koja se formira automatski.',
+    solutionEn: 'Stock by shop and by size on one screen, and a transfer that creates itself.',
+    ctaBs: 'Saznajte više',
+    ctaEn: 'See Mode',
+  },
+  {
     id: 'atlas',
     nameBs: 'Skladište i logistika',
     nameEn: 'Warehouse & Logistics',
@@ -96,21 +111,6 @@ const SYMPTOMS = [
     solutionEn: 'Continuous 24/7 metric monitoring with immediate anomaly detection before damage compounds.',
     ctaBs: 'Saznajte više',
     ctaEn: 'See Sonar',
-  },
-  {
-    id: 'mode',
-    nameBs: 'Butici i maloprodaja',
-    nameEn: 'Boutiques and retail',
-    product: 'Mode',
-    color: '#FF6170',
-    icon: Shirt,
-    path: '/mode',
-    symptomBs: 'Kupac traži drugi broj. Prodavač telefonira drugu radnju, a kupac odlazi dok čeka provjeru.',
-    symptomEn: 'A customer asks for another size. Someone rings the other shop, and the sale slips away while they wait.',
-    solutionBs: 'Prikaz stanja zaliha po radnjama i veličinama na jednom ekranu, uz međuskladišnicu koja se formira automatski.',
-    solutionEn: 'Stock by shop and by size on one screen, and a transfer that creates itself.',
-    ctaBs: 'Saznajte više',
-    ctaEn: 'See Mode',
   },
 ];
 
@@ -142,19 +142,6 @@ const ASSUMPTIONS: HoverStackCard[] = [
     ),
   },
   {
-    bg: 'color-mix(in oklab, var(--panel-raise) 93%, #FFA658)',
-    fg: '#FFA658',
-    border: 'rgba(255, 166, 88, 0.30)',
-    href: '/atlas',
-    cta: 'Atlas',
-    quote: (
-      <>
-        <span className="l-bs">Koliko je narudžbi otkazano jer se stanje robe na papiru razlikovalo od stvarnog stanja na polici?</span>
-        <span className="l-en">How many orders were cancelled because the figure on paper did not match what was on the shelf?</span>
-      </>
-    ),
-  },
-  {
     bg: 'color-mix(in oklab, var(--panel-raise) 93%, #FF6170)',
     fg: '#FF6170',
     border: 'rgba(255, 97, 112, 0.30)',
@@ -164,6 +151,19 @@ const ASSUMPTIONS: HoverStackCard[] = [
       <>
         <span className="l-bs">Koliko je kupaca izašlo iz radnje jer osoblje nije znalo imate li traženi broj na stanju?</span>
         <span className="l-en">How many customers walked out because nobody knew whether their size was in stock?</span>
+      </>
+    ),
+  },
+  {
+    bg: 'color-mix(in oklab, var(--panel-raise) 93%, #FFA658)',
+    fg: '#FFA658',
+    border: 'rgba(255, 166, 88, 0.30)',
+    href: '/atlas',
+    cta: 'Atlas',
+    quote: (
+      <>
+        <span className="l-bs">Koliko je narudžbi otkazano jer se stanje robe na papiru razlikovalo od stvarnog stanja na polici?</span>
+        <span className="l-en">How many orders were cancelled because the figure on paper did not match what was on the shelf?</span>
       </>
     ),
   },

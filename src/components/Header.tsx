@@ -35,8 +35,9 @@ interface HeaderProps {
    subtitle that `truncate` then cut off mid word at this menu's width. So
    the job is the label and the name sits under it, small, in its own colour.
 
-   `job` is three words, deliberately: it has to be readable at a glance in a
-   list of four, and anything longer wraps to two lines here. */
+   Wording is Faris's, 2026-09-16. Order is his too and is the site's one
+   order now, repeated in the footer and in both homepage lists: Pulse first
+   as the entry product, Mode second while it is the push. */
 const PRODUCTS = [
   {
     path: '/pulse',
@@ -44,26 +45,8 @@ const PRODUCTS = [
     color: '#A98CFF',
     rgb: '169, 140, 255',
     icon: PhoneCall,
-    jobBs: 'Kontrola telefonskih poziva',
-    jobEn: 'Phone call checks',
-  },
-  {
-    path: '/atlas',
-    shortName: 'Atlas',
-    color: '#FFA658',
-    rgb: '255, 166, 88',
-    icon: Package,
-    jobBs: 'Skladište i zalihe',
-    jobEn: 'Warehouse and stock',
-  },
-  {
-    path: '/sonar',
-    shortName: 'Sonar',
-    color: '#35B6F0',
-    rgb: '53, 182, 240',
-    icon: LineChart,
-    jobBs: 'Praćenje poslovnih brojki',
-    jobEn: 'Tracking business numbers',
+    jobBs: 'Analiza i kontrola poziva',
+    jobEn: 'Call analysis and checks',
   },
   {
     path: '/mode',
@@ -71,8 +54,26 @@ const PRODUCTS = [
     color: '#FF6170',
     rgb: '255, 97, 112',
     icon: Shirt,
-    jobBs: 'Butici i maloprodaja',
-    jobEn: 'Boutiques and retail',
+    jobBs: 'Sistem za butike',
+    jobEn: 'Built for boutiques',
+  },
+  {
+    path: '/atlas',
+    shortName: 'Atlas',
+    color: '#FFA658',
+    rgb: '255, 166, 88',
+    icon: Package,
+    jobBs: 'Napredno upravljanje skladištem',
+    jobEn: 'Advanced warehouse management',
+  },
+  {
+    path: '/sonar',
+    shortName: 'Sonar',
+    color: '#35B6F0',
+    rgb: '53, 182, 240',
+    icon: LineChart,
+    jobBs: 'AI agent za analitiku',
+    jobEn: 'AI agent for analytics',
   },
 ];
 
@@ -190,7 +191,11 @@ export const Header: React.FC<HeaderProps> = ({
               <DropdownMenuContent
                 align="start"
                 sideOffset={8}
-                className="w-80 p-2 rounded-2xl bg-[var(--panel)] border-[var(--line)]"
+                /* 352px, not 320. At 320 the text column is 206px and
+                   „Napredno upravljanje skladištem" needs about 230, so that
+                   one row wrapped to two lines and stood taller than the
+                   other three. Width is set by the longest label. */
+                className="w-[22rem] p-2 rounded-2xl bg-[var(--panel)] border-[var(--line)]"
                 style={{ boxShadow: 'var(--shadow-overlay)' }}
               >
                 {PRODUCTS.map((prod) => {

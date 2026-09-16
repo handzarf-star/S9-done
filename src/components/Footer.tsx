@@ -84,6 +84,18 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   Shape9 Pulse
                 </a>
               </li>
+              {/* Same order as the header and both homepage lists: Pulse,
+                  Mode, Atlas, Sonar. Four different orders across the site
+                  was four chances to read it as four different line-ups. */}
+              <li>
+                <a
+                  href="/mode"
+                  onClick={(e) => go(e, '/mode')}
+                  className="hover:text-[var(--ink)] transition-colors focus-ring"
+                >
+                  Shape9 Mode
+                </a>
+              </li>
               <li>
                 <a
                   href="/atlas"
@@ -100,15 +112,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   className="hover:text-[var(--ink)] transition-colors focus-ring"
                 >
                   Shape9 Sonar
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/mode"
-                  onClick={(e) => go(e, '/mode')}
-                  className="hover:text-[var(--ink)] transition-colors focus-ring"
-                >
-                  Shape9 Mode
                 </a>
               </li>
               {/* Libra sits below Mode rather than being dropped. It is out of
