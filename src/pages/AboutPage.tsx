@@ -89,8 +89,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
         </div>
 
         <h1 className="hero-animate-2 hero-title max-w-4xl">
-          <span className="l-bs">Razumijemo poslovanje. Tehnologija je naš alat.</span>
-          <span className="l-en">We understand business. Technology is our tool.</span>
+          <span className="l-bs">Razumijemo i prioritet stavljamo na poslovanje. Tehnologija je samo naš alat.</span>
+          <span className="l-en">We understand and prioritise business. Technology is only our tool.</span>
         </h1>
 
         <p className="hero-animate-3 lead mx-auto mb-8 sm:mb-12 text-[var(--body)] max-w-3xl leading-relaxed">

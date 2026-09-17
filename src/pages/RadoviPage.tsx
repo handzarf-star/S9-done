@@ -30,13 +30,13 @@ export const RadoviPage: React.FC<RadoviPageProps> = ({ onNavigate }) => {
         </div>
 
         <h1 className="hero-animate-2 hero-title max-w-4xl">
-          <span className="l-bs">Naši radovi i studije slučaja</span>
-          <span className="l-en">Our Work & Case Studies</span>
+          <span className="l-bs">Naši projekti</span>
+          <span className="l-en">Our Projects</span>
         </h1>
 
         <p className="hero-animate-3 lead mx-auto mb-8 sm:mb-12 max-w-3xl text-[var(--body)]">
           <span className="l-bs">
-            Odabrani digitalni sistemi koje smo projektovali, razvili i pustili u puni rad. Spoj naših gotovih operativnih proizvoda i namjenskog softvera razvijenog po narudžbi.
+            Odabrani digitalni sistemi koje smo projektovali, razvili i pustili u rad. Spoj naših gotovih softverskih rješenja i softvera razvijenog po narudžbi.
           </span>
           <span className="l-en">
             Selected systems we designed, built and put into full production. A mix of our own operational products and software built to order.

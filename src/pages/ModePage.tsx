@@ -58,11 +58,11 @@ const AREAS = [
     icon: ShoppingBag,
     areaBs: 'Prodaja',
     areaEn: 'Sales',
-    headBs: 'Prodali ste artikal. Šta ste još dobili?',
+    headBs: 'Prodali ste artikal. Šta još možete iskoristiti?',
     headEn: 'You sold the item. What else did you get?',
-    beforeBs: 'Kupac ode i to je kraj. Sljedeći put počinjete ispočetka.',
+    beforeBs: 'Kupac ode i to je kraj. Nemate dodatnih informacija',
     beforeEn: 'The customer leaves and that is that. Next time you start from nothing.',
-    afterBs: 'Uz prodaju ostaje i profil kupca: veličina, spol, kontakt i još informacija koje Vam trebaju. Kreirate bazu podataka Vaših kupaca.',
+    afterBs: 'Uz prodaju ostaje i profil kupca: veličina, spol, kontakt i još informacija koje Vam mogu pomoći. Kreirate bazu podataka za bolje targetiranje.',
     afterEn: 'The sale leaves a customer profile behind: size, gender, contact and whatever else you need. You build a database of your own customers.',
   },
   {
@@ -70,20 +70,20 @@ const AREAS = [
     icon: Users,
     areaBs: 'Kupci',
     areaEn: 'Customers',
-    headBs: 'Stigla je nova kolekcija. Ko sve treba znati?',
+    headBs: 'Stigla je nova kolekcija. Koga treba obavijestiti?',
     headEn: 'A new collection has arrived. Who needs to know?',
-    beforeBs: 'Objava na Instagramu i nada da će je prava osoba vidjeti.',
+    beforeBs: 'Objava na Instagramu. Nadate se da će je prava osoba vidjeti.',
     beforeEn: 'A post on Instagram and the hope that the right person sees it.',
-    afterBs: 'Ponuda ide onima kojima odgovara, po veličini i ranijoj kupovini. Rođendanska čestitka s kuponom ode sama.',
-    afterEn: 'The offer goes to the people it suits, by size and by what they bought before. The birthday note with a coupon goes out on its own.',
+    afterBs: 'Ponuda ide onim kupcima koji odgovaraju profilu, kao i automatske poruke koje Vi odredite.',
+    afterEn: 'The offer goes to the people it suits, also any notification you set.',
   },
   {
     id: 'zalihe',
     icon: Shirt,
     areaBs: 'Stanje zaliha',
     areaEn: 'Stock',
-    headBs: 'Kupac traži broj 52, jer ga ne može pronaći i zove prodavača.',
-    headEn: 'A customer asks for size 52, because they cannot find it and call an assistant over.',
+    headBs: 'Kupac traži drugi model, jer ga ne može pronaći i zove prodavača.',
+    headEn: 'A customer asks for a different model, because they cannot find it and call an assistant over.',
     beforeBs: 'Prodavač provjerava sa drugim objektima preko poziva ili ide u magacin. Kupac se za to vrijeme predomisli ili gubi interes dok čeka.',
     beforeEn: 'The assistant rings the other shops or walks to the stockroom. In the meantime the customer changes their mind, or loses interest waiting.',
     afterBs: 'Prodavač skenira artikal na mobitelu i vidi stanje u svim objektima i magacinu, te druge opcije istog artikla, kako bi zadržao pažnju kupca.',
@@ -98,7 +98,7 @@ const AREAS = [
     headEn: 'Mode is connected to your delivery partner.',
     beforeBs: 'Adresa se prepisuje u kurirski obrazac. Greška u adresi je paket koji se vraća.',
     beforeEn: 'The address is copied into the courier form. A mistake in the address is a parcel that comes back.',
-    afterBs: 'Najava se generiše iz same narudžbe. Kupcu se također šalje notifikacija sa brojem pošiljke i bitnim informacijama.',
+    afterBs: 'Najava dostave se generiše iz same narudžbe. Kupcu se također šalje notifikacija sa brojem pošiljke i bitnim informacijama.',
     afterEn: 'The booking is generated from the order itself. The customer also gets a message with the tracking number and what they need to know.',
   },
   {
@@ -106,9 +106,9 @@ const AREAS = [
     icon: TrendingUp,
     areaBs: 'Promet i marža',
     areaEn: 'Turnover and margin',
-    headBs: 'Ko je koliko prodao, i na čemu ste zaradili?',
-    headEn: 'Who sold how much, and what did you make money on?',
-    beforeBs: 'Zbir na kraju mjeseca, bez razlaganja. Ne znate koja akcija je radila, a koja nije.',
+    headBs: 'Ko je koliko prodao, i ostale vrijedne metrike?',
+    headEn: 'Who sold how much, and other valuable metrics?',
+    beforeBs: 'Rezultati kojima ne možete vjerovati. Ne znate koja promocija je uspjela, a koja nije.',
     beforeEn: 'A total at the end of the month, with nothing broken out. You do not know which promotion worked and which did not.',
     afterBs: 'Realtime izvještaj o prodaji po prodavaču, lokaciji, artiklu i još mnogo statistika.',
     afterEn: 'A live sales report by assistant, by location, by item, and a good deal more.',
@@ -144,10 +144,10 @@ const BENEFITS = [
 const MODE_FAQ: AccordionItem[] = [
   {
     id: 'mode-faq-1',
-    qBs: 'Imamo dvije radnje i mali magacin. Je li ovo preveliko za nas?',
+    qBs: 'Imamo dvije prodavnice i mali magacin. Da li je ovaj sistem prevelik za nas?',
     qEn: 'We have two shops and a small stockroom. Is this too much for us?',
-    aBs: 'Nije, i to je zapravo tačka na kojoj se najviše osjeti. Sa jednom radnjom se sve još pamti. Od druge nadalje počinje telefoniranje, provjeravanje i prebacivanje robe, i tu sistem preuzima posao koji do sada niko nije radio zapisano.',
-    aEn: 'No, and two is where it starts to pay. With one shop people still remember everything. From the second onwards the phone calls and the checking begin, and that is the work the system takes over.',
+    aBs: 'Nije, i to je upravo kada Vam Mode najviše treba.',
+    aEn: 'No, and two is where it starts to pay.',
   },
   {
     id: 'mode-faq-2',
@@ -158,16 +158,16 @@ const MODE_FAQ: AccordionItem[] = [
   },
   {
     id: 'mode-faq-3',
-    qBs: 'Hoće li naši ljudi ovo naučiti?',
+    qBs: 'Kako će naši zaposlenici naučiti raditi u ovom sistemu?',
     qEn: 'Will our people actually learn it?',
-    aBs: 'Sistem ih uči sam. Svaki radnik bira svoju ulogu, prodaja, magacin, nabavka ili administracija, i dobije korake tačno za svoj posao, sa linkom na ekran gdje se to radi. Radnica u butiku ne vidi ekrane magacina i obrnuto.',
-    aEn: 'The system teaches them. Each person picks their role, shop floor, warehouse, purchasing or admin, and gets the steps for their own job with a link to the screen where it happens. Nobody has to learn the parts that are not theirs.',
+    aBs: 'Uz pomoć našeg tima, Mode ih također uči sam. Svaki radnik ima svoju ulogu, prodaja, magacin, nabavka ili administracija, i ima tačno opisane korake za svoj dio posla, sa linkom na ekran gdje se to radi. Radnica u butiku ne vidi ekrane magacina i obrnuto.',
+    aEn: 'The system teaches them. Each person has their role, shop floor, warehouse, purchasing or admin, and gets the steps for their own job with a link to the screen where it happens. Nobody has to learn the parts that are not theirs.',
   },
   {
     id: 'mode-faq-4',
-    qBs: 'Radi li na telefonu?',
+    qBs: 'Da li ovim sistemom možemo upravljati uz smartphone uređaj?',
     qEn: 'Does it work on a phone?',
-    aBs: 'Radi, i instalira se na početni ekran bez skidanja iz prodavnice aplikacija. Kamera telefona je skener, tako da radnik u magacinu ne mora imati poseban uređaj.',
+    aBs: 'Da, i možete ga instalirati na početni ekran bez skidanja iz prodavnice aplikacija. Kamera telefona je skener, tako da radnik u magacinu ne mora imati poseban uređaj.',
     aEn: 'Yes, and it installs to the home screen without an app store. The phone camera is the scanner, so nobody in the stockroom needs a separate device.',
   },
 ];
@@ -246,7 +246,7 @@ export const ModePage: React.FC<ModePageProps> = ({ onNavigate }) => {
             onClick={(e) => go(e, '#mode-form')}
             className="btn-pill font-semibold text-sm text-[#0A0E15] bg-[#FF6170] hover:bg-[#ff8391] py-3.5 px-8 transition-colors inline-flex items-center justify-center gap-2 focus-ring w-full sm:w-auto"
           >
-            <span className="l-bs">Prođimo kroz platformu</span>
+            <span className="l-bs">Zajedno pogledajmo platformu</span>
             <span className="l-en">Walk through the platform</span>
             <ArrowRight className="w-4 h-4 ml-1" />
           </a>
@@ -257,7 +257,7 @@ export const ModePage: React.FC<ModePageProps> = ({ onNavigate }) => {
             className="btn-ghost py-3 px-7 text-sm font-semibold focus-ring cursor-pointer inline-flex items-center justify-center gap-2 w-full sm:w-auto"
           >
             <Calendar className="w-4 h-4 text-[#FF6170]" />
-            <span className="l-bs">Zakažite razgovor</span>
+            <span className="l-bs">Zakažite kratki sastanak</span>
             <span className="l-en">Book a Call</span>
           </button>
         </div>
@@ -382,7 +382,7 @@ export const ModePage: React.FC<ModePageProps> = ({ onNavigate }) => {
         <ScrollReveal>
           <div className="section-head">
             <h2>
-              <span className="l-bs">A šta sve to donosi?</span>
+              <span className="l-bs">A šta sve Mode donosi?</span>
               <span className="l-en">And what does all of that bring?</span>
             </h2>
           </div>
@@ -419,8 +419,8 @@ export const ModePage: React.FC<ModePageProps> = ({ onNavigate }) => {
               <span className="l-en">Every step is explained inside the platform itself.</span>
             </h2>
             <p>
-              <span className="l-bs">A kad zatreba čovjek, tu je lokalni tim. Uvođenje vodimo s Vama, uz artikal ide etiketa, jednom. I mi smo butik, samo za softver.</span>
-              <span className="l-en">And when it takes a person, the local team is here. We run the roll-out with you, and every item gets a label, once. We are a boutique too, only for software.</span>
+              <span className="l-bs">A kad zatreba dodatna pomoć, tu je naš lokalni tim. Implementiramo zajedno s Vama, jer za nas volimo reći da smo i mi butik agencija za softver.</span>
+              <span className="l-en">And when it takes a person, the local team is here. We run the roll-out with you, and every item gets a label, once. We are boutique too, only for software.</span>
             </p>
           </div>
         </ScrollReveal>

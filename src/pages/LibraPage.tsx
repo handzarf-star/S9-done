@@ -117,14 +117,14 @@ export const LibraPage: React.FC<LibraPageProps> = ({ onNavigate }) => {
         <div className="hero-animate-1 mb-4 sm:mb-6">
           <span className="s9-badge text-[#3DD68C] bg-[rgba(61,214,140,0.1)] border border-[rgba(61,214,140,0.25)] inline-flex items-center gap-2 mx-auto">
             <FileStack className="w-3.5 h-3.5" />
-            <span className="l-bs">Računovodstveni biroi i finansijske službe</span>
-            <span className="l-en">Accounting firms and finance teams</span>
+            <span className="l-bs">Administracija i računovodstvo</span>
+            <span className="l-en">Adimistration and bookeeping</span>
           </span>
         </div>
 
         <h1 className="hero-animate-2 hero-title max-w-4xl">
           <span className="l-bs">
-            Dokumenti pristižu cijeli dan. Neko mora ručno otvoriti i <span className="text-[#3DD68C]">razvrstati svaki od njih.</span>
+            Dokumenti pristižu na različite načine. Neko ih mora ručno otvoriti i <span className="text-[#3DD68C]">razvrstati svaki od njih.</span>
           </span>
           <span className="l-en">
             Documents arrive all day. Someone has to <span className="text-[#3DD68C]">sort</span> every single one.
@@ -339,7 +339,7 @@ export const LibraPage: React.FC<LibraPageProps> = ({ onNavigate }) => {
 
             <p className="text-sm sm:text-base text-[var(--body)] max-w-2xl mx-auto leading-relaxed">
               <span className="l-bs">
-                Navedite broj klijenata i kanale kojima dokumentacija stiže. Pripremićemo konkretan prijedlog automatizacije i procjenu uštede radnih sati.
+                Navedite broj klijenata i kanale kojima dokumentacija stiže. Pripremićemo konkretan prijedlog automatizacije.
               </span>
               <span className="l-en">
                 Write how many clients you have and how many different ways documents reach you. We come back with a concrete proposal and an honest read on whether it pays off.

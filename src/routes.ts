@@ -24,12 +24,12 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '78, 172, 205',
     accentDeep: '#006E8B',
     title: {
-      bs: 'Shape9 · We Build Digital Experiences That Matter',
+      bs: 'Shape9 · Gradimo digitalna iskustva koja prave razliku',
       en: 'Shape9 · We Build Digital Experiences That Matter',
     },
     description: {
-      bs: 'Gradimo digitalna iskustva koja prave razliku. Pulse, Atlas, Sonar i Libra, plus rješenja po mjeri. Sarajevo, od 2015.',
-      en: 'We Build Digital Experiences That Matter. Pulse, Atlas, Sonar and Libra, plus custom builds. Sarajevo, since 2015.',
+      bs: 'Razvijamo kompleksne softverske sisteme koji unapređuju poslovanje. Upoznajte Pulse, Atlas, Sonar, Libra i naša rješenja po mjeri. Sarajevo, od 2015.',
+      en: 'We build high-impact digital experiences and enterprise systems. Discover Pulse, Atlas, Sonar, Libra, and our custom solutions. Sarajevo, since 2015.',
     },
   },
   pulse: {
@@ -38,12 +38,12 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '169, 140, 255',
     accentDeep: '#6D3BF0',
     title: {
-      bs: 'Shape9 Pulse · provjera svakog poziva, a ne slučajnog uzorka',
-      en: 'Shape9 Pulse · every call checked, not a two percent sample',
+      bs: 'Shape9 Pulse · Automatizovana kontrola kvaliteta poziva',
+      en: 'Shape9 Pulse · Automated Call Quality Assurance & Analytics',
     },
     description: {
-      bs: 'Kontrola kvaliteta fizički presluša tek dva od sto poziva. Pulse automatski provjerava svaki obavljeni razgovor prema Vašim pravilima i isporučuje pregledan izvještaj.',
-      en: 'Your QA team gets to two calls in a hundred. Pulse checks every recorded call against your own rules and returns a clear report.',
+      bs: 'Ljudska kontrola stigne preslušati samo uzorak. Pulse automatski provjerava svaki snimljeni poziv prema Vašim pravilima i isporučuje jasne izvještaje.',
+      en: 'QA teams can only listen to a small sample. Pulse automatically checks every single recorded call against your rules and delivers clear, actionable reports.',
     },
   },
   atlas: {
@@ -52,12 +52,12 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '255, 166, 88',
     accentDeep: '#E3831F',
     title: {
-      bs: 'Shape9 Atlas · skladište u kojem roba prestaje nestajati',
-      en: 'Shape9 Atlas · a warehouse where stock stops going missing',
+      bs: 'Shape9 Atlas · Napredno upravljanje skladištem (WMS)',
+      en: 'Shape9 Atlas · Advanced Warehouse Management System (WMS)',
     },
     description: {
-      bs: 'Tačno stanje zaliha, tačna lokacija police i automatizovano ponovno naručivanje na svim lokacijama. Kod jednog klijenta, tačnost zaliha porasla je sa 81 na 99,4 posto.',
-      en: 'Exact stock, exact location and reorder point across every site. With one client, inventory accuracy went from 81 to 99.4 percent.',
+      bs: 'Tačno stanje zaliha, precizne lokacije artikala i automatizovano naručivanje. Uz Atlas, naši klijenti su podigli tačnost zaliha sa 81% na 99,4%.',
+      en: 'Exact stock levels, real-time item tracking, and automated reordering. With Atlas, our clients boosted inventory accuracy from 81% to 99.4%.',
     },
   },
   sonar: {
@@ -66,12 +66,12 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '53, 182, 240',
     accentDeep: '#1180C5',
     title: {
-      bs: 'Shape9 Sonar · autonomni nadzor poslovnih parametara dok Vi vodite firmu',
-      en: 'Shape9 Sonar · someone watching the numbers when nobody is looking',
+      bs: 'Shape9 Sonar · Proaktivni AI nadzor poslovnih metrika',
+      en: 'Shape9 Sonar · Proactive AI Oversight of Business Metrics',
     },
     description: {
-      bs: 'Sonar neprekidno prati Vaše podatke, detektuje devijacije i automatski otvara radni nalog prije nego što nastane finansijski minus. Otkrio je tihi pad posjeta za samo 15 minuta.',
-      en: 'Sonar watches your numbers on its own, spots deviations and opens a ticket before the miss gets expensive. It caught a silent traffic drop in 15 minutes.',
+      bs: 'AI agent koji neprekidno prati stope konverzije, uspješnost transakcija i stabilnost sistema, te šalje trenutna upozorenja čim uoči odstupanja.',
+      en: 'An autonomous AI agent that continuously monitors conversion rates, transaction success, and system stability, sending instant alerts the moment anomalies occur.',
     },
   },
   mode: {
@@ -80,12 +80,12 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '255, 97, 112',
     accentDeep: '#D6293D',
     title: {
-      bs: 'Shape9 Mode · razvijeno za butike i maloprodajne lance',
-      en: 'Shape9 Mode · built for boutiques',
+      bs: 'Shape9 Mode · Savremeni maloprodajni sistem',
+      en: 'Shape9 Mode · Modern Retail Management System',
     },
     description: {
-      bs: 'Od skeniranja artikla do vrata kupca, bez papira i Excel tabela. Kasa, magacin i maloprodajni objekti uvezani u realnom vremenu.',
-      en: 'From scanning an item to the customer\'s door, with no paper and no spreadsheet. Till, stockroom and shops in one system, with stock that changes at the moment of sale.',
+      bs: 'Vodite maloprodaju bez papira i Excel tabela. Kasa, magacin i prodavnice uvezani su u realnom vremenu, od prijema robe do isporuke kupcu.',
+      en: 'Run your retail operations without paper or spreadsheets. Connect your till, stockroom, and stores in real time, from procurement to final delivery.',
     },
   },
   libra: {
@@ -94,12 +94,12 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '61, 214, 140',
     accentDeep: '#17A56B',
     title: {
-      bs: 'Shape9 Libra · pošta i računi koji se sortiraju sami',
-      en: 'Shape9 Libra · post that sorts itself',
+      bs: 'Shape9 Libra · Automatsko sortiranje i obrada dokumenata',
+      en: 'Shape9 Libra · Intelligent Automated Document Sorting',
     },
     description: {
-      bs: 'Dokumenti stižu putem emaila, fotografija sa telefona i bankovnih izvoda. Libra prepoznaje sadržaj, pronalazi klijenta i automatski arhivira fajl u tačan folder.',
-      en: 'Documents arrive by email, from a phone and from the bank. Libra reads what arrived, recognises whose it is and files it in the right folder.',
+      bs: 'Bez obzira stižu li dokumenti mailom ili kao fotografije s telefona, Libra prepoznaje sadržaj, locira klijenta i sama ih sortira u tačan folder.',
+      en: 'Whether documents arrive via email or as mobile photos, Libra reads the content, identifies the client, and automatically files them into the right folder.',
     },
   },
   /* Vesta's name was approved by Mersad on 2026-07-30 and this page is
@@ -117,12 +117,12 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '88, 141, 250',
     accentDeep: '#043FC6',
     title: {
-      bs: 'Shape9 Vesta · imovina grupacije od narudžbenice do otpisa',
-      en: 'Shape9 Vesta · group assets, from the purchase order to the write-off',
+      bs: 'Shape9 Vesta · Upravljanje imovinom kompanije od nabavke do otpisa',
+      en: 'Shape9 Vesta · Enterprise Asset Management from Procurement to Disposal',
     },
     description: {
-      bs: 'Jedan sistem za svaku stvar koju grupacija posjeduje. Vlasništvo i posjed odvojeno, kretanje između firmi zabilježeno, i terenski rad na telefonu koji radi i bez signala.',
-      en: 'One system for everything a group of companies owns. Ownership and possession kept apart, movement between companies recorded, and field work on a phone that runs with no signal.',
+      bs: 'Jedinstven i pregledan sistem za praćenje, održavanje i upravljanje kompletnom imovinom koju Vaša kompanija posjeduje.',
+      en: 'One centralized system to track, maintain, and manage every physical and digital asset your company owns.',
     },
   },
   bell: {
@@ -131,12 +131,12 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '156, 203, 36',
     accentDeep: '#62820D',
     title: {
-      bs: 'Shape9 Bell · telefonski sistem koji prepoznaje pozivaoca',
-      en: 'Shape9 Bell · a phone system that knows who is calling',
+      bs: 'Shape9 Bell · Pametna VoIP centrala sa prepoznavanjem kupaca',
+      en: 'Shape9 Bell · Smart VoIP Telephony with Customer Recognition',
     },
     description: {
-      bs: 'Dolazni i odlazni pozivi na jednom mjestu, profil klijenta koji se otvara sam čim telefon zazvoni, i snimak i statistika svakog razgovora.',
-      en: 'Calls in and out in one place, the customer record opening by itself when the phone rings, and a recording and a figure for every conversation.',
+      bs: 'Cloud telefonsko rješenje za call centre i prodajne timove koje agentima pruža potpun istorijski uvid u interakcije s klijentom tokom samog poziva.',
+      en: 'A cloud-based telephony solution for call centers and sales teams, providing full context and interaction history the moment a customer calls.',
     },
   },
   hive: {
@@ -145,12 +145,12 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '218, 179, 35',
     accentDeep: '#8C710C',
     title: {
-      bs: 'Shape9 Hive · narudžba od prve poruke do naplate',
-      en: 'Shape9 Hive · one order, from the first message to the money',
+      bs: 'Shape9 Hive · Omnichannel upravljanje prodajom i narudžbama',
+      en: 'Shape9 Hive · End-to-End Omnichannel Sales Management',
     },
     description: {
-      bs: 'Narudžbe sa Instagrama, telefona i sajta u jednom pregledu, kroz deset faza od prvog kontakta do naplate ili povrata.',
-      en: 'Orders from Instagram, the phone and the website in one view, through ten stages from first contact to payment or refund.',
+      bs: 'Fleksibilan sistem koji objedinjuje sve Vaše prodajne kanale (Instagram, telefon, web) u jedno okruženje stvoreno za velike dnevne količine narudžbi.',
+      en: 'A configurable platform that consolidates all your sales channels (Instagram, phone, web) into a single workspace built for high daily order volumes.',
     },
   },
   echo: {
@@ -159,12 +159,12 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '41, 209, 201',
     accentDeep: '#0F8680',
     title: {
-      bs: 'Shape9 Echo · SMS kampanje sa uvidom ko je otvorio',
-      en: 'Shape9 Echo · SMS campaigns, and you see who opened them',
+      bs: 'Shape9 Echo · Pametne SMS kampanje uz detaljnu analitiku',
+      en: 'Shape9 Echo · Branded SMS Campaigns with Click Tracking',
     },
     description: {
-      bs: 'Poruka pod imenom Vaše firme, odmah ili u zakazan termin, uz praćenje klikova. Komunikacija je jednosmjerna i to kažemo unaprijed.',
-      en: 'A message under your own company name, now or scheduled, with click tracking. It only goes one way, and we say so up front.',
+      bs: 'Jednosmjerne SMS kampanje sa Vašim potpisom. Pošaljite odmah ili zakažite slanje pod imenom Vašeg brenda, uz napredno praćenje klikova.',
+      en: 'One-way branded SMS campaigns. Send instantly or schedule messages under your company name with advanced link and click tracking.',
     },
   },
   neon: {
@@ -173,12 +173,12 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '252, 165, 205',
     accentDeep: '#BD588A',
     title: {
-      bs: 'Shape9 Neon · Viber kampanje usmjerene po ranijoj kupovini',
-      en: 'Shape9 Neon · Viber campaigns aimed by what people bought before',
+      bs: 'Shape9 Neon · Ciljane Viber kampanje i segmentacija',
+      en: 'Shape9 Neon · Targeted Viber Campaigns & Segmentation',
     },
     description: {
-      bs: 'Fotografija, tekst i link u jednoj poruci, podijeljeni po tome šta je ko ranije kupovao, uz pregled ko je primio, otvorio i kliknuo.',
-      en: 'A photo, text and a link in one message, split by what each person bought before, with a view of who received, opened and clicked.',
+      bs: 'Napredna platforma za razmjenu poruka koja podržava bogate formate sadržaja, preciznu segmentaciju publike i ciljanu dostavu poruka.',
+      en: 'A rich messaging platform supporting extended content formats, precise audience segmentation, and highly targeted message delivery.',
     },
   },
   iris: {
@@ -187,12 +187,12 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '198, 97, 220',
     accentDeep: '#800A96',
     title: {
-      bs: 'Shape9 Iris · pitate običnim jezikom, dobijete tačan podatak',
-      en: 'Shape9 Iris · ask in plain words, get the number',
+      bs: 'Shape9 Iris · AI asistent za analizu poslovnih podataka',
+      en: 'Shape9 Iris · AI-Powered Business Data & Metrics Assistant',
     },
     description: {
-      bs: 'AI asistent nad Vašim poslovnim podacima. Odgovara samo iz onoga što imate, zadržava kontekst razgovora, i kaže kad podatka nema.',
-      en: 'An AI assistant over your business data. It answers only from what you have, keeps the thread of the conversation, and says so when the number is not there.',
+      bs: 'AI asistent za Vaše poslovne podatke i metrike. Odgovara isključivo na osnovu Vaših internih dokumenata i precizno pamti tok razgovora.',
+      en: 'An AI assistant for your business data and metrics. Answers are generated exclusively from your secure data while maintaining full conversational context.',
     },
   },
   custom: {
@@ -201,12 +201,12 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '78, 172, 205',
     accentDeep: '#006E8B',
     title: {
-      bs: 'Namjenski softver po mjeri · Shape9',
-      en: 'Custom Development Services · Shape9',
+      bs: 'Razvoj softvera po mjeri · Shape9',
+      en: 'Custom Software Development Services · Shape9',
     },
     description: {
-      bs: 'Usluge razvoja softvera izgrađene oko vaših poslovnih potreba. Web i mobilne aplikacije, AI rješenja, custom ERP/CRM i analitika.',
-      en: 'Custom development services built around your business needs. Web and mobile apps, AI solutions, custom ERP/CRM, and data analytics.',
+      bs: 'Razvoj softvera prilagođen Vašem poslovanju. Kreiramo web i mobilne aplikacije, AI rješenja, napredne ERP/CRM sisteme i analitiku krojenu po mjeri.',
+      en: 'Software development tailored to your business. We build web and mobile apps, AI solutions, advanced ERP/CRM systems, and custom analytics.',
     },
   },
   about: {
@@ -219,8 +219,8 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
       en: 'About Us · Shape9',
     },
     description: {
-      bs: 'Razumijemo poslovne operacije, inženjering je naš alat. Deset godina rada, preko dvije stotine isporučenih sistema i pristup bez praznih obećanja.',
-      en: 'We know business, engineering is our tool. Ten years, two hundred plus delivered projects, and how we actually work.',
+      bs: 'Razumijemo kako biznis funkcioniše, inženjering je naš alat. Deset godina rada, preko 200 isporučenih sistema i pristup bez praznih obećanja.',
+      en: 'We look at tech through a business lens, engineering is simply our tool. Ten years of experience, 200+ delivered systems, and no empty promises.',
     },
   },
   radovi: {
@@ -229,12 +229,12 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '78, 172, 205',
     accentDeep: '#006E8B',
     title: {
-      bs: 'Portfolio · Shape9',
-      en: 'Portfolio · Shape9',
+      bs: 'Portfolio · Naši projekti · Shape9',
+      en: 'Portfolio · Our Work · Shape9',
     },
     description: {
-      bs: 'Odabrani digitalni projekti i poslovni sistemi koje smo uspješno implementirali u praksi. Od enterprise WMS platformi do AI analitike i web aplikacija.',
-      en: 'Selected digital systems and products we built and deployed into production. From enterprise warehouse platforms to AI analytics and custom web systems.',
+      bs: 'Odabrani digitalni sistemi i proizvodi koje smo uspješno pustili u produkciju, od enterprise WMS platformi do napredne AI analitike.',
+      en: 'Selected digital systems and products we built and deployed into production, from enterprise WMS platforms to advanced AI analytics.',
     },
   },
   radoviWms: {
@@ -243,12 +243,12 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '255, 166, 88',
     accentDeep: '#E3831F',
     title: {
-      bs: 'Skladište u dvanaest država · Shape9',
-      en: 'A warehouse across twelve countries · Shape9',
+      bs: 'Studija slučaja: Skladište u 12 država · Shape9',
+      en: 'Case Study: A Warehouse Across 12 Countries · Shape9',
     },
     description: {
-      bs: 'Dvanaest skladišta na jednom sistemu za šest sedmica. Tačnost zaliha sa 81 na 99,4 posto, greške u pripremi narudžbi manje za 91 posto.',
-      en: 'Twelve warehouses on one system in six weeks. Inventory accuracy from 81 to 99.4 percent, picking errors down by 91 percent.',
+      bs: 'Kako smo uvezali 12 skladišta na jedan sistem za samo 6 sedmica. Tačnost zaliha podignuta na 99,4%, a greške u pripremi smanjene za 91%.',
+      en: 'How we connected 12 warehouses to a single system in 6 weeks. Inventory accuracy reached 99.4%, while picking errors dropped by 91%.',
     },
   },
   radoviMonad: {
@@ -257,12 +257,12 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '53, 182, 240',
     accentDeep: '#1180C5',
     title: {
-      bs: 'AI analitičar za affiliate platformu · Shape9',
-      en: 'An AI analyst for an affiliate platform · Shape9',
+      bs: 'Studija slučaja: AI analitičar za affiliate platformu · Shape9',
+      en: 'Case Study: AI Analyst for an Affiliate Platform · Shape9',
     },
     description: {
-      bs: 'Samostalan agent koji prati brojke svakih petnaest minuta, otvara tikete i javlja na Slack. Dvadeset četiri zadatka dnevno, nijedna greška u deset dana.',
-      en: 'An autonomous agent checking the numbers every fifteen minutes, opening tickets and posting to Slack. Twenty four tasks a day, zero errors in ten days.',
+      bs: 'Autonomni AI agent koji prati metriku svakih 15 minuta, otvara tikete i izvještava na Slacku. 24 zadatka dnevno, nula grešaka u 10 dana.',
+      en: 'An autonomous AI agent checking numbers every 15 minutes, opening tickets, and reporting to Slack. 24 tasks a day, zero errors in 10 days.',
     },
   },
   privacy: {
@@ -272,11 +272,11 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentDeep: '#006E8B',
     title: {
       bs: 'Politika privatnosti · Shape9',
-      en: 'Privacy policy · Shape9',
+      en: 'Privacy Policy · Shape9',
     },
     description: {
-      bs: 'Kako Shape9 obrađuje podatke iz kontakt forme i podatke klijenata.',
-      en: 'How Shape9 processes contact form submissions and client data.',
+      bs: 'Saznajte kako Shape9 štiti i obrađuje podatke klijenata i podatke prikupljene putem kontakt formi na našoj web stranici.',
+      en: 'Learn how Shape9 securely processes and protects client data and submissions collected through our website\'s contact forms.',
     },
   },
 };

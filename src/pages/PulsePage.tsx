@@ -104,9 +104,9 @@ const CAPABILITIES = [
   },
   {
     icon: FileText,
-    titleBs: 'Izvještaj s onim što odstupa',
-    titleEn: 'A report of what does not match',
-    descBs: 'Za svaki poziv dobijete sažetak dogovorenog, a odvojeno i popis onoga što odstupa od Vaših pravila. Radite po popisu, ne po snimcima.',
+    titleBs: 'Izvještaj o svakom pozivu',
+    titleEn: 'A report of every call',
+    descBs: 'Za svaki poziv dobijete sažetak i oznaku za ono što odstupa od Vaših pravila. Radite po popisu, ne po snimcima.',
     descEn: 'For every call you get a summary of what was agreed, and separately a list of everything that departs from your rules. You work from the list, not from recordings.',
   },
   {
@@ -120,14 +120,14 @@ const CAPABILITIES = [
     icon: BarChart3,
     titleBs: 'Analitika i trendovi tima',
     titleEn: 'The view across the team',
-    descBs: 'Performanse agenata, učestalost tema i kretanje korisničkog zadovoljstva kroz vrijeme.',
+    descBs: 'Performanse agenata, učestalost pitanja i kretanje korisničkog zadovoljstva kroz vrijeme.',
     descEn: 'Agent scores, the most common customer questions and movement over time, in one place.',
   },
   {
     icon: ShieldCheck,
     titleBs: 'Sigurnost i usklađenost',
     titleEn: 'Data protection',
-    descBs: 'Napredna enkripcija podataka i automatizovano brisanje u skladu s GDPR propisima.',
+    descBs: 'Napredna enkripcija podataka i automatizovano brisanje.',
     descEn: 'Encryption at rest and in transit, and deletion on the schedule you set.',
   },
 ];
@@ -178,13 +178,13 @@ export const PulsePage: React.FC<PulsePageProps> = ({ onNavigate }) => {
         </div>
 
         <h1 className="hero-animate-2 hero-title max-w-4xl">
-          <span className="l-bs">Snimate svaki razgovor. Ko ih zaista preslušava?</span>
-          <span className="l-en">You record every call. Who listens to them?</span>
+          <span className="l-bs">Snimate svaki poziv. Koliko ih stvarno preslušate?</span>
+          <span className="l-en">You record every call. How much do you actually listen to?</span>
         </h1>
 
         <p className="hero-animate-3 lead mx-auto mb-8 sm:mb-12 text-[var(--body)] max-w-3xl">
           <span className="l-bs">
-            <span className="text-[#A98CFF] font-mono">Pulse</span> automatski provjerava svaki snimljeni poziv prema parametrima koje sami postavite i vraća precizan analitički izvještaj. Nema novih programa za operatere i nema potrebe za internim inženjerima.
+            <span className="text-[#A98CFF] font-mono">Pulse</span> automatski provjerava svaki snimljeni poziv prema pravilima koje sami postavite i vraća precizan analitički izvještaj. Nema novih programa za operatere i nema potrebe za internim inženjerima.
           </span>
           <span className="l-en">
             <span className="text-[#A98CFF] font-mono">Pulse</span> checks every recorded call against the rules you set and returns a precise report. No new program for your agents, and no engineer needed on your side.
@@ -367,7 +367,7 @@ export const PulsePage: React.FC<PulsePageProps> = ({ onNavigate }) => {
 
               <ul className="space-y-4 max-w-2xl mx-auto">
                 {[
-                  { bs: 'Verifikacija pravila razgovora na 100% poziva, a ne na malom uzorku', en: 'Call rules checked on every call, not on a sample' },
+                  { bs: 'Verifikacija pravila razgovora na 100% poziva, ne samo na malom uzorku', en: 'Call rules checked on every call, not on a sample' },
                   { bs: 'Jasna lista pitanja na koja agenti nemaju pripremljene odgovore', en: 'A list of questions agents have no ready answer for' },
                   { bs: 'Uvid u tačne uzroke eskalacija i nezadovoljstva korisnika', en: 'The reasons conversations escalate' },
                   { bs: 'Ujednačeno i objektivno ocjenjivanje svih članova tima', en: 'Agent scores against the same rules for everyone' },

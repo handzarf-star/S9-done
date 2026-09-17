@@ -27,10 +27,10 @@ const CUSTOM_SERVICES = [
   {
     id: 'web',
     icon: Globe,
-    titleBs: 'Web aplikacije',
-    titleEn: 'Web Applications',
-    descBs: 'Prilagođene web platforme i portali izgrađeni modernim tehnologijama za maksimalnu brzinu, sigurnost i skalabilnost.',
-    descEn: 'Custom web apps built with modern frameworks like React, Laravel, Vue, and Node.js.',
+    titleBs: 'Web platforme i aplikacije',
+    titleEn: 'Web Applications & Portals',
+    descBs: 'Namjenske web platforme i portali visokih performansi, projektovani za maksimalnu brzinu, sigurnost i nesmetano skaliranje poslovanja.',
+    descEn: 'Custom web platforms and enterprise portals engineered for high performance, robust security, and seamless operational scaling.',
     techs: ['React', 'Laravel', 'Vue.js', 'Node.js'],
   },
   {
@@ -38,44 +38,44 @@ const CUSTOM_SERVICES = [
     icon: Smartphone,
     titleBs: 'Mobilne aplikacije',
     titleEn: 'Mobile Applications',
-    descBs: 'Nativna i cross-platform mobilna rješenja za iOS i Android koja Vašem terenskom timu i klijentima pružaju besprijekorno iskustvo.',
-    descEn: 'Native and cross-platform mobile solutions for iOS and Android.',
+    descBs: 'Rješenja za iOS i Android koja Vašem terenskom timu i klijentima osiguravaju brz, pouzdan i intuitivan rad.',
+    descEn: 'Native and cross-platform iOS and Android applications designed for intuitive field execution and client engagement.',
     techs: ['React Native', 'Flutter', 'Swift', 'Kotlin'],
   },
   {
     id: 'ai',
     icon: Sparkles,
-    titleBs: 'AI i inteligentni sistemi',
-    titleEn: 'AI Solutions',
-    descBs: 'Automatizacija složenih poslovnih odluka, obrada prirodnog jezika i prediktivni modeli integrisani u Vaše svakodnevne procese.',
-    descEn: 'Intelligent systems powered by machine learning and AI.',
+    titleBs: 'Primijenjeni AI i inteligentni sistemi',
+    titleEn: 'Applied AI & Intelligent Automation',
+    descBs: 'Automatizacija operativnih odluka, napredna obrada dokumenata i prediktivni modeli integrisani direktno u Vaše svakodnevne radne tokove.',
+    descEn: 'Decision automation, document intelligence, and predictive models integrated directly into your core business workflows.',
     techs: ['TensorFlow', 'PyTorch', 'OpenAI', 'LangChain'],
   },
   {
     id: 'erp-crm',
     icon: Building2,
-    titleBs: 'Prilagođeni ERP & CRM',
-    titleEn: 'Custom ERP/CRM',
-    descBs: 'Namjenski poslovni softver koji objedinjuje prodajne lijevke, operacije i resurse tačno prema načinu na koji Vaš tim posluje.',
-    descEn: 'Tailored enterprise solutions that streamline operations.',
+    titleBs: 'Namjenski ERP i CRM sistemi',
+    titleEn: 'Custom ERP & CRM Systems',
+    descBs: 'Poslovni softver izgrađen tačno po Vašoj mjeri, koji povezuje prodajne tokove, operacije i resurse bez nametanja tuđih šablona.',
+    descEn: 'Bespoke enterprise platforms that unify sales pipelines, operations, and resource planning around how your business actually runs.',
     techs: ['Dynamics 365', 'SQL', 'AWS', 'Azure'],
   },
   {
     id: 'cloud',
     icon: Cloud,
-    titleBs: 'Cloud rješenja i infrastruktura',
-    titleEn: 'Cloud Solutions',
-    descBs: 'Pouzdana cloud arhitektura, automatizovane migracije i DevOps procesi koji garantuju 99.9% dostupnost i optimalne troškove.',
-    descEn: 'Robust cloud infrastructure and migration services.',
+    titleBs: 'Cloud arhitektura i infrastruktura',
+    titleEn: 'Cloud Infrastructure & DevOps',
+    descBs: 'Skalabilna cloud arhitektura, sigurne migracije i automatizovano upravljanje sistemima uz garantovanu dostupnost od 99,9% i optimizovane troškove.',
+    descEn: 'Resilient cloud architecture, automated data migrations, and DevOps engineering delivering 99.9% uptime and optimized operational costs.',
     techs: ['AWS', 'GCP', 'Azure', 'Kubernetes'],
   },
   {
     id: 'analytics',
     icon: BarChart3,
-    titleBs: 'Poslovna analitika i BI',
-    titleEn: 'Data Analytics',
-    descBs: 'Podaci Vam stoje razbacani po sistemima. Spajamo ih na jedno mjesto, da odluku donesete dok još nešto znači.',
-    descEn: 'Transform raw data into actionable insights.',
+    titleBs: 'Poslovna analitika i BI izvještavanje',
+    titleEn: 'Business Intelligence & Analytics',
+    descBs: 'Povezujemo podatke rasute po različitim sistemima u jedinstven pregled, kako biste strateške odluke donosili na bazi činjenica, a ne pretpostavki.',
+    descEn: 'Consolidate fragmented data across disconnected systems into a unified executive view, enabling decisions driven by verified numbers rather than guesswork.',
     techs: ['Python', 'BigQuery', 'Tableau', 'Power BI'],
   },
 ];
@@ -83,31 +83,31 @@ const CUSTOM_SERVICES = [
 const ENGINEERING_STEPS = [
   {
     step: '01',
-    titleBs: 'Dubinska analiza i specifikacija',
-    titleEn: 'Deep discovery and scoping',
-    descBs: 'Zajedno mapiramo Vaše specifične poslovne tokove, identificiramo uska grla i precizno definišemo tehničku arhitekturu.',
-    descEn: 'We map your exact operational workflows, isolate bottlenecks, and establish a clear technical specification.',
+    titleBs: 'Dubinska analiza i definisanje opsega',
+    titleEn: 'Technical Discovery & Scoping',
+    descBs: 'Zajedno mapiramo Vaše stvarne poslovne procese, izolujemo uska grla i precizno definišemo tehničke zahtjeve prije početka razvoja.',
+    descEn: 'We map your exact operational workflows, isolate critical bottlenecks, and establish rigorous technical specifications before engineering begins.',
   },
   {
     step: '02',
-    titleBs: 'Arhitektura i UX/UI prototip',
-    titleEn: 'Architecture and clickable prototype',
-    descBs: 'Dizajniramo intuitivan korisnički interfejs i robusnu bazu podataka. Testirate prototip prije nego što se napiše prva linija koda.',
-    descEn: 'We design intuitive interfaces and a resilient data architecture. You test the interactive prototype before coding starts.',
+    titleBs: 'Arhitektura sistema i interaktivni prototip',
+    titleEn: 'System Architecture & Clickable Prototype',
+    descBs: 'Projektujemo skalabilnu bazu podataka i čist korisnički interfejs, omogućavajući Vam da testirate klikabilan model prije nego što napišemo prvu liniju koda.',
+    descEn: 'We architect a robust data layer and intuitive UI, allowing you to validate a functional interactive prototype before backend development starts.',
   },
   {
     step: '03',
-    titleBs: 'Agilni razvoj i iterativno testiranje',
-    titleEn: 'Agile sprints and iterative QA',
-    descBs: 'Razvijamo u dvosedmičnim sprintovima uz kontinuiranu demonstraciju funkcionalnosti. Redovno vidite napredak i dajete povratne informacije.',
-    descEn: 'We engineer in two-week sprints with continuous demonstrations. You review live progress and steer iterations.',
+    titleBs: 'Agilni razvoj i dvosedmični sprintovi',
+    titleEn: 'Agile Sprints & Continuous Testing',
+    descBs: 'Razvijamo u dvosedmičnim ciklusima uz redovne demonstracije funkcionalnosti, tako da u svakom trenutku vidite opipljiv napredak i usmjeravate dalji rad.',
+    descEn: 'We build in two-week sprint cycles with live feature demonstrations, ensuring full transparency, early validation, and agile iteration.',
   },
   {
     step: '04',
-    titleBs: 'Puštanje u produkciju i dugoročna podrška',
-    titleEn: 'Deployment, training, and SLA support',
-    descBs: 'Obučavamo Vaš tim, vršimo sigurnu migraciju podataka i osiguravamo cjelodnevno održavanje i proaktivno skaliranje.',
-    descEn: 'We train your team, migrate data safely, and provide ongoing maintenance, monitoring, and proactive scaling.',
+    titleBs: 'Uvođenje u produkciju i dugoročni SLA nadzor',
+    titleEn: 'Production Deployment & SLA Support',
+    descBs: 'Provodimo sigurnu migraciju podataka, obučavamo Vaš tim za rad i preuzimamo kontinuirano održavanje, sigurnosni nadzor i skaliranje sistema.',
+    descEn: 'We execute seamless data migration, train your teams, and guarantee ongoing system health, proactive monitoring, and enterprise SLA coverage.',
   },
 ];
 
@@ -134,21 +134,21 @@ export const CustomPage: React.FC<CustomPageProps> = ({ onNavigate }) => {
           <span className="s9-badge text-[var(--cyan)] bg-[rgba(var(--cyan-rgb),0.1)] border border-[rgba(var(--cyan-rgb),0.25)] inline-flex items-center gap-2 mx-auto">
             <Sparkles className="w-3.5 h-3.5" />
             <span className="l-bs">Namjenski softver i inženjering</span>
-            <span className="l-en">Custom Development Services</span>
+            <span className="l-en">Custom Software Engineering</span>
           </span>
         </div>
 
         <h1 className="hero-animate-2 hero-title max-w-4xl">
-          <span className="l-bs">Razvoj softvera koji prati Vaše poslovanje, a ne tuđe šablone.</span>
-          <span className="l-en">Software built around how your business already works.</span>
+          <span className="l-bs">Razvoj softvera koji se prilagođava Vašem poslovanju, a ne tuđim šablonima.</span>
+          <span className="l-en">Enterprise software built around how your business actually operates, not rigid industry templates.</span>
         </h1>
 
         <p className="hero-animate-3 lead mx-auto mb-8 sm:mb-12 text-[var(--body)] max-w-3xl leading-relaxed">
           <span className="l-bs">
-            Kada gotova rješenja sa tržišta postanu ograničenje za Vaš rast, projektujemo namjenske digitalne platforme: od arhitekture i dizajna do stabilne produkcije i dugoročnog održavanja.
+            Kada gotovi alati sa tržišta postanu kočnica Vašeg rasta, gradimo namjenske platforme po mjeri: od arhitekture i dizajna do stabilne produkcije i dugoročnog održavanja.
           </span>
           <span className="l-en">
-            When ready made software becomes the thing holding you back, we build the platform instead: architecture and design through to stable production and long term upkeep.
+            When off-the-shelf tools constrain your growth, we engineer bespoke platforms from the ground up: from architecture and UI to stable production and ongoing upkeep.
           </span>
         </p>
 
@@ -158,7 +158,7 @@ export const CustomPage: React.FC<CustomPageProps> = ({ onNavigate }) => {
             onClick={(e) => go(e, '#custom-form')}
             className="btn-primary w-full sm:w-auto py-3.5 px-8 text-sm font-semibold focus-ring"
           >
-            <span className="l-bs">Opišite Vaš projekat</span>
+            <span className="l-bs">Predstavite Vaš projekat</span>
             <span className="l-en">Discuss your project</span>
             <ArrowRight className="w-4 h-4 ml-1" />
           </a>
@@ -169,8 +169,8 @@ export const CustomPage: React.FC<CustomPageProps> = ({ onNavigate }) => {
             className="btn-ghost py-3 px-7 text-sm font-semibold focus-ring cursor-pointer inline-flex items-center justify-center gap-2 w-full sm:w-auto"
           >
             <Calendar className="w-4 h-4 text-[var(--cyan)]" />
-            <span className="l-bs">Zakažite razgovor</span>
-            <span className="l-en">Book a Call</span>
+            <span className="l-bs">Zakažite konsultacije</span>
+            <span className="l-en">Schedule a consultation</span>
           </button>
         </div>
       </section>
@@ -181,16 +181,16 @@ export const CustomPage: React.FC<CustomPageProps> = ({ onNavigate }) => {
           <div className="section-head">
             <div className="s9-badge bg-[rgba(var(--cyan-rgb),0.08)] border border-[rgba(var(--cyan-rgb),0.2)] text-[var(--cyan)] text-xs font-semibold uppercase tracking-wider mb-4 sm:mb-6">
               <Award className="w-3.5 h-3.5" />
-              <span className="l-bs">Naši rezultati</span>
-              <span className="l-en">Proven Track Record</span>
+              <span className="l-bs">Provjereni rezultati</span>
+              <span className="l-en">Proven track record</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-4 sm:mb-6 leading-tight">
-              <span className="l-bs">Sistemi koje smo izgradili rade svaki dan</span>
-              <span className="l-en">The systems we built are running every day</span>
+              <span className="l-bs">Sistemi koje smo izgradili svakodnevno pokreću operacije klijenata</span>
+              <span className="l-en">The systems we engineered power daily enterprise operations</span>
             </h2>
             <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed">
-              <span className="l-bs">Naši rezultati govore sami za sebe. Evo šta smo postigli zajedno s našim klijentima.</span>
-              <span className="l-en">Our track record speaks for itself. Here's what we've accomplished together with our clients.</span>
+              <span className="l-bs">Naš uspjeh se mjeri operativnom efikasnošću klijenata: evo šta smo postigli u dosadašnjim partnerstvima.</span>
+              <span className="l-en">Our impact is measured by client efficiency: here is what we have delivered together.</span>
             </p>
           </div>
 
@@ -199,12 +199,12 @@ export const CustomPage: React.FC<CustomPageProps> = ({ onNavigate }) => {
             <div className="s9-card p-6 text-center flex flex-col justify-center items-center rounded-2xl sm:rounded-3xl">
               <div className="text-3xl sm:text-4xl font-extrabold text-[var(--cyan)] font-mono mb-2">150+</div>
               <div className="text-sm font-bold text-[var(--ink)] mb-1">
-                <span className="l-bs">Isporučenih projekata</span>
-                <span className="l-en">Projects Delivered</span>
+                <span className="l-bs">Realizovanih projekata</span>
+                <span className="l-en">Projects delivered</span>
               </div>
               <div className="text-xs text-[var(--muted)]">
-                <span className="l-bs">Uspješna digitalna rješenja</span>
-                <span className="l-en">Successful digital solutions</span>
+                <span className="l-bs">Uspješno isporučena digitalna rješenja</span>
+                <span className="l-en">Scaled digital platforms</span>
               </div>
             </div>
 
@@ -212,12 +212,12 @@ export const CustomPage: React.FC<CustomPageProps> = ({ onNavigate }) => {
             <div className="s9-card p-6 text-center flex flex-col justify-center items-center rounded-2xl sm:rounded-3xl">
               <div className="text-3xl sm:text-4xl font-extrabold text-[var(--cyan)] font-mono mb-2">12+</div>
               <div className="text-sm font-bold text-[var(--ink)] mb-1">
-                <span className="l-bs">Država u kojima radimo</span>
-                <span className="l-en">Countries Served</span>
+                <span className="l-bs">Marketi na kojima radimo</span>
+                <span className="l-en">Markets served</span>
               </div>
               <div className="text-xs text-[var(--muted)]">
-                <span className="l-bs">Globalna baza klijenata</span>
-                <span className="l-en">Global client base</span>
+                <span className="l-bs">Međunarodna baza klijenata</span>
+                <span className="l-en">Regional and international presence</span>
               </div>
             </div>
 
@@ -226,11 +226,11 @@ export const CustomPage: React.FC<CustomPageProps> = ({ onNavigate }) => {
               <div className="text-3xl sm:text-4xl font-extrabold text-[var(--cyan)] font-mono mb-2">98%</div>
               <div className="text-sm font-bold text-[var(--ink)] mb-1">
                 <span className="l-bs">Zadovoljstvo klijenata</span>
-                <span className="l-en">Client Satisfaction</span>
+                <span className="l-en">Client retention & satisfaction</span>
               </div>
               <div className="text-xs text-[var(--muted)]">
-                <span className="l-bs">Dugoročna partnerstva</span>
-                <span className="l-en">Happy partnerships</span>
+                <span className="l-bs">Dugoročna strateška partnerstva</span>
+                <span className="l-en">Long-term enterprise partnerships</span>
               </div>
             </div>
 
@@ -238,12 +238,12 @@ export const CustomPage: React.FC<CustomPageProps> = ({ onNavigate }) => {
             <div className="s9-card p-6 text-center flex flex-col justify-center items-center rounded-2xl sm:rounded-3xl">
               <div className="text-3xl sm:text-4xl font-extrabold text-[var(--cyan)] font-mono mb-2">10+</div>
               <div className="text-sm font-bold text-[var(--ink)] mb-1">
-                <span className="l-bs">Godina iskustva</span>
-                <span className="l-en">Years Experience</span>
+                <span className="l-bs">Godina inženjerskog iskustva</span>
+                <span className="l-en">Years of engineering experience</span>
               </div>
               <div className="text-xs text-[var(--muted)]">
-                <span className="l-bs">Industrijska ekspertiza</span>
-                <span className="l-en">Industry expertise</span>
+                <span className="l-bs">Dokazana industrijska ekspertiza</span>
+                <span className="l-en">Deep domain expertise</span>
               </div>
             </div>
           </div>
@@ -256,16 +256,16 @@ export const CustomPage: React.FC<CustomPageProps> = ({ onNavigate }) => {
           <div className="section-head">
             <div className="s9-badge bg-[rgba(var(--cyan-rgb),0.08)] border border-[rgba(var(--cyan-rgb),0.2)] text-[var(--cyan)] text-xs font-semibold uppercase tracking-wider mb-4 sm:mb-6">
               <Layers className="w-3.5 h-3.5" />
-              <span className="l-bs">Oblasti ekspertize</span>
-              <span className="l-en">Core Capabilities</span>
+              <span className="l-bs">Inženjerske kompetencije</span>
+              <span className="l-en">Core capabilities</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-4 sm:mb-6 leading-tight">
-              <span className="l-bs">Sveobuhvatna inženjerska rješenja</span>
-              <span className="l-en">Full-Spectrum Engineering Solutions</span>
+              <span className="l-bs">Cjelovita softverska rješenja po mjeri</span>
+              <span className="l-en">Full-cycle software development</span>
             </h2>
             <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed">
-              <span className="l-bs">Gradimo brza, skalabilna i pouzdana rješenja prilagođena Vašim specifičnim operacijama.</span>
-              <span className="l-en">We build fast, scalable, and resilient systems tailored to your unique workflows.</span>
+              <span className="l-bs">Projektujemo brze, skalabilne i stabilne sisteme koji se u potpunosti uklapaju u Vaše operativne tokove.</span>
+              <span className="l-en">We build fast, resilient, and scalable systems architected around your unique operational model.</span>
             </p>
           </div>
 
@@ -318,12 +318,12 @@ export const CustomPage: React.FC<CustomPageProps> = ({ onNavigate }) => {
           <div className="section-head">
             <div className="s9-badge bg-[rgba(var(--cyan-rgb),0.08)] border border-[rgba(var(--cyan-rgb),0.2)] text-[var(--cyan)] text-xs font-semibold uppercase tracking-wider mb-4 sm:mb-6">
               <Cpu className="w-3.5 h-3.5" />
-              <span className="l-bs">Strukturiran proces</span>
-              <span className="l-en">How we deliver</span>
+              <span className="l-bs">Metodologija isporuke</span>
+              <span className="l-en">Delivery methodology</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-4 sm:mb-6 leading-tight">
-              <span className="l-bs">Od prvog sastanka do stabilne produkcije</span>
-              <span className="l-en">From initial discovery to stable production</span>
+              <span className="l-bs">Od prvog razgovora do stabilnog rada u produkciji</span>
+              <span className="l-en">From initial scoping to high-availability production</span>
             </h2>
           </div>
 
@@ -354,12 +354,12 @@ export const CustomPage: React.FC<CustomPageProps> = ({ onNavigate }) => {
         <ScrollReveal>
           <div className="section-head">
             <div className="s9-badge bg-[rgba(var(--cyan-rgb),0.08)] border border-[rgba(var(--cyan-rgb),0.2)] text-[var(--cyan)] text-xs font-semibold uppercase tracking-wider">
-              <span className="l-bs">Iz prakse</span>
-              <span className="l-en">In practice</span>
+              <span className="l-bs">Iskustvo s terena</span>
+              <span className="l-en">Field perspective</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
-              <span className="l-bs">Sistem napravljen za jedan način rada.</span>
-              <span className="l-en">A system built for one way of working.</span>
+              <span className="l-bs">Softver građen oko Vašeg načina rada, a ne obrnuto.</span>
+              <span className="l-en">Software engineered around how you work, never the reverse.</span>
             </h2>
           </div>
           <div className="section-body max-w-2xl">
@@ -374,27 +374,27 @@ export const CustomPage: React.FC<CustomPageProps> = ({ onNavigate }) => {
           <div className="section-body">
             <div className="s9-card">
               <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] mb-8 sm:mb-12 text-center leading-tight">
-                <span className="l-bs">Zašto kompanije biraju namjenski razvoj sa Shape9</span>
-                <span className="l-en">Why businesses partner with Shape9 for custom software</span>
+                <span className="l-bs">Zašto vodeće kompanije biraju Shape9 za namjenski razvoj</span>
+                <span className="l-en">Why enterprises partner with Shape9 for custom engineering</span>
               </h2>
 
               <ul className="space-y-5 max-w-2xl mx-auto">
                 {[
                   {
-                    bs: 'Prilagođavanje vašim stvarnim procesima umjesto prisilne promjene navika tima',
-                    en: 'Customized to your exact workflows instead of forcing your team to change',
+                    bs: 'Prilagođavanje Vašim stvarnim procesima umjesto prisilne promjene navika i radnih tokova tima',
+                    en: 'Tailored directly to your actual processes instead of forcing your team into foreign workflows',
                   },
                   {
-                    bs: 'Bez mjesečnih licenci po korisniku koje rastu s vašim poslovanjem',
-                    en: 'No compounding per-user license fees as your organization scales',
+                    bs: 'Bez skupih mjesečnih licenci po korisniku koje nekontrolisano rastu kako širite poslovanje',
+                    en: 'Zero per-seat licensing penalties that artificially inflate as your headcount expands',
                   },
                   {
-                    bs: 'Direktna i jednostavna integracija s vašim postojećim sistemima i hardverom',
-                    en: 'Seamless integration with existing ERPs, legacy software, and hardware',
+                    bs: 'Besprijekorna integracija s Vašim postojećim bazama podataka, ERP sistemima i hardverom',
+                    en: 'Direct, secure integration with existing ERP databases, legacy tools, and operational hardware',
                   },
                   {
-                    bs: 'Dugoročno partnerstvo s lokalnim inženjerskim timom i definisanim SLA rokovima',
-                    en: 'Direct partnership with experienced engineers and guaranteed SLA response times',
+                    bs: 'Direktna saradnja s inženjerskim timom uz ugovorno garantovane SLA rokove i pouzdanu podršku',
+                    en: 'Direct collaboration with the core engineering team backed by binding enterprise SLA agreements',
                   },
                 ].map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3.5 text-sm sm:text-base text-[var(--body)]">
@@ -417,21 +417,21 @@ export const CustomPage: React.FC<CustomPageProps> = ({ onNavigate }) => {
           <div className="section-head">
             <div className="s9-badge bg-[rgba(var(--cyan-rgb),0.12)] text-[var(--cyan)] text-xs font-semibold uppercase tracking-wider mb-4 sm:mb-6 border border-[rgba(var(--cyan-rgb),0.25)]">
               <MessageSquare className="w-3.5 h-3.5" />
-              <span className="l-bs">Započnimo projekat</span>
-              <span className="l-en">Start a project</span>
+              <span className="l-bs">Pokrenimo saradnju</span>
+              <span className="l-en">Initiate your project</span>
             </div>
 
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-4 sm:mb-6 leading-tight">
-              <span className="l-bs">Ispričajte nam o Vašim tehničkim zahtjevima</span>
-              <span className="l-en">Tell us about your project requirements</span>
+              <span className="l-bs">Opišite nam Vaše tehničke i poslovne zahtjeve</span>
+              <span className="l-en">Outline your operational scope and technical requirements</span>
             </h2>
 
             <p className="text-sm sm:text-base text-[var(--body)] max-w-2xl mx-auto leading-relaxed">
               <span className="l-bs">
-                Opišite Vaš poslovni problem ili ideju. Javićemo Vam se u roku od jednog radnog dana s prvom tehničkom procjenom i prijedlogom arhitekture.
+                Opišite operativni problem ili viziju rješenja, a naš tim će Vam odgovoriti u roku od jednog radnog dana s prvom procjenom izvodivosti i prijedlogom arhitekture.
               </span>
               <span className="l-en">
-                Describe your operational bottleneck or product vision. We reply within one business day with a preliminary technical assessment.
+                Describe your operational bottleneck or project vision. We will follow up within one business day with a preliminary technical assessment and architectural roadmap.
               </span>
             </p>
           </div>

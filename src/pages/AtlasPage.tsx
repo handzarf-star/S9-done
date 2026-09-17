@@ -29,7 +29,7 @@ const ATLAS_FAQ: AccordionItem[] = [
     id: 'atlas-faq-1',
     qBs: 'Da li moramo mijenjati cjelokupnu organizaciju rada u skladištu?',
     qEn: 'Do we have to change how the warehouse works?',
-    aBs: 'Uvođenje modernog WMS-a podrazumijeva uvođenje reda: precizno barkod označavanje polica i lokacija, prelazak sa papirnih lista na mobilne uređaje i kratku obuku radnika. To je strukturiran proces koji se odradi jednom, a donosi trajnu tačnost i brzinu.',
+    aBs: 'Uvođenje modernog WMS-a podrazumijeva uvođenje izmjena: barkod označavanje polica i lokacija, prelazak sa papirnih lista na mobilne uređaje i kratku obuku radnika. To je strukturiran proces koji zajedno sa Vama, on donosi trajnu tačnost i brzinu.',
     aEn: 'Partly yes, and you should hear that now rather than later. Atlas is not a tool you simply switch on. Rolling it out means tagging shelf locations, a mobile app for the warehouse team and training people. That work is done once. After it, you finally see what you have and where it is.',
   },
   {
@@ -53,7 +53,7 @@ const AUDIENCES = [
     id: 'ecommerce',
     titleBs: 'E-commerce i web trgovine',
     titleEn: 'Online shops that pack their own orders',
-    descBs: 'Brzo komisioniranje, verifikacija barkodova i automatsko kreiranje adresnica bez greške.',
+    descBs: 'Brzo komisioniranje, verifikacija barkodova i automatsko poslovanje bez greške.',
     descEn: 'Pick, pack and ship with scanning, so the wrong item does not reach the customer.',
   },
   {
@@ -91,7 +91,7 @@ const FEATURES_LIST = [
     icon: Truck,
     titleBs: 'Nabavka i dobavljači',
     titleEn: 'Purchasing and suppliers',
-    descBs: 'Uporedite šta je stvarno stiglo sa dostavnicom, pa zadržite i ostalo: po kojoj je cijeni roba ušla, ko ju je dostavio i kada, i je li plaćena.',
+    descBs: 'Uporedite šta je stvarno stiglo sa dostavnicom, po kojoj je cijeni roba ušla, ko ju je dostavio i kada, i je li plaćena.',
     descEn: 'Check what actually arrived against the delivery note, and keep the rest too: what price it came in at, who delivered it and when, and whether it has been paid.',
   },
   {
@@ -105,7 +105,7 @@ const FEATURES_LIST = [
     icon: RefreshCw,
     titleBs: 'Međuskladišni transferi',
     titleEn: 'Transfers between warehouses',
-    descBs: 'Potpuna sljedivost kretanja robe između centralnih i regionalnih skladišta bez gubitaka.',
+    descBs: 'Potpuna kontrola kretanja robe između centralnih i regionalnih skladišta bez gubitaka.',
     descEn: 'Goods moving from one site to another, with a record of who sent what and when.',
   },
   {
@@ -119,8 +119,8 @@ const FEATURES_LIST = [
     icon: BarChart3,
     titleBs: 'Prodaja, kupci i šta premjestiti',
     titleEn: 'Sales, customers and what to move',
-    descBs: 'Vidite šta se brzo obrće, šta stoji mjesecima, kako se prodaje i kome. A kad negdje ponestaje, Atlas kaže šta da premjestite prije nego stane.',
-    descEn: 'See what turns over quickly, what has sat for months, how it sells and to whom. And when a location is running low, Atlas tells you what to move before it stops.',
+    descBs: 'Vidite šta brzo napušta skladište, šta stoji mjesecima, kako se prodaje i kome.',
+    descEn: 'See what turns over quickly, what has sat for months, how it sells and to whom.',
   },
 ];
 
@@ -170,13 +170,13 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
         </div>
 
         <h1 className="hero-animate-2 hero-title max-w-4xl">
-          <span className="l-bs">Skladište u kojem roba prestaje nestajati.</span>
+          <span className="l-bs">Skladište u kojem se roba više ne gubi.</span>
           <span className="l-en">A warehouse where stock stops going missing.</span>
         </h1>
 
         <p className="hero-animate-3 lead mx-auto mb-8 sm:mb-12 text-[var(--body)] max-w-3xl">
           <span className="l-bs">
-            Tačno stanje zaliha, tačna polica na kojoj se artikal nalazi i pravovremeno obavještenje o nabavci. Za jedno skladište ili regionalnu mrežu od dvanaest objekata.
+            Tačno stanje zaliha, tačna polica na kojoj se artikal nalazi i pravovremeno obavještenje o nabavci. Za jedno skladište ili regionalnu mrežu objekata.
           </span>
           <span className="l-en">
             Exact stock, the exact shelf it sits on, and the point at which something needs reordering. For one warehouse or for twelve, across countries.
@@ -268,7 +268,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
 
             <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed max-w-2xl mx-auto">
               <span className="l-bs">
-                Bez dinamičkog mapiranja lokacija na policama, radnici gube sate na traženje artikala. Stanje u papirnim evidencijama i na policama se neminovno razilazi: isporuke kasne, a naručuje se roba koja već stoji zaboravljena u skladištu.
+                Bez dinamičnog mapiranja lokacija na policama, radnici gube sate na traženje artikala. Stanje u papirnim evidencijama i na policama se neminovno razilazi: isporuke kasne, a naručuju se artikli koji nisu tu.
               </span>
               <span className="l-en">
                 Without an exact shelf location, staff lose hours searching. Between two stocktakes the paper record and the shelf drift apart. Stock appears that is not there, deliveries go out wrong, and things run late where lateness costs most.
@@ -311,7 +311,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
         <ScrollReveal>
           <div className="section-head">
             <div className="s9-badge bg-[rgba(255,166,88,0.08)] border border-[rgba(255,166,88,0.2)] text-[#FFA658] text-xs font-semibold uppercase tracking-wider">
-              <span className="l-bs">Za koga je</span>
+              <span className="l-bs">Za koga je Atlas</span>
               <span className="l-en">Who it is for</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-4 sm:mb-6 leading-tight">
@@ -401,10 +401,10 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
 
               <p className="text-sm sm:text-base text-[var(--body)] max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed">
                 <span className="l-bs">
-                  Podijelite s nama broj artikala, broj skladišnih lokacija i glavne izazove s kojima se susrećete. Dostavićemo Vam procjenu dinamike implementacije, očekivani ROI i jasan plan uvođenja.
+                  Podijelite s nama izazove s kojima se susrećete. Dostavićemo Vam procjenu dinamike implementacije i jasan plan uvođenja.
                 </span>
                 <span className="l-en">
-                  Tell us how many items you hold, how many sites you run and where things get stuck. We come back with a read on what a roll-out would mean for you, how long it would take and whether it pays off. If we think you do not need this, you will hear that too.
+                  Tell us where things get stuck. We come back with a read on what a roll-out would mean for you, how long it would take and whether it pays off. If we think you do not need this, you will hear that too.
                 </span>
               </p>
 
