@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Every route in src/routes.ts. Before 2026-09-17 this listed four
+     products and was missing Mode, Po mjeri, Portfolio and both case
+     studies, so half the site was invisible to a crawler. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://shape9.agency/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- Call centar -->
   <url>
     <loc>https://shape9.agency/pulse</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://shape9.agency/bell</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Prodaja i skladište -->
+  <url>
+    <loc>https://shape9.agency/mode</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -16,15 +33,69 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://shape9.agency/sonar</loc>
+    <loc>https://shape9.agency/hive</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
+
+  <!-- Marketing -->
+  <url>
+    <loc>https://shape9.agency/echo</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shape9.agency/neon</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Administracija -->
   <url>
     <loc>https://shape9.agency/libra</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://shape9.agency/vesta</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- AI analitika -->
+  <url>
+    <loc>https://shape9.agency/sonar</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://shape9.agency/iris</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Po mjeri i radovi -->
+  <url>
+    <loc>https://shape9.agency/po-mjeri</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shape9.agency/radovi</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://shape9.agency/radovi/wms</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://shape9.agency/radovi/monad-lead</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <url>
     <loc>https://shape9.agency/o-nama</loc>
     <changefreq>monthly</changefreq>

@@ -20,7 +20,24 @@ import {
   SheetTitle,
 } from '@/components/ui/sheet';
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Menu, X, ArrowRight, PhoneCall, Package, LineChart, FileText, Boxes, Store, Calendar } from 'lucide-react';
+import {
+  ArrowRight,
+  Bot,
+  Boxes,
+  Calendar,
+  ChevronDown,
+  FileText,
+  Headphones,
+  Hexagon,
+  LineChart,
+  Menu,
+  MessageSquareText,
+  Package,
+  PhoneCall,
+  Sparkles,
+  Store,
+  X,
+} from 'lucide-react';
 import { MeetingScheduler } from './MeetingScheduler';
 
 interface HeaderProps {
@@ -106,6 +123,51 @@ const P: Record<string, Product> = {
     jobBs: 'AI agent za analitiku',
     jobEn: 'AI agent for analytics',
   },
+  bell: {
+    path: '/bell',
+    shortName: 'Bell',
+    color: '#9CCB24',
+    rgb: '156, 203, 36',
+    icon: Headphones,
+    jobBs: 'Cloud telefonija',
+    jobEn: 'Cloud telephony',
+  },
+  hive: {
+    path: '/hive',
+    shortName: 'Hive',
+    color: '#DAB323',
+    rgb: '218, 179, 35',
+    icon: Hexagon,
+    jobBs: 'Prodaja i narudžbe',
+    jobEn: 'Sales and orders',
+  },
+  echo: {
+    path: '/echo',
+    shortName: 'Echo',
+    color: '#29D1C9',
+    rgb: '41, 209, 201',
+    icon: MessageSquareText,
+    jobBs: 'SMS kampanje',
+    jobEn: 'SMS campaigns',
+  },
+  neon: {
+    path: '/neon',
+    shortName: 'Neon',
+    color: '#FCA5CD',
+    rgb: '252, 165, 205',
+    icon: Sparkles,
+    jobBs: 'Viber kampanje',
+    jobEn: 'Viber campaigns',
+  },
+  iris: {
+    path: '/iris',
+    shortName: 'Iris',
+    color: '#C661DC',
+    rgb: '198, 97, 220',
+    icon: Bot,
+    jobBs: 'AI asistent za podatke',
+    jobEn: 'AI assistant for your data',
+  },
 };
 
 /* Five categories, Faris 2026-09-17. Four of them name a place inside the
@@ -120,29 +182,27 @@ const P: Record<string, Product> = {
      Administracija       Libra · Vesta
      AI analitika         Sonar · Iris
 
-   Two rules this list follows, and both are deliberate.
+   All eleven are listed, Faris 2026-09-17. Bell, Hive, Echo, Neon and Iris
+   carry names Mersad has not approved. That was raised twice and he decided
+   to publish them, so they are here; the approval is his to get.
 
-   A category with nothing behind it is not shown. Marketing is missing below
-   because neither Echo nor Neon has a page, and a heading over an empty
-   space is a dead end.
+   LAYOUT, and the number that decided it. This started as one column with
+   headings, and the note here said to move to two at roughly eight products.
+   Eleven items under five headings measures about 770px, which does not fit
+   under the header on a 900px viewport, so the threshold is now crossed and
+   the menu is two columns. `col` splits them by hand rather than by CSS
+   `columns`, which breaks a group across the fold wherever it likes. The
+   split keeps the two sides within one row of each other: five items and two
+   headings on the left, six items and three headings on the right.
 
-   A product without a page is not listed, and never as "coming soon". Bell,
-   Hive, Echo, Neon, Iris and Vesta are all running at clients right now, so
-   "soon" would be untrue as well as useless.
-
-   LAYOUT, and the number that decides it. One column with headings, not five
-   columns. Five columns would today mean four of them holding a single item
-   and one holding nothing. Measured: an item row is ~56px and a heading ~28,
-   so today's five items under four headings come to ~408px, comfortable for
-   a dropdown. All eleven products under five headings would be ~772px, which
-   does not fit under the header on a 900px viewport. **Move to two columns at
-   roughly eight products.** That is a change to this container's grid, not a
-   rewrite, because both menus render from this one array. */
+   The phone sheet stays one column and ignores `col`, because a phone has
+   the vertical room a dropdown does not. */
 const CATEGORIES = [
-  { id: 'call', labelBs: 'Call centar', labelEn: 'Call centre', items: [P.pulse] },
-  { id: 'prodaja', labelBs: 'Prodaja i skladište', labelEn: 'Sales and stock', items: [P.mode, P.atlas] },
-  { id: 'admin', labelBs: 'Administracija', labelEn: 'Back office', items: [P.libra, P.vesta] },
-  { id: 'ai', labelBs: 'AI analitika', labelEn: 'AI analytics', items: [P.sonar] },
+  { id: 'call', col: 0, labelBs: 'Call centar', labelEn: 'Call centre', items: [P.pulse, P.bell] },
+  { id: 'prodaja', col: 0, labelBs: 'Prodaja i skladište', labelEn: 'Sales and stock', items: [P.mode, P.atlas, P.hive] },
+  { id: 'marketing', col: 1, labelBs: 'Marketing', labelEn: 'Marketing', items: [P.echo, P.neon] },
+  { id: 'admin', col: 1, labelBs: 'Administracija', labelEn: 'Back office', items: [P.libra, P.vesta] },
+  { id: 'ai', col: 1, labelBs: 'AI analitika', labelEn: 'AI analytics', items: [P.sonar, P.iris] },
 ];
 
 const PRODUCTS = CATEGORIES.flatMap((c) => c.items);
@@ -318,39 +378,49 @@ export const Header: React.FC<HeaderProps> = ({
               <DropdownMenuContent
                 align="start"
                 sideOffset={8}
-                /* 352px, not 320. At 320 the text column is 206px and
-                   „Napredno upravljanje skladištem" needs about 230, so that
-                   one row wrapped to two lines and stood taller than the
-                   other three. Width is set by the longest label. */
-                className="w-[22rem] p-2 rounded-2xl bg-[var(--panel)] border-[var(--line)]"
+                /* Two columns of 22rem, the width one column needed on its
+                   own: the text column is 206px at 20rem and „Napredno
+                   upravljanje skladištem" wants about 230, so the label sets
+                   the width and the column count sets the height. */
+                className="w-[44rem] p-2 rounded-2xl bg-[var(--panel)] border-[var(--line)]"
                 style={{ boxShadow: 'var(--shadow-overlay)' }}
               >
                 {/* Radix `Group` and `Label` rather than a styled div and a
                     span. They carry `role="group"` and wire `aria-labelledby`
                     to the heading, so a screen reader announces „Call centar,
-                    grupa, jedna stavka" instead of reading four unrelated
+                    grupa, dvije stavke" instead of reading eleven unrelated
                     links in a row. That is the whole reason the categories
-                    exist, said out loud. */}
-                {CATEGORIES.map((cat, i) => (
-                  <DropdownMenuGroup key={cat.id}>
-                    <DropdownMenuLabel className={`${catHeadingClass} ${i === 0 ? 'pt-1' : 'pt-4'}`}>
-                      <span className="l-bs">{cat.labelBs}</span>
-                      <span className="l-en">{cat.labelEn}</span>
-                    </DropdownMenuLabel>
+                    exist, said out loud.
 
-                    {cat.items.map((prod) => (
-                      <DropdownMenuItem
-                        key={prod.path}
-                        asChild
-                        className="p-3 rounded-xl cursor-pointer focus:bg-[rgba(255,255,255,0.04)] group"
-                      >
-                        <a href={prod.path} onClick={(e) => go(e, prod.path)}>
-                          <ProductRow prod={prod} active={currentPath === prod.path} arrow />
-                        </a>
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuGroup>
-                ))}
+                    Arrow keys still walk the whole menu in DOM order, which
+                    is down the left column and then down the right. That is
+                    what a sighted user reading the columns does too. */}
+                <div className="grid grid-cols-2 gap-x-2">
+                  {[0, 1].map((col) => (
+                    <div key={col}>
+                      {CATEGORIES.filter((c) => c.col === col).map((cat, i) => (
+                        <DropdownMenuGroup key={cat.id}>
+                          <DropdownMenuLabel className={`${catHeadingClass} ${i === 0 ? 'pt-1' : 'pt-4'}`}>
+                            <span className="l-bs">{cat.labelBs}</span>
+                            <span className="l-en">{cat.labelEn}</span>
+                          </DropdownMenuLabel>
+
+                          {cat.items.map((prod) => (
+                            <DropdownMenuItem
+                              key={prod.path}
+                              asChild
+                              className="p-3 rounded-xl cursor-pointer focus:bg-[rgba(255,255,255,0.04)] group"
+                            >
+                              <a href={prod.path} onClick={(e) => go(e, prod.path)}>
+                                <ProductRow prod={prod} active={currentPath === prod.path} arrow />
+                              </a>
+                            </DropdownMenuItem>
+                          ))}
+                        </DropdownMenuGroup>
+                      ))}
+                    </div>
+                  ))}
+                </div>
               </DropdownMenuContent>
             </DropdownMenu>
 

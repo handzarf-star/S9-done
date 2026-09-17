@@ -75,6 +75,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <span className="l-en">Solutions</span>
             </h3>
             <ul className="space-y-2.5 text-sm">
+              {/* Same order as the header menu, category by category:
+                  call centre, sales and stock, marketing, back office,
+                  AI analytics. One order everywhere on the site. */}
               <li>
                 <a
                   href="/pulse"
@@ -84,9 +87,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   Shape9 Pulse
                 </a>
               </li>
-              {/* Same order as the header and both homepage lists: Pulse,
-                  Mode, Atlas, Sonar. Four different orders across the site
-                  was four chances to read it as four different line-ups. */}
+              <li>
+                <a
+                  href="/bell"
+                  onClick={(e) => go(e, '/bell')}
+                  className="hover:text-[var(--ink)] transition-colors focus-ring"
+                >
+                  Shape9 Bell
+                </a>
+              </li>
               <li>
                 <a
                   href="/mode"
@@ -105,11 +114,33 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   Shape9 Atlas
                 </a>
               </li>
-              {/* Order follows the five categories, so Libra comes before
-                  Sonar: Call centar, Prodaja i skladište, Administracija, AI
-                  analitika. Libra is back in the header too. It was pulled
-                  when the flat menu had room for four and Mode needed a slot;
-                  with categories it no longer competes with Mode for one. */}
+              <li>
+                <a
+                  href="/hive"
+                  onClick={(e) => go(e, '/hive')}
+                  className="hover:text-[var(--ink)] transition-colors focus-ring"
+                >
+                  Shape9 Hive
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/echo"
+                  onClick={(e) => go(e, '/echo')}
+                  className="hover:text-[var(--ink)] transition-colors focus-ring"
+                >
+                  Shape9 Echo
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/neon"
+                  onClick={(e) => go(e, '/neon')}
+                  className="hover:text-[var(--ink)] transition-colors focus-ring"
+                >
+                  Shape9 Neon
+                </a>
+              </li>
               <li>
                 <a
                   href="/libra"
@@ -135,6 +166,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   className="hover:text-[var(--ink)] transition-colors focus-ring"
                 >
                   Shape9 Sonar
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/iris"
+                  onClick={(e) => go(e, '/iris')}
+                  className="hover:text-[var(--ink)] transition-colors focus-ring"
+                >
+                  Shape9 Iris
                 </a>
               </li>
             </ul>
