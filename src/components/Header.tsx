@@ -1,7 +1,9 @@
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import {
@@ -18,7 +20,7 @@ import {
   SheetTitle,
 } from '@/components/ui/sheet';
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Menu, X, ArrowRight, PhoneCall, Package, LineChart, Store, Calendar } from 'lucide-react';
+import { ChevronDown, Menu, X, ArrowRight, PhoneCall, Package, LineChart, FileText, Store, Calendar } from 'lucide-react';
 import { MeetingScheduler } from './MeetingScheduler';
 
 interface HeaderProps {
@@ -34,12 +36,19 @@ interface HeaderProps {
    menu used to lead with the invented word and push the job into a grey
    subtitle that `truncate` then cut off mid word at this menu's width. So
    the job is the label and the name sits under it, small, in its own colour.
+   Wording is Faris's, 2026-09-16. */
+interface Product {
+  path: string;
+  shortName: string;
+  color: string;
+  rgb: string;
+  icon: React.ComponentType<{ className?: string }>;
+  jobBs: string;
+  jobEn: string;
+}
 
-   Wording is Faris's, 2026-09-16. Order is his too and is the site's one
-   order now, repeated in the footer and in both homepage lists: Pulse first
-   as the entry product, Mode second while it is the push. */
-const PRODUCTS = [
-  {
+const P: Record<string, Product> = {
+  pulse: {
     path: '/pulse',
     shortName: 'Pulse',
     color: '#A98CFF',
@@ -48,7 +57,7 @@ const PRODUCTS = [
     jobBs: 'Analiza i kontrola poziva',
     jobEn: 'Call analysis and checks',
   },
-  {
+  mode: {
     path: '/mode',
     shortName: 'Mode',
     color: '#FF6170',
@@ -61,7 +70,7 @@ const PRODUCTS = [
     jobBs: 'Sistem za maloprodaju',
     jobEn: 'Built for retail',
   },
-  {
+  atlas: {
     path: '/atlas',
     shortName: 'Atlas',
     color: '#FFA658',
@@ -70,7 +79,16 @@ const PRODUCTS = [
     jobBs: 'Napredno upravljanje skladištem',
     jobEn: 'Advanced warehouse management',
   },
-  {
+  libra: {
+    path: '/libra',
+    shortName: 'Libra',
+    color: '#3DD68C',
+    rgb: '61, 214, 140',
+    icon: FileText,
+    jobBs: 'Dokumenti i knjigovodstvo',
+    jobEn: 'Documents and bookkeeping',
+  },
+  sonar: {
     path: '/sonar',
     shortName: 'Sonar',
     color: '#35B6F0',
@@ -79,7 +97,103 @@ const PRODUCTS = [
     jobBs: 'AI agent za analitiku',
     jobEn: 'AI agent for analytics',
   },
+};
+
+/* Five categories, Faris 2026-09-17. Four of them name a place inside the
+   buyer's own company, which is the point: nobody has to work out which
+   bucket they are in. The fifth is the exception and was argued as one.
+   Category order is his and it supersedes the earlier flat order, which is
+   why Sonar now sits last rather than fourth.
+   Full map, including what has no page yet:
+     Call centar          Bell · Pulse
+     Prodaja i skladište  Mode · Atlas · Hive
+     Marketing            Echo · Neon
+     Administracija       Libra · Vesta
+     AI analitika         Sonar · Iris
+
+   Two rules this list follows, and both are deliberate.
+
+   A category with nothing behind it is not shown. Marketing is missing below
+   because neither Echo nor Neon has a page, and a heading over an empty
+   space is a dead end.
+
+   A product without a page is not listed, and never as "coming soon". Bell,
+   Hive, Echo, Neon, Iris and Vesta are all running at clients right now, so
+   "soon" would be untrue as well as useless.
+
+   LAYOUT, and the number that decides it. One column with headings, not five
+   columns. Five columns would today mean four of them holding a single item
+   and one holding nothing. Measured: an item row is ~56px and a heading ~28,
+   so today's five items under four headings come to ~408px, comfortable for
+   a dropdown. All eleven products under five headings would be ~772px, which
+   does not fit under the header on a 900px viewport. **Move to two columns at
+   roughly eight products.** That is a change to this container's grid, not a
+   rewrite, because both menus render from this one array. */
+const CATEGORIES = [
+  { id: 'call', labelBs: 'Call centar', labelEn: 'Call centre', items: [P.pulse] },
+  { id: 'prodaja', labelBs: 'Prodaja i skladište', labelEn: 'Sales and stock', items: [P.mode, P.atlas] },
+  { id: 'admin', labelBs: 'Administracija', labelEn: 'Back office', items: [P.libra] },
+  { id: 'ai', labelBs: 'AI analitika', labelEn: 'AI analytics', items: [P.sonar] },
 ];
+
+const PRODUCTS = CATEGORIES.flatMap((c) => c.items);
+
+/* One row, rendered identically in the dropdown and in the phone sheet.
+   Shared on purpose: the two used to be written out separately and drifted,
+   which is how the phone menu ended up carrying only „Shape9 Pulse" with no
+   word about what the product does. */
+const ProductRow: React.FC<{ prod: Product; active: boolean; arrow?: boolean }> = ({
+  prod,
+  active,
+  arrow = false,
+}) => {
+  const Icon = prod.icon;
+  return (
+    <div className="flex items-center gap-3 w-full">
+      <div
+        className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+        style={{ backgroundColor: `rgba(${prod.rgb}, 0.12)`, color: prod.color }}
+      >
+        <Icon className="w-4 h-4" />
+      </div>
+      {/* The arrow is a sibling of the text column, not a flex partner of the
+          label. Inside the label it forced `justify-between`, which is why the
+          label could never be allowed to wrap. */}
+      <div className="flex-1 min-w-0">
+        <div
+          className="text-sm font-semibold leading-snug"
+          style={{ color: active ? prod.color : 'var(--ink)' }}
+        >
+          <span className="l-bs">{prod.jobBs}</span>
+          <span className="l-en">{prod.jobEn}</span>
+        </div>
+        <div
+          className="font-mono text-[10px] uppercase tracking-[0.2em] mt-1"
+          style={{ color: prod.color }}
+        >
+          {prod.shortName}
+        </div>
+      </div>
+      {arrow && (
+        <ArrowRight className="w-3.5 h-3.5 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+      )}
+    </div>
+  );
+};
+
+/* The category heading, separated by space rather than by a rule so a menu of
+   four groups does not read as a table.
+
+   `.readout` rather than font and size utilities, and that is not a
+   preference. On the phone this heading is an `h3`, and `h3` in index.css is
+   an unlayered rule: it sets font-family, size, weight, colour and tracking,
+   and unlayered CSS beats every Tailwind utility no matter the specificity.
+   The first version of this used `font-mono text-[10px] text-[var(--muted)]`
+   and the phone rendered four full sized ink coloured headings instead.
+   `.readout` is unlayered too and a class outranks an element, so it wins,
+   and it is the treatment every other measured label on this site already
+   has. */
+const catHeadingClass = 'readout px-3 pb-1.5';
 
 export const Header: React.FC<HeaderProps> = ({
   currentPath,
@@ -202,47 +316,32 @@ export const Header: React.FC<HeaderProps> = ({
                 className="w-[22rem] p-2 rounded-2xl bg-[var(--panel)] border-[var(--line)]"
                 style={{ boxShadow: 'var(--shadow-overlay)' }}
               >
-                {PRODUCTS.map((prod) => {
-                  const IconComponent = prod.icon;
-                  return (
-                    <DropdownMenuItem
-                      key={prod.path}
-                      asChild
-                      className="p-3 rounded-xl cursor-pointer focus:bg-[rgba(255,255,255,0.04)] group"
-                    >
-                      <a href={prod.path} onClick={(e) => go(e, prod.path)}>
-                        <div className="flex items-center gap-3 w-full">
-                          <div
-                            className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
-                            style={{ backgroundColor: `rgba(${prod.rgb}, 0.12)`, color: prod.color }}
-                          >
-                            <IconComponent className="w-4 h-4" />
-                          </div>
-                          {/* The arrow is a sibling of the text column, not a
-                              flex partner of the label. Inside the label it
-                              forced `justify-between`, which is why the label
-                              could never be allowed to wrap. */}
-                          <div className="flex-1 min-w-0">
-                            <div
-                              className="text-sm font-semibold leading-snug"
-                              style={{ color: currentPath === prod.path ? prod.color : 'var(--ink)' }}
-                            >
-                              <span className="l-bs">{prod.jobBs}</span>
-                              <span className="l-en">{prod.jobEn}</span>
-                            </div>
-                            <div
-                              className="font-mono text-[10px] uppercase tracking-[0.2em] mt-1"
-                              style={{ color: prod.color }}
-                            >
-                              {prod.shortName}
-                            </div>
-                          </div>
-                          <ArrowRight className="w-3.5 h-3.5 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
-                        </div>
-                      </a>
-                    </DropdownMenuItem>
-                  );
-                })}
+                {/* Radix `Group` and `Label` rather than a styled div and a
+                    span. They carry `role="group"` and wire `aria-labelledby`
+                    to the heading, so a screen reader announces „Call centar,
+                    grupa, jedna stavka" instead of reading four unrelated
+                    links in a row. That is the whole reason the categories
+                    exist, said out loud. */}
+                {CATEGORIES.map((cat, i) => (
+                  <DropdownMenuGroup key={cat.id}>
+                    <DropdownMenuLabel className={`${catHeadingClass} ${i === 0 ? 'pt-1' : 'pt-4'}`}>
+                      <span className="l-bs">{cat.labelBs}</span>
+                      <span className="l-en">{cat.labelEn}</span>
+                    </DropdownMenuLabel>
+
+                    {cat.items.map((prod) => (
+                      <DropdownMenuItem
+                        key={prod.path}
+                        asChild
+                        className="p-3 rounded-xl cursor-pointer focus:bg-[rgba(255,255,255,0.04)] group"
+                      >
+                        <a href={prod.path} onClick={(e) => go(e, prod.path)}>
+                          <ProductRow prod={prod} active={currentPath === prod.path} arrow />
+                        </a>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuGroup>
+                ))}
               </DropdownMenuContent>
             </DropdownMenu>
 
@@ -402,43 +501,32 @@ export const Header: React.FC<HeaderProps> = ({
               </SheetHeader>
 
               <div className="px-4 pb-4 space-y-3">
-                {/* Same order as the desktop menu: the job, then the name.
-                    This list used to carry only „Shape9 Pulse" and the like,
-                    so on a phone the product's job was nowhere at all. */}
-                <div className="space-y-1">
-                  {PRODUCTS.map((prod) => {
-                    const IconComponent = prod.icon;
-                    return (
-                      <a
-                        key={prod.path}
-                        href={prod.path}
-                        onClick={(e) => go(e, prod.path)}
-                        className="flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors focus-ring hover:bg-white/5"
-                      >
-                        <div
-                          className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
-                          style={{ backgroundColor: `rgba(${prod.rgb}, 0.12)`, color: prod.color }}
-                        >
-                          <IconComponent className="w-4 h-4" />
-                        </div>
-                        <div className="min-w-0">
-                          <div
-                            className="text-sm font-semibold leading-snug"
-                            style={{ color: currentPath === prod.path ? prod.color : 'var(--ink)' }}
+                {/* The same four groups, in the same order, off the same
+                    array. A phone has the vertical room a dropdown does not,
+                    so this layout does not need the two column threshold the
+                    desktop menu has. */}
+                <div>
+                  {CATEGORIES.map((cat, i) => (
+                    <section key={cat.id} aria-labelledby={`m-${cat.id}`}>
+                      <h3 id={`m-${cat.id}`} className={`${catHeadingClass} ${i === 0 ? 'pt-1' : 'pt-5'}`}>
+                        <span className="l-bs">{cat.labelBs}</span>
+                        <span className="l-en">{cat.labelEn}</span>
+                      </h3>
+
+                      <div className="space-y-1">
+                        {cat.items.map((prod) => (
+                          <a
+                            key={prod.path}
+                            href={prod.path}
+                            onClick={(e) => go(e, prod.path)}
+                            className="flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors focus-ring hover:bg-white/5"
                           >
-                            <span className="l-bs">{prod.jobBs}</span>
-                            <span className="l-en">{prod.jobEn}</span>
-                          </div>
-                          <div
-                            className="font-mono text-[10px] uppercase tracking-[0.2em] mt-1"
-                            style={{ color: prod.color }}
-                          >
-                            {prod.shortName}
-                          </div>
-                        </div>
-                      </a>
-                    );
-                  })}
+                            <ProductRow prod={prod} active={currentPath === prod.path} />
+                          </a>
+                        ))}
+                      </div>
+                    </section>
+                  ))}
                 </div>
 
                 <div className="border-t border-[var(--line)] pt-3 space-y-1">

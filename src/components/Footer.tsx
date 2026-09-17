@@ -105,18 +105,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   Shape9 Atlas
                 </a>
               </li>
-              <li>
-                <a
-                  href="/sonar"
-                  onClick={(e) => go(e, '/sonar')}
-                  className="hover:text-[var(--ink)] transition-colors focus-ring"
-                >
-                  Shape9 Sonar
-                </a>
-              </li>
-              {/* Libra sits below Mode rather than being dropped. It is out of
-                  the header while the focus is elsewhere, but the page is live
-                  and a footer is where a backgrounded product stays findable. */}
+              {/* Order follows the five categories, so Libra comes before
+                  Sonar: Call centar, Prodaja i skladište, Administracija, AI
+                  analitika. Libra is back in the header too. It was pulled
+                  when the flat menu had room for four and Mode needed a slot;
+                  with categories it no longer competes with Mode for one. */}
               <li>
                 <a
                   href="/libra"
@@ -124,6 +117,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   className="hover:text-[var(--ink)] transition-colors focus-ring"
                 >
                   Shape9 Libra
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/sonar"
+                  onClick={(e) => go(e, '/sonar')}
+                  className="hover:text-[var(--ink)] transition-colors focus-ring"
+                >
+                  Shape9 Sonar
                 </a>
               </li>
             </ul>
