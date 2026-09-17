@@ -18,7 +18,7 @@ import {
   SheetTitle,
 } from '@/components/ui/sheet';
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Menu, X, ArrowRight, PhoneCall, Package, LineChart, Shirt, Calendar } from 'lucide-react';
+import { ChevronDown, Menu, X, ArrowRight, PhoneCall, Package, LineChart, Store, Calendar } from 'lucide-react';
 import { MeetingScheduler } from './MeetingScheduler';
 
 interface HeaderProps {
@@ -53,9 +53,13 @@ const PRODUCTS = [
     shortName: 'Mode',
     color: '#FF6170',
     rgb: '255, 97, 112',
-    icon: Shirt,
-    jobBs: 'Sistem za butike',
-    jobEn: 'Built for boutiques',
+    /* A shop front, not a shirt. The film tells a boutique story, the way
+       Pulse's tells a call centre story, but a story is a case and not a
+       limit. The label and the icon both say retail so a shoe shop or a
+       phone shop does not read this as somebody else's product. */
+    icon: Store,
+    jobBs: 'Sistem za maloprodaju',
+    jobEn: 'Built for retail',
   },
   {
     path: '/atlas',

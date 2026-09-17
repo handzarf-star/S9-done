@@ -220,9 +220,9 @@ export const ModePage: React.FC<ModePageProps> = ({ onNavigate }) => {
 
         <div className="hero-animate-3 mb-6 sm:mb-8">
           <span className="s9-badge text-[#FF6170] bg-[rgba(255,97,112,0.1)] border border-[rgba(255,97,112,0.25)] inline-flex items-center gap-2 mx-auto">
-            <Shirt className="w-3.5 h-3.5" />
-            <span className="l-bs">Sistem za butike</span>
-            <span className="l-en">Built for boutiques</span>
+            <Store className="w-3.5 h-3.5" />
+            <span className="l-bs">Sistem za maloprodaju</span>
+            <span className="l-en">Built for retail</span>
           </span>
         </div>
 
