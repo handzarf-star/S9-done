@@ -131,7 +131,7 @@ const AREAS = [
   {
     id: 'kretanje',
     icon: ArrowLeftRight,
-    areaBs: 'Kretanje imovine unutar grupacije',
+    areaBs: 'Kretanje imovine između firmi i lokacija',
     areaEn: 'Intercompany transfers',
     beforeBs: 'Oprema promijeni lokaciju, a dokumentacija izostane, pa se u knjigama sredstvo i dalje vodi na prethodnoj firmi.',
     beforeEn: 'Equipment moves between entities while paperwork lags, leaving the asset on the wrong company ledger.',
@@ -271,18 +271,18 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
             style={{ color: ACCENT, backgroundColor: `rgba(${ACCENT_RGB}, 0.1)`, borderColor: `rgba(${ACCENT_RGB}, 0.25)` }}
           >
             <Building2 className="w-3.5 h-3.5" />
-            <span className="l-bs">Namjenski razvijeno za poslovne grupacije i holding strukture</span>
-            <span className="l-en">Engineered for multi-entity holdings and enterprise groups</span>
+            <span className="l-bs">Namjenski razvijeno za kompanije i holding strukture</span>
+            <span className="l-en">Built for companies and holding structures</span>
           </span>
         </div>
 
         <h1 className="hero-animate-2 hero-title max-w-4xl">
           <span className="l-bs">
-            Cjelokupna imovina grupacije pod kontrolom, od narudžbenice do konačnog{' '}
+            Cjelokupna imovina kompanije pod kontrolom, od narudžbenice do konačnog{' '}
             <span style={{ color: ACCENT }}>otpisa.</span>
           </span>
           <span className="l-en">
-            Complete asset governance across your group, from purchase requisition to final{' '}
+            Complete control of what the company owns, from the purchase order to the final{' '}
             <span style={{ color: ACCENT }}>write-off.</span>
           </span>
         </h1>
@@ -291,16 +291,16 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
           className="hero-animate-3 text-xl sm:text-2xl font-semibold max-w-3xl mx-auto mb-4 leading-snug"
           style={{ color: 'var(--ink)' }}
         >
-          <span className="l-bs">„Kod koga se trenutno nalazi onaj mjerni uređaj?"</span>
-          <span className="l-en">"Who had that device last?"</span>
+          <span className="l-bs">„Kod koga se trenutno nalazi uređaj?"</span>
+          <span className="l-en">"Who has that device right now?"</span>
         </p>
 
         <p className="hero-animate-3 lead mx-auto mb-8 sm:mb-12">
           <span className="l-bs">
-            To je pitanje koje se u praksi ponavlja gotovo svake sedmice i redovno troši pola radnog dana. Dio opreme nalazi se u povezanoj firmi, dio je kod radnika na terenu, a dio je rashodovan prije dvije godine iako se i dalje vodi u bilansima.
+            To je pitanje koje se u praksi ponavlja gotovo svake sedmice i redovno troši pola radnog dana.
           </span>
           <span className="l-en">
-            A recurring question that reliably burns half a working day. Some assets sit with another operating entity, some are with crews on site, and some were scrapped years ago while still amortizing on the balance sheet.
+            A question that comes up most weeks and reliably burns half a working day.
           </span>
         </p>
 
@@ -311,8 +311,8 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
             className="btn-pill font-semibold text-sm text-[#0A0E15] py-3.5 px-8 transition-colors inline-flex items-center justify-center gap-2 focus-ring w-full sm:w-auto"
             style={{ backgroundColor: ACCENT }}
           >
-            <span className="l-bs">Pošaljite nam pregled imovine</span>
-            <span className="l-en">Share your asset overview</span>
+            <span className="l-bs">Pošaljite nam upit</span>
+            <span className="l-en">Send us an enquiry</span>
             <ArrowRight className="w-4 h-4 ml-1" />
           </a>
 
@@ -339,7 +339,7 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
             </h2>
             <p>
               <span className="l-bs">
-                Kada je imovina raspoređena na pedeset pravnih lica, niko nema tačan uvid u to šta grupacija posjeduje niti gdje se pojedinačna sredstva nalaze.
+                Kada je imovina raspoređena na više lokacija i pravnih lica, niko nema tačan uvid u to šta kompanija posjeduje niti gdje se pojedinačna sredstva nalaze.
               </span>
               <span className="l-en">
                 When assets are dispersed across fifty legal entities, management loses visibility into total group holdings and real-time locations.
@@ -384,8 +384,8 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
             ))}
 
             <p className="text-base sm:text-lg font-semibold leading-snug m-0 mt-2" style={{ color: 'var(--ink)' }}>
-              <span className="l-bs">Koliko ste samo puta kupili opremu koju Vaša grupacija već posjeduje, samo u drugom povezanom pravnom licu?</span>
-              <span className="l-en">How often has your group repurchased equipment it already owns, simply because it sat untracked in another subsidiary?</span>
+              <span className="l-bs">Koliko ste samo puta kupili opremu koju Vaša kompanija već posjeduje, samo na drugoj lokaciji ili u povezanom pravnom licu?</span>
+              <span className="l-en">How often have you bought equipment the company already owns, simply because it sat untracked at another site or entity?</span>
             </p>
           </div>
         </ScrollReveal>
@@ -456,7 +456,7 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
             <div className="s9-card">
               <p className="text-sm sm:text-base leading-relaxed m-0">
                 <span className="l-bs">
-                  U pozadini se nalazi preslikana hijerarhija Vaše grupacije. <strong>Organizacija</strong> obuhvata cijelu grupaciju, <strong>kompanije</strong> predstavljaju pojedinačna pravna lica, a <strong>odjeli</strong> su interni operativni timovi. Svako sredstvo uvijek ima pravno lice koje je njegov vlasnik i konkretnu osobu koja za njega materijalno odgovara.
+                  U pozadini se nalazi preslikana hijerarhija Vaše organizacije. <strong>Organizacija</strong> obuhvata sve što posjedujete, <strong>kompanije</strong> predstavljaju pojedinačna pravna lica, a <strong>odjeli</strong> su interni operativni timovi. Svako sredstvo uvijek ima pravno lice koje je njegov vlasnik i konkretnu osobu koja za njega materijalno odgovara.
                 </span>
                 <span className="l-en">
                   Underneath it sits the shape of your own group. The <strong>organisation</strong> is the group as a whole, <strong>companies</strong> are the individual legal entities, and <strong>departments</strong> are the teams inside them. Every asset always has a legal entity that owns it and a named person who answers for it.
@@ -660,7 +660,7 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
             </h2>
             <p>
               <span className="l-bs">
-                Svaka nabavka, naknada i procjena vrijednosti vodi se u valuti u kojoj je stvarni izdatak nastao. Kursne liste se ažuriraju svakodnevno, pa su konsolidovani iznosi tačni bez ručnog preračunavanja, dok se svaka vrijednost paralelno vodi i u primarnoj izvještajnoj valuti grupacije. Historijske vrijednosti ostaju trajno vezane za kurs na dan knjiženja umjesto naknadnog preračunavanja po današnjim kursevima.
+                Svaka nabavka, naknada i procjena vrijednosti vodi se u valuti u kojoj je stvarni izdatak nastao. Kursne liste se ažuriraju svakodnevno, pa su konsolidovani iznosi tačni bez ručnog preračunavanja, dok se svaka vrijednost paralelno vodi i u primarnoj izvještajnoj valuti kompanije. Historijske vrijednosti ostaju trajno vezane za kurs na dan knjiženja umjesto naknadnog preračunavanja po današnjim kursevima.
               </span>
               <span className="l-en">
                 Every procurement, internal charge, and valuation is recorded in its original transaction currency. Exchange rates sync daily for automated consolidation, while each entry is simultaneously converted into the group primary reporting currency. Historical valuations remain pegged to their original transaction dates rather than recalculating under current market rates.
@@ -679,7 +679,7 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
                 {[
                   ['Kolika je ukupna vrijednost imovine, po kompaniji ili kategoriji?', 'What is the total value of the assets, by company or by category?'],
                   ['Koji su predmeti još pod garancijom, a kojima garancija uskoro ističe?', 'What is still under warranty, and what is about to run out?'],
-                  ['Ko je zadužen za koja sredstva na nivou cijele grupacije?', 'Who is responsible for what, across the whole group?'],
+                  ['Ko je zadužen za koja sredstva na nivou cijele kompanije?', 'Who is responsible for what, across the whole company?'],
                   ['Koliki su ukupni izdaci nastali kroz posmatrani period?', 'What has been spent over the period you are looking at?'],
                   ['Kolike su preostale zalihe potrošnog materijala i kojom brzinom se troše?', 'How much consumable stock is left, and how fast is it going?'],
                   ['Šta su pokazali posljednji terenski inspekcijski nalazi?', 'What did the latest field inspections find?'],
@@ -721,7 +721,7 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
             </h2>
             <p>
               <span className="l-bs">
-                Sistem donosi šest predefinisanih uloga, od vlasnika grupacije do operativnog radnika koji rukuje dodijeljenom opremom, pri čemu se nivoi ovlaštenja provjeravaju zasebno za svako pravno lice, a ne samo na glavnom ulazu u sistem.
+                Sistem donosi šest predefinisanih uloga, od vlasnika organizacije do operativnog radnika koji rukuje dodijeljenom opremom, pri čemu se nivoi ovlaštenja provjeravaju zasebno za svako pravno lice, a ne samo na glavnom ulazu u sistem.
               </span>
               <span className="l-en">
                 Six preconfigured enterprise roles govern access, from group ownership down to field personnel managing their assigned tools, with security permissions validated per operating entity rather than globally.
@@ -763,7 +763,7 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
             </p>
             <p>
               <span className="l-bs">
-                Nakon toga po prvi put dobijate stvarnu sliku cjelokupne imovine grupacije. Sistem je u punoj produkciji u verziji 1.3, potpuno lokalizovan na bosanski i engleski jezik, a naš regionalni tim provodi uvođenje u direktnoj saradnji s Vama.
+                Nakon toga po prvi put dobijate stvarnu sliku cjelokupne imovine kompanije. Sistem je u punoj produkciji u verziji 1.3, potpuno lokalizovan na bosanski i engleski jezik, a naš regionalni tim provodi uvođenje u direktnoj saradnji s Vama.
               </span>
               <span className="l-en">
                 The payoff is the first transparent, unified inventory of all group assets. The platform is battle-tested in production at version 1.3, fully localized in Bosnian and English, and our regional deployment team executes the rollout alongside you.
@@ -815,7 +815,7 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
 
             <p>
               <span className="l-bs">
-                Navedite koliko pravnih lica posluje unutar grupacije i kako danas organizujete popis. Na osnovu tih parametara pripremićemo konkretan prijedlog implementacije.
+                Navedite koliko pravnih lica i lokacija ima Vaša kompanija i kako danas organizujete popis. Na osnovu tih parametara pripremićemo konkretan prijedlog implementacije.
               </span>
               <span className="l-en">
                 Tell us how many legal entities operate within your group and how physical audits are conducted today. We will deliver a tailored implementation roadmap and proposal.

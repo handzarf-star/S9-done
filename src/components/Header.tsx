@@ -112,7 +112,7 @@ const P: Record<string, Product> = {
     rgb: '88, 141, 250',
     icon: Boxes,
     jobBs: 'Imovina i inventar kompanije',
-    jobEn: 'Group assets and inventory',
+    jobEn: 'Company assets and inventory',
   },
   sonar: {
     path: '/sonar',
@@ -165,8 +165,8 @@ const P: Record<string, Product> = {
     color: '#C661DC',
     rgb: '198, 97, 220',
     icon: Bot,
-    jobBs: 'AI chatbot za poslovne podatke',
-    jobEn: 'AI chatbot for your business data',
+    jobBs: 'AI analitika podataka',
+    jobEn: 'AI data analytics',
   },
 };
 

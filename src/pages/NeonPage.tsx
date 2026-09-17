@@ -20,16 +20,16 @@ export const NeonPage: React.FC<NeonPageProps> = ({ onNavigate }) => (
     accent={ACCENT}
     accentRgb={ACCENT_RGB}
     badgeIcon={Sparkles}
-    badgeBs="Viber kampanje"
-    badgeEn="Viber campaigns"
-    h1Bs={['Ponuda s vizualom, usmjerena tačno onima kojima je', 'namijenjena.']}
-    h1En={['An offer with a picture, aimed at exactly the people it was meant', 'for.']}
-    questionBs={'„Koliko je kupaca primilo Vašu posljednju ponudu bez ikakvog interesa za nju?"'}
-    questionEn={'"How many people got your last offer with no interest in it at all?"'}
-    ledeBs="Kada svi dobiju istu ponudu, dio kupaca se odjavi s liste. Ne zato što ne žele kupovati kod Vas, već zato što im taj konkretan artikal ne treba."
-    ledeEn="When everyone gets the same offer, some of them leave the list. Not because they do not want to buy from you, but because they do not want that particular thing."
-    ctaShortBs="Recite nam koga ciljate"
-    ctaShortEn="Tell us who you are aiming at"
+    badgeBs="Ciljane Viber poruke kupcima"
+    badgeEn="Targeted Viber messages"
+    h1Bs={['Ponuda sa vizualom, usmjerena tačno profilu kupca koji joj', 'odgovara.']}
+    h1En={['An offer with a picture, aimed at exactly the customer profile it', 'suits.']}
+    questionBs={'„Koliko se kupaca odjavilo s Vaše liste samo zato što su dobili ponudu koja ih uopšte ne zanima?"'}
+    questionEn={'"How many people left your list simply because they got an offer that had nothing to do with them?"'}
+    ledeBs="Kada svi kupci prime potpuno istu poruku, dio kupaca gubi interes i odjavljuje se s liste, ne zato što ne žele kupovati kod Vas. Neon kombinuje vizual, prodajni tekst i direktan link, te poruke automatski usmjerava prema historiji ranijih kupovina i profilu korisnika."
+    ledeEn="When every customer gets the identical message, some of them lose interest and leave the list, and it is not because they do not want to buy from you. Neon puts the picture, the selling line and a direct link in one message, and aims it by what each person bought before."
+    ctaShortBs="Zakažite demonstraciju"
+    ctaShortEn="Book a demonstration"
     sections={[
       {
         id: 'sta-radi',

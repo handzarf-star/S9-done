@@ -20,16 +20,16 @@ export const IrisPage: React.FC<IrisPageProps> = ({ onNavigate }) => (
     accent={ACCENT}
     accentRgb={ACCENT_RGB}
     badgeIcon={Bot}
-    badgeBs="AI asistent za Vaše poslovne podatke"
-    badgeEn="An AI assistant for your business data"
-    h1Bs={['Postavite pitanje kao kolegi, dobijte tačan', 'podatak.']}
-    h1En={['Ask it the way you would ask a colleague, and get the', 'number.']}
-    questionBs={'„Koliko Vam vremena treba da dođete do jednog jedinog broja?"'}
-    questionEn={'"How long does it take you to get hold of one single number?"'}
-    ledeBs="Pitanje je jednostavno: kolika je bila prodaja prošle sedmice u poređenju s istom sedmicom prošle godine. Odgovor već stoji u bazi, ali neko mora sjesti, izvući podatke i poslati Vam izvještaj tek sutra."
-    ledeEn="The question is simple. What were sales last week against the same week a year ago. The answer is already in the database, but somebody has to sit down, pull it out, and send you the report tomorrow."
-    ctaShortBs="Pošaljite nam svoje pitanje"
-    ctaShortEn="Send us your question"
+    badgeBs="AI asistent za interne podatke"
+    badgeEn="AI assistant for internal data"
+    h1Bs={['Postavite pitanje asistentu i dobijate tačan podatak u', 'sekundi.']}
+    h1En={['Ask the assistant a question and get the exact figure in', 'seconds.']}
+    questionBs={'„Koliko Vam radnih sati treba da dođete do jednog jedinog broja ili podatka?"'}
+    questionEn={'"How many working hours does it take you to get hold of one single figure?"'}
+    ledeBs="Pitanje je potpuno jednostavno: kolika je bila prodaja prošle sedmice u poređenju s istom sedmicom prošle godine. Odgovor se već nalazi u bazi, ali put do njega je dug jer neko mora sjesti, ručno pretražiti tabele i poslati Vam izvještaj tek kasnije. Iris funkcioniše kao digitalni analitičar dostupan u svakom trenutku: napišete upit prirodnim govorom, bez poznavanja formula ili SQL koda, a sistem u nekoliko sekundi pronalazi tačan podatak direktno iz Vaših evidencija, bez nagađanja i popunjavanja rupa pretpostavkama."
+    ledeEn="The question could not be simpler. What were sales last week against the same week a year ago. The answer is already in the database, but the way to it is long, because somebody has to sit down, search the tables by hand and send you the report later. Iris works as an analyst available at any hour: you write the question in plain speech, with no formulas and no SQL, and in a few seconds it finds the exact figure in your own records, without guessing and without filling gaps with assumptions."
+    ctaShortBs="Zakažite demonstraciju asistenta"
+    ctaShortEn="Book a demonstration"
     sections={[
       {
         id: 'problem',

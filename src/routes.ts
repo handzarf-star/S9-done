@@ -131,12 +131,12 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '156, 203, 36',
     accentDeep: '#62820D',
     title: {
-      bs: 'Shape9 Bell · Pametna VoIP centrala sa prepoznavanjem kupaca',
-      en: 'Shape9 Bell · Smart VoIP Telephony with Customer Recognition',
+      bs: 'Shape9 Bell · Poslovna cloud telefonija s trenutnim prikazom historije kupca',
+      en: 'Shape9 Bell · Business cloud telephony with the caller history already on screen',
     },
     description: {
-      bs: 'Cloud telefonsko rješenje za call centre i prodajne timove koje agentima pruža potpun istorijski uvid u interakcije s klijentom tokom samog poziva.',
-      en: 'A cloud-based telephony solution for call centers and sales teams, providing full context and interaction history the moment a customer calls.',
+      bs: 'Cloud telefonski sistem za prodajne timove i podršku: agentima prikazuje identitet sagovornika, otvorene ponude i prethodne dogovore čim telefon zazvoni.',
+      en: 'A cloud phone system for sales teams and support. The moment the phone rings, the agent sees who is calling, the open quotes and what was agreed last time.',
     },
   },
   hive: {
@@ -159,12 +159,12 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '41, 209, 201',
     accentDeep: '#0F8680',
     title: {
-      bs: 'Shape9 Echo · Pametne SMS kampanje uz detaljnu analitiku',
-      en: 'Shape9 Echo · Branded SMS Campaigns with Click Tracking',
+      bs: 'Shape9 Echo · Brendirane SMS kampanje uz praćenje klikova i konverzija',
+      en: 'Shape9 Echo · Branded SMS campaigns with click and conversion tracking',
     },
     description: {
-      bs: 'Jednosmjerne SMS kampanje sa Vašim potpisom. Pošaljite odmah ili zakažite slanje pod imenom Vašeg brenda, uz napredno praćenje klikova.',
-      en: 'One-way branded SMS campaigns. Send instantly or schedule messages under your company name with advanced link and click tracking.',
+      bs: 'Masovno slanje SMS obavijesti pod zvaničnim nazivom Vašeg brenda: zakažite isporuku u idealan termin i pratite stvaran odziv kupaca kroz analitiku klikova.',
+      en: 'Bulk SMS under your own company name. Schedule delivery for the hour that works, and read the click data to see who actually responded.',
     },
   },
   neon: {
@@ -173,12 +173,12 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '252, 165, 205',
     accentDeep: '#BD588A',
     title: {
-      bs: 'Shape9 Neon · Ciljane Viber kampanje i segmentacija',
-      en: 'Shape9 Neon · Targeted Viber Campaigns & Segmentation',
+      bs: 'Shape9 Neon · Poslovne Viber kampanje uz segmentiranje prema profilu kupca',
+      en: 'Shape9 Neon · Business Viber campaigns segmented by customer profile',
     },
     description: {
-      bs: 'Napredna platforma za razmjenu poruka koja podržava bogate formate sadržaja, preciznu segmentaciju publike i ciljanu dostavu poruka.',
-      en: 'A rich messaging platform supporting extended content formats, precise audience segmentation, and highly targeted message delivery.',
+      bs: 'Zvanične Viber poruke sa vizualom, prodajnim tekstom i direktnim linkom: šaljite ponude profilisanim grupama kupaca na osnovu njihove historije kupovine, umjesto generičnih poruka.',
+      en: 'Official Viber messages with a picture, the selling line and a direct link. Offers go to profiled groups based on what they bought before, instead of the same message to everyone.',
     },
   },
   iris: {
@@ -187,12 +187,12 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
     accentRgb: '198, 97, 220',
     accentDeep: '#800A96',
     title: {
-      bs: 'Shape9 Iris · AI asistent za analizu poslovnih podataka',
-      en: 'Shape9 Iris · AI-Powered Business Data & Metrics Assistant',
+      bs: 'Shape9 Iris · AI asistent za trenutnu analizu poslovnih podataka i baza',
+      en: 'Shape9 Iris · AI assistant for instant analysis of your business data',
     },
     description: {
-      bs: 'AI asistent za Vaše poslovne podatke i metrike. Odgovara isključivo na osnovu Vaših internih dokumenata i precizno pamti tok razgovora.',
-      en: 'An AI assistant for your business data and metrics. Answers are generated exclusively from your secure data while maintaining full conversational context.',
+      bs: 'Postavite upit običnim jezikom i dolazite do tačnih poslovnih metrika u sekundi: namjenski AI asistent koji pretražuje isključivo Vaše interne baze i dokumente, bez nagađanja.',
+      en: 'Ask in plain words and get the exact figure in seconds. A dedicated AI assistant that searches only your own internal databases and documents, with no guessing.',
     },
   },
   custom: {

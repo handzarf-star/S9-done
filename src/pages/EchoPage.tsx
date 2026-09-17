@@ -18,16 +18,16 @@ export const EchoPage: React.FC<EchoPageProps> = ({ onNavigate }) => (
     accent={ACCENT}
     accentRgb={ACCENT_RGB}
     badgeIcon={MessageSquareText}
-    badgeBs="SMS kampanje"
-    badgeEn="SMS campaigns"
-    h1Bs={['Jedna poruka, trenutan doseg do svih kupaca, uz tačan uvid ko ju je', 'otvorio.']}
-    h1En={['One message, every customer at once, and you see exactly who', 'opened it.']}
-    questionBs={'„Akcija počinje sutra, koliko Vaših kupaca zna za nju?"'}
-    questionEn={'"The sale starts tomorrow. How many of your customers know?"'}
-    ledeBs="Brojevi telefona postoje u tabeli ili unutar sistema. Između te tabele i kupca stoji samo to što nemate čime poslati svima odjednom."
-    ledeEn="The phone numbers already exist, in a spreadsheet or inside a system. The only thing standing between that list and the customer is that nothing can send to all of them at once."
-    ctaShortBs="Pošaljite nam svoju listu"
-    ctaShortEn="Send us your list"
+    badgeBs="Brendirane SMS poruke"
+    badgeEn="Branded SMS messages"
+    h1Bs={['Jedna poruka i trenutan doseg do cijele baze kupaca, uz tačan uvid u svaki ostvareni', 'klik.']}
+    h1En={['One message, your whole customer base at once, and an exact view of every', 'click.']}
+    questionBs={'„Nova ponuda kreće sutra: koliko Vaših kupaca uopšte zna za nju?"'}
+    questionEn={'"A new offer starts tomorrow. How many of your customers even know?"'}
+    ledeBs="Kontakti kupaca već stoje u Vašim tabelama ili bazi, ali komunikacija zapinje jer nemate pouzdan sistem da im se obratite svima u istom trenutku. Echo omogućava da pripremljenu ponudu pošaljete pod zvaničnim imenom kompanije, tačno u onaj dan i sat kada donosi najveći prodajni efekat, uz mjerljivu analitiku ko je zaista reagovao na link."
+    ledeEn="Your customers' numbers already sit in a spreadsheet or in a system, and the communication stops there because nothing can reach all of them at the same moment. Echo sends the prepared offer under your official company name, on the day and at the hour it sells best, with click data showing who actually responded."
+    ctaShortBs="Zakažite demonstraciju"
+    ctaShortEn="Book a demonstration"
     sections={[
       {
         id: 'sta-radi',

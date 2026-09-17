@@ -21,8 +21,8 @@ export const HivePage: React.FC<HivePageProps> = ({ onNavigate }) => (
     badgeIcon={Hexagon}
     badgeBs="Prodajni procesi i narudžbe"
     badgeEn="Sales and orders"
-    h1Bs={['Upravljanje narudžbom od prve poruke do', 'naplate.']}
-    h1En={['One order, from the first message to the', 'money.']}
+    h1Bs={['Upravljanje prodajom od prve poruke do', 'naplate.']}
+    h1En={['Your sales, from the first message to the', 'money.']}
     questionBs={'„Koliko je narudžbi pristiglo danas?"'}
     questionEn={'"How many orders came in today?"'}
     ledeBs="Većina firmi na to ne može odgovoriti odmah. Dio narudžbi stigne putem Instagrama, dio telefonom, dio preko web stranice, a svaki kanal vodi svoju zasebnu evidenciju."

@@ -19,16 +19,16 @@ export const BellPage: React.FC<BellPageProps> = ({ onNavigate }) => (
     accent={ACCENT}
     accentRgb={ACCENT_RGB}
     badgeIcon={Headphones}
-    badgeBs="Cloud telefonija"
-    badgeEn="Cloud telephony"
-    h1Bs={['Telefonski sistem koji prepoznaje pozivaoca i pamti svaki', 'razgovor.']}
-    h1En={['A phone system that knows who is calling and remembers every', 'conversation.']}
-    questionBs={'„Ko je zvao jučer poslije pet?"'}
-    questionEn={'"Who rang after five yesterday?"'}
-    ledeBs="Uz klasičnu telefonsku centralu u ormaru, na to pitanje nema odgovora. Propušten poziv ne ostavlja trag, a obavljeni razgovor ostaje isključivo u sjećanju agenta."
-    ledeEn="With an exchange sitting in a cupboard, that question has no answer. A missed call leaves no trace, and a call that was taken lives only in the agent's memory."
-    ctaShortBs="Pokažite nam kako zovete"
-    ctaShortEn="Show us how you take calls"
+    badgeBs="Poslovna cloud telefonija"
+    badgeEn="Business cloud telephony"
+    h1Bs={['Sistem koji prepoznaje klijenta čim telefon zazvoni i pamti svaki prethodni', 'dogovor.']}
+    h1En={['A system that knows the customer the moment the phone rings and remembers every', 'agreement.']}
+    questionBs={'„Koliko biste više prodaja zaključili da Vaši agenti odmah vide historiju svakog sagovornika?"'}
+    questionEn={'"How many more deals would your people close if they saw every caller\'s history straight away?"'}
+    ledeBs="Uz klasičnu centralu agent ulazi u razgovor na slijepo i kreće od nule. Dok klijent po treći put objašnjava šta mu treba ili čeka da neko pronađe njegovu narudžbu, prodajna prilika se hladi. Bell u trenutku poziva na ekranu otvara ime kupca, prethodne kupovine i bilješke s prošlog sastanka, pa razgovor ne počinje ispitivanjem, već direktnim zatvaranjem prodaje."
+    ledeEn="With a traditional exchange the agent goes in blind and starts from nothing. While the customer explains for the third time what they need, or waits for somebody to find their order, the sale goes cold. Bell puts the customer's name, their past purchases and the notes from the last meeting on screen at the moment of the call, so the conversation starts where it left off instead of at the beginning."
+    ctaShortBs="Pokažite nam kako danas primate pozive"
+    ctaShortEn="Show us how you take calls today"
     sections={[
       {
         id: 'problem',
