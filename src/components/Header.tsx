@@ -20,7 +20,7 @@ import {
   SheetTitle,
 } from '@/components/ui/sheet';
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Menu, X, ArrowRight, PhoneCall, Package, LineChart, FileText, Store, Calendar } from 'lucide-react';
+import { ChevronDown, Menu, X, ArrowRight, PhoneCall, Package, LineChart, FileText, Boxes, Store, Calendar } from 'lucide-react';
 import { MeetingScheduler } from './MeetingScheduler';
 
 interface HeaderProps {
@@ -88,6 +88,15 @@ const P: Record<string, Product> = {
     jobBs: 'Dokumenti i knjigovodstvo',
     jobEn: 'Documents and bookkeeping',
   },
+  vesta: {
+    path: '/vesta',
+    shortName: 'Vesta',
+    color: '#588DFA',
+    rgb: '88, 141, 250',
+    icon: Boxes,
+    jobBs: 'Imovina i inventar grupacije',
+    jobEn: 'Group assets and inventory',
+  },
   sonar: {
     path: '/sonar',
     shortName: 'Sonar',
@@ -132,7 +141,7 @@ const P: Record<string, Product> = {
 const CATEGORIES = [
   { id: 'call', labelBs: 'Call centar', labelEn: 'Call centre', items: [P.pulse] },
   { id: 'prodaja', labelBs: 'Prodaja i skladište', labelEn: 'Sales and stock', items: [P.mode, P.atlas] },
-  { id: 'admin', labelBs: 'Administracija', labelEn: 'Back office', items: [P.libra] },
+  { id: 'admin', labelBs: 'Administracija', labelEn: 'Back office', items: [P.libra, P.vesta] },
   { id: 'ai', labelBs: 'AI analitika', labelEn: 'AI analytics', items: [P.sonar] },
 ];
 

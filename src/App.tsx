@@ -7,6 +7,12 @@ import { PulsePage } from './pages/PulsePage';
 import { AtlasPage } from './pages/AtlasPage';
 import { SonarPage } from './pages/SonarPage';
 import { LibraPage } from './pages/LibraPage';
+import { VestaPage } from './pages/VestaPage';
+import { BellPage } from './pages/BellPage';
+import { HivePage } from './pages/HivePage';
+import { EchoPage } from './pages/EchoPage';
+import { NeonPage } from './pages/NeonPage';
+import { IrisPage } from './pages/IrisPage';
 import { ModePage } from './pages/ModePage';
 import { RadoviPage } from './pages/RadoviPage';
 import { RadoviWmsPage } from './pages/RadoviWmsPage';
@@ -134,6 +140,21 @@ export const App: React.FC = () => {
         return <ModePage onNavigate={navigate} />;
       case 'libra':
         return <LibraPage onNavigate={navigate} />;
+      case 'vesta':
+        return <VestaPage onNavigate={navigate} />;
+      /* Reachable by URL so the pages can be read and corrected. Not in the
+         header, the footer or the sitemap: these five names have not been
+         to Mersad yet. */
+      case 'bell':
+        return <BellPage onNavigate={navigate} />;
+      case 'hive':
+        return <HivePage onNavigate={navigate} />;
+      case 'echo':
+        return <EchoPage onNavigate={navigate} />;
+      case 'neon':
+        return <NeonPage onNavigate={navigate} />;
+      case 'iris':
+        return <IrisPage onNavigate={navigate} />;
       case 'radovi':
         return <RadoviPage onNavigate={navigate} />;
       case 'radoviWms':

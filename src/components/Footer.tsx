@@ -121,6 +121,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </li>
               <li>
                 <a
+                  href="/vesta"
+                  onClick={(e) => go(e, '/vesta')}
+                  className="hover:text-[var(--ink)] transition-colors focus-ring"
+                >
+                  Shape9 Vesta
+                </a>
+              </li>
+              <li>
+                <a
                   href="/sonar"
                   onClick={(e) => go(e, '/sonar')}
                   className="hover:text-[var(--ink)] transition-colors focus-ring"
