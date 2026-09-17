@@ -400,13 +400,13 @@ export const RadoviMonadPage: React.FC<RadoviMonadPageProps> = ({ onNavigate }) 
             </div>
 
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-3">
-              <span className="l-bs">Želite slično rješenje za vaš biznis?</span>
+              <span className="l-bs">Želite slično rješenje za Vaš biznis?</span>
               <span className="l-en">Have something similar?</span>
             </h2>
 
             <p className="text-sm sm:text-base text-[var(--body)] max-w-xl mx-auto leading-relaxed">
               <span className="l-bs">
-                Opišite nam operativne procese koji vašem timu oduzimaju najviše vremena. Predložićemo optimalan model automatizacije i procjenu povrata investicije.
+                Opišite nam operativne procese koji Vašem timu oduzimaju najviše vremena. Predložićemo optimalan model automatizacije i procjenu povrata investicije.
               </span>
               <span className="l-en">
                 Write what eats your team's time, or which numbers you are missing. We come back with a concrete proposal and an honest read on whether it pays off.

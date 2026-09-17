@@ -38,7 +38,7 @@ const CUSTOM_SERVICES = [
     icon: Smartphone,
     titleBs: 'Mobilne aplikacije',
     titleEn: 'Mobile Applications',
-    descBs: 'Nativna i cross-platform mobilna rješenja za iOS i Android koja vašem terenskom timu i klijentima pružaju besprijekorno iskustvo.',
+    descBs: 'Nativna i cross-platform mobilna rješenja za iOS i Android koja Vašem terenskom timu i klijentima pružaju besprijekorno iskustvo.',
     descEn: 'Native and cross-platform mobile solutions for iOS and Android.',
     techs: ['React Native', 'Flutter', 'Swift', 'Kotlin'],
   },
@@ -47,7 +47,7 @@ const CUSTOM_SERVICES = [
     icon: Sparkles,
     titleBs: 'AI i inteligentni sistemi',
     titleEn: 'AI Solutions',
-    descBs: 'Automatizacija složenih poslovnih odluka, obrada prirodnog jezika i prediktivni modeli integrisani u vaše svakodnevne procese.',
+    descBs: 'Automatizacija složenih poslovnih odluka, obrada prirodnog jezika i prediktivni modeli integrisani u Vaše svakodnevne procese.',
     descEn: 'Intelligent systems powered by machine learning and AI.',
     techs: ['TensorFlow', 'PyTorch', 'OpenAI', 'LangChain'],
   },
@@ -56,7 +56,7 @@ const CUSTOM_SERVICES = [
     icon: Building2,
     titleBs: 'Prilagođeni ERP & CRM',
     titleEn: 'Custom ERP/CRM',
-    descBs: 'Namjenski poslovni softver koji objedinjuje prodajne lijevke, operacije i resurse tačno prema načinu na koji vaš tim posluje.',
+    descBs: 'Namjenski poslovni softver koji objedinjuje prodajne lijevke, operacije i resurse tačno prema načinu na koji Vaš tim posluje.',
     descEn: 'Tailored enterprise solutions that streamline operations.',
     techs: ['Dynamics 365', 'SQL', 'AWS', 'Azure'],
   },
@@ -74,7 +74,7 @@ const CUSTOM_SERVICES = [
     icon: BarChart3,
     titleBs: 'Poslovna analitika i BI',
     titleEn: 'Data Analytics',
-    descBs: 'Podaci vam stoje razbacani po sistemima. Spajamo ih na jedno mjesto, da odluku donesete dok još nešto znači.',
+    descBs: 'Podaci Vam stoje razbacani po sistemima. Spajamo ih na jedno mjesto, da odluku donesete dok još nešto znači.',
     descEn: 'Transform raw data into actionable insights.',
     techs: ['Python', 'BigQuery', 'Tableau', 'Power BI'],
   },
@@ -85,7 +85,7 @@ const ENGINEERING_STEPS = [
     step: '01',
     titleBs: 'Dubinska analiza i specifikacija',
     titleEn: 'Deep discovery and scoping',
-    descBs: 'Zajedno mapiramo vaše specifične poslovne tokove, identificiramo uska grla i precizno definišemo tehničku arhitekturu.',
+    descBs: 'Zajedno mapiramo Vaše specifične poslovne tokove, identificiramo uska grla i precizno definišemo tehničku arhitekturu.',
     descEn: 'We map your exact operational workflows, isolate bottlenecks, and establish a clear technical specification.',
   },
   {
@@ -106,7 +106,7 @@ const ENGINEERING_STEPS = [
     step: '04',
     titleBs: 'Puštanje u produkciju i dugoročna podrška',
     titleEn: 'Deployment, training, and SLA support',
-    descBs: 'Obučavamo vaš tim, vršimo sigurnu migraciju podataka i osiguravamo cjelodnevno održavanje i proaktivno skaliranje.',
+    descBs: 'Obučavamo Vaš tim, vršimo sigurnu migraciju podataka i osiguravamo cjelodnevno održavanje i proaktivno skaliranje.',
     descEn: 'We train your team, migrate data safely, and provide ongoing maintenance, monitoring, and proactive scaling.',
   },
 ];
@@ -158,7 +158,7 @@ export const CustomPage: React.FC<CustomPageProps> = ({ onNavigate }) => {
             onClick={(e) => go(e, '#custom-form')}
             className="btn-primary w-full sm:w-auto py-3.5 px-8 text-sm font-semibold focus-ring"
           >
-            <span className="l-bs">Opišite vaš projekat</span>
+            <span className="l-bs">Opišite Vaš projekat</span>
             <span className="l-en">Discuss your project</span>
             <ArrowRight className="w-4 h-4 ml-1" />
           </a>
@@ -264,7 +264,7 @@ export const CustomPage: React.FC<CustomPageProps> = ({ onNavigate }) => {
               <span className="l-en">Full-Spectrum Engineering Solutions</span>
             </h2>
             <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed">
-              <span className="l-bs">Gradimo brza, skalabilna i pouzdana rješenja prilagođena vašim specifičnim operacijama.</span>
+              <span className="l-bs">Gradimo brza, skalabilna i pouzdana rješenja prilagođena Vašim specifičnim operacijama.</span>
               <span className="l-en">We build fast, scalable, and resilient systems tailored to your unique workflows.</span>
             </p>
           </div>
@@ -422,13 +422,13 @@ export const CustomPage: React.FC<CustomPageProps> = ({ onNavigate }) => {
             </div>
 
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-4 sm:mb-6 leading-tight">
-              <span className="l-bs">Ispričajte nam o vašim tehničkim zahtjevima</span>
+              <span className="l-bs">Ispričajte nam o Vašim tehničkim zahtjevima</span>
               <span className="l-en">Tell us about your project requirements</span>
             </h2>
 
             <p className="text-sm sm:text-base text-[var(--body)] max-w-2xl mx-auto leading-relaxed">
               <span className="l-bs">
-                Opišite vaš poslovni problem ili ideju. Javićemo vam se u roku od jednog radnog dana s prvom tehničkom procjenom i prijedlogom arhitekture.
+                Opišite Vaš poslovni problem ili ideju. Javićemo Vam se u roku od jednog radnog dana s prvom tehničkom procjenom i prijedlogom arhitekture.
               </span>
               <span className="l-en">
                 Describe your operational bottleneck or product vision. We reply within one business day with a preliminary technical assessment.

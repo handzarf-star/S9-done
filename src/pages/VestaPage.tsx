@@ -50,7 +50,7 @@ const LIFECYCLE = [
     icon: ShoppingCart,
     nBs: 'Nabavka',
     nEn: 'Purchase',
-    bs: 'Narudžbenica s tačnim brojem koraka odobravanja koje definišu Vaša interna pravila.',
+    bs: 'Narudžbenica sa onoliko koraka odobravanja koliko traže Vaša pravila.',
     en: 'An order with as many approval steps as your own rules require.',
   },
   {
@@ -58,7 +58,7 @@ const LIFECYCLE = [
     icon: PackageCheck,
     nBs: 'Prijem i zaduženje',
     nEn: 'Receipt',
-    bs: 'Prispjela oprema postaje osnovno sredstvo s jedinstvenim identifikatorom i dobija trajnu fizičku oznaku.',
+    bs: 'Oprema koja stigne dobije svoj broj i naljepnicu, jednom i zauvijek.',
     en: 'What arrived becomes an asset with its own identifier, and a label goes on it for good.',
   },
   {
@@ -66,7 +66,7 @@ const LIFECYCLE = [
     icon: UserCheck,
     nBs: 'Dodjela',
     nEn: 'Assignment',
-    bs: 'Zaduživanje konkretne osobe ili odjela, uz tačan datum preuzimanja.',
+    bs: 'Zadužite čovjeka ili odjel, sa datumom kada je preuzeo.',
     en: 'Handed to a named person or a department, with the date it was taken over.',
   },
   {
@@ -74,7 +74,7 @@ const LIFECYCLE = [
     icon: ArrowLeftRight,
     nBs: 'Kretanje',
     nEn: 'Movement',
-    bs: 'Evidentiranje premještanja, iznajmljivanja ili rezervacije za određeni vremenski period.',
+    bs: 'Premjestite je, iznajmite ili rezervišite na određeni period, a sve to ostaje zapisano.',
     en: 'Transferred, rented out, or reserved for a set period.',
   },
   {
@@ -82,7 +82,7 @@ const LIFECYCLE = [
     icon: Wrench,
     nBs: 'Održavanje',
     nEn: 'Maintenance',
-    bs: 'Planirani periodični pregledi, servisi u slučaju kvara i tačan zapis ko je prouzrokovao štetu.',
+    bs: 'Redovni pregledi, servis kad se nešto pokvari, i zapis ko je napravio štetu.',
     en: 'Inspections on a schedule, repairs when something breaks, and a record of who caused the damage.',
   },
   {
@@ -90,7 +90,7 @@ const LIFECYCLE = [
     icon: Archive,
     nBs: 'Rashodovanje',
     nEn: 'Retirement',
-    bs: 'Povlačenje iz upotrebe na kraju životnog vijeka, uz precizno evidentiran način zbrinjavanja.',
+    bs: 'Oprema izlazi iz upotrebe, a u sistemu ostaje zapisano kako je otpisana.',
     en: 'Taken out of use at the end of its life, with the way it was disposed of written down.',
   },
 ];
@@ -105,7 +105,7 @@ const AREAS = [
     areaEn: 'Purchasing',
     beforeBs: 'Faktura ode u računovodstvo, oprema na teren, a podaci se od tog dana nepovratno razilaze.',
     beforeEn: 'The invoice goes to accounts, the equipment goes out to the field, and from that day the two records drift apart.',
-    afterBs: 'Oprema se evidentira odmah po prijemu, dobija jedinstvenu šifru i oznaku, te od tog trena ima zabilježenu historiju.',
+    afterBs: 'Opremu evidentirate odmah po prijemu, dobije svoju šifru i naljepnicu, i od tog trena ima historiju.',
     afterEn: 'It is booked in the moment it arrives, gets its own code and a label, and has a recorded history from then on.',
   },
   {
@@ -115,7 +115,7 @@ const AREAS = [
     areaEn: 'Assignment',
     beforeBs: 'Ko je posljednji uzeo opremu traži se raspitivanjem po hodnicima.',
     beforeEn: 'Who took it last gets asked around the corridors.',
-    afterBs: 'Svako sredstvo je vezano za tačno ime i datum, a svako prosljeđivanje se odmah bilježi u sistemu.',
+    afterBs: 'Svaka stavka ima svoje ime i svoj datum, a svako prosljeđivanje odmah upišete.',
     afterEn: 'Every asset is tied to a name and a date, and every hand over is recorded as it happens.',
   },
   {
@@ -125,7 +125,7 @@ const AREAS = [
     areaEn: 'Equipment requests',
     beforeBs: 'Kada nekome zatreba laptop, poziva redom one za koje pretpostavlja da odlučuju.',
     beforeEn: 'Someone needs a laptop and rings round the people they assume decide.',
-    afterBs: 'Zahtjev prolazi kroz tačno definisane nivoe odobrenja, a svi uključeni u svakom trenutku vide u kojoj je fazi.',
+    afterBs: 'Zahtjev ide kroz nivoe odobrenja koje ste sami postavili, a svi uključeni u svakom trenutku vide gdje je stao.',
     afterEn: 'The request goes through defined levels of approval, and everyone involved can see which stage it is at.',
   },
   {
@@ -145,7 +145,7 @@ const AREAS = [
     areaEn: 'Maintenance and repairs',
     beforeBs: 'Popravke se pamte dok osoba koja ih je vodila ne napusti firmu.',
     beforeEn: 'Repairs are remembered until the person who handled them leaves.',
-    afterBs: 'Svaka inspekcija, servis i ugrađeni zamjenski dio ostaju trajno zabilježeni uz samo sredstvo.',
+    afterBs: 'Svaki pregled, servis i ugrađeni dio ostaju zapisani uz samu opremu.',
     afterEn: 'Every inspection, service and replaced part stays recorded against the asset itself.',
   },
   {
@@ -155,7 +155,7 @@ const AREAS = [
     areaEn: 'Write-off',
     beforeBs: 'Oprema se baci, a u poslovnim knjigama nastavlja gomilati fiktivnu amortizaciju.',
     beforeEn: 'It gets scrapped and carries on piling up depreciation that is not real.',
-    afterBs: 'Otpis se evidentira odmah, uz tačan način zbrinjavanja, a računovodstvo istog dana dobija čist podatak.',
+    afterBs: 'Otpis upišete odmah, sa načinom na koji ste opremu zbrinuli, a računovodstvo isti dan ima čist podatak.',
     afterEn: 'The write-off is recorded at once, with the disposal method, and accounts get a clean figure the same day.',
   },
 ];
@@ -167,9 +167,9 @@ const FIELD = [
   {
     id: 'skener',
     icon: ScanLine,
-    tBs: 'Skeniranje kamerom uređaja',
+    tBs: 'Kamera mobitela je skener',
     tEn: 'The camera is the scanner',
-    bs: 'Usmjerite kameru prema QR kodu ili barkodu i kompletna kartica sredstva se odmah prikazuje na ekranu, za provjeru, označavanje ili ažuriranje.',
+    bs: 'Uperite kameru u QR kod ili barkod, i cijela kartica opreme je odmah na ekranu. Provjerite je, označite ili izmijenite.',
     en: 'Point the camera at a QR code or a barcode and the whole asset record is on screen, to check, to tag or to update.',
   },
   {
@@ -177,31 +177,31 @@ const FIELD = [
     icon: WifiOff,
     tBs: 'Rad bez internetske veze',
     tEn: 'It works with no connection',
-    bs: 'Skeniranja i unosi bilježe se lokalno na telefonu i automatski šalju u bazu onog trenutka kada uređaj ponovo uspostavi vezu. Bilo da ste u podrumu, skladištu ili na gradilištu bez signala, podaci ostaju sačuvani.',
+    bs: 'Sve što skenirate i upišete ostaje na samom mobitelu, pa ode u bazu čim se veza vrati. Bilo da ste u podrumu, skladištu ili na gradilištu bez signala, ništa se ne gubi.',
     en: 'Scans and entries are written on the phone and sent up the moment the device is back in range. A basement, a warehouse or a site with no signal. Nothing is lost.',
   },
   {
     id: 'stampa',
     icon: Printer,
-    tBs: 'Štampanje naljepnica s telefona',
+    tBs: 'Naljepnice štampate s mobitela',
     tEn: 'Labels print from the phone',
-    bs: 'Slanje naloga na štampač putem Bluetooth veze, ili s računara putem USB priključka i lokalne mreže. Veličinu i format naljepnice birate u trenutku štampe, a ne mjesecima unaprijed.',
+    bs: 'Nalog ide na štampač preko Bluetootha s mobitela, ili s računara preko USB-a i mreže. Veličinu i format birate kad štampate, a ne mjesecima ranije.',
     en: 'Straight to the printer over Bluetooth, or from a desk over USB or the local network. You choose the size and the format when you print, not months in advance.',
   },
   {
     id: 'javni',
     icon: QrCode,
-    tBs: 'Javni uvid za sve zaposlene',
+    tBs: 'Svako može skenirati naljepnicu',
     tEn: 'Anyone can scan a label',
-    bs: 'Skeniranjem oznake otvara se osnovni javni profil opreme, bez potrebe za prijavom na sistem i bez otkrivanja povjerljivih internih podataka.',
+    bs: 'Skenirate naljepnicu i vidite osnovne podatke o opremi, bez prijave na sistem i bez internih podataka.',
     en: 'A scan opens a basic public profile of the equipment, with no login and without exposing anything confidential.',
   },
   {
     id: 'inspekcije',
     icon: ClipboardCheck,
-    tBs: 'Terenske inspekcije u hodu',
+    tBs: 'Obilazak se radi u hodu',
     tEn: 'Inspections walk with you',
-    bs: 'Obavite redovni obilazak lokacije, skenirajte svako sredstvo i unesite zapažanja, potpuno samostalno i bez pristupa internetu.',
+    bs: 'Obiđete lokaciju, skenirate svaku stavku i upišete šta ste vidjeli, i bez interneta.',
     en: 'Do the round, scan each asset and record what you found, on your own and with no connection at all.',
   },
 ];
@@ -211,7 +211,7 @@ const VESTA_FAQ: AccordionItem[] = [
     id: 'vesta-faq-1',
     qBs: 'Imamo oko pedeset firmi u grupaciji, da li je to prevelik obim?',
     qEn: 'We have around fifty companies in the group. Is that too big?',
-    aBs: 'Ne, sistem je arhitektonski projektovan upravo za grupacije te veličine. Svaka firma zadržava pregled sopstvene imovine i zaposlenih, dok uprava ima konsolidovan nadzor nad cijelim sistemom, preračunat u željenu izvještajnu valutu.',
+    aBs: 'Ne, baš za tolike grupacije je i pravljen. Svaka firma vidi svoju imovinu i svoje ljude, a uprava ima jedan pregled iznad svega, preračunat u valutu u kojoj izvještavate.',
     aEn: 'No, it was designed for a group of exactly that size. Each company keeps its own view of its assets and its people, while the group has consolidated oversight of all of it, converted into whichever currency you report in.',
   },
   {
@@ -225,14 +225,14 @@ const VESTA_FAQ: AccordionItem[] = [
     id: 'vesta-faq-3',
     qBs: 'Naši ljudi na terenu nemaju pouzdan internet.',
     qEn: 'Our field staff have no reliable internet.',
-    aBs: 'Mobilna aplikacija radi potpuno stabilno bez mreže. Sve operacije izvršene u objektu ili na terenu bilježe se na samom telefonu i sinhronizuju čim se uspostavi veza.',
+    aBs: 'Mobilna aplikacija radi i bez mreže. Sve što uradite u objektu ili na terenu upiše se na sam mobitel, pa se sinhronizuje čim se veza vrati.',
     aEn: 'The mobile app runs perfectly well without it. Everything done inside a building or out on site is written on the phone itself and syncs the moment a connection returns.',
   },
   {
     id: 'vesta-faq-4',
     qBs: 'Mi ne posjedujemo svu opremu, već je često iznajmljujemo i dajemo u najam.',
     qEn: 'We do not own all of it. We rent equipment in and out.',
-    aBs: 'To je u sistemu riješeno kao zaseban poslovni proces u oba smjera, uz podršku za više stavki po jednom ugovoru i mogućnost parcijalnog povrata kada se vrati samo dio opreme.',
+    aBs: 'To je zaseban proces, u oba smjera. Više stavki ide na jedan ugovor, a povrat može biti i djelimičan kada se vrati samo dio opreme.',
     aEn: 'That is handled as a process of its own, in both directions, with several items on one agreement and partial returns when only some of the equipment comes back.',
   },
   {
@@ -297,7 +297,7 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
 
         <p className="hero-animate-3 lead mx-auto mb-8 sm:mb-12">
           <span className="l-bs">
-            Pitanje koje se u praksi ponavlja gotovo svake sedmice i za koje redovno treba pola radnog dana da se pronađe odgovor. Dio opreme nalazi se u drugoj firmi unutar grupacije, dio je kod ekipa na terenu, a dio je rashodovan prije dvije godine, iako se i dalje vodi u poslovnim knjigama.
+            Pitanje koje se čuje gotovo svake sedmice, a za odgovor redovno treba pola radnog dana. Dio opreme nalazi se u drugoj firmi unutar grupacije, dio je kod ekipa na terenu, a dio je rashodovan prije dvije godine, iako se i dalje vodi u poslovnim knjigama.
           </span>
           <span className="l-en">
             A question that comes up most weeks and reliably takes half a working day to answer. Some of the equipment is at another company inside the group, some is with crews out in the field, and some was written off two years ago and is still carried on the books.
@@ -339,7 +339,7 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
             </h2>
             <p>
               <span className="l-bs">
-                Kada je imovina raspoređena na pedeset firmi, niko nema cjelovit uvid u to šta grupacija posjeduje niti gdje se koje sredstvo nalazi.
+                Kada je imovina raspoređena na pedeset firmi, niko ne zna šta grupacija ukupno ima ni gdje se šta nalazi.
               </span>
               <span className="l-en">
                 When the assets sit across fifty companies, nobody has a whole view of what the group owns or where any of it is.
@@ -353,21 +353,21 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
                 id: 'tabela',
                 tBs: 'Tabela ne može pratiti dinamiku na terenu',
                 tEn: 'A spreadsheet cannot keep up with the field',
-                bs: 'Ko je zadužen za opremu, kolika joj je trenutna vrijednost, kada ističe garancija i šta je na njoj servisirano. Svi ti podaci zastarijevaju već za nekoliko sedmica.',
+                bs: 'Ko je zadužen za opremu, kolika joj je trenutna vrijednost, kada ističe garancija i šta je na njoj servisirano. Svi ti podaci zastare za nekoliko sedmica.',
                 en: 'Who is responsible for it, what it is worth now, when the warranty runs out and what has been serviced on it. All of it goes stale within a few weeks.',
               },
               {
                 id: 'kretanje',
                 tBs: 'Kretanje imovine između povezanih firmi ne ostavlja trag',
                 tEn: 'Movement between related companies leaves no trace',
-                bs: 'Interni zakup, prodaja ili povrat, ništa od toga nije evidentirano na način da se kasnije može brzo pronaći.',
+                bs: 'Interni zakup, prodaja ili povrat, ništa od toga niste zapisali tako da se kasnije može brzo naći.',
                 en: 'An internal rental, a sale or a return. None of it is recorded in a way that can be found again later.',
               },
               {
                 id: 'teren',
                 tBs: 'Na terenu nedostaju alati za rad',
                 tEn: 'There is nothing to work with on site',
-                bs: 'Niko ne može skenirati sredstvo, odštampati barkod niti ažurirati status opreme dok stoji neposredno pored nje.',
+                bs: 'Niko ne može skenirati opremu, odštampati barkod ni izmijeniti joj status dok stoji pored nje.',
                 en: 'Nobody can scan an asset, print a barcode or update its status while standing right next to it.',
               },
             ].map((row) => (
@@ -410,7 +410,7 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
               <span className="l-en">Owning a thing and holding it are two different things.</span>
             </h2>
             <p>
-              <span className="l-bs">Jedna firma može biti vlasnik sredstva, dok se sama oprema fizički nalazi u rukama druge. Ta ključna razlika predstavlja temelj cijelog sistema.</span>
+              <span className="l-bs">Jedna firma može biti vlasnik sredstva, dok se sama oprema fizički nalazi u rukama druge. Na toj razlici stoji cijeli sistem.</span>
               <span className="l-en">One company can own an asset while the equipment itself is physically in the hands of another. That distinction is the foundation of the whole system.</span>
             </p>
           </div>
@@ -421,21 +421,21 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
                 id: 'zakup',
                 tBs: 'Interni zakup prenosi posjed',
                 tEn: 'An internal rental moves possession',
-                bs: 'Oprema ostaje u knjigama vlasnika, uz jasnu evidenciju ko je trenutno koristi na drugoj lokaciji.',
+                bs: 'Oprema ostaje u knjigama vlasnika, a zapisano je ko je trenutno koristi i gdje.',
                 en: 'The equipment stays on the owner\'s books, with a clear record of who is using it and where.',
               },
               {
                 id: 'prodaja',
                 tBs: 'Interna prodaja prenosi oboje',
                 tEn: 'An internal sale moves both',
-                bs: 'Imovina i fizički posjed prelaze zajedno, a poslovne knjige prethodne firme prestaju nositi to sredstvo.',
+                bs: 'Vlasništvo i posjed prelaze zajedno, a knjige prethodne firme prestaju nositi tu opremu.',
                 en: 'Ownership and physical possession move together, and the previous company\'s books stop carrying the asset.',
               },
               {
                 id: 'povrat',
                 tBs: 'Povrat vraća posjed vlasniku',
                 tEn: 'A return brings possession back',
-                bs: 'Svako vraćanje se evidentira kao operativni korak, umjesto pukog brisanja prethodnih zapisa.',
+                bs: 'Povrat upišete kao korak koji se desio, a ne brišete ono što je bilo prije.',
                 en: 'Every return is recorded as a step that happened, rather than by deleting what came before.',
               },
             ].map((c) => (
@@ -578,7 +578,7 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
                     </span>
                   </div>
                   <p className="text-sm leading-relaxed m-0">
-                    <span className="l-bs">Roba koja cirkuliše kroz Vaše poslovanje: zalihe, narudžbe i komisioniranje. Roba koja ulazi u skladište kako bi se ubrzo prodala i otpremila.</span>
+                    <span className="l-bs">Roba koja prolazi kroz Vas: zalihe, narudžbe i komisioniranje. Ulazi u skladište da bi se prodala i otpremila.</span>
                     <span className="l-en">The goods that circulate through your business. Stock, orders and picking. Goods that come into the warehouse so they can be sold and shipped out again.</span>
                   </p>
                 </div>
@@ -597,7 +597,7 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
               </div>
 
               <p className="text-sm sm:text-base leading-relaxed m-0">
-                <span className="l-bs">Preduzećima sa složenom infrastrukturom potrebna su oba rješenja. Razlika leži u tome ko postavlja upit: logistika i skladište gledaju Atlas, dok računovodstvo i uprava gledaju Vestu.</span>
+                <span className="l-bs">Firmi koja ima i jedno i drugo trebaju oba. Razlika je u tome ko pita: skladište i logistika gledaju Atlas, a računovodstvo i uprava gledaju Vestu.</span>
                 <span className="l-en">A business with real infrastructure needs both. The difference is who is asking: logistics and the warehouse look at Atlas, while accounts and management look at Vesta.</span>
               </p>
             </div>
@@ -614,7 +614,7 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
               <span className="l-en">Work on site, on any phone</span>
             </h2>
             <p>
-              <span className="l-bs">Većinu operacija s računara telefon obavlja jednako efikasno, jer se stvarni posao odvija tamo gdje se oprema nalazi, a ne za radnim stolom.</span>
+              <span className="l-bs">Ono što radite za računarom, uglavnom možete i s mobitela, jer se posao odvija tamo gdje je oprema, a ne za stolom.</span>
               <span className="l-en">The phone does most of what the desk does, because the real work happens where the equipment is and not at a desk.</span>
             </p>
           </div>
@@ -660,7 +660,7 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
             </h2>
             <p>
               <span className="l-bs">
-                Svaka nabavka, naknada i procjena vrijednosti vodi se u valuti u kojoj je stvarni trošak nastao. Kursne liste se ažuriraju svakodnevno, pa su ukupni iznosi precizni bez ručnih preračunavanja, dok se svaki iznos paralelno preračunava i u jedinstvenu izvještajnu valutu grupacije. Ranije zabilježene vrijednosti ostaju trajno vezane za datum nastanka troška, umjesto naknadnih i nepreciznih prepravki po današnjem kursu.
+                Svaka nabavka, naknada i procjena vrijednosti vodi se u valuti u kojoj je stvarni trošak nastao. Kursne liste se ažuriraju svakodnevno, pa su ukupni iznosi precizni bez ručnih preračunavanja, dok se svaki iznos paralelno preračunava i u jedinstvenu izvještajnu valutu grupacije. Ranije upisane vrijednosti ostaju vezane za dan kada je trošak nastao, a ne prepravljaju se po današnjem kursu.
               </span>
               <span className="l-en">
                 Every purchase, fee and valuation is held in the currency the cost was actually incurred in. Exchange rates refresh daily, so totals are accurate without anyone converting by hand, while every amount is also carried in the group's single reporting currency. Values recorded earlier stay tied to the date they happened, rather than being quietly restated at today's rate.
@@ -695,7 +695,7 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
               </div>
 
               <p className="text-sm leading-relaxed m-0">
-                <span className="l-bs">Iza svakog prikaza stoji cjelovit finansijski dnevnik svih kretanja kapitala.</span>
+                <span className="l-bs">Iza svakog prikaza stoji dnevnik svakog kretanja novca.</span>
                 <span className="l-en">Behind every view sits a complete ledger of every movement of money.</span>
               </p>
             </div>
@@ -721,7 +721,7 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
             </h2>
             <p>
               <span className="l-bs">
-                Sistem donosi šest unaprijed postavljenih uloga, od vlasnika cijele grupacije do operativnog radnika koji upravlja opremom koja mu je dodijeljena, pri čemu se ovlaštenja provjeravaju zasebno za svaku kompaniju, a ne samo na ulazu u sistem.
+                Sistem ima šest gotovih uloga, od vlasnika cijele grupacije do operativnog radnika koji upravlja opremom koja mu je dodijeljena, pri čemu se ovlaštenja provjeravaju zasebno za svaku kompaniju, a ne samo na ulazu u sistem.
               </span>
               <span className="l-en">
                 Six roles come built in, from the owner of the whole group down to the worker handling the equipment assigned to them, and permissions are checked separately for each company rather than once at the door.
@@ -733,7 +733,7 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
             <div className="s9-card">
               <p className="text-sm sm:text-base leading-relaxed m-0">
                 <span className="l-bs">
-                  Svaka promjena statusa i svaka prijava na sistem trajno se bilježe, a generisani zapisi se nikada ne mogu prepisati niti obrisati. Kada administrator pristupi nalogu drugog korisnika kako bi mu pružio tehničku podršku, taj korak se takođe precizno evidentira pod njegovim ličnim imenom. Za regulisane djelatnosti ovo nije samo tehnička mogućnost, već osnovni preduslov koji omogućava korištenje sistema.
+                  Sistem zapiše svaku promjenu statusa i svaku prijavu, a te zapise niko ne može ni prepisati ni obrisati. Kada administrator uđe u tuđi nalog da bi nekome pomogao, i to se zapiše, pod njegovim imenom. Za regulisane djelatnosti to nije dodatak nego uslov bez kojeg se sistem ne smije koristiti.
                 </span>
                 <span className="l-en">
                   Every change of status and every login is recorded permanently, and what gets written can never be rewritten or deleted. When an administrator opens another user's account in order to help them, that step is recorded too, under their own name. For a regulated business this is not a feature, it is the precondition that makes the system usable at all.
@@ -755,7 +755,7 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
             </h2>
             <p>
               <span className="l-bs">
-                Svako sredstvo dobija fizičku oznaku, jednom. Pravna lica, odjeli, uloge i dozvole se precizno konfigurišu, dok timovi na terenu prolaze praktičnu obuku. Za to je potrebno vrijeme, uključujući i Vaše.
+                Svako sredstvo dobija fizičku oznaku, jednom. Firme, odjele, uloge i dozvole posložimo zajedno, a ljudi na terenu prođu obuku. To traži vremena, i Vašeg.
               </span>
               <span className="l-en">
                 Every asset gets a physical label, once. Legal entities, departments, roles and permissions are configured properly, and the field teams are trained on the job. That takes time, including yours.
@@ -763,7 +763,7 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
             </p>
             <p>
               <span className="l-bs">
-                Kao rezultat dobijate prvu stvarnu i pouzdanu sliku cjelokupne imovine grupacije. Sistem je u punoj produkciji u verziji 1.3, potpuno lokalizovan na bosanski i engleski jezik, a naš regionalni tim vodi proces uvođenja zajedno s Vama.
+                Poslije toga prvi put vidite stvarnu sliku onoga što grupacija posjeduje. Sistem je u verziji 1.3 i radi kod klijenta, na bosanskom i engleskom, a naš tim vodi uvođenje zajedno s Vama.
               </span>
               <span className="l-en">
                 What you get out of it is the first real and reliable picture of everything the group owns. The system is in full production at version 1.3, fully localised in Bosnian and English, and our local team runs the roll-out together with you.
@@ -815,7 +815,7 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
 
             <p>
               <span className="l-bs">
-                Navedite koliko pravnih lica posluje unutar grupacije i kako danas organizujete popis. Na osnovu tih parametara pripremićemo konkretan prijedlog implementacije.
+                Recite nam koliko firmi ima u grupaciji i kako danas radite popis. Iz toga pripremamo konkretan prijedlog.
               </span>
               <span className="l-en">
                 Tell us how many legal entities trade inside the group and how the count is organised today. On that basis we prepare a concrete proposal for putting it in.

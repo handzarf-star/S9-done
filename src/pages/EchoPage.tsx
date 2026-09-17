@@ -24,7 +24,7 @@ export const EchoPage: React.FC<EchoPageProps> = ({ onNavigate }) => (
     h1En={['One message, every customer at once, and you see exactly who', 'opened it.']}
     questionBs={'„Akcija počinje sutra, koliko Vaših kupaca zna za nju?"'}
     questionEn={'"The sale starts tomorrow. How many of your customers know?"'}
-    ledeBs="Brojevi telefona postoje u tabeli ili unutar sistema. Jedina prepreka između te tabele i kupaca jeste što nemate alat koji poruku može poslati svima istovremeno."
+    ledeBs="Brojevi telefona postoje u tabeli ili unutar sistema. Između te tabele i kupca stoji samo to što nemate čime poslati svima odjednom."
     ledeEn="The phone numbers already exist, in a spreadsheet or inside a system. The only thing standing between that list and the customer is that nothing can send to all of them at once."
     ctaShortBs="Pošaljite nam svoju listu"
     ctaShortEn="Send us your list"
@@ -47,7 +47,7 @@ export const EchoPage: React.FC<EchoPageProps> = ({ onNavigate }) => (
             icon: CalendarClock,
             tBs: 'Slanje odmah ili u zakazan termin',
             tEn: 'Now, or at a time you choose',
-            bs: 'Kampanju pripremite danas, a slanje zakažete za subotu ujutro ili u termin koji Vama najviše odgovara.',
+            bs: 'Kampanju pripremite danas, a pošaljete je u subotu ujutro ili kad Vama odgovara.',
             en: 'Prepare the campaign today and schedule it for Saturday morning, or for whenever suits you.',
           },
           {
@@ -55,7 +55,7 @@ export const EchoPage: React.FC<EchoPageProps> = ({ onNavigate }) => (
             icon: MousePointerClick,
             tBs: 'Precizan uvid u klikove',
             tEn: 'You see the clicks',
-            bs: 'Poveznica unutar poruke se prati, pa tačno znate da li je ponuda došla do kupaca i izazvala reakciju.',
+            bs: 'Link u poruci se prati, pa tačno znate je li ponuda dotakla nekoga ili nije.',
             en: 'The link inside the message is tracked, so you know whether the offer reached anyone and whether it moved them.',
           },
         ],
@@ -80,14 +80,14 @@ export const EchoPage: React.FC<EchoPageProps> = ({ onNavigate }) => (
             id: 'rich',
             tBs: 'Dugačke poruke sa slikom nose rizik',
             tEn: 'Long messages with a picture carry a risk',
-            bs: 'Slanje je tehnički izvodivo, ali raste vjerovatnoća da telekom mreže poruku označe kao neželjenu i zaustave isporuku.',
+            bs: 'Moguće je, ali je veća šansa da mreža poruku označi kao neželjenu i zaustavi je.',
             en: 'It can be done, but the odds rise that the networks mark it as unwanted and stop it before it lands.',
           },
           {
             id: 'baza',
             tBs: 'Samostalno slanje bez baze ima manju vrijednost',
             tEn: 'On its own, without a database, it is worth less',
-            bs: 'Najveći povrat ostvaruje se povezivanjem sa sistemom koji već čuva historiju kupaca, jer tada baza nisu samo brojevi telefona, već konkretni ljudi s historijom kupovine.',
+            bs: 'Najviše vrijedi kad je povežete sa sistemom koji već čuva historiju kupaca, jer tada u bazi nisu brojevi nego ljudi koji su nešto kupili.',
             en: 'It returns most when it is joined to a system that already holds the history, because then the list is not phone numbers but people with a record of what they bought.',
           },
         ],

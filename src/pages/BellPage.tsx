@@ -52,7 +52,7 @@ export const BellPage: React.FC<BellPageProps> = ({ onNavigate }) => (
             icon: PhoneCall,
             tBs: 'Dolazni i odlazni pozivi na jednom mjestu',
             tEn: 'Calls in and out, in one place',
-            bs: 'Cijeli tim radi kroz jedinstven sistem, bez obzira na lokaciju na kojoj se nalazi.',
+            bs: 'Cijeli tim radi kroz jedan sistem, bez obzira gdje ko sjedi.',
             en: 'The whole team works through one system, wherever each person happens to be sitting.',
           },
           {
@@ -68,7 +68,7 @@ export const BellPage: React.FC<BellPageProps> = ({ onNavigate }) => (
             icon: BarChart3,
             tBs: 'Svaki poziv ima snimak i tačnu statistiku',
             tEn: 'Every call has a recording and a figure',
-            bs: 'Trajanje razgovora, ishod, ko se javio a ko propustio poziv, uz egzaktne metrike po danu i agentu.',
+            bs: 'Trajanje, ishod, ko se javio a ko nije, uz tačne brojke po danu i po agentu.',
             en: 'Length, outcome, who answered and who let it ring, with exact figures by day and by agent.',
           },
         ],
@@ -81,14 +81,14 @@ export const BellPage: React.FC<BellPageProps> = ({ onNavigate }) => (
         headBs: 'Bell nosi pozive, Pulse ih analizira.',
         headEn: 'Bell carries the calls. Pulse reads them.',
         noteBs:
-          'Bell nosi i usmjerava pozive, dok Pulse analizira šta je na njima izgovoreno. Jedan sistem osigurava stabilnu liniju, drugi vrši kontrolu kvaliteta. Rade odvojeno, a zajedno pokrivaju kompletan proces od prvog zvona do detaljnog izvještaja.',
+          'Bell nosi i usmjerava pozive, dok Pulse analizira šta je na njima izgovoreno. Jedan drži liniju, drugi provjerava šta je na njoj rečeno. Rade odvojeno, a zajedno pokrivaju kompletan proces od prvog zvona do detaljnog izvještaja.',
         noteEn:
           'Bell carries and routes the calls, while Pulse analyses what was said on them. One keeps the line up, the other checks the quality of what went down it. They run separately, and together they cover the whole way from the first ring to a detailed report.',
       },
     ]}
     ctaHeadBs="Pokažite nam kako danas upravljate pozivima"
     ctaHeadEn="Show us how you handle calls today"
-    ctaBodyBs="Navedite broj agenata i opremu koju trenutno koristite."
+    ctaBodyBs="Recite nam koliko ljudi imate na telefonu i šta danas koristite."
     ctaBodyEn="Tell us how many agents you have and what you are running now."
     onNavigate={onNavigate}
   />

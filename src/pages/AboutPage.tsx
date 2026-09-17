@@ -209,7 +209,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               <span className="l-en">How we work</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
-              <span className="l-bs">Prilagodimo se vašem poslovanju, ne obrnuto.</span>
+              <span className="l-bs">Prilagodimo se Vašem poslovanju, ne obrnuto.</span>
               <span className="l-en">We fit to you, not the other way round.</span>
             </h2>
           </div>
@@ -282,7 +282,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                 <li className="flex items-start gap-2.5 text-sm text-[var(--body)]">
                   <CheckCircle2 className="w-4 h-4 text-[var(--cyan)] shrink-0 mt-0.5" />
                   <span>
-                    <span className="l-bs">Sistemi koji rade po pravilima koje vi definišete, ne po pretpostavkama</span>
+                    <span className="l-bs">Sistemi koji rade po pravilima koje Vi definišete, ne po pretpostavkama</span>
                     <span className="l-en">Systems that work by rules you set, not by assumptions</span>
                   </span>
                 </li>
@@ -296,7 +296,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                 <li className="flex items-start gap-2.5 text-sm text-[var(--body)]">
                   <CheckCircle2 className="w-4 h-4 text-[var(--cyan)] shrink-0 mt-0.5" />
                   <span>
-                    <span className="l-bs">Tim koji ostaje uz vas nakon puštanja u rad, ne izvođač koji ode</span>
+                    <span className="l-bs">Tim koji ostaje uz Vas nakon puštanja u rad, ne izvođač koji ode</span>
                     <span className="l-en">A team that stays after launch, not a contractor who leaves</span>
                   </span>
                 </li>

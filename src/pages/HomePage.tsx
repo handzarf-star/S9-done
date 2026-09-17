@@ -323,15 +323,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         <ScrollReveal>
           <div className="section-head">
             <div className="s9-badge bg-[rgba(var(--cyan-rgb),0.08)] border border-[rgba(var(--cyan-rgb),0.2)] text-[var(--cyan)] text-xs font-semibold uppercase tracking-wider">
-              <span className="l-bs">Prepoznajte rješenje koje vam nedostaje</span>
+              <span className="l-bs">Prepoznajte rješenje koje Vam nedostaje</span>
               <span className="l-en">What solution fits you</span>
             </div>
             <h2 className="max-w-3xl text-2xl sm:text-4xl">
-              <span className="l-bs">Polazimo od vašeg problema.</span>
+              <span className="l-bs">Polazimo od Vašeg problema.</span>
               <span className="l-en">Start from the problem.</span>
             </h2>
             <p className="max-w-2xl text-sm sm:text-base">
-              <span className="l-bs">Odaberite ono što najviše odgovara vašem načinu rada.</span>
+              <span className="l-bs">Odaberite ono što najviše odgovara Vašem načinu rada.</span>
               <span className="l-en">Choose the department or challenge that best reflects your current operation.</span>
             </p>
           </div>
@@ -732,7 +732,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
             <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed max-w-2xl mx-auto">
               <span className="l-bs">
-                Bilo da imate projekat na umu ili samo želite razgovarati o mogućnostima, rado ćemo vas saslušati.
+                Bilo da imate projekat na umu ili samo želite razgovarati o mogućnostima, rado ćemo Vas saslušati.
               </span>
               <span className="l-en">
                 Whether you have a project in mind or just want to chat, we'd love to hear from you.

@@ -45,7 +45,7 @@ const LIBRA_FAQ: AccordionItem[] = [
     id: 'libra-faq-4',
     qBs: 'Koliko traje podešavanje i puštanje u rad?',
     qEn: 'How long until this is working?',
-    aBs: 'Zavisi od broja vaših klijenata i strukture foldera koju koristite. Početno testiranje na uzorku vaše dokumentacije pripremamo u roku od nekoliko dana, kako biste se lično uvjerili u tačnost klasifikacije.',
+    aBs: 'Zavisi od broja Vaših klijenata i strukture foldera koju koristite. Početno testiranje na uzorku Vaše dokumentacije pripremamo u roku od nekoliko dana, kako biste se lično uvjerili u tačnost klasifikacije.',
     aEn: 'It depends on how many clients you have and how many kinds of document move through your office. So we run part of your post through it first, and you see how it sorted before anything is agreed.',
   },
 ];
@@ -56,7 +56,7 @@ const STEPS = [
     id: 'step1',
     titleBs: 'Automatski prijem',
     titleEn: 'It arrives however it arrives',
-    descBs: 'Dokumenti stižu na vaš postojeći email ili u portal. Za svakog klijenta sistem zna šta je za taj mjesec već stiglo, a šta još fali.',
+    descBs: 'Dokumenti stižu na Vaš postojeći email ili u portal. Za svakog klijenta sistem zna šta je za taj mjesec već stiglo, a šta još fali.',
     descEn: 'To your existing inbox, or as a photo from a phone. The client changes nothing about how they work.',
   },
   {
@@ -72,7 +72,7 @@ const STEPS = [
     id: 'step3',
     titleBs: 'Uredno arhiviranje',
     titleEn: 'It lands where it belongs',
-    descBs: 'Fajl dobije uredno ime i sjedne u folder klijenta, po vašoj strukturi. Klijent vidi dokle je stiglo i dobije obavijest kad se nešto pomjeri. Obje strane imaju potvrdu, svaka izmjena ostaje zapisana, a broj klijenata i kolega koje uvedete nije ograničen.',
+    descBs: 'Fajl dobije uredno ime i sjedne u folder klijenta, po Vašoj strukturi. Klijent vidi dokle je stiglo i dobije obavijest kad se nešto pomjeri. Obje strane imaju potvrdu, svaka izmjena ostaje zapisana, a broj klijenata i kolega koje uvedete nije ograničen.',
     descEn: 'Into that client\'s folder, in your structure, not ours. You open the folder and do your job.',
   },
 ];
@@ -163,7 +163,7 @@ export const LibraPage: React.FC<LibraPageProps> = ({ onNavigate }) => {
         </div>
 
         <span className="micro-copy text-xs text-[var(--muted)] mb-4">
-          <span className="l-bs">Bez dugih prezentacija, testirajte na uzorku vaših dokumenata.</span>
+          <span className="l-bs">Bez dugih prezentacija, testirajte na uzorku Vaših dokumenata.</span>
           <span className="l-en">No slide deck. We run part of your post through it and you judge the result.</span>
         </span>
       </section>
@@ -193,7 +193,7 @@ export const LibraPage: React.FC<LibraPageProps> = ({ onNavigate }) => {
             </p>
 
             <p className="text-sm sm:text-base font-semibold text-[#3DD68C]">
-              <span className="l-bs">Vrijednost vašeg tima je u analizi i savjetovanju, a ne u ručnoj administraciji.</span>
+              <span className="l-bs">Vrijednost Vašeg tima je u analizi i savjetovanju, a ne u ručnoj administraciji.</span>
               <span className="l-en">The work was never in understanding the document. The work was in finding it.</span>
             </p>
           </div>
@@ -209,7 +209,7 @@ export const LibraPage: React.FC<LibraPageProps> = ({ onNavigate }) => {
               <span className="l-en">How it works</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-4 sm:mb-6 leading-tight">
-              <span className="l-bs">Od dolazne pošte do urednog foldera, bez vašeg angažmana.</span>
+              <span className="l-bs">Od dolazne pošte do urednog foldera, bez Vašeg angažmana.</span>
               <span className="l-en">From inbox to the right folder, with none of your work in between.</span>
             </h2>
             <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed">
@@ -264,7 +264,7 @@ export const LibraPage: React.FC<LibraPageProps> = ({ onNavigate }) => {
                       <span className="l-en">Post is not opened in order to be sorted.</span>
                     </span>{' '}
                     <span>
-                      <span className="l-bs">Dokumenti vas čekaju spremni i razvrstani u mapi klijenta.</span>
+                      <span className="l-bs">Dokumenti Vas čekaju spremni i razvrstani u mapi klijenta.</span>
                       <span className="l-en">It is opened when you need something.</span>
                     </span>
                   </div>
@@ -333,7 +333,7 @@ export const LibraPage: React.FC<LibraPageProps> = ({ onNavigate }) => {
             </div>
 
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-4 sm:mb-6 leading-tight">
-              <span className="l-bs">Ubrzajte obradu vaše dokumentacije</span>
+              <span className="l-bs">Ubrzajte obradu Vaše dokumentacije</span>
               <span className="l-en">Tell us how your paperwork arrives.</span>
             </h2>
 

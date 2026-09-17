@@ -49,7 +49,7 @@ export const NeonPage: React.FC<NeonPageProps> = ({ onNavigate }) => (
             icon: Users,
             tBs: 'Segmentiranje publike',
             tEn: 'The audience gets split',
-            bs: 'Ponuda ide ciljanoj grupi na osnovu onoga što su ranije kupovali kod Vas.',
+            bs: 'Ponuda ide onima kojima odgovara, po tome šta su ranije kupovali kod Vas.',
             en: 'The offer goes to a chosen group, based on what they bought from you before.',
           },
           {
@@ -75,22 +75,22 @@ export const NeonPage: React.FC<NeonPageProps> = ({ onNavigate }) => (
             id: 'registracija',
             tBs: 'Registracija zvaničnog pošiljaoca je obavezna',
             tEn: 'The sender has to be registered first',
-            bs: 'Verifikacija brenda zahtijeva određeno vrijeme i ne završava se za jedno popodne.',
+            bs: 'Provjera brenda traje i ne završi se za jedno popodne.',
             en: 'Verifying the brand takes a certain amount of time and is not finished in an afternoon.',
           },
           {
             id: 'podaci',
             tBs: 'Segmentacija vrijedi onoliko koliko vrijede Vaši podaci',
             tEn: 'The split is only as good as your data',
-            bs: 'Ako o kupcu imate samo broj telefona, poruka opet ide svima. Neon daje puni povrat kada se poveže sa sistemom koji već bilježi navike i prethodne kupovine.',
+            bs: 'Ako o kupcu imate samo broj telefona, poruka opet ide svima. Neon najviše vrijedi kad je povežete sa sistemom koji već pamti šta je ko kupovao.',
             en: 'If all you hold on a customer is a phone number, the message goes to everyone again. Neon pays back fully when it is joined to a system that already records habits and past purchases.',
           },
         ],
       },
     ]}
-    ctaHeadBs="Definišite koga želite dosegnuti i kakvu ponudu planirate"
+    ctaHeadBs="Recite nam koga želite pogoditi i kakvu ponudu spremate"
     ctaHeadEn="Tell us who you want to reach and what the offer is"
-    ctaBodyBs="Iz toga se vidi koliko je publiku moguće podijeliti sa podacima koje danas imate."
+    ctaBodyBs="Iz toga se vidi koliko publiku možete podijeliti sa podacima koje danas imate."
     ctaBodyEn="That shows how far the audience can be split with the data you hold today."
     onNavigate={onNavigate}
   />

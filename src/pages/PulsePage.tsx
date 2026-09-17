@@ -30,7 +30,7 @@ const PULSE_FAQ: AccordionItem[] = [
     id: 'pulse-faq-1',
     qBs: 'Nemamo tehničko osoblje unutar tima. Ko upravlja sistemom?',
     qEn: 'We have no technical person. Who keeps this running?',
-    aBs: 'Mi vodimo kompletnu podršku. Snimci se automatski preuzimaju od vašeg telefonskog operatera ili VoIP centrale.',
+    aBs: 'Mi vodimo kompletnu podršku. Snimci se automatski preuzimaju od Vašeg telefonskog operatera ili VoIP centrale.',
     aEn: 'We do. Recordings arrive automatically from your telephony provider.',
   },
   {
@@ -44,14 +44,14 @@ const PULSE_FAQ: AccordionItem[] = [
     id: 'pulse-faq-3',
     qBs: 'Da li model precizno prepoznaje lokalne jezike i dijalekte?',
     qEn: 'Does it actually work in our language?',
-    aBs: 'Da, model je posebno optimizovan za bosanski, hrvatski i srpski jezik, uključujući lokalne fraze i šumove karakteristične za telefonske linije. Ne tražimo povjerenje na slijepo: na pilot uzorku od 50 vaših poziva sami procjenjujete tačnost transkripcije.',
+    aBs: 'Da, model je posebno optimizovan za bosanski, hrvatski i srpski jezik, uključujući lokalne fraze i šumove karakteristične za telefonske linije. Ne tražimo povjerenje na slijepo: na pilot uzorku od 50 Vaših poziva sami procjenjujete tačnost transkripcije.',
     aEn: 'It works in Bosnian, Croatian and Serbian. But we do not ask you to take our word for it. We run your own recordings first, and you judge how well it heard them and how accurate the analysis is. Real call centre audio is nothing like studio audio, and we know it.',
   },
   {
     id: 'pulse-faq-4',
     qBs: 'Možemo li prilagoditi pravila ocjenjivanja našim standardima?',
     qEn: 'Can we set the rules it scores against ourselves?',
-    aBs: 'Apsolutno, to je ključna prednost Pulse platforme. Vi definišete kontrolne tačke: standardni pozdrav, identifikaciju klijenta, zakonski obavezne napomene, unakrsnu prodaju ili način rješavanja prigovora. Pulse ocjenjuje prema vašim internim pravilima.',
+    aBs: 'Apsolutno, to je ključna prednost Pulse platforme. Vi definišete kontrolne tačke: standardni pozdrav, identifikaciju klijenta, zakonski obavezne napomene, unakrsnu prodaju ili način rješavanja prigovora. Pulse ocjenjuje prema Vašim internim pravilima.',
     aEn: 'Yes, and that is the point. You define what gets checked: the greeting, mandatory legal disclosures, the upsell, how a complaint is handled. Pulse checks against your rules, not somebody else\'s standard ones.',
   },
 ];
@@ -106,14 +106,14 @@ const CAPABILITIES = [
     icon: FileText,
     titleBs: 'Izvještaj s onim što odstupa',
     titleEn: 'A report of what does not match',
-    descBs: 'Za svaki poziv dobijete sažetak dogovorenog, a odvojeno i popis onoga što odstupa od vaših pravila. Radite po popisu, ne po snimcima.',
+    descBs: 'Za svaki poziv dobijete sažetak dogovorenog, a odvojeno i popis onoga što odstupa od Vaših pravila. Radite po popisu, ne po snimcima.',
     descEn: 'For every call you get a summary of what was agreed, and separately a list of everything that departs from your rules. You work from the list, not from recordings.',
   },
   {
     icon: Zap,
     titleBs: 'Direktna integracija s centralom',
     titleEn: 'Recordings arrive on their own',
-    descBs: 'Snimci se automatski preuzimaju direktno s vaše telefonije, bez ručnog eksporta.',
+    descBs: 'Snimci se automatski preuzimaju direktno s Vaše telefonije, bez ručnog eksporta.',
     descEn: 'Recordings come straight from your telephony provider. Nobody moves files by hand.',
   },
   {
@@ -462,7 +462,7 @@ export const PulsePage: React.FC<PulsePageProps> = ({ onNavigate }) => {
             </div>
 
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-4 sm:mb-6 leading-tight">
-              <span className="l-bs">Razgovarajmo o vašem kontakt centru</span>
+              <span className="l-bs">Razgovarajmo o Vašem kontakt centru</span>
               <span className="l-en">Tell us what your calls look like.</span>
             </h2>
 

@@ -25,7 +25,7 @@ export const HivePage: React.FC<HivePageProps> = ({ onNavigate }) => (
     h1En={['One order, from the first message to the', 'money.']}
     questionBs={'„Koliko je narudžbi pristiglo danas?"'}
     questionEn={'"How many orders came in today?"'}
-    ledeBs="Većina kompanija ne može odgovoriti na to pitanje u sekundi. Dio narudžbi stigne putem Instagrama, dio telefonom, dio preko web stranice, a svaki kanal vodi svoju zasebnu evidenciju."
+    ledeBs="Većina firmi na to ne može odgovoriti odmah. Dio narudžbi stigne putem Instagrama, dio telefonom, dio preko web stranice, a svaki kanal vodi svoju zasebnu evidenciju."
     ledeEn="Most companies cannot answer that on the spot. Some orders arrive through Instagram, some by phone, some through the website, and every channel keeps its own separate record."
     ctaShortBs="Opišite kako narudžbe stižu"
     ctaShortEn="Tell us how orders reach you"
@@ -52,14 +52,14 @@ export const HivePage: React.FC<HivePageProps> = ({ onNavigate }) => (
         steps: [
           { bs: 'Prvi kontakt kupca', en: 'The customer makes contact' },
           { bs: 'Provjera statusa uplate', en: 'Payment status is checked' },
-          { bs: 'Automatski podsjetnik ukoliko uplata kasni', en: 'An automatic reminder if payment is late' },
+          { bs: 'Podsjetnik ako uplata kasni', en: 'An automatic reminder if payment is late' },
           { bs: 'Potvrda narudžbe', en: 'The order is confirmed' },
           { bs: 'Slanje na pakovanje', en: 'Sent to be packed' },
-          { bs: 'Preuzimanje od strane kurirske službe', en: 'Collected by the courier' },
-          { bs: 'Ulazak pošiljke u distributivni centar', en: 'Into the courier’s distribution centre' },
-          { bs: 'Pokušaj dostave na adresi', en: 'Delivery attempted at the address' },
+          { bs: 'Kurir preuzima pošiljku', en: 'Collected by the courier' },
+          { bs: 'Pošiljka ulazi u kurirski magacin', en: 'Into the courier’s distribution centre' },
+          { bs: 'Dostava na adresu', en: 'Delivery attempted at the address' },
           { bs: 'Konačna naplata', en: 'Final payment' },
-          { bs: 'Povrat novca u slučaju opravdane reklamacije', en: 'A refund where the complaint is justified' },
+          { bs: 'Povrat novca ako je reklamacija opravdana', en: 'A refund where the complaint is justified' },
         ],
         noteBs:
           'Svaki korak ima evidentiran status i datum. Kada kupac pita gdje se pošiljka nalazi, tačan odgovor je odmah na ekranu, a ne u nečijem sjećanju.',
@@ -75,8 +75,8 @@ export const HivePage: React.FC<HivePageProps> = ({ onNavigate }) => (
         headEn: 'This is not switched on. This is built around how you work.',
         wide: true,
         leadBs: [
-          'Sistem prilagođavamo Vašem specifičnom prodajnom modelu. Navedenih deset koraka predstavlja logički okvir, a ne fiksni šablon. Koliko faza postoji, kako se zovu i ko ima pristup kojim podacima, sve to definišemo prije nego što napišemo prvu liniju koda.',
-          'Uz jednu narudžbu dnevno sve se može pamtiti i ručno. Uz stotinu narudžbi to više nije izvodivo. Ako je Vaš obim posla bliži jednoj narudžbi, ovo rješenje Vam još nije potrebno, i to ćemo Vam otvoreno reći.',
+          'Sistem pravimo prema tome kako Vi prodajete. Navedenih deset koraka predstavlja logički okvir, a ne fiksni šablon. Koliko faza postoji, kako se zovu i ko ima pristup kojim podacima, sve to definišemo prije nego što napišemo prvu liniju koda.',
+          'Uz jednu narudžbu dnevno sve pamtite iz glave. Uz stotinu ne. Ako je Vaš obim posla bliži jednoj narudžbi, ovo rješenje Vam još nije potrebno, i to ćemo Vam otvoreno reći.',
         ],
         leadEn: [
           'The system is fitted to your particular way of selling. The ten steps above are a logical frame, not a fixed template. How many stages there are, what each one is called and who can see what, all of that is settled before a first line of code is written.',

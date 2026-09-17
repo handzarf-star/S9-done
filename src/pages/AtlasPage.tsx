@@ -43,7 +43,7 @@ const ATLAS_FAQ: AccordionItem[] = [
     id: 'atlas-faq-3',
     qBs: 'Može li se Atlas integrisati s našim postojećim ERP/fakturnim sistemom?',
     qEn: 'Can it connect to the system we already have?',
-    aBs: 'U većini slučajeva da, putem API konektora ili direktne baze podataka. Prije početka implementacije radimo tehničku analizu vašeg postojećeg softvera i otvoreno vam kažemo šta je izvodivo i u kojem roku.',
+    aBs: 'U većini slučajeva da, putem API konektora ili direktne baze podataka. Prije početka implementacije radimo tehničku analizu Vašeg postojećeg softvera i otvoreno Vam kažemo šta je izvodivo i u kojem roku.',
     aEn: 'In most cases yes, but we will not promise it blind. Tell us what you use for invoicing and sales, and we will tell you what is possible and how much work it takes. If something will not connect, you hear it from us before you sign.',
   },
 ];
@@ -395,13 +395,13 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
               </div>
 
               <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] mb-4 leading-tight">
-                <span className="l-bs">Prvo analiziramo vaše procese, bez obaveza.</span>
+                <span className="l-bs">Prvo analiziramo Vaše procese, bez obaveza.</span>
                 <span className="l-en">A conversation about your warehouse first, not a quote.</span>
               </h2>
 
               <p className="text-sm sm:text-base text-[var(--body)] max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed">
                 <span className="l-bs">
-                  Podijelite s nama broj artikala, broj skladišnih lokacija i glavne izazove s kojima se susrećete. Dostavićemo vam procjenu dinamike implementacije, očekivani ROI i jasan plan uvođenja.
+                  Podijelite s nama broj artikala, broj skladišnih lokacija i glavne izazove s kojima se susrećete. Dostavićemo Vam procjenu dinamike implementacije, očekivani ROI i jasan plan uvođenja.
                 </span>
                 <span className="l-en">
                   Tell us how many items you hold, how many sites you run and where things get stuck. We come back with a read on what a roll-out would mean for you, how long it would take and whether it pays off. If we think you do not need this, you will hear that too.
@@ -471,7 +471,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
             </div>
 
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-4 sm:mb-6 leading-tight">
-              <span className="l-bs">Započnimo razgovor o vašem skladištu</span>
+              <span className="l-bs">Započnimo razgovor o Vašem skladištu</span>
               <span className="l-en">Tell us what your warehouse looks like.</span>
             </h2>
 

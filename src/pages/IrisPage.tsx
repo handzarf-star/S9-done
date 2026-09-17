@@ -26,7 +26,7 @@ export const IrisPage: React.FC<IrisPageProps> = ({ onNavigate }) => (
     h1En={['Ask it the way you would ask a colleague, and get the', 'number.']}
     questionBs={'„Koliko Vam vremena treba da dođete do jednog jedinog broja?"'}
     questionEn={'"How long does it take you to get hold of one single number?"'}
-    ledeBs="Pitanje je jednostavno: kolika je bila prodaja prošle sedmice u poređenju s istom sedmicom prošle godine. Odgovor se već nalazi u bazi, ali neko mora sjesti, izvući podatke i poslati Vam izvještaj tek sutra."
+    ledeBs="Pitanje je jednostavno: kolika je bila prodaja prošle sedmice u poređenju s istom sedmicom prošle godine. Odgovor već stoji u bazi, ali neko mora sjesti, izvući podatke i poslati Vam izvještaj tek sutra."
     ledeEn="The question is simple. What were sales last week against the same week a year ago. The answer is already in the database, but somebody has to sit down, pull it out, and send you the report tomorrow."
     ctaShortBs="Pošaljite nam svoje pitanje"
     ctaShortEn="Send us your question"
@@ -61,7 +61,7 @@ export const IrisPage: React.FC<IrisPageProps> = ({ onNavigate }) => (
             icon: SquareAsterisk,
             tBs: 'Razgovor zadržava kontekst',
             tEn: 'The conversation keeps its place',
-            bs: 'Možete nastaviti analizu, suziti parametre ili zatražiti poređenje za drugi period bez ponovnog postavljanja upita.',
+            bs: 'Možete nastaviti, suziti pitanje ili tražiti isto za drugi period, bez da počinjete ispočetka.',
             en: 'You can carry on, narrow the parameters, or ask for the same comparison over another period without starting again.',
           },
           {
@@ -82,7 +82,7 @@ export const IrisPage: React.FC<IrisPageProps> = ({ onNavigate }) => (
         headBs: 'Jasno definisana granica, s razlogom',
         headEn: 'A clearly drawn boundary, and there is a reason for it',
         noteBs:
-          'Iris poznaje isključivo Vaše poslovanje. Ne odgovara na opšta pitanja i ne služi kao asistent opšte prakse. Sistem se oslanja na baze podataka koje već posjedujete, što podrazumijeva da ti podaci postoje i da su uredni. Ako nisu, prvo uređujemo izvore podataka.',
+          'Iris poznaje isključivo Vaše poslovanje. Ne odgovara na opšta pitanja i nije asistent za sve i svašta. Oslanja se na baze koje već imate, pa podrazumijeva da ti podaci postoje i da su uredni. Ako nisu, prvo sređujemo izvore.',
         noteEn:
           'Iris knows your business and nothing else. It does not answer general questions and it is not an assistant for everything. It leans on the databases you already have, which assumes that data exists and is in order. If it is not, we put the sources right first.',
       },

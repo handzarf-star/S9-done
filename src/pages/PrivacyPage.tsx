@@ -27,7 +27,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
             <span className="l-en">Privacy Policy</span>
           </h1>
           <p className="mt-4 text-base sm:text-lg text-[var(--body)]">
-            <span className="l-bs">Jasna i jednostavna pravila o tome kako Shape9 rukuje vašim podacima.</span>
+            <span className="l-bs">Jasna i jednostavna pravila o tome kako Shape9 rukuje Vašim podacima.</span>
             <span className="l-en">Clear and simple rules on how Shape9 handles your data.</span>
           </p>
         </div>
@@ -36,7 +36,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
           {/* SECTION 1 */}
           <section>
             <h2 className="text-lg sm:text-xl font-bold text-[var(--ink)] mb-3">
-              <span className="l-bs">1. Ko obrađuje vaše podatke</span>
+              <span className="l-bs">1. Ko obrađuje Vaše podatke</span>
               <span className="l-en">1. Who processes your data</span>
             </h2>
             <p className="mb-2 text-sm sm:text-base">
@@ -62,11 +62,11 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
             </p>
             <ul className="list-disc pl-6 space-y-1.5 mb-4 text-sm sm:text-base">
               <li>
-                <span className="l-bs">Opis vašeg problema ili upita</span>
+                <span className="l-bs">Opis Vašeg problema ili upita</span>
                 <span className="l-en">Description of your problem or enquiry</span>
               </li>
               <li>
-                <span className="l-bs">Ime vaše firme</span>
+                <span className="l-bs">Ime Vaše firme</span>
                 <span className="l-en">Your company name</span>
               </li>
               <li>
@@ -79,7 +79,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
               </li>
             </ul>
             <p className="mb-3 text-sm sm:text-base">
-              <span className="l-bs">Ove podatke koristimo isključivo da bismo vam odgovorili na upit i pripremili konkretan prijedlog saradnje. Podatke ne koristimo za slanje masovnih reklamnih poruka, ne prodajemo ih i ne dijelimo sa trećim stranama u marketinške svrhe.</span>
+              <span className="l-bs">Ove podatke koristimo isključivo da bismo Vam odgovorili na upit i pripremili konkretan prijedlog saradnje. Podatke ne koristimo za slanje masovnih reklamnih poruka, ne prodajemo ih i ne dijelimo sa trećim stranama u marketinške svrhe.</span>
               <span className="l-en">We use this data exclusively to respond to your enquiry and prepare a concrete proposal. We do not use this data for marketing newsletters, nor do we sell or share it with third parties for marketing purposes.</span>
             </p>
             <p className="text-sm sm:text-base">
@@ -115,7 +115,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
               <span className="l-en">4. Visit measurement</span>
             </h2>
             <p className="text-sm sm:text-base">
-              <span className="l-bs">Na ovoj web stranici možemo mjeriti ukupan broj posjeta radi poboljšanja korisničkog iskustva. Podaci o posjetama se ne povezuju sa vašim ličnim identitetom i ne koriste se za profilisanje.</span>
+              <span className="l-bs">Na ovoj web stranici možemo mjeriti ukupan broj posjeta radi poboljšanja korisničkog iskustva. Podaci o posjetama se ne povezuju sa Vašim ličnim identitetom i ne koriste se za profilisanje.</span>
               <span className="l-en">On this website we may measure aggregate visit counts to improve user experience. Visit data is not linked to your personal identity and is not used for profiling.</span>
             </p>
           </section>
@@ -132,7 +132,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
             </p>
             <ul className="list-disc pl-6 space-y-1 mb-4 text-sm sm:text-base">
               <li>
-                <span className="l-bs">Uvid u podatke koje čuvamo o vama</span>
+                <span className="l-bs">Uvid u podatke koje čuvamo o Vama</span>
                 <span className="l-en">Access to the data we store about you</span>
               </li>
               <li>
@@ -140,7 +140,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
                 <span className="l-en">Correction of inaccurate data</span>
               </li>
               <li>
-                <span className="l-bs">Trajno brisanje vaših podataka</span>
+                <span className="l-bs">Trajno brisanje Vaših podataka</span>
                 <span className="l-en">Permanent deletion of your data</span>
               </li>
             </ul>

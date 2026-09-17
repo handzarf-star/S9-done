@@ -29,7 +29,7 @@ const SONAR_FAQ: AccordionItem[] = [
     id: 'sonar-faq-1',
     qBs: 'Već koristimo PowerBI / Metabase. Koja je dodatna vrijednost Sonara?',
     qEn: 'We have PowerBI/Metabase. Why would we need Sonar?',
-    aBs: 'Izvještaj čeka da ga neko otvori. Sonar ne čeka: sam odredi šta danas gleda i vraća se na to kroz dan, pa javi čim nešto odstupi. Ne zamjenjuje vaše izvještaje, nego vam kaže gdje da pogledate prije nego što ih otvorite.',
+    aBs: 'Izvještaj čeka da ga neko otvori. Sonar ne čeka: sam odredi šta danas gleda i vraća se na to kroz dan, pa javi čim nešto odstupi. Ne zamjenjuje Vaše izvještaje, nego Vam kaže gdje da pogledate prije nego što ih otvorite.',
     aEn: 'Dashboards ask somebody to open them and look. Sonar works the other way round: it watches your data minute by minute on its own and speaks up only when something unusual happens. It does not replace your reports; it tells you when you need to look at them.',
   },
   {
@@ -43,7 +43,7 @@ const SONAR_FAQ: AccordionItem[] = [
     id: 'sonar-faq-3',
     qBs: 'Kako se Sonar povezuje s našim bazama podataka?',
     qEn: 'How does it connect to our data?',
-    aBs: 'Direktno putem read-only pristupa bazama (PostgreSQL, MySQL, SQL Server), REST API-ja ili standardnih analitičkih konektora. Kompletnu konfiguraciju i definisanje ključnih metrika radimo u saradnji s vama.',
+    aBs: 'Direktno putem read-only pristupa bazama (PostgreSQL, MySQL, SQL Server), REST API-ja ili standardnih analitičkih konektora. Kompletnu konfiguraciju i definisanje ključnih metrika radimo u saradnji s Vama.',
     aEn: 'Via your database, APIs or existing connectors. We handle the connection and configuration. From you we need only access and an explanation of which metrics matter most to you.',
   },
 ];
@@ -291,7 +291,7 @@ export const SonarPage: React.FC<SonarPageProps> = ({ onNavigate }) => {
               <span className="l-en">What Sonar can watch</span>
             </h2>
             <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed">
-              <span className="l-bs">Metrike i tokovi koji najviše utiču na vaše poslovne rezultate.</span>
+              <span className="l-bs">Metrike i tokovi koji najviše utiču na Vaše poslovne rezultate.</span>
               <span className="l-en">The core performance metrics that drive your operational revenue.</span>
             </p>
           </div>
@@ -329,7 +329,7 @@ export const SonarPage: React.FC<SonarPageProps> = ({ onNavigate }) => {
               <span className="l-en">What it does</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-4 sm:mb-6 leading-tight">
-              <span className="l-bs">Autonomni sistem koji bdije nad vašim brojkama.</span>
+              <span className="l-bs">Autonomni sistem koji bdije nad Vašim brojkama.</span>
               <span className="l-en">A system that watches the numbers instead of your team.</span>
             </h2>
           </div>
@@ -367,13 +367,13 @@ export const SonarPage: React.FC<SonarPageProps> = ({ onNavigate }) => {
               </div>
 
               <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] mb-4 leading-tight">
-                <span className="l-bs">Testirajte Sonar na vašim historijskim podacima.</span>
+                <span className="l-bs">Testirajte Sonar na Vašim historijskim podacima.</span>
                 <span className="l-en">A check on your data, with no obligation.</span>
               </h2>
 
               <p className="text-sm sm:text-base text-[var(--body)] max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed">
                 <span className="l-bs">
-                  Povežemo Sonar na uzorak vaših podataka iz prethodna tri mjeseca. Pokazaćemo vam koje je anomalije i tihe padove detektovao i koliko bi vam dana ranije omogućio reakciju. Bez ikakvih finansijskih obaveza.
+                  Povežemo Sonar na uzorak Vaših podataka iz prethodna tri mjeseca. Pokazaćemo Vam koje je anomalije i tihe padove detektovao i koliko bi Vam dana ranije omogućio reakciju. Bez ikakvih finansijskih obaveza.
                 </span>
                 <span className="l-en">
                   We hook Sonar to your historical data for the last three months. We show you what anomalies it found and how early it would have alerted you if it was running then. If it finds nothing useful, you owe nothing.
@@ -424,7 +424,7 @@ export const SonarPage: React.FC<SonarPageProps> = ({ onNavigate }) => {
             </div>
 
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-4 sm:mb-6 leading-tight">
-              <span className="l-bs">Započnimo razgovor o vašim metrikama</span>
+              <span className="l-bs">Započnimo razgovor o Vašim metrikama</span>
               <span className="l-en">Tell us what numbers you want watched.</span>
             </h2>
 

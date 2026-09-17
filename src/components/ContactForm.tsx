@@ -47,7 +47,7 @@ const CATEGORIES: CategoryOption[] = [
     id: 'support',
     titleBs: 'Podrška',
     titleEn: 'Support',
-    descBs: 'Već sarađujemo? Zatražite brzu pomoć za vaš aktuelni projekat ili servis.',
+    descBs: 'Već sarađujemo? Zatražite brzu pomoć za Vaš aktuelni projekat ili servis.',
     descEn: 'Existing client? Get help with your current project or service.',
     icon: LifeBuoy,
   },
@@ -234,7 +234,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ productChip }) => {
             </h3>
             <p className="text-sm sm:text-base text-[var(--body)] max-w-md mx-auto leading-relaxed">
               <span className="l-bs">
-                Hvala vam na poruci. Ako je hitno, pišite direktno na {CONTACT.email}.
+                Hvala Vam na poruci. Ako je hitno, pišite direktno na {CONTACT.email}.
               </span>
               <span className="l-en">
                 Thank you for your message. If urgent, please email {CONTACT.email} directly.
@@ -262,7 +262,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ productChip }) => {
               <Mail className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold text-[var(--ink)]">
-              <span className="l-bs">Otvorili smo vaš email klijent</span>
+              <span className="l-bs">Otvorili smo Vaš email klijent</span>
               <span className="l-en">We opened your mail client</span>
             </h3>
             <p className="text-sm sm:text-base text-[var(--body)] max-w-md mx-auto leading-relaxed">
@@ -330,7 +330,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ productChip }) => {
               <label htmlFor={problemId} className="block text-sm font-semibold text-[var(--ink)] mb-2.5">
                 {selectedCategory === 'project' && (
                   <>
-                    <span className="l-bs">Opišite vaš projekat ili ideju</span>
+                    <span className="l-bs">Opišite Vaš projekat ili ideju</span>
                     <span className="l-en">Describe your project or idea</span>
                   </>
                 )}

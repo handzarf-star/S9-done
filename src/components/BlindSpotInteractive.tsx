@@ -16,7 +16,7 @@ export const BlindSpotInteractive: React.FC = () => {
         </div>
 
         <h3 className="text-2xl sm:text-3xl font-black text-[var(--ink)]">
-          <span className="l-bs">Koliko poziva vaš tim stigne preslušati?</span>
+          <span className="l-bs">Koliko poziva Vaš tim stigne preslušati?</span>
           <span className="l-en">How many of your calls does your team get to hear?</span>
         </h3>
       </div>
@@ -25,7 +25,7 @@ export const BlindSpotInteractive: React.FC = () => {
       <div className="max-w-xl mx-auto mb-6 space-y-3">
         <div className="flex justify-between items-center text-sm font-bold">
           <label htmlFor="qa-coverage" className="text-[var(--muted)] cursor-pointer">
-            <span className="l-bs">Povucite na vašu brojku:</span>
+            <span className="l-bs">Povucite na Vašu brojku:</span>
             <span className="l-en">Drag to your number:</span>
           </label>
           <span className="text-[#A98CFF] text-lg font-black">{qaPercent}%</span>
@@ -84,7 +84,7 @@ export const BlindSpotInteractive: React.FC = () => {
               {invisiblePercent}%
             </div>
             <div className="text-xs uppercase font-bold text-[var(--muted)] tracking-wider">
-              <span className="l-bs">vaših poziva niko ne čuje</span>
+              <span className="l-bs">Vaših poziva niko ne čuje</span>
               <span className="l-en">of your calls nobody hears</span>
             </div>
           </div>
