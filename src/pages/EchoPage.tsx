@@ -1,5 +1,5 @@
 import React from 'react';
-import { AlertTriangle, CalendarClock, MessageSquareText, MousePointerClick, Signature } from 'lucide-react';
+import { AlertTriangle, Bell, CalendarClock, MessageSquareText, MousePointerClick, Signature } from 'lucide-react';
 
 import { ShortProductPage } from '../components/ShortProductPage';
 
@@ -49,6 +49,14 @@ export const EchoPage: React.FC<EchoPageProps> = ({ onNavigate }) => (
             tEn: 'Instant delivery or scheduled campaign launches',
             bs: 'Pripremite kampanju radnim danom, a isporuku zakažite za subotu ujutro ili u tačan termin kada je odziv kupaca najveći.',
             en: 'Draft your campaign ahead of time and automate delivery for peak engagement windows, whether that is Saturday morning or an evening promotion.',
+          },
+          {
+            id: 'dvije-upotrebe',
+            icon: Bell,
+            tBs: 'Prodajne kampanje i servisna obavještenja',
+            tEn: 'Sales campaigns and service notifications',
+            bs: 'Ista platforma nosi dvije različite poruke. Kampanja je ponuda koju šaljete listi kupaca, a obavještenje je poruka koju jedan kupac dobije jer se nešto desilo s njegovom narudžbom, na primjer broj pošiljke ili potvrda termina dostave.',
+            en: 'One platform carries two different kinds of message. A campaign is an offer going out to a list. A notification is one message to one customer because something happened to their order, a tracking number or a confirmed delivery slot.',
           },
           {
             id: 'klikovi',

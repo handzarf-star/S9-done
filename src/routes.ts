@@ -1,6 +1,6 @@
 import { SITE_URL } from './config';
 
-export type RouteKey = 'home' | 'pulse' | 'atlas' | 'sonar' | 'mode' | 'libra' | 'vesta' | 'bell' | 'hive' | 'echo' | 'neon' | 'iris' | 'radovi' | 'radoviWms' | 'radoviMonad' | 'custom' | 'about' | 'privacy';
+export type RouteKey = 'home' | 'pulse' | 'atlas' | 'sonar' | 'mode' | 'libra' | 'vesta' | 'bell' | 'hive' | 'echo' | 'neon' | 'aris' | 'radovi' | 'radoviWms' | 'radoviMonad' | 'custom' | 'about' | 'privacy';
 
 export interface RouteMeta {
   path: string;
@@ -106,7 +106,7 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
      reachable from the menu.
 
      The five below it are NOT approved names. Bell, Hive, Echo, Neon and
-     Iris are working titles, and the standing rule is that no name is
+     Aris are working titles, and the standing rule is that no name is
      written anywhere before Mersad has seen it. They are routed so the
      pages can be read and corrected, and deliberately kept out of the
      header, the footer and the sitemap until that happens. Libra reached
@@ -181,14 +181,14 @@ export const ROUTES: Record<RouteKey, RouteMeta> = {
       en: 'Official Viber messages with a picture, the selling line and a direct link. Offers go to profiled groups based on what they bought before, instead of the same message to everyone.',
     },
   },
-  iris: {
-    path: '/iris',
+  aris: {
+    path: '/aris',
     accent: '#C661DC',
     accentRgb: '198, 97, 220',
     accentDeep: '#800A96',
     title: {
-      bs: 'Shape9 Iris · AI asistent za trenutnu analizu poslovnih podataka i baza',
-      en: 'Shape9 Iris · AI assistant for instant analysis of your business data',
+      bs: 'Shape9 Aris · AI asistent za trenutnu analizu poslovnih podataka i baza',
+      en: 'Shape9 Aris · AI assistant for instant analysis of your business data',
     },
     description: {
       bs: 'Postavite upit običnim jezikom i dolazite do tačnih poslovnih metrika u sekundi: namjenski AI asistent koji pretražuje isključivo Vaše interne baze i dokumente, bez nagađanja.',

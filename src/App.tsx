@@ -12,7 +12,7 @@ import { BellPage } from './pages/BellPage';
 import { HivePage } from './pages/HivePage';
 import { EchoPage } from './pages/EchoPage';
 import { NeonPage } from './pages/NeonPage';
-import { IrisPage } from './pages/IrisPage';
+import { ArisPage } from './pages/ArisPage';
 import { ModePage } from './pages/ModePage';
 import { RadoviPage } from './pages/RadoviPage';
 import { RadoviWmsPage } from './pages/RadoviWmsPage';
@@ -153,8 +153,8 @@ export const App: React.FC = () => {
         return <EchoPage onNavigate={navigate} />;
       case 'neon':
         return <NeonPage onNavigate={navigate} />;
-      case 'iris':
-        return <IrisPage onNavigate={navigate} />;
+      case 'aris':
+        return <ArisPage onNavigate={navigate} />;
       case 'radovi':
         return <RadoviPage onNavigate={navigate} />;
       case 'radoviWms':

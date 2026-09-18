@@ -10,13 +10,13 @@ import { ShortProductPage } from '../components/ShortProductPage';
 const ACCENT = '#C661DC';
 const ACCENT_RGB = '198, 97, 220';
 
-interface IrisPageProps {
+interface ArisPageProps {
   onNavigate?: (path: string) => void;
 }
 
-export const IrisPage: React.FC<IrisPageProps> = ({ onNavigate }) => (
+export const ArisPage: React.FC<ArisPageProps> = ({ onNavigate }) => (
   <ShortProductPage
-    name="Iris"
+    name="Aris"
     accent={ACCENT}
     accentRgb={ACCENT_RGB}
     badgeIcon={Bot}
@@ -26,8 +26,8 @@ export const IrisPage: React.FC<IrisPageProps> = ({ onNavigate }) => (
     h1En={['Ask the assistant a question and get the exact figure in', 'seconds.']}
     questionBs={'„Koliko Vam radnih sati treba da dođete do jednog jedinog broja ili podatka?"'}
     questionEn={'"How many working hours does it take you to get hold of one single figure?"'}
-    ledeBs="Pitanje je potpuno jednostavno: kolika je bila prodaja prošle sedmice u poređenju s istom sedmicom prošle godine. Odgovor se već nalazi u bazi, ali put do njega je dug jer neko mora sjesti, ručno pretražiti tabele i poslati Vam izvještaj tek kasnije. Iris funkcioniše kao digitalni analitičar dostupan u svakom trenutku: napišete upit prirodnim govorom, bez poznavanja formula ili SQL koda, a sistem u nekoliko sekundi pronalazi tačan podatak direktno iz Vaših evidencija, bez nagađanja i popunjavanja rupa pretpostavkama."
-    ledeEn="The question could not be simpler. What were sales last week against the same week a year ago. The answer is already in the database, but the way to it is long, because somebody has to sit down, search the tables by hand and send you the report later. Iris works as an analyst available at any hour: you write the question in plain speech, with no formulas and no SQL, and in a few seconds it finds the exact figure in your own records, without guessing and without filling gaps with assumptions."
+    ledeBs="Pitanje je potpuno jednostavno: kolika je bila prodaja prošle sedmice u poređenju s istom sedmicom prošle godine. Odgovor se već nalazi u bazi, ali put do njega je dug jer neko mora sjesti, ručno pretražiti tabele i poslati Vam izvještaj tek kasnije. Aris funkcioniše kao digitalni analitičar dostupan u svakom trenutku: napišete upit prirodnim govorom, bez poznavanja formula ili SQL koda, a sistem u nekoliko sekundi pronalazi tačan podatak direktno iz Vaših evidencija, bez nagađanja i popunjavanja rupa pretpostavkama."
+    ledeEn="The question could not be simpler. What were sales last week against the same week a year ago. The answer is already in the database, but the way to it is long, because somebody has to sit down, search the tables by hand and send you the report later. Aris works as an analyst available at any hour: you write the question in plain speech, with no formulas and no SQL, and in a few seconds it finds the exact figure in your own records, without guessing and without filling gaps with assumptions."
     ctaShortBs="Zakažite demonstraciju asistenta"
     ctaShortEn="Book a demonstration"
     sections={[
@@ -45,8 +45,8 @@ export const IrisPage: React.FC<IrisPageProps> = ({ onNavigate }) => (
       },
       {
         id: 'sta-radi',
-        headBs: 'Šta Iris omogućava',
-        headEn: 'What Iris does',
+        headBs: 'Šta Aris omogućava',
+        headEn: 'What Aris does',
         cards: [
           {
             id: 'jezik',
@@ -69,8 +69,8 @@ export const IrisPage: React.FC<IrisPageProps> = ({ onNavigate }) => (
             icon: ShieldQuestion,
             tBs: 'Odgovara isključivo iz Vaših podataka',
             tEn: 'It answers only from your data',
-            bs: 'Iris ne nagađa i ne popunjava praznine pretpostavkama. Ako traženog broja nema u bazi, to otvoreno i kaže.',
-            en: 'Iris does not guess and does not fill gaps with assumptions. If the number is not in the database, it says so.',
+            bs: 'Aris ne nagađa i ne popunjava praznine pretpostavkama. Ako traženog broja nema u bazi, to otvoreno i kaže.',
+            en: 'Aris does not guess and does not fill gaps with assumptions. If the number is not in the database, it says so.',
           },
         ],
       },
@@ -82,9 +82,9 @@ export const IrisPage: React.FC<IrisPageProps> = ({ onNavigate }) => (
         headBs: 'Jasno definisana granica, s razlogom',
         headEn: 'A clearly drawn boundary, and there is a reason for it',
         noteBs:
-          'Iris poznaje isključivo Vaše poslovanje. Ne odgovara na opšta pitanja i nije asistent za sve i svašta. Oslanja se na baze koje već imate, pa podrazumijeva da ti podaci postoje i da su uredni. Ako nisu, prvo sređujemo izvore.',
+          'Aris poznaje isključivo Vaše poslovanje. Ne odgovara na opšta pitanja i nije asistent za sve i svašta. Oslanja se na baze koje već imate, pa podrazumijeva da ti podaci postoje i da su uredni. Ako nisu, prvo sređujemo izvore.',
         noteEn:
-          'Iris knows your business and nothing else. It does not answer general questions and it is not an assistant for everything. It leans on the databases you already have, which assumes that data exists and is in order. If it is not, we put the sources right first.',
+          'Aris knows your business and nothing else. It does not answer general questions and it is not an assistant for everything. It leans on the databases you already have, which assumes that data exists and is in order. If it is not, we put the sources right first.',
       },
     ]}
     ctaHeadBs="Pošaljite nam poslovno pitanje koje najčešće postavljate svom timu"

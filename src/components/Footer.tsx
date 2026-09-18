@@ -170,11 +170,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </li>
               <li>
                 <a
-                  href="/iris"
-                  onClick={(e) => go(e, '/iris')}
+                  href="/aris"
+                  onClick={(e) => go(e, '/aris')}
                   className="hover:text-[var(--ink)] transition-colors focus-ring"
                 >
-                  Shape9 Iris
+                  Shape9 Aris
                 </a>
               </li>
             </ul>

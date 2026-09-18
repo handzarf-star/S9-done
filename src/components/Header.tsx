@@ -147,8 +147,8 @@ const P: Record<string, Product> = {
     color: '#29D1C9',
     rgb: '41, 209, 201',
     icon: MessageSquareText,
-    jobBs: 'SMS kampanje',
-    jobEn: 'SMS campaigns',
+    jobBs: 'SMS',
+    jobEn: 'SMS',
   },
   neon: {
     path: '/neon',
@@ -156,17 +156,17 @@ const P: Record<string, Product> = {
     color: '#FCA5CD',
     rgb: '252, 165, 205',
     icon: Sparkles,
-    jobBs: 'Viber kampanje',
-    jobEn: 'Viber campaigns',
+    jobBs: 'Viber',
+    jobEn: 'Viber',
   },
-  iris: {
-    path: '/iris',
-    shortName: 'Iris',
+  aris: {
+    path: '/aris',
+    shortName: 'Aris',
     color: '#C661DC',
     rgb: '198, 97, 220',
     icon: Bot,
-    jobBs: 'AI analitika podataka',
-    jobEn: 'AI data analytics',
+    jobBs: 'AI asistent',
+    jobEn: 'AI assistant',
   },
 };
 
@@ -180,9 +180,9 @@ const P: Record<string, Product> = {
      Prodaja i skladište  Mode · Atlas · Hive
      Marketing            Echo · Neon
      Administracija       Libra · Vesta
-     AI analitika         Sonar · Iris
+     AI analitika         Sonar · Aris
 
-   All eleven are listed, Faris 2026-09-17. Bell, Hive, Echo, Neon and Iris
+   All eleven are listed, Faris 2026-09-17. Bell, Hive, Echo, Neon and Aris
    carry names Mersad has not approved. That was raised twice and he decided
    to publish them, so they are here; the approval is his to get.
 
@@ -202,7 +202,7 @@ const CATEGORIES = [
   { id: 'prodaja', col: 0, labelBs: 'Prodaja i skladište', labelEn: 'Sales and stock', items: [P.mode, P.atlas, P.hive] },
   { id: 'marketing', col: 1, labelBs: 'Marketing', labelEn: 'Marketing', items: [P.echo, P.neon] },
   { id: 'admin', col: 1, labelBs: 'Administracija', labelEn: 'Back office', items: [P.libra, P.vesta] },
-  { id: 'ai', col: 1, labelBs: 'AI analitika', labelEn: 'AI analytics', items: [P.sonar, P.iris] },
+  { id: 'ai', col: 1, labelBs: 'AI analitika', labelEn: 'AI analytics', items: [P.sonar, P.aris] },
 ];
 
 const PRODUCTS = CATEGORIES.flatMap((c) => c.items);

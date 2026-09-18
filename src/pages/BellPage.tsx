@@ -21,8 +21,8 @@ export const BellPage: React.FC<BellPageProps> = ({ onNavigate }) => (
     badgeIcon={Headphones}
     badgeBs="Poslovna cloud telefonija"
     badgeEn="Business cloud telephony"
-    h1Bs={['Sistem koji prepoznaje klijenta čim telefon zazvoni i pamti svaki prethodni', 'dogovor.']}
-    h1En={['A system that knows the customer the moment the phone rings and remembers every', 'agreement.']}
+    h1Bs={['Sistem koji prepoznaje klijenta i pamti svaki prethodni', 'dogovor.']}
+    h1En={['A system that knows the customer and remembers every', 'agreement.']}
     questionBs={'„Koliko biste više prodaja zaključili da Vaši agenti odmah vide historiju svakog sagovornika?"'}
     questionEn={'"How many more deals would your people close if they saw every caller\'s history straight away?"'}
     ledeBs="Uz klasičnu centralu agent ulazi u razgovor na slijepo i kreće od nule. Dok klijent po treći put objašnjava šta mu treba ili čeka da neko pronađe njegovu narudžbu, prodajna prilika se hladi. Bell u trenutku poziva na ekranu otvara ime kupca, prethodne kupovine i bilješke s prošlog sastanka, pa razgovor ne počinje ispitivanjem, već direktnim zatvaranjem prodaje."

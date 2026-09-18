@@ -4,7 +4,7 @@ import { AlertTriangle, BarChart3, Image, Sparkles, Users } from 'lucide-react';
 import { ShortProductPage } from '../components/ShortProductPage';
 
 /* Hue 351, a light hot pink. A neon sign exists for one reason, to be
-   looked at, which is the whole job of a rich campaign. Separated from Iris
+   looked at, which is the whole job of a rich campaign. Separated from Aris
    by lightness as well as hue, because 29 degrees alone reads as two pinks
    at icon size. Contrast on the ground is 10.7:1. */
 const ACCENT = '#FCA5CD';
