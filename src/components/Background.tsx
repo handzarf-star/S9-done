@@ -29,21 +29,15 @@ export const Background: React.FC = () => {
         }}
       />
 
-      {/* The glow. A soft tint at the top of the viewport, in the current
-          page's accent, not a fixed brand colour. --cyan/--cyan-rgb are
-          already set per route by App.tsx from routes.ts (each product's
-          own colour on its own page, the house colour everywhere else),
-          so this needs no wiring of its own, it just has to read the same
-          variable the rest of the chrome already reads. Wide and shallow,
-          fading out well before halfway down, so it stays a tint at the
-          top of the screen rather than a spotlight over the hero. */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            'radial-gradient(120% 60% at 50% 0%, rgba(var(--cyan-rgb), 0.16) 0%, rgba(var(--cyan-rgb), 0) 60%)',
-        }}
-      />
+      {/* The accent glow used to sit here: a radial tint at the top of the
+          viewport in the current product's colour, read from --cyan-rgb.
+          Removed 2026-09-21. On a product page the film covers the top of
+          the screen and the glow does not, so the moment the film ended the
+          page picked up a coloured wash the film never had. That is a
+          second difference across the same join the grid and the hairline
+          were just fixed for, and the cheapest way to not have it is to not
+          paint it. The product's colour still carries the badge, the
+          heading accent, the buttons and the sub-label under the logo. */}
 
       {/* Structural grid, aligned to the 32px rhythm in index.css */}
       <div className="absolute inset-0 bg-grid" />
