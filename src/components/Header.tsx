@@ -277,6 +277,61 @@ export const Header: React.FC<HeaderProps> = ({
 
   const isProductPath = PRODUCTS.some((p) => p.path === currentPath);
 
+  /* HOVER TO OPEN.
+     Radix's DropdownMenu opens on click by design, so hover is layered on top
+     rather than replacing it: the trigger is still a button that opens on
+     click, on Enter and on Space, which is what a keyboard and a touch screen
+     need. Hover only adds a second way in for a mouse.
+
+     Three things make it behave:
+     - it is gated on a real mouse. `(hover: hover) and (pointer: fine)` is
+       false on a phone, where a browser may fire a synthetic hover on tap and
+       the menu would open and shut in the same gesture.
+     - opening is immediate, closing waits. The trigger and the panel are 8px
+       apart, so the pointer crosses a gap that would otherwise read as "left
+       the menu". The delay covers the crossing.
+     - `modal={false}` on the root, further down. Radix's modal mode puts
+       `pointer-events: none` on the body while open, which would make
+       hovering anything else, including away from the menu, impossible. */
+  const closeTimer = React.useRef<number | null>(null);
+  /* Whether the pointer opened this, not whether the machine has a pointer.
+     A desktop has a fine pointer and a keyboard at once, so testing the
+     device would strip focus management from keyboard users on every laptop
+     in the country. */
+  const pointerOpened = React.useRef(false);
+
+  const canHover = () =>
+    typeof window !== 'undefined' &&
+    window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  const cancelClose = () => {
+    if (closeTimer.current !== null) {
+      window.clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  };
+
+  const openOnHover = () => {
+    if (!canHover()) return;
+    cancelClose();
+    pointerOpened.current = true;
+    setIsDropdownOpen(true);
+  };
+
+  const closeOnHover = () => {
+    if (!canHover()) return;
+    cancelClose();
+    closeTimer.current = window.setTimeout(() => setIsDropdownOpen(false), 140);
+  };
+
+  /* Any key that opens the menu hands it back to Radix in full. */
+  const openedByKeyboard = () => {
+    cancelClose();
+    pointerOpened.current = false;
+  };
+
+  useEffect(() => cancelClose, []);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -305,14 +360,22 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-200 ${
-          isScrolled
-            ? 'bg-[var(--ground)]/90 backdrop-blur-md border-b border-[var(--line)] py-3'
-            : 'bg-transparent py-4 sm:py-5'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      {/* A floating capsule rather than a full width bar.
+          The outer element only positions and gutters; the pill inside is the
+          visible object. Its gutter is `px-4 sm:px-6`, the page column's own
+          gutter, and it is `max-w-5xl` like every band on the site, so the
+          logo still lands on exactly the same vertical as the first line of
+          text below it. A pill normally breaks that alignment; matching the
+          gutter is what keeps it. */}
+      <header className="fixed top-0 left-0 right-0 z-40 px-4 sm:px-6 pt-3 sm:pt-4">
+        <div
+          className={`max-w-5xl mx-auto px-4 sm:px-6 flex items-center rounded-full border backdrop-blur-md transition-[background-color,border-color,box-shadow,padding] duration-200 ${
+            isScrolled
+              ? 'bg-[var(--panel)]/92 border-[var(--line)] py-2'
+              : 'bg-[var(--panel)]/70 border-[var(--line-subtle)] py-2.5'
+          }`}
+          style={{ boxShadow: isScrolled ? 'var(--shadow-overlay)' : 'none' }}
+        >
           {/* BRAND LOGO */}
           <a
             href="/"
@@ -343,7 +406,20 @@ export const Header: React.FC<HeaderProps> = ({
           </a>
 
           {/* DESKTOP NAV */}
-          <nav className="hidden md:flex items-center gap-1 sm:gap-2">
+          {/* A fixed left margin instead of the bar's old `justify-between`.
+              That distributed the slack between three children, so the nav
+              being 361px in Bosnian and 408 in English slid every link
+              sideways: „Portfolio", the same word in both languages, moved
+              19px on a language switch. Pinned after the logo, the nav's
+              left edge cannot move and the extra English width grows into
+              the empty middle instead.
+
+              The slack is taken by `ml-auto` on the actions block below, not
+              by `mr-auto` here. This nav is `display: none` on a phone, and
+              a box that is not generated has no auto margin to give, which
+              left the hamburger and the calendar button packed against the
+              logo with 116px of air to their right. */}
+          <nav className="hidden md:flex items-center gap-1 sm:gap-2 ml-5 lg:ml-8">
             {/* PRODUCTS DROPDOWN.
                 Radix DropdownMenu from the shadcn registry, replacing a hand
                 rolled version that tracked its own open state, listened for
@@ -355,11 +431,16 @@ export const Header: React.FC<HeaderProps> = ({
 
                 The look is unchanged. Every colour below is still a Shape9
                 token or the product's own accent. */}
-            <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
+            <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen} modal={false}>
               <DropdownMenuTrigger asChild>
                 <button
                   type="button"
-                  className={`px-3 py-2 rounded-xl text-sm font-semibold flex items-center gap-1.5 transition-colors focus-ring cursor-pointer outline-none ${
+                  onPointerEnter={openOnHover}
+                  onPointerLeave={closeOnHover}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') openedByKeyboard();
+                  }}
+                  className={`px-3.5 py-2 rounded-full text-sm font-semibold flex items-center gap-1.5 transition-colors focus-ring cursor-pointer outline-none ${
                     isDropdownOpen || isProductPath
                       ? 'text-[var(--cyan)] bg-[rgba(var(--cyan-rgb),0.08)]'
                       : 'text-[var(--body)] hover:text-[var(--ink)] hover:bg-white/5'
@@ -377,7 +458,30 @@ export const Header: React.FC<HeaderProps> = ({
 
               <DropdownMenuContent
                 align="start"
-                sideOffset={8}
+                /* Clears the capsule, which stands 15px below the trigger.
+                   At 8 the panel slid 7px under the pill's rounded edge. */
+                sideOffset={22}
+                onPointerEnter={cancelClose}
+                onPointerLeave={closeOnHover}
+                /* A mouse that hovered in did not ask to have focus thrown
+                   back at the trigger when it drifts away. Radix returns it on
+                   close, which is right after a click or a keypress and wrong
+                   here, so it is suppressed only when the pointer drove the
+                   menu. The keyboard path keeps the behaviour untouched.
+                   Radix has no matching hook for focus on open; it decides
+                   that itself, and the check below confirms what it does. */
+                onCloseAutoFocus={(e) => {
+                  if (pointerOpened.current) e.preventDefault();
+                }}
+                /* Radix forwards this to its focus scope but the shadcn
+                   wrapper's prop types do not list it, hence the cast. Without
+                   it, a mouse crossing the nav pulls focus out of whatever the
+                   visitor was typing in. Measured: focus stays put with it. */
+                {...({
+                  onOpenAutoFocus: (e: Event) => {
+                    if (pointerOpened.current) e.preventDefault();
+                  },
+                } as Record<string, unknown>)}
                 /* Two columns of 22rem, the width one column needed on its
                    own: the text column is 206px at 20rem and „Napredno
                    upravljanje skladištem" wants about 230, so the label sets
@@ -427,7 +531,7 @@ export const Header: React.FC<HeaderProps> = ({
             <a
               href="/radovi"
               onClick={(e) => go(e, '/radovi')}
-              className={`px-3 py-2 rounded-xl text-sm font-semibold transition-colors focus-ring ${
+              className={`px-3.5 py-2 rounded-full text-sm font-semibold transition-colors focus-ring ${
                 currentPath.startsWith('/radovi')
                   ? 'text-[var(--cyan)] bg-[rgba(var(--cyan-rgb),0.08)]'
                   : 'text-[var(--body)] hover:text-[var(--ink)] hover:bg-white/5'
@@ -440,7 +544,7 @@ export const Header: React.FC<HeaderProps> = ({
             <a
               href="/po-mjeri"
               onClick={(e) => go(e, '/po-mjeri')}
-              className={`px-3 py-2 rounded-xl text-sm font-semibold transition-colors focus-ring ${
+              className={`px-3.5 py-2 rounded-full text-sm font-semibold transition-colors focus-ring ${
                 currentPath === '/po-mjeri'
                   ? 'text-[var(--cyan)] bg-[rgba(var(--cyan-rgb),0.08)]'
                   : 'text-[var(--body)] hover:text-[var(--ink)] hover:bg-white/5'
@@ -453,7 +557,7 @@ export const Header: React.FC<HeaderProps> = ({
             <a
               href="/o-nama"
               onClick={(e) => go(e, '/o-nama')}
-              className={`px-3 py-2 rounded-xl text-sm font-semibold transition-colors focus-ring ${
+              className={`px-3.5 py-2 rounded-full text-sm font-semibold transition-colors focus-ring ${
                 currentPath === '/o-nama'
                   ? 'text-[var(--cyan)] bg-[rgba(var(--cyan-rgb),0.08)]'
                   : 'text-[var(--body)] hover:text-[var(--ink)] hover:bg-white/5'
@@ -464,17 +568,24 @@ export const Header: React.FC<HeaderProps> = ({
             </a>
           </nav>
 
-          {/* RIGHT SIDE ACTIONS */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            {/* LANGUAGE TOGGLE */}
+          {/* RIGHT SIDE ACTIONS. `ml-auto` pins this block to the right edge
+              on every width, including the phone, where the nav beside it
+              does not render at all. */}
+          <div className="ml-auto flex items-center gap-2 sm:gap-3">
+            {/* LANGUAGE TOGGLE.
+                Hidden on a phone and rendered inside the menu sheet instead.
+                The capsule held a logo, this toggle, a calendar button and a
+                hamburger in 326px of usable width, with 39px to spare. The
+                toggle is the one of the four nobody reaches for mid task, so
+                it is the one that moves. */}
             <div
               role="group"
               aria-label={lang === 'bs' ? 'Jezik' : 'Language'}
-              className="relative flex items-center p-0.5 rounded-lg border border-[var(--line)] bg-[var(--panel)]"
+              className="relative hidden sm:flex items-center p-0.5 rounded-full border border-[var(--line)] bg-[rgba(255,255,255,0.04)]"
             >
               <span
                 aria-hidden="true"
-                className="absolute top-0.5 bottom-0.5 left-0.5 w-[calc(50%-2px)] rounded-[6px] bg-[rgba(var(--cyan-rgb),0.16)] border border-[rgba(var(--cyan-rgb),0.35)]"
+                className="absolute top-0.5 bottom-0.5 left-0.5 w-[calc(50%-2px)] rounded-full bg-[rgba(var(--cyan-rgb),0.16)] border border-[rgba(var(--cyan-rgb),0.35)]"
                 style={{
                   transform: lang === 'bs' ? 'translateX(0)' : 'translateX(100%)',
                   transition: 'transform var(--dur-2) var(--ease)',
@@ -490,7 +601,10 @@ export const Header: React.FC<HeaderProps> = ({
                       if (!active) onToggleLang();
                     }}
                     aria-pressed={active}
-                    className="relative z-10 px-2 py-1 rounded-[6px] text-xs font-bold tracking-wider uppercase focus-ring cursor-pointer"
+                    /* Was px-2 py-1, which rendered 33x24: the exact WCAG 2.5.8
+                       minimum, with a border eating into it, and the smallest
+                       thing to hit on a phone. */
+                    className="relative z-10 px-2.5 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase focus-ring cursor-pointer"
                     style={{
                       color: active ? 'var(--cyan)' : 'var(--muted)',
                       transition: 'color var(--dur-1) var(--ease)',
@@ -516,6 +630,17 @@ export const Header: React.FC<HeaderProps> = ({
                 type="button"
                 onClick={() => setIsMeetingModalOpen(true)}
                 className="btn-primary px-4 py-2 text-xs font-semibold rounded-full gap-2 focus-ring cursor-pointer"
+                /* „Zakažite sastanak" measures 181px and „Book a Call" 136px,
+                   so switching language moved this button 45px sideways and
+                   the header visibly jumped. The floor is the wider of the
+                   two, which leaves the Bosnian label untouched and pads the
+                   English one out to match.
+
+                   `min-width` rather than a fixed `width`, so a longer label
+                   later grows the button instead of being clipped. Inline
+                   rather than a utility class because `.btn-primary` is
+                   unlayered CSS and would win against one. */
+                style={{ minWidth: '184px', justifyContent: 'center' }}
               >
                 <Calendar className="w-3.5 h-3.5" />
                 <span className="l-bs">Zakažite sastanak</span>
@@ -551,7 +676,7 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle navigation menu"
               aria-expanded={isMobileMenuOpen}
-              className="md:hidden p-2 rounded-lg text-[var(--body)] hover:text-[var(--ink)] hover:bg-white/5 transition-colors focus-ring cursor-pointer"
+              className="md:hidden p-2 rounded-full text-[var(--body)] hover:text-[var(--ink)] hover:bg-white/5 transition-colors focus-ring cursor-pointer"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -636,6 +761,43 @@ export const Header: React.FC<HeaderProps> = ({
                     <span className="l-bs">O nama</span>
                     <span className="l-en">About Us</span>
                   </a>
+                </div>
+
+                {/* The language toggle, moved off the capsule. Two full width
+                    buttons rather than the compact pill: there is room here,
+                    and a phone wants a target it can hit without aiming. */}
+                <div className="border-t border-[var(--line)] pt-3">
+                  <div className="readout px-1 pb-2">
+                    <span className="l-bs">Jezik</span>
+                    <span className="l-en">Language</span>
+                  </div>
+                  <div
+                    role="group"
+                    aria-label={lang === 'bs' ? 'Jezik' : 'Language'}
+                    className="grid grid-cols-2 gap-2"
+                  >
+                    {(['bs', 'en'] as const).map((code) => {
+                      const active = lang === code;
+                      return (
+                        <button
+                          key={code}
+                          type="button"
+                          onClick={() => {
+                            if (!active) onToggleLang();
+                          }}
+                          aria-pressed={active}
+                          className="rounded-full border px-4 py-2.5 text-xs font-bold uppercase tracking-wider focus-ring cursor-pointer transition-colors"
+                          style={{
+                            borderColor: active ? 'rgba(var(--cyan-rgb),0.35)' : 'var(--line)',
+                            background: active ? 'rgba(var(--cyan-rgb),0.16)' : 'transparent',
+                            color: active ? 'var(--cyan)' : 'var(--body)',
+                          }}
+                        >
+                          {code === 'bs' ? 'Bosanski' : 'English'}
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
 
                 <div className="pt-2">

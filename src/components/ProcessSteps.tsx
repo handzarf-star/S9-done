@@ -50,7 +50,7 @@ export const ProcessSteps: React.FC<ProcessStepsProps> = ({ steps, className = '
                 {String(i + 1).padStart(2, '0')}
               </span>
 
-              <h3 className="text-base sm:text-lg font-bold text-[var(--ink)] mb-2.5">
+              <h3 className="text-base sm:text-lg font-bold text-[var(--ink)] mb-3">
                 <span className="l-bs">{step.titleBs}</span>
                 <span className="l-en">{step.titleEn}</span>
               </h3>

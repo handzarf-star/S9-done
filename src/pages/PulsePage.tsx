@@ -256,7 +256,7 @@ export const PulsePage: React.FC<PulsePageProps> = ({ onNavigate }) => {
               <span className="l-bs">Problem</span>
               <span className="l-en">The problem</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-tight">
               <span className="l-bs">Vaš tim obavi stotine razgovora svakog dana. Šta je u njima zaista dogovoreno?</span>
               <span className="l-en">Your agents handle hundreds of calls daily. How many commitments, compliance breaches, or churn risks slip through unheard?</span>
             </h2>
@@ -340,7 +340,7 @@ export const PulsePage: React.FC<PulsePageProps> = ({ onNavigate }) => {
               return (
                 <div key={idx} className="s9-card">
                   <IconComp className="w-6 h-6 text-[#A98CFF] mb-4" />
-                  <h3 className="text-base font-bold text-[var(--ink)] mb-2.5">
+                  <h3 className="text-base font-bold text-[var(--ink)] mb-3">
                     <span className="l-bs">{cap.titleBs}</span>
                     <span className="l-en">{cap.titleEn}</span>
                   </h3>
@@ -360,7 +360,7 @@ export const PulsePage: React.FC<PulsePageProps> = ({ onNavigate }) => {
         <ScrollReveal>
           <div className="section-body">
             <div className="s9-card">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] mb-8 text-center leading-tight">
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[var(--ink)] mb-8 text-center leading-tight">
                 <span className="l-bs">Šta tačno dobijate implementacijom</span>
                 <span className="l-en">What you actually get</span>
               </h2>
@@ -399,7 +399,7 @@ export const PulsePage: React.FC<PulsePageProps> = ({ onNavigate }) => {
                 <span className="l-en">First step</span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] mb-3 leading-tight">
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[var(--ink)] mb-3 leading-tight">
                 <span className="l-bs">Uvjerite se na vlastitim pozivima.</span>
                 <span className="l-en">We are not asking you to trust us. We are asking for 50 calls.</span>
               </h2>
@@ -441,7 +441,7 @@ export const PulsePage: React.FC<PulsePageProps> = ({ onNavigate }) => {
               <span className="l-bs">Pitanja o Pulse</span>
               <span className="l-en">Questions about Pulse</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-tight">
               <span className="l-bs">Često postavljana pitanja</span>
               <span className="l-en">Details you care about</span>
             </h2>

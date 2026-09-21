@@ -1,5 +1,5 @@
-import React, { useState, useId } from 'react';
-import { Send, CheckCircle2, AlertCircle, Mail, Phone, Rocket, Handshake, Users, LifeBuoy, Calendar } from 'lucide-react';
+import React, { useState, useId, useEffect } from 'react';
+import { Send, CheckCircle2, AlertCircle, Mail, Phone, Rocket, Handshake, Users, LifeBuoy, Calendar, ChevronDown } from 'lucide-react';
 import { WEB3FORMS_KEY, FORM_IS_LIVE, CONTACT } from '../config';
 
 interface ContactFormProps {
@@ -55,6 +55,25 @@ const CATEGORIES: CategoryOption[] = [
 
 export const ContactForm: React.FC<ContactFormProps> = ({ productChip }) => {
   const [selectedCategory, setSelectedCategory] = useState<InquiryCategory>('project');
+
+  /* Everywhere else on this site both languages are in the DOM and CSS hides
+     one. That cannot work inside <option>: its text is not styleable, so a
+     span would print both labels into the same line. The language therefore
+     has to be read in JavaScript, and it has to react, because the toggle
+     only flips an attribute on <html>. */
+  const [uiLang, setUiLang] = useState<'bs' | 'en'>(
+    () => (typeof document !== 'undefined' && document.documentElement.getAttribute('data-lang') === 'en' ? 'en' : 'bs'),
+  );
+  useEffect(() => {
+    const root = document.documentElement;
+    const read = () => setUiLang(root.getAttribute('data-lang') === 'en' ? 'en' : 'bs');
+    read();
+    const obs = new MutationObserver(read);
+    obs.observe(root, { attributes: true, attributeFilter: ['data-lang'] });
+    return () => obs.disconnect();
+  }, []);
+
+  const activeCategory = CATEGORIES.find((c) => c.id === selectedCategory);
   const [problem, setProblem] = useState('');
   const [company, setCompany] = useState('');
   const [contact, setContact] = useState('');
@@ -173,54 +192,57 @@ export const ContactForm: React.FC<ContactFormProps> = ({ productChip }) => {
           </div>
         )}
 
-        {/* 4 INTERACTIVE INQUIRY TYPE CARDS */}
+        {/* The enquiry type was four cards in a two column grid: eight
+            lines of copy and 260px of height to pick one of four things,
+            and on a phone it stacked into four full width blocks the
+            visitor had to scroll past before reaching the first field.
+            It is a select now, the same control as every other field in
+            this form, and the chosen option's explanation stays visible
+            underneath so nothing that was written is lost. */}
         <div className="mb-8">
-          <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--muted)] mb-4 text-center">
+          <label
+            htmlFor="inquiry-type"
+            className="block text-xs font-semibold uppercase tracking-wider text-[var(--muted)] mb-2"
+          >
             <span className="l-bs">Odaberite vrstu upita</span>
             <span className="l-en">Select Inquiry Type</span>
           </label>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-            {CATEGORIES.map((cat) => {
-              const IconComp = cat.icon;
-              const isSelected = selectedCategory === cat.id;
-              return (
-                <button
-                  key={cat.id}
-                  type="button"
-                  onClick={() => setSelectedCategory(cat.id)}
-                  className={`p-4 rounded-2xl text-left transition-all border flex flex-col justify-between cursor-pointer focus-ring ${
-                    isSelected
-                      ? 'border-[var(--cyan)] bg-[rgba(var(--cyan-rgb),0.1)] shadow-md'
-                      : 'border-[var(--line)] bg-[rgba(255,255,255,0.015)] hover:border-white/15 hover:bg-[rgba(255,255,255,0.03)]'
-                  }`}
-                >
-                  <div className="flex items-center gap-3 mb-2">
-                    <div
-                      className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
-                        isSelected
-                          ? 'bg-[var(--cyan)] text-[#0A0E15]'
-                          : 'bg-white/5 text-[var(--body)]'
-                      }`}
-                    >
-                      <IconComp className="w-4 h-4" />
-                    </div>
-                    <div
-                      className={`text-sm font-semibold transition-colors ${
-                        isSelected ? 'text-[var(--cyan)]' : 'text-[var(--ink)]'
-                      }`}
-                    >
-                      <span className="l-bs">{cat.titleBs}</span>
-                      <span className="l-en">{cat.titleEn}</span>
-                    </div>
-                  </div>
-                  <p className="text-xs text-[var(--muted)] leading-relaxed">
-                    <span className="l-bs">{cat.descBs}</span>
-                    <span className="l-en">{cat.descEn}</span>
-                  </p>
-                </button>
-              );
-            })}
+
+          <div className="relative">
+            <select
+              id="inquiry-type"
+              name="inquiry-type"
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value as InquiryCategory)}
+              /* `appearance: none` so the native arrow does not sit next to
+                 the one drawn below it, which is what makes a select look
+                 like a select on one platform and like two on another. */
+              className="s9-select cursor-pointer appearance-none pr-11"
+            >
+              {CATEGORIES.map((cat) => (
+                <option key={cat.id} value={cat.id}>
+                  {uiLang === 'en' ? cat.titleEn : cat.titleBs}
+                </option>
+              ))}
+            </select>
+            <ChevronDown
+              aria-hidden="true"
+              className="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--muted)]"
+            />
           </div>
+
+          {activeCategory && (
+            <p className="mt-2.5 flex items-start gap-2 text-xs leading-relaxed text-[var(--muted)]">
+              <activeCategory.icon
+                aria-hidden="true"
+                className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[var(--cyan)]"
+              />
+              <span>
+                <span className="l-bs">{activeCategory.descBs}</span>
+                <span className="l-en">{activeCategory.descEn}</span>
+              </span>
+            </p>
+          )}
         </div>
 
         {status === 'sent' && (
@@ -302,9 +324,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({ productChip }) => {
             {status === 'error' && (
               <div
                 role="alert"
-                className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-300 text-sm flex items-start gap-3"
+                className="p-4 rounded-xl bg-[rgba(var(--danger-rgb),0.10)] border border-[rgba(var(--danger-rgb),0.20)] text-[rgba(var(--danger-rgb),0.92)] text-sm flex items-start gap-3"
               >
-                <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+                <AlertCircle className="w-5 h-5 text-[var(--danger)] shrink-0 mt-0.5" />
                 <div>
                   {errorMessage === 'validation' ? (
                     <>

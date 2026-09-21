@@ -430,7 +430,7 @@ export const RadoviWmsPage: React.FC<RadoviWmsPageProps> = ({ onNavigate }) => {
               <span className="l-en">Let's talk</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-3">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-3 leading-tight">
               <span className="l-bs">Imate slične logističke izazove?</span>
               <span className="l-en">Have something similar?</span>
             </h2>

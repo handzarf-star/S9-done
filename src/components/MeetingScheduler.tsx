@@ -205,9 +205,9 @@ export const MeetingScheduler: React.FC<MeetingSchedulerProps> = ({ productChip 
       {status === 'error' && (
         <div
           role="alert"
-          className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-300 text-sm flex items-start gap-3"
+          className="p-4 rounded-xl bg-[rgba(var(--danger-rgb),0.10)] border border-[rgba(var(--danger-rgb),0.20)] text-[rgba(var(--danger-rgb),0.92)] text-sm flex items-start gap-3"
         >
-          <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+          <AlertCircle className="w-5 h-5 text-[var(--danger)] shrink-0 mt-0.5" />
           <div>
             <span className="l-bs">Molimo popunite sva obavezna polja (Ime, Email, Datum i Vrijeme).</span>
             <span className="l-en">Please fill in all required fields (Name, Email, Date and Time).</span>

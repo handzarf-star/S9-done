@@ -212,7 +212,7 @@ export const SonarPage: React.FC<SonarPageProps> = ({ onNavigate }) => {
             <span className="l-en">From real operations</span>
           </div>
 
-          <h2 className="text-lg sm:text-2xl font-bold text-[var(--ink)] mb-6 leading-snug">
+          <h2 className="text-xl sm:text-2xl font-bold text-[var(--ink)] mb-6 leading-snug">
             <span className="l-bs">Primjeri detekcije anomalija koje bi prošle neopaženo na standardnim izvještajima:</span>
             <span className="l-en">Volume growing 1-2% a day for 25 days, slipping under every threshold.</span>
           </h2>
@@ -256,7 +256,7 @@ export const SonarPage: React.FC<SonarPageProps> = ({ onNavigate }) => {
               <span className="l-bs">Problem</span>
               <span className="l-en">The problem</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-tight">
               <span className="l-bs">Mjesečni izvještaji govore šta se već desilo. Vama trebaju uvidi u realnom vremenu.</span>
               <span className="l-en">Month-end reports tell you what already happened. You need what is happening now.</span>
             </h2>
@@ -340,7 +340,7 @@ export const SonarPage: React.FC<SonarPageProps> = ({ onNavigate }) => {
               return (
                 <div key={idx} className="s9-card">
                   <IconComp className="w-6 h-6 text-[#35B6F0] mb-4" />
-                  <h3 className="text-base font-bold text-[var(--ink)] mb-2.5">
+                  <h3 className="text-base font-bold text-[var(--ink)] mb-3">
                     <span className="l-bs">{cap.titleBs}</span>
                     <span className="l-en">{cap.titleEn}</span>
                   </h3>
@@ -366,7 +366,7 @@ export const SonarPage: React.FC<SonarPageProps> = ({ onNavigate }) => {
                 <span className="l-en">First step</span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] mb-4 leading-tight">
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[var(--ink)] mb-4 leading-tight">
                 <span className="l-bs">Testirajte Sonar na Vašim historijskim podacima.</span>
                 <span className="l-en">A check on your data, with no obligation.</span>
               </h2>
@@ -403,7 +403,7 @@ export const SonarPage: React.FC<SonarPageProps> = ({ onNavigate }) => {
               <span className="l-bs">Pitanja o Sonaru</span>
               <span className="l-en">Questions about Sonar</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-tight">
               <span className="l-bs">Često postavljana pitanja</span>
               <span className="l-en">Details you care about</span>
             </h2>

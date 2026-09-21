@@ -399,7 +399,7 @@ export const RadoviMonadPage: React.FC<RadoviMonadPageProps> = ({ onNavigate }) 
               <span className="l-en">Let's talk</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-3">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-3 leading-tight">
               <span className="l-bs">Želite slično rješenje za Vaš biznis?</span>
               <span className="l-en">Have something similar?</span>
             </h2>

@@ -170,7 +170,21 @@
   --ink:         #F2F5F7;
   --ink-dim:     #C2C9D3;
   --body:        #98A1AE;
-  --muted:       #6C7583;
+  /* Measured, not judged. At #6C7583 every muted label failed AA: 3.83 on a
+     panel, 4.22 on the ground, 4.23 in the footer, and muted carries the
+     eyebrows, stat labels and footer text, which are the smallest type on
+     the site. #808997 clears 4.5 on all three surfaces (5.05 worst case)
+     and is still two clear steps below --body. */
+  --muted:       #808997;
+
+  /* Errors were drawn in Tailwind's own red-400 and red-500, hardcoded across
+     four files. The value here is exactly what red-400 rendered, so nothing
+     moves on screen; it just has one home now. A product colour cannot take
+     this job, because --mode is Mode's own red.
+     ⚠ Open: at 6.5:1 this is close to --mode #FF6170, so an error inside a
+     form on the Mode page reads as the page accent. Worth a hue decision. */
+  --danger:      #F87171;
+  --danger-rgb:  248, 113, 113;
 
   /* A panel now leans on its border as much as its fill, since the fill
      step is deliberately tight; 0.10 was tuned for a wider fill jump than
@@ -188,6 +202,10 @@
   --r-sm: 6px;
   --r-md: 10px;
   --r-lg: 14px;
+  /* The header is a capsule, so every control inside and beside it is one
+     too. Buttons carried `rounded-full` in their class lists and rendered at
+     6px anyway: these rules are unlayered and beat the utility. */
+  --r-pill: 999px;
 
   /* One shadow, for the one context that needs it: a surface floating
      above arbitrary page content, not a card living inside the page flow.
@@ -452,6 +470,7 @@ h2 { font-size: clamp(1.4rem, 3.6vw, 2.25rem); }
   margin: 0 0 30px;
 }
 
+
 .page-hero .hero-title { margin-inline: auto; }
 
 /* The home page headline gives up size to the cards underneath it. Three lines
@@ -459,9 +478,13 @@ h2 { font-size: clamp(1.4rem, 3.6vw, 2.25rem); }
    sentence lands in two. Scoped, because `hero-title` is shared with nine other
    pages whose heroes have nothing under them and should stay large. */
 .hero-title--compact {
-  font-size: clamp(2.25rem, 5.6vw, 3.9rem);
-  line-height: 1.06;
-  letter-spacing: -0.03em;
+  /* Floor lifted from 2.25rem and ceiling from 3.9. The proof strip below
+     this line measured three times its height on both a phone and a
+     desktop, so the headline was not the largest thing in its own hero.
+     The strip has come down; this is the other half of the same fix. */
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.032em;
 }
 
 h3, h4, h5, h6 {
@@ -476,6 +499,38 @@ h3, h4, h5, h6 {
 
 h3 { font-size: 1.125rem; }
 h4, h5, h6 { font-size: 1rem; }
+
+/* ---------- The page column ----------
+   Every band on the site is `max-w-5xl mx-auto px-4 sm:px-6`, 98 of them, the
+   header and the footer included. Tailwind's 5xl is 64rem, so the column was
+   1024px and the text inside it 976px. This widens it in one place rather
+   than rewriting 98 class strings, in the same spirit as the radius map
+   below, and the token is what to edit next time.
+
+   Note what the number means: 1100px is the column, and the 24px gutter on
+   each side leaves 1052px of actual content. */
+:root { --page-max: 1100px; }
+.max-w-5xl { max-width: var(--page-max); }
+
+/* ---------- No measure caps inside a section ----------
+   Faris, 2026-09-21: every element in every section fills the column. The
+   section head was the visible case and is handled by its own rules; this
+   catches the rest, which were capped by Tailwind utilities left in the
+   markup across seventeen pages: the contact block at 768px, two client
+   blocks at 672, and assorted paragraphs.
+
+   Three things are deliberately out of scope. The hero keeps its caps and
+   its centring, because a centred line at full width is just a short line
+   with air around it, and the hero is the one centred moment on the site.
+   Anything inside a card keeps its own caps, because a card sets its own
+   measure. Arbitrary values like `max-w-[5.5rem]`, the logo in a proof
+   card, are never a page measure and are left alone.
+
+   Unlayered, so it beats the utilities without editing the markup. */
+main section:not(.page-hero)
+  :is(.max-w-xl, .max-w-2xl, .max-w-3xl, .max-w-4xl):not(.s9-card *):not(.s9-card-nested *):not(.bento-card *) {
+  max-width: none;
+}
 
 /* ---------- One radius scale ----------
    The markup mixes five radii across 191 places: rounded-lg, xl, 2xl, 3xl
@@ -559,6 +614,20 @@ strong, b { color: var(--ink-dim); font-weight: 600; }
   border-radius: 999px;
   padding: 7px 16px;
   background: rgba(255, 255, 255, 0.02);
+  line-height: 1.35;
+}
+
+/* On a phone this chip carries a whole sentence and wrapped to three lines,
+   49px of it, directly above the headline. Smaller type and tighter
+   tracking bring it to two, and the pill rounds to a block so a wrapped
+   line does not sit inside a capsule that no longer looks like one. */
+@media (max-width: 639px) {
+  .eyebrow-chip {
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    padding: 6px 12px;
+    border-radius: var(--r-md);
+  }
 }
 
 /* ---------- Two alignments, and only two ----------
@@ -618,12 +687,26 @@ strong, b { color: var(--ink-dim); font-weight: 600; }
    There is no line now. What marks a new section is the chapter number
    below, and it cannot become wallpaper the way a line can, because the
    one thing about it is that it is never the same twice. */
+/* The chapter number used to hold a 168px rail down the left, and the
+   heading, the paragraphs and everything else started 200px in, while the
+   grid of cards below them ran the full 1052px. So the head was indented
+   and its own body was not. Worse, a badge landed in the leftover cell of
+   the rail on some sections, squeezed to 168px under the number.
+
+   The number now sits on the eyebrow's line at the top, and every other
+   row spans the full column. The head and the content below it finally
+   share a left edge, and the heading gains 200px of measure. */
 .section-head {
   display: grid;
-  grid-template-columns: 168px minmax(0, 1fr);
-  grid-template-rows: auto auto;
-  column-gap: 32px;
-  row-gap: 22px;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 14px;
+  /* 16, not 22. A heading and the line under it are one thought; at 22 they
+     read as two stacked blocks. This is the only place the gap is set, so
+     every section head on every page follows from this number, which is why
+     it is here and not on any page. The phone layout below keeps its own
+     10px: there the rail collapses and the rows stack, so 16 would loosen
+     what is already compact rather than tighten it. */
+  row-gap: 16px;
   align-items: start;
   text-align: left;
   max-width: none;
@@ -645,8 +728,9 @@ strong, b { color: var(--ink-dim); font-weight: 600; }
   content: counter(s9-section, decimal-leading-zero);
   grid-column: 1;
   grid-row: 1;
+  align-self: center;
   font-family: var(--f-mono);
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 500;
   color: var(--ink-dim);
   letter-spacing: -0.01em;
@@ -658,31 +742,32 @@ strong, b { color: var(--ink-dim); font-weight: 600; }
    carries its own margins either: the grid row gap is the only spacing,
    otherwise default paragraph margins stack on top of it and the gap under
    a heading doubles. */
-.section-head > * { grid-column: 2; margin: 0; }
-/* 30ch, not 24. Twenty four is a good measure for a three or four word
-   heading and too tight for the rest: the median heading on this site is
-   38 characters, so at 24ch most of them were wrapping to two lines that
-   did not need to. Thirty is still inside the range a display line should
-   sit in and takes a line off most headings without touching the short
-   ones, which never reach the limit either way. */
-.section-head > h2 { grid-row: 1; max-width: 30ch; }
+.section-head > * { grid-column: 1 / -1; margin: 0; }
+/* No measure cap. Earlier passes held the heading at 24ch, then 30, then
+   34, each time to stop it stacking inside the old 852px rail column. With
+   the rail gone the head owns the full 1052px, and Faris's call is that
+   the heading and the lines under it fill it rather than sit in a narrow
+   band with empty space to their right. A heading is short enough that
+   full width costs it nothing; see the note on the paragraph below. */
+.section-head > h2 { max-width: none; }
 
-/* An escape hatch for the one case that is not really a heading. The about
-   block on the home page is a 198 character sentence set as an h2; the
-   next longest on the site is 92. At any sensible heading measure it
-   stacks into a tall narrow column. This lets that one run at a reading
-   width instead, which is what it actually is. */
-.section-head > h2.h2-wide { max-width: 52ch; }
-.section-head > p { max-width: 62ch; font-size: 15px; }
+/* `h2-wide` was the escape hatch from the cap above. With no cap there is
+   nothing to escape, so it is a no-op kept only so the markup that carries
+   it does not have to be edited on eight pages. */
+.section-head > h2.h2-wide { max-width: none; }
+.section-head > p { max-width: none; font-size: 15px; }
 @media (min-width: 640px) { .section-head > p { font-size: 16px; } }
 
-/* The label sits under the number in the same rail cell, not beside the
-   heading any more. */
+/* The eyebrow shares the number's line. It kept its chip classes in the
+   markup but is stripped back to a plain label here, which is deliberate
+   and stays: a bordered chip beside the chapter number would read as two
+   competing badges. It used to sit under the number inside the old rail;
+   with the rail gone it moves up beside it. */
 .section-head > .s9-badge {
-  grid-column: 1;
-  grid-row: 2;
+  grid-column: 2;
+  grid-row: 1;
   justify-self: start;
-  align-self: start;
+  align-self: center;
   border: 0;
   padding: 0;
   background: none;
@@ -693,17 +778,21 @@ strong, b { color: var(--ink-dim); font-weight: 600; }
 .section-head > .s9-badge svg { margin-top: 1px; }
 
 @media (max-width: 899px) {
-  .section-head { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; row-gap: 10px; }
+  .section-head { grid-template-columns: auto minmax(0, 1fr); row-gap: 10px; column-gap: 10px; }
   .section-head::before { grid-column: 1; grid-row: auto; }
-  .section-head > *, .section-head > .s9-badge { grid-column: 1; }
-  .section-head > .s9-badge { grid-row: auto; }
-  .section-head > h2 { grid-row: auto; max-width: none; }
+  .section-head > * { grid-column: 1 / -1; }
+  /* The number and the eyebrow stay on one line on a phone too; only the
+     rows below them go full width. */
+  .section-head > .s9-badge { grid-column: 2; grid-row: 1; }
+  .section-head > h2 { max-width: none; }
 }
 
-/* Anything that follows a register and should line up with its content
-   column rather than with the rail. */
+/* This used to carry `padding-left: 200px` on desktop, to line the body up
+   with the content column of the old rail. The rail is gone and the head
+   now starts at the column's own left edge, so that padding was the single
+   reason every bento card, client card, process step, FAQ row and contact
+   block sat 200px in and 200px short. One line, every section body. */
 .section-body > * { margin-inline: 0; }
-@media (min-width: 900px) { .section-body { padding-left: 200px; } }
 
 .rule { height: 1px; background: var(--line); border: 0; margin: 0; }
 
@@ -781,6 +870,14 @@ a.s9-card:hover, a.product-card:hover { transform: translateY(-1px); }
 .s9-card-nested:hover .client-logo,
 .client-logo:hover { opacity: 0.92; }
 
+/* Same white crush as above, but this mark sits inside a proof card where it
+   is the credit for a quote, not one of six marks in a row. It has nothing to
+   compete with, so it runs at full strength rather than held back to 0.62. */
+.proof-logo {
+  filter: brightness(0) invert(1);
+  opacity: 0.95;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .client-logo { transition: none; }
   .animate-marquee, .animate-marquee-vertical { animation: none !important; }
@@ -804,6 +901,22 @@ a.s9-card:hover, a.product-card:hover { transform: translateY(-1px); }
 }
 .animate-marquee          { animation: marquee var(--duration) linear infinite; }
 .animate-marquee-vertical { animation: marquee-vertical var(--duration) linear infinite; }
+
+/* The Marquee primitive's `reverse` prop emits Tailwind's
+   `[animation-direction:reverse]`, which is a layered utility. The two rules
+   above are unlayered and set the `animation` shorthand, and the shorthand
+   resets direction to normal, so unlayered wins and `reverse` silently did
+   nothing: both rows slid the same way. This rule is unlayered too, and more
+   specific, so it lands. Put `marquee-reverse` on the Marquee alongside
+   `reverse` and the row actually turns around. */
+.marquee-reverse .animate-marquee,
+.marquee-reverse .animate-marquee-vertical { animation-direction: reverse; }
+
+/* `pauseOnHover` emits `group-hover:[animation-play-state:paused]` and loses
+   the same argument: the shorthand resets play-state to running. Same shape
+   of fix, so hovering actually stops the row it is under. */
+.marquee-pause:hover .animate-marquee,
+.marquee-pause:hover .animate-marquee-vertical { animation-play-state: paused; }
 
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee, .animate-marquee-vertical { animation: none !important; }
@@ -940,7 +1053,7 @@ a.s9-card:hover, a.product-card:hover { transform: translateY(-1px); }
 
 /* ---------- Buttons ---------- */
 .btn-pill, .btn-primary, .btn-ghost {
-  border-radius: var(--r-sm);
+  border-radius: var(--r-pill);
   font-family: var(--f-sans);
   font-size: 13.5px;
   font-weight: 500;

@@ -21,7 +21,7 @@ import { ContactForm } from '../components/ContactForm';
 import { Accordion, AccordionItem } from '../components/Accordion';
 import { ProcessSteps, APPROACH_STEPS } from '../components/ProcessSteps';
 import { ClientCard, CLIENTS } from '../components/ClientCard';
-import { ClientLogos } from '../components/ClientLogos';
+import { TestimonialMarquee } from '../components/ui/testimonial-marquee';
 
 interface HomePageProps {
   onNavigate: (path: string) => void;
@@ -242,16 +242,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         subtitle={null}
         showHorizon={false}
         titleClassName="hero-title--compact"
-        feature={
-          <HoverStack
-            cards={ASSUMPTIONS}
-            cardWidth={336}
-            cardHeight={296}
-            overlap={138}
-            accentColor="var(--accent-signal)"
-            onCardClick={(href, event) => go(event as React.MouseEvent<HTMLAnchorElement>, href)}
-          />
-        }
+        /* The hover stack used to sit here. It asked the visitor to work for
+           the proof: hover, read, hover again. The strip states the proof
+           instead, and it carries the client logos that used to sit in their
+           own band underneath, so the hero answers "who else" in one place.
+           One row on purpose: two rows push the actions below the fold on a
+           phone. Adding `reverse` on a second <Marquee> is the switch. */
+        feature={<TestimonialMarquee />}
       >
         <button
           type="button"
@@ -274,27 +271,21 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </a>
       </Hero>
 
-      {/* CLIENT STRIP. Sits directly under the hero because it is the first
-          question a visitor has after the claim: who else. */}
-      <section className="px-4 sm:px-6 max-w-5xl mx-auto">
-        <p className="text-xs font-mono uppercase tracking-[0.13em] text-[var(--muted)] text-center mb-6">
-          <span className="l-bs">Naši sistemi svakodnevno pomažu mnogobrojnim kompanijama</span>
-          <span className="l-en">Systems we built are running at</span>
-        </p>
-        <ClientLogos />
-      </section>
+      {/* The client logo band stood here. It is gone because the proof strip
+          in the hero now carries the same logos attached to what each client
+          actually got, which is the stronger form of the same answer. */}
 
       {/* 2. WHY WE ARE WRITING THIS AT ALL (Enemy Section - Unboxed layout) */}
       <section className="px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
           <div className="section-head">
-            <div className="s9-badge bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-semibold uppercase tracking-wider">
+            <div className="s9-badge bg-[rgba(var(--danger-rgb),0.10)] border border-[rgba(var(--danger-rgb),0.20)] text-[var(--danger)] text-xs font-semibold uppercase tracking-wider">
               <ShieldAlert className="w-3.5 h-3.5" />
               <span className="l-bs">Naš pristup razvoju</span>
               <span className="l-en">How we build</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight max-w-2xl mx-auto leading-snug">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight max-w-2xl mx-auto leading-tight">
               <span className="l-bs">Najskuplji softver je onaj koji na kraju niko ne koristi.</span>
               <span className="l-en">The most expensive software is the kind nobody uses.</span>
             </h2>
@@ -621,7 +612,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <span className="l-bs">Česta pitanja</span>
               <span className="l-en">FAQ</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-tight">
               <span className="l-bs">Česta pitanja</span>
               <span className="l-en">What you are probably wondering</span>
             </h2>
@@ -641,7 +632,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <span className="l-en">About Us</span>
             </div>
 
-            <h2 className="h2-wide text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-6 leading-snug">
+            <h2 className="h2-wide text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-6 leading-tight">
               <span className="l-bs">
                 Mi smo tim posvećenih inženjera, dizajnera i profesionalaca usmjerenih na rješavanje operativnih problema, snažnim digitalnim rješenjima koja pokreću rast poslovanja.
               </span>

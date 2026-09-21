@@ -282,7 +282,7 @@ export const CustomPage: React.FC<CustomPageProps> = ({ onNavigate }) => {
                       <IconComp className="w-6 h-6" />
                     </div>
 
-                    <h3 className="text-lg font-bold text-[var(--ink)] mb-2.5">
+                    <h3 className="text-lg font-bold text-[var(--ink)] mb-3">
                       <span className="l-bs">{srv.titleBs}</span>
                       <span className="l-en">{srv.titleEn}</span>
                     </h3>
@@ -357,7 +357,7 @@ export const CustomPage: React.FC<CustomPageProps> = ({ onNavigate }) => {
               <span className="l-bs">Iskustvo s terena</span>
               <span className="l-en">Field perspective</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-tight">
               <span className="l-bs">Softver građen oko Vašeg načina rada, a ne obrnuto.</span>
               <span className="l-en">Software engineered around how you work, never the reverse.</span>
             </h2>
@@ -373,7 +373,7 @@ export const CustomPage: React.FC<CustomPageProps> = ({ onNavigate }) => {
         <ScrollReveal>
           <div className="section-body">
             <div className="s9-card">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] mb-8 sm:mb-12 text-center leading-tight">
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[var(--ink)] mb-8 sm:mb-12 text-center leading-tight">
                 <span className="l-bs">Zašto vodeće kompanije biraju Shape9 za namjenski razvoj</span>
                 <span className="l-en">Why enterprises partner with Shape9 for custom engineering</span>
               </h2>

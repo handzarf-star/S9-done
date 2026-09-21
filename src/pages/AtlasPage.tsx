@@ -212,7 +212,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
             <span className="l-en">With one client</span>
           </div>
 
-          <h2 className="text-lg sm:text-2xl font-bold text-[var(--ink)] mb-6 leading-snug">
+          <h2 className="text-xl sm:text-2xl font-bold text-[var(--ink)] mb-6 leading-snug">
             <span className="l-bs">Dvanaest regionalnih skladišta u 12 država: potpuno operativno za šest sedmica.</span>
             <span className="l-en">Twelve warehouses in twelve countries. The system was running in six weeks.</span>
           </h2>
@@ -261,7 +261,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
               <span className="l-bs">Problem</span>
               <span className="l-en">The problem</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-tight">
               <span className="l-bs">Roba je u skladištu, ali niko ne zna tačnu policu, a inventura traje danima.</span>
               <span className="l-en">The goods are around here somewhere, and stocktake takes days.</span>
             </h2>
@@ -368,7 +368,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
               return (
                 <div key={idx} className="s9-card">
                   <IconComponent className="w-6 h-6 text-[#FFA658] mb-4" />
-                  <h3 className="text-base font-bold text-[var(--ink)] mb-2.5">
+                  <h3 className="text-base font-bold text-[var(--ink)] mb-3">
                     <span className="l-bs">{feat.titleBs}</span>
                     <span className="l-en">{feat.titleEn}</span>
                   </h3>
@@ -394,7 +394,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
                 <span className="l-en">First step</span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] mb-4 leading-tight">
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[var(--ink)] mb-4 leading-tight">
                 <span className="l-bs">Prvo analiziramo Vaše procese, bez obaveza.</span>
                 <span className="l-en">A conversation about your warehouse first, not a quote.</span>
               </h2>
@@ -430,7 +430,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
               <span className="l-bs">Iz prakse</span>
               <span className="l-en">In practice</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-tight">
               <span className="l-bs">Skladište koje se poklapa sa sistemom.</span>
               <span className="l-en">A warehouse that matches the system.</span>
             </h2>
@@ -450,7 +450,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
               <span className="l-bs">Pitanja o Atlasu</span>
               <span className="l-en">Questions about Atlas</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-tight">
               <span className="l-bs">Često postavljana pitanja</span>
               <span className="l-en">Details you care about</span>
             </h2>

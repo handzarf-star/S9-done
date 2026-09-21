@@ -76,11 +76,11 @@ export const BlindSpotInteractive: React.FC = () => {
       {/* Large Live Updating Counter */}
       <div className="p-6 sm:p-8 rounded-2xl bg-[var(--navy)] border border-[var(--line)] flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-400 flex items-center justify-center shrink-0">
+          <div className="w-14 h-14 rounded-2xl bg-[rgba(var(--danger-rgb),0.10)] border border-[rgba(var(--danger-rgb),0.20)] text-[var(--danger)] flex items-center justify-center shrink-0">
             <AlertTriangle className="w-7 h-7" />
           </div>
           <div>
-            <div className="text-3xl sm:text-4xl font-black text-red-400 font-mono tracking-tight">
+            <div className="text-3xl sm:text-4xl font-black text-[var(--danger)] font-mono tracking-tight">
               {invisiblePercent}%
             </div>
             <div className="text-xs uppercase font-bold text-[var(--muted)] tracking-wider">

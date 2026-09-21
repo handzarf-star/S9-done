@@ -178,7 +178,7 @@ export const LibraPage: React.FC<LibraPageProps> = ({ onNavigate }) => {
               <span className="l-en">Where the time goes</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-tight">
               <span className="l-bs">Najskuplji radni sat u računovodstvu je onaj potrošen na preimenovanje i sortiranje fajlova.</span>
               <span className="l-en">The most expensive hour in accounting is the one spent sorting.</span>
             </h2>
@@ -250,7 +250,7 @@ export const LibraPage: React.FC<LibraPageProps> = ({ onNavigate }) => {
         <ScrollReveal>
           <div className="section-body">
             <div className="s9-card">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] mb-8 text-center leading-tight">
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[var(--ink)] mb-8 text-center leading-tight">
                 <span className="l-bs">Rezultati koje osjetite već u prvom mjesecu</span>
                 <span className="l-en">What changes in the first month.</span>
               </h2>
@@ -312,7 +312,7 @@ export const LibraPage: React.FC<LibraPageProps> = ({ onNavigate }) => {
               <span className="l-bs">Česta pitanja</span>
               <span className="l-en">FAQ</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-tight">
               <span className="l-bs">Odgovori na ključna pitanja</span>
               <span className="l-en">What you are probably wondering</span>
             </h2>

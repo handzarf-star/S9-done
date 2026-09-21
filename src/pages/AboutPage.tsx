@@ -134,7 +134,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               <span className="l-bs">Ko nam vjeruje</span>
               <span className="l-en">Who trusts us</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-tight">
               <span className="l-bs">Deset godina rada, iza nas su isporučeni projekti.</span>
               <span className="l-en">Ten years in, with the work behind us to show for it.</span>
             </h2>
@@ -208,7 +208,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               <span className="l-bs">Kako radimo</span>
               <span className="l-en">How we work</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-tight">
               <span className="l-bs">Prilagodimo se Vašem poslovanju, ne obrnuto.</span>
               <span className="l-en">We fit to you, not the other way round.</span>
             </h2>
@@ -227,7 +227,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               <span className="l-bs">Naša AI filozofija</span>
               <span className="l-en">Our AI philosophy</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-snug">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-tight">
               <span className="l-bs">AI koristimo kada rješava problem, ne zato što se traži.</span>
               <span className="l-en">We reach for AI when it solves the problem, not because it sells.</span>
             </h2>
