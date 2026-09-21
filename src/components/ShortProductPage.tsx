@@ -118,7 +118,7 @@ export const ShortProductPage: React.FC<ShortProductPageProps> = ({
   return (
     /* No video hero: none of these five has a launch film, so the page opens
        with extra top padding the way the custom page does. */
-    <div className="space-y-20 sm:space-y-28 pt-28 sm:pt-40 pb-24 sm:pb-28 relative z-10 w-full max-w-full overflow-x-clip">
+    <div className="pt-28 sm:pt-40 pb-24 sm:pb-28 relative z-10 w-full max-w-full overflow-x-clip">
       <section className="page-hero px-4 sm:px-6 max-w-5xl mx-auto relative">
         <div className="hero-animate-1 mb-4 sm:mb-6">
           <span

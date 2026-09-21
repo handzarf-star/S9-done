@@ -46,7 +46,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             and its margin added 139px to a footer whose own measurement
             showed 212px of the 552 was nothing but spacing. Side by side the
             two blocks share the tallest one's height instead of summing. */}
-        <div className="grid gap-y-10 sm:grid-cols-[minmax(0,1fr)_auto] sm:gap-x-16">
+        <div className="grid gap-y-8 sm:grid-cols-[minmax(0,1fr)_auto] sm:gap-x-16">
         <div>
         {/* The line the footer is built around. It was 14px, tucked under the
             logo beside the address, which is a caption and not a statement.

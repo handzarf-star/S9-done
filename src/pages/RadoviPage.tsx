@@ -18,7 +18,7 @@ export const RadoviPage: React.FC<RadoviPageProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div className="space-y-20 sm:space-y-28 pt-32 sm:pt-40 pb-28 relative z-10 w-full max-w-full overflow-x-clip">
+    <div className="pt-32 sm:pt-40 pb-28 relative z-10 w-full max-w-full overflow-x-clip">
       {/* PAGE HEADER */}
       <section className="page-hero px-4 sm:px-6 max-w-5xl mx-auto relative">
         <div className="hero-animate-1 mb-4 sm:mb-6">

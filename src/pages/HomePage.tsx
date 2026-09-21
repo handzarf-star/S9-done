@@ -216,7 +216,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
 
   return (
-    <div className="space-y-20 sm:space-y-28 pb-24 sm:pb-28 relative z-10 w-full max-w-full overflow-x-clip">
+    <div className="pb-24 sm:pb-28 relative z-10 w-full max-w-full overflow-x-clip">
       {/* 1. HERO. The assumptions are the hero. The line states the claim,
           the cards are the evidence for it, then the two actions. The horizon
           disc is off here: the cards carry the eye now. */}

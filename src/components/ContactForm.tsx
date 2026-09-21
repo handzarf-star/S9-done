@@ -395,7 +395,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ productChip }) => {
             </div>
 
             {/* TWO COLUMN INPUTS */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label htmlFor={companyId} className="block text-sm font-semibold text-[var(--ink)] mb-2.5">
                   <span className="l-bs">Ime i prezime / Kompanija</span>

@@ -188,7 +188,7 @@ export const ModePage: React.FC<ModePageProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div className="space-y-20 sm:space-y-28 pb-24 sm:pb-28 relative z-10 w-full max-w-full overflow-x-clip">
+    <div className="pb-24 sm:pb-28 relative z-10 w-full max-w-full overflow-x-clip">
       <VideoHero
         srcLandscape="/video/mode-land.mp4"
         srcPortrait="/video/mode-port.mp4"

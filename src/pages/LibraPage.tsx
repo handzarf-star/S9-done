@@ -94,7 +94,7 @@ export const LibraPage: React.FC<LibraPageProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div className="space-y-20 sm:space-y-28 pb-24 sm:pb-28 relative z-10 w-full max-w-full overflow-x-clip">
+    <div className="pb-24 sm:pb-28 relative z-10 w-full max-w-full overflow-x-clip">
       {/* VIDEO HERO. Pinned full-bleed launch cut, portrait source below
           768px so a phone gets a frame built for it rather than a 16:9
           crop. The text hero below is untouched and follows it. */}

@@ -380,7 +380,7 @@ export const Header: React.FC<HeaderProps> = ({
           <a
             href="/"
             onClick={(e) => go(e, '/')}
-            className="flex flex-col items-start gap-0.5 group focus-ring rounded-lg p-1 -ml-1"
+            className="flex flex-col items-start gap-1 group focus-ring rounded-lg p-1 -ml-1"
           >
             <div className="flex items-center gap-2">
               <img
@@ -440,7 +440,7 @@ export const Header: React.FC<HeaderProps> = ({
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') openedByKeyboard();
                   }}
-                  className={`px-3.5 py-2 rounded-full text-sm font-semibold flex items-center gap-1.5 transition-colors focus-ring cursor-pointer outline-none ${
+                  className={`px-3.5 py-2 rounded-full text-sm font-semibold flex items-center gap-2 transition-colors focus-ring cursor-pointer outline-none ${
                     isDropdownOpen || isProductPath
                       ? 'text-[var(--cyan)] bg-[rgba(var(--cyan-rgb),0.08)]'
                       : 'text-[var(--body)] hover:text-[var(--ink)] hover:bg-white/5'

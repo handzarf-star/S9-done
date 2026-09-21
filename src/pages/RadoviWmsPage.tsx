@@ -19,7 +19,7 @@ export const RadoviWmsPage: React.FC<RadoviWmsPageProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div className="space-y-20 sm:space-y-28 pt-32 sm:pt-40 pb-28 relative z-10 w-full max-w-full overflow-x-clip">
+    <div className="pt-32 sm:pt-40 pb-28 relative z-10 w-full max-w-full overflow-x-clip">
       {/* 1. HEADER & META */}
       <section className="px-4 sm:px-6 max-w-5xl mx-auto">
         <div className="mb-6">

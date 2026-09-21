@@ -430,7 +430,14 @@ summary:focus-visible {
 h1, h2 {
   color: var(--ink);
   font-family: var(--f-display);
-  font-weight: 600;
+  /* 500, not 600, and not cake.com's 400 either.
+     Their headings are all regular weight, which works because size alone
+     is allowed to carry the hierarchy. Here display and body are the same
+     family, Inter, so weight is the only other signal there is, and 400
+     would leave a 36px heading and a 16px paragraph differing in nothing
+     but size. 500 takes the shout out of the large sizes while keeping a
+     step over body. Small headings keep 600, see the note on h3. */
+  font-weight: 500;
   letter-spacing: -0.03em;
   line-height: 1.04;
   margin: 0;
@@ -456,7 +463,7 @@ h2 { font-size: clamp(1.4rem, 3.6vw, 2.25rem); }
      family now, Inter, not Instrument Sans against Inter, so the weight
      step is what tells a reader "this is the headline" instead of a
      second typeface's own character doing that job. */
-  font-weight: 700;
+  font-weight: 500;
   /* Was clamp(2.4rem, 6.2vw, 4.5rem), pinned at 38.4px on every phone
      regardless of width. See the note on h2 just above, same fix, other
      end: the hero's floor moves up so it reads as a hero on a phone
@@ -482,11 +489,15 @@ h2 { font-size: clamp(1.4rem, 3.6vw, 2.25rem); }
      this line measured three times its height on both a phone and a
      desktop, so the headline was not the largest thing in its own hero.
      The strip has come down; this is the other half of the same fix. */
-  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  font-size: clamp(2.6rem, 5.6vw, 4rem);
   line-height: 1.04;
   letter-spacing: -0.032em;
 }
 
+/* These stay at 600 on purpose while h1 and h2 drop to 500. A card title
+   runs at 18 to 22px against 16px body: two points of size is not a
+   hierarchy, so weight has to do the work here. Lightening these the way
+   the large headings were lightened would flatten every card. */
 h3, h4, h5, h6 {
   color: var(--ink);
   font-family: var(--f-sans);
@@ -497,7 +508,14 @@ h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
-h3 { font-size: 1.125rem; }
+/* The missing step. The scale ran 16 or 18, then 36, then 70, with nothing
+   between, which is why a card title read as barely larger than the
+   paragraph under it while the section heading above it was twice its
+   size. h3 now lands at 20 on a desktop, so the ladder is
+   16 · 20 · 36 · 64 rather than 18 · 36 · 70 with a hole in the middle.
+   Unlayered, so it takes over from the text-base and text-lg utilities
+   already written into the markup on seventeen pages. */
+h3 { font-size: clamp(1.0625rem, 1.15vw + 0.65rem, 1.25rem); }
 h4, h5, h6 { font-size: 1rem; }
 
 /* ---------- The page column ----------
@@ -511,6 +529,85 @@ h4, h5, h6 { font-size: 1rem; }
    each side leaves 1052px of actual content. */
 :root { --page-max: 1100px; }
 .max-w-5xl { max-width: var(--page-max); }
+
+/* ---------- One spacing scale ----------
+   4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 and nothing else. The page was
+   measured carrying 6, 14 and 20px gaps alongside these, which is not a
+   scale, it is a set of separate decisions that happen to look similar.
+   Anything off this ladder is rounded to the nearest step.
+
+   One value looked off scale and is not ours: 7.25px inside <option>.
+   That is the browser drawing a native select, and it cannot be styled. */
+
+/* The half steps, rounded onto the ladder.
+   Tailwind's scale offers 0.5, 1.5, 2.5, 5, 7 and 9, which land on 2, 6,
+   10, 20, 28 and 36px. Those were scattered through seventeen pages and
+   are why a measurement of the live page found six different gaps that
+   belong to no system. Rather than hand edit every occurrence, the
+   utilities are mapped here, the same way the radius utilities already
+   are further down. `[class~=]` matches one whole class name, so no
+   escaping is needed for the dot.
+
+   Anything already on the ladder is untouched. */
+[class~="gap-0.5"]   { gap: 4px; }
+[class~="gap-1.5"]   { gap: 8px; }
+[class~="gap-2.5"]   { gap: 8px; }
+[class~="gap-3.5"]   { gap: 16px; }
+[class~="gap-5"]     { gap: 24px; }
+[class~="gap-7"]     { gap: 24px; }
+[class~="gap-9"]     { gap: 32px; }
+[class~="gap-10"]    { gap: 32px; }
+[class~="gap-x-5"]   { column-gap: 24px; }
+[class~="gap-y-5"]   { row-gap: 24px; }
+[class~="gap-x-1.5"] { column-gap: 8px; }
+[class~="gap-y-1.5"] { row-gap: 8px; }
+
+/* The responsive variants carry their own class names, `sm:gap-5` rather
+   than `gap-5`, so they need their own line or they slip through. */
+@media (min-width: 640px) {
+  [class~="sm:gap-0.5"] { gap: 4px; }
+  [class~="sm:gap-1.5"] { gap: 8px; }
+  [class~="sm:gap-2.5"] { gap: 8px; }
+  [class~="sm:gap-3.5"] { gap: 16px; }
+  [class~="sm:gap-5"]   { gap: 24px; }
+  [class~="sm:gap-7"]   { gap: 24px; }
+  [class~="sm:gap-9"]   { gap: 32px; }
+  [class~="sm:gap-10"]  { gap: 32px; }
+}
+
+/* ---------- Two surfaces, alternating ----------
+   Sections were separated by 112px of nothing, on one unbroken colour, so
+   a long page read as a single strip. They are separated by surface now,
+   the way cake.com does it, and the gap drops to 96.
+
+   Adapted rather than copied. Cake alternates white against off white, a
+   step you cannot miss. Here the step is --ground against --panel, which
+   measures 1.10 to 1. That is deliberate: on a dark screen a strong band
+   would read as a stripe painted over the page, and this site is one
+   instrument surface. What carries the change is the hairline at each
+   seam, not the fill, and the fill only has to be felt.
+
+   The band bleeds the full viewport from inside a centred column, hence
+   the 50% left and the translate. `main` already clips overflow-x, so the
+   100vw cannot produce a scrollbar. */
+main > div > section { position: relative; padding-block: 56px; }
+@media (min-width: 640px) { main > div > section { padding-block: 96px; } }
+
+main > div > section:nth-of-type(even)::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: var(--panel);
+  border-block: 1px solid var(--line-subtle);
+  z-index: -1;
+}
+
+/* The hero sets its own top padding and is never a band. */
+main > div > section.page-hero { padding-block: 0; }
+main > div > section.page-hero::before { content: none; }
 
 /* ---------- No measure caps inside a section ----------
    Faris, 2026-09-21: every element in every section fills the column. The
@@ -699,7 +796,7 @@ strong, b { color: var(--ink-dim); font-weight: 600; }
 .section-head {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  column-gap: 14px;
+  column-gap: 12px;
   /* 16, not 22. A heading and the line under it are one thought; at 22 they
      read as two stacked blocks. This is the only place the gap is set, so
      every section head on every page follows from this number, which is why
@@ -778,7 +875,7 @@ strong, b { color: var(--ink-dim); font-weight: 600; }
 .section-head > .s9-badge svg { margin-top: 1px; }
 
 @media (max-width: 899px) {
-  .section-head { grid-template-columns: auto minmax(0, 1fr); row-gap: 10px; column-gap: 10px; }
+  .section-head { grid-template-columns: auto minmax(0, 1fr); row-gap: 8px; column-gap: 8px; }
   .section-head::before { grid-column: 1; grid-row: auto; }
   .section-head > * { grid-column: 1 / -1; }
   /* The number and the eyebrow stay on one line on a phone too; only the
@@ -821,12 +918,25 @@ strong, b { color: var(--ink-dim); font-weight: 600; }
 }
 
 /* ---------- Surfaces ---------- */
+/* Softer, the dark way.
+   Cake.com's cards are 24px corners with a layered drop shadow and no
+   border. Two thirds of that does not transfer. A drop shadow needs
+   something darker than the card to fall onto, and on #010D13 there is
+   nothing darker, so the shadow is simply invisible; and without a border
+   a panel at 1.10 to 1 against the ground has no edge left at all.
+
+   On a dark surface the thing that reads as lift is light, not shadow. So
+   the border stays, the corner grows to 16, and the lift comes from a one
+   pixel highlight along the top edge where a light source would catch it,
+   plus a fill that is a shade above the ground. Same intent as theirs,
+   built out of what works here. */
 .s9-card, .product-card {
   background: var(--deck);
   border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  padding: 22px 20px;
-  transition: border-color var(--dur-1) var(--ease), background-color var(--dur-1) var(--ease);
+  border-radius: 16px;
+  padding: 24px 20px;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  transition: border-color var(--dur-1) var(--ease), background-color var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease);
   max-width: 100%;
   box-sizing: border-box;
 }
@@ -835,6 +945,7 @@ strong, b { color: var(--ink-dim); font-weight: 600; }
 .s9-card:hover, .product-card:hover {
   border-color: rgba(var(--accent-rgb), 0.4);
   background: var(--deck-raise);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.09);
 }
 a.s9-card, a.product-card { transition: border-color var(--dur-1) var(--ease), background-color var(--dur-1) var(--ease), transform var(--dur-1) var(--ease); }
 a.s9-card:hover, a.product-card:hover { transform: translateY(-1px); }
@@ -842,8 +953,10 @@ a.s9-card:hover, a.product-card:hover { transform: translateY(-1px); }
 .s9-card-nested {
   background: transparent;
   border: 1px solid var(--line-subtle);
-  border-radius: var(--r-md);
-  padding: 20px 18px;
+  /* One step under the card it sits inside, 12 against 16, so nesting is
+     visible in the corner as well as in the fill. */
+  border-radius: 12px;
+  padding: 20px 16px;
   transition: border-color var(--dur-1) var(--ease), background-color var(--dur-1) var(--ease);
   max-width: 100%;
   box-sizing: border-box;
@@ -1126,7 +1239,7 @@ a.s9-card:hover, a.product-card:hover { transform: translateY(-1px); }
   padding: 5px 10px;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   transition: border-color var(--dur-1) var(--ease);
 }
 .pill-cyan:hover { border-color: rgba(var(--accent-rgb), 0.5); }

@@ -141,7 +141,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div className="space-y-20 sm:space-y-28 pb-24 sm:pb-28 relative z-10 w-full max-w-full overflow-x-clip">
+    <div className="pb-24 sm:pb-28 relative z-10 w-full max-w-full overflow-x-clip">
       {/* VIDEO HERO. Pinned full-bleed launch cut, portrait source below
           768px so a phone gets a frame built for it rather than a 16:9
           crop. The text hero below is untouched and follows it. */}
@@ -331,7 +331,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
           </div>
 
 {/* DESKTOP 2x2 GRID */}
-          <div className="section-body hidden md:grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+          <div className="section-body hidden md:grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-6">
             {AUDIENCES.map((item) => (
               <div key={item.id} className="s9-card">
                 <h3 className="text-base font-bold text-[var(--ink)] mb-3">

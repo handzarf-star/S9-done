@@ -178,7 +178,7 @@ export const TestimonialMarquee: React.FC<{ className?: string }> = ({ className
           'linear-gradient(to right, transparent 0, #000 2.5rem, #000 calc(100% - 2.5rem), transparent 100%)',
       }}
     >
-      <Marquee pauseOnHover className="marquee-pause [--duration:58s] [--gap:1rem] sm:[--gap:1.25rem]">
+      <Marquee pauseOnHover className="marquee-pause [--duration:58s] [--gap:1rem] sm:[--gap:1rem]">
         {ROW_ONE.map((card) => (
           <ProofCard key={card.id} card={card} />
         ))}
@@ -188,7 +188,7 @@ export const TestimonialMarquee: React.FC<{ className?: string }> = ({ className
           On a phone there is only one row: two took 376px of an 844px
           screen and buried the headline above them. */}
       <div className="hidden w-full sm:block">
-        <Marquee reverse pauseOnHover className="marquee-reverse marquee-pause [--duration:58s] [--gap:1rem] sm:[--gap:1.25rem]">
+        <Marquee reverse pauseOnHover className="marquee-reverse marquee-pause [--duration:58s] [--gap:1rem] sm:[--gap:1rem]">
           {ROW_TWO.map((card) => (
             <ProofCard key={card.id} card={card} />
           ))}

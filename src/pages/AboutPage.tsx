@@ -77,7 +77,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div className="space-y-20 sm:space-y-28 pt-28 sm:pt-40 pb-24 sm:pb-28 relative z-10 w-full max-w-full overflow-x-clip">
+    <div className="pt-28 sm:pt-40 pb-24 sm:pb-28 relative z-10 w-full max-w-full overflow-x-clip">
       {/* 1. HERO. Business first, engineering as the tool that builds it. */}
       <section className="page-hero px-4 sm:px-6 max-w-5xl mx-auto relative">
         <div className="hero-animate-1 mb-4 sm:mb-6">
