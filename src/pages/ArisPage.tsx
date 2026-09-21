@@ -33,6 +33,7 @@ export const ArisPage: React.FC<ArisPageProps> = ({ onNavigate }) => (
     sections={[
       {
         id: 'problem',
+        band: true,
         headBs: 'Podatak postoji, ali put do njega ne.',
         headEn: 'The number exists. The way to it does not.',
         wide: true,

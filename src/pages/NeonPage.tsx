@@ -33,6 +33,7 @@ export const NeonPage: React.FC<NeonPageProps> = ({ onNavigate }) => (
     sections={[
       {
         id: 'sta-radi',
+        band: true,
         headBs: 'Ključne mogućnosti platforme',
         headEn: 'What the platform delivers',
         cards: [

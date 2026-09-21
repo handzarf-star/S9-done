@@ -56,8 +56,8 @@
 
     .app-container {
       width: 100%;
-      max-width: 1140px;
-      min-height: 720px;
+      max-width: 1160px;
+      min-height: 740px;
       background: var(--panel);
       border: 1px solid var(--panel-border);
       border-radius: 24px;
@@ -108,7 +108,7 @@
     /* INTRO SCREEN */
     .intro-screen {
       flex: 1;
-      padding: 36px 40px;
+      padding: 32px 36px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -116,31 +116,31 @@
     }
 
     .intro-header {
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .intro-title {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 800;
       color: var(--ink);
       letter-spacing: -0.02em;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .intro-subtitle {
-      font-size: 15px;
+      font-size: 14.5px;
       color: var(--body);
-      line-height: 1.55;
+      line-height: 1.5;
     }
 
     .product-brief-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
-      margin-bottom: 24px;
+      gap: 10px;
+      margin-bottom: 18px;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
       .product-brief-grid {
         grid-template-columns: 1fr;
       }
@@ -150,7 +150,7 @@
       background: var(--panel-raise);
       border: 1px solid var(--panel-border);
       border-radius: 14px;
-      padding: 16px;
+      padding: 14px;
       display: flex;
       flex-direction: column;
       gap: 8px;
@@ -164,7 +164,7 @@
 
     .brief-badge {
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 10.5px;
       font-weight: 700;
       color: var(--card-color, #4EACCD);
       text-transform: uppercase;
@@ -173,25 +173,94 @@
 
     .brief-title {
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--ink);
+      line-height: 1.25;
     }
 
     .brief-desc {
-      font-size: 12.5px;
+      font-size: 12px;
       color: var(--body);
       line-height: 1.45;
+    }
+
+    .brief-rule {
+      font-size: 11px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--panel-border);
+      border-radius: 6px;
+      padding: 6px 8px;
+      color: var(--ink-dim);
+      line-height: 1.35;
+      margin-top: auto;
+    }
+
+    .brief-rule b {
+      color: var(--card-color, #4EACCD);
+    }
+
+    /* Uporedni cheat sheet */
+    .intro-cheat-sheet {
+      background: rgba(78, 172, 205, 0.06);
+      border: 1px solid rgba(78, 172, 205, 0.25);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-bottom: 18px;
+    }
+
+    .cheat-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #4EACCD;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cheat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (max-width: 800px) {
+      .cheat-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .cheat-item {
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 12px;
+      line-height: 1.4;
+      color: var(--ink-dim);
+    }
+
+    .cheat-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #FFA658;
+      margin-bottom: 3px;
     }
 
     .intro-rules-banner {
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--panel-border);
-      border-radius: 12px;
-      padding: 16px 20px;
+      border-radius: 10px;
+      padding: 10px 16px;
       display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-bottom: 24px;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
     }
 
     .intro-rules-banner b {
@@ -199,9 +268,9 @@
     }
 
     .intro-rules-banner p {
-      font-size: 13.5px;
+      font-size: 12.5px;
       color: var(--ink-dim);
-      line-height: 1.5;
+      line-height: 1.4;
     }
 
     .intro-action-row {
@@ -248,8 +317,8 @@
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--panel-border);
       border-radius: 16px;
-      padding: 22px 26px;
-      margin-bottom: 16px;
+      padding: 20px 24px;
+      margin-bottom: 14px;
       min-height: 120px;
       display: flex;
       flex-direction: column;
@@ -274,7 +343,7 @@
     }
 
     .scenario-text {
-      font-size: 17px;
+      font-size: 16.5px;
       line-height: 1.55;
       font-weight: 600;
       color: var(--ink);
@@ -283,7 +352,7 @@
 
     /* Hint Section */
     .hint-section {
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .hint-toggle-btn {
@@ -625,61 +694,99 @@
       <div class="intro-header">
         <h1 class="intro-title">Dobrodošli u stolicu direktora</h1>
         <p class="intro-subtitle">
-          Vi ste CEO kompanije koji donosi odluke i rješava skupe probleme u poslovanju. Prije nego što sednete u 'vruću stolicu', pogledajte vaših 5 ključnih softverskih oružja:
+          Vi ste CEO kompanije koji donosi odluke i rješava skupe operativne probleme. Upoznajte vaših 5 ključnih softverskih oružja — svako rješava jedan specifičan dio firme:
         </p>
       </div>
 
-      <!-- 5 Product Briefing Cards -->
+      <!-- 5 Product Briefing Cards with Fun Metaphors and Deduction Rules -->
       <div class="product-brief-grid">
         <!-- Mode -->
         <div class="brief-card" style="--card-color: var(--mode);">
-          <div class="brief-badge">Butici i moda</div>
-          <div class="brief-title">Mode</div>
+          <div class="brief-badge">Butici · Kase · Veličine</div>
+          <div class="brief-title">Mode<br><span style="font-size: 12px; font-weight: 600; color: #FF6170;">„Mozak za modne radnje”</span></div>
           <div class="brief-desc">
-            Povezuje kase, zalihe i brzu poštu u realnom vremenu tako da radnik na kasi u sekundi vidi ima li tražena veličina jakne ili dukserice u bilo kojoj radnji.
+            Dok obične kase samo kucaju račun, Mode u sekundi vidi ima li ta dukserica ili jakna u veličini L u bilo kojoj tvojoj radnji i jednim klikom šalje nalog kuriru brze pošte.
+          </div>
+          <div class="brief-rule">
+            🎯 <b>Prepoznaj:</b> Prodaja odjeće, veličine (S/M/L) ili slanje paketa iz butika.
           </div>
         </div>
 
         <!-- Pulse -->
         <div class="brief-card" style="--card-color: var(--pulse);">
-          <div class="brief-badge">Glasovni pozivi</div>
-          <div class="brief-title">Pulse</div>
+          <div class="brief-badge">Pozivi · Uši · Podrška</div>
+          <div class="brief-title">Pulse<br><span style="font-size: 12px; font-weight: 600; color: #A98CFF;">„Inspektor sa super-sluhom”</span></div>
           <div class="brief-desc">
-            Automatski preslušava i provjerava 100% obavljenih poziva u korisničkoj podršci i odmah javlja ako je agent rekao pogrešnu cijenu ili prekršio pravilo razgovora.
+            Dok čovjek može preslušati jedva 15 poziva mjesečno, Pulse automatski presluša i provjeri 100% svih razgovora u podršci i odmah alarmira ako je agent slagao za cijenu ili prekršio pravilo.
+          </div>
+          <div class="brief-rule">
+            🎯 <b>Prepoznaj:</b> Telefonski razgovori, agenti na slušalicama ili audio snimci.
           </div>
         </div>
 
         <!-- Atlas -->
         <div class="brief-card" style="--card-color: var(--atlas);">
-          <div class="brief-badge">Pametno skladište</div>
-          <div class="brief-title">Atlas</div>
+          <div class="brief-badge">Skladište · Police · Roba</div>
+          <div class="brief-title">Atlas<br><span style="font-size: 12px; font-weight: 600; color: #FFA658;">„GPS i radar za skladište”</span></div>
           <div class="brief-desc">
-            Vodi radnike skenerom tačno do prave police i provjerava svaki artikal prije slanja, kako kupac nikada ne bi dobio pogrešan proizvod.
+            Vodi radnika sa skenerom u ruci tačno do prave police i ne da mu da spakuje paket dok ne skenira tačan barkod, tako da kupac nikad ne dobije pogrešan model.
+          </div>
+          <div class="brief-rule">
+            🎯 <b>Prepoznaj:</b> Roba na policama, slaganje paleta, barkod skeneri ili slanje kupcima.
           </div>
         </div>
 
         <!-- Libra -->
         <div class="brief-card" style="--card-color: var(--libra);">
-          <div class="brief-badge">Ulazni računi</div>
-          <div class="brief-title">Libra</div>
+          <div class="brief-badge">Papiri · Računi · Slike</div>
+          <div class="brief-title">Libra<br><span style="font-size: 12px; font-weight: 600; color: #3DD68C;">„Čitač računa koji mrzi papir”</span></div>
           <div class="brief-desc">
-            Sam prepoznaje tekst i brojeve sa fotografija računa slikanih mobitelom i PDF faktura, bez dosadnog ručnog prekucavanja u tabelu.
+            Samo proslijediš PDF fakturu na mail ili uslikaš račun mobitelom na benzinskoj pumpi, a Libra sama 'pročita' brojeve i troškove bez ijednog ručnog prekucavanja u tabelu.
+          </div>
+          <div class="brief-rule">
+            🎯 <b>Prepoznaj:</b> Ulazni računi, fotografije troškova sa terena ili PDF fakture.
           </div>
         </div>
 
         <!-- Vesta -->
         <div class="brief-card" style="--card-color: var(--vesta);">
-          <div class="brief-badge">Registar opreme</div>
-          <div class="brief-title">Vesta</div>
+          <div class="brief-badge">Oprema · Laptopi · Auta</div>
+          <div class="brief-title">Vesta<br><span style="font-size: 12px; font-weight: 600; color: #588DFA;">„Čuvar imovine tvoje firme”</span></div>
           <div class="brief-desc">
-            U svakom trenutku tačno zna ko duži koji radni laptop, službeni telefon, vozilo ili mašinu i gdje se oprema trenutno nalazi.
+            Dok Atlas prati robu koju prodaješ kupcima, Vesta prati stvari koje firma posjeduje: u svakom trenu zna ko duži koji radni laptop, ko vozi koje auto i gdje se nalazi koja mašina.
+          </div>
+          <div class="brief-rule">
+            🎯 <b>Prepoznaj:</b> Oprema firme koju radnici koriste (laptopi, telefoni, auta, alati).
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparative Cheat-Sheet -->
+      <div class="intro-cheat-sheet">
+        <div class="cheat-title">
+          <span>⚡</span>
+          <span>BRZI UPOREDNI TRIKOVI ZA IGRU (DVOJBE KOJE TE MOGU ZBUNITI):</span>
+        </div>
+        <div class="cheat-grid">
+          <div class="cheat-item">
+            <span class="cheat-tag">Atlas vs Vesta</span>
+            <p><b>Atlas</b> prati robu na policama za <i>kupce</i> (zalihe za prodaju). <b>Vesta</b> prati opremu koju <i>firma posjeduje i ne prodaje</i> (laptopi, vozila, alati).</p>
+          </div>
+          <div class="cheat-item">
+            <span class="cheat-tag">Pulse vs Libra</span>
+            <p><b>Pulse</b> <i>'sluša' uši i glas</i> (telefonski pozivi). <b>Libra</b> <i>'čita' oči i papire</i> (fakture i slike računa s mobitela).</p>
+          </div>
+          <div class="cheat-item">
+            <span class="cheat-tag">Mode</span>
+            <p><b>Mode</b> vlada butikom: povezuje kase, provjerava veličine odjeće i šalje brzu poštu jednim klikom.</p>
           </div>
         </div>
       </div>
 
       <!-- Hint rules banner -->
       <div class="intro-rules-banner">
-        <p>💡 <b>Važno pravilo pomoći:</b> U prva 3 pitanja (Junior nivo) imat ćete na raspolaganju opciju <b>„Zatraži pomoć”</b> koja vam daje usmjerenje. Nakon toga, od Medior nivoa, kao pravi CEO na ozbiljnim odlukama odlučujete potpuno samostalno!</p>
+        <span style="font-size: 18px;">💡</span>
+        <p><b>Pravilo pomoći:</b> U prva 3 pitanja (Junior nivo) imat ćete na raspolaganju opciju <b>„Zatraži pomoć”</b>. Nakon toga, od Medior nivoa, kao pravi CEO na ozbiljnim odlukama odlučujete potpuno samostalno!</p>
       </div>
 
       <div class="intro-action-row">
@@ -811,7 +918,7 @@
         winner: "Pulse",
         color: "var(--pulse)",
         takeaway: "15 nasumično preslušanih poziva od 1.000 nije kontrola kvaliteta nego puko nagađanje. Niko ne bi trebao voditi firmu na pretpostavkama.",
-        hint: "Treba vam softver koji umjesto čovjeka može preslušati hiljade audio razgovora i odmah prijaviti greške."
+        hint: "Sjetite se inspektora sa super-sluhom. Koji softver sluša glasove i audio snimke umjesto čovjeka?"
       },
       {
         id: 2,
@@ -828,7 +935,7 @@
         winner: "Mode",
         color: "var(--mode)",
         takeaway: "Kupac ne želi čekati telefonske pozive između radnji. Prodaja u butiku se dobija ili gubi u prvih trideset sekundi na kasi.",
-        hint: "Tražite rješenje specijalizovano za butike koje na samoj kasi odmah prikazuje stanje zaliha u svim radnjama."
+        hint: "Sjetite se mozga za modne radnje koji na samoj kasi odmah prikazuje stanje veličina u svim buticima."
       },
       {
         id: 3,
@@ -845,7 +952,7 @@
         winner: "Libra",
         color: "var(--libra)",
         takeaway: "Niko nije zaposlen da bi trećinu radnog vremena proveo preimenujući PDF fajlove i raspoređujući ih po folderima.",
-        hint: "Traži se sistem koji sam 'pročita' poslani račun ili sliku i automatski ga arhivira na pravo mjesto."
+        hint: "Sjetite se čitača računa koji mrzi papir i sam skenira slike troškova sa mobitela bez ručnog prekucavanja."
       },
       {
         id: 4,
@@ -936,7 +1043,7 @@
         id: 9,
         level: "Senior",
         tier: "Visoki ulozi / Pravni i revizorski rizik",
-        scenario: "Kao CEO planirate veliku novu nabavku, ali finansijski direktor i šef skladišta imaju ogromnu razliku od 300.000 KM u procjeni trenutnih zaliha. Na papiru piše jedno, a skladištari tvrde da police ne odgovaraju tom stanju. Zbog ovog haosa ne znate stvarno stanje firme. Šta uvodi potpunu tačnost zaliha?",
+        scenario: "Kao CEO planirate veliku novu nabavku, ali finansijski direktor i šef skladišta imaju ogromnu razliku od 300.000 KM u procjeni trenutnih zaliha robe za prodaju. Na papiru piše jedno, a police skladišta su poluprazne. Zbog ovog haosa ne znate stvarno stanje firme. Šta uvodi potpunu tačnost zaliha?",
         options: {
           A: "Mode",
           B: "Libra",

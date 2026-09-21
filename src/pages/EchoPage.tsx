@@ -31,6 +31,7 @@ export const EchoPage: React.FC<EchoPageProps> = ({ onNavigate }) => (
     sections={[
       {
         id: 'sta-radi',
+        band: true,
         headBs: 'Ključne mogućnosti platforme',
         headEn: 'What the platform delivers',
         cards: [

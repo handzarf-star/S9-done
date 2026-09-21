@@ -33,6 +33,11 @@ export interface ShortSection {
   /** `note` renders the cards muted rather than in the product colour, for
       the sections that set expectations instead of selling capability. */
   tone?: 'feature' | 'note';
+  /** Puts the section on the panel band. Reserved for a section that is a
+      single argument: a claim, an invitation, or the list of what the
+      product does. Cards inside a band lose their own surface, because the
+      band is the surface. */
+  band?: boolean;
   steps?: { bs: string; en: string }[];
   noteBs?: string;
   noteEn?: string;
@@ -183,7 +188,7 @@ export const ShortProductPage: React.FC<ShortProductPageProps> = ({
         const SBadge = s.badgeIcon;
         const isNote = s.tone === 'note';
         return (
-          <section key={s.id} className="px-4 sm:px-6 max-w-5xl mx-auto">
+          <section key={s.id} className={`${s.band ? 's9-band ' : ''}px-4 sm:px-6 max-w-5xl mx-auto`}>
             <ScrollReveal>
               <div className="section-head">
                 {SBadge && (

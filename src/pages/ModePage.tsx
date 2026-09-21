@@ -355,7 +355,7 @@ export const ModePage: React.FC<ModePageProps> = ({ onNavigate }) => {
       {/* NO HARDWARE. Deliberately carries no chapter number: it is an answer
           to a question the six cards raise ("so what do we have to buy"),
           not a chapter of its own. */}
-      <section className="px-4 sm:px-6 max-w-5xl mx-auto">
+      <section className="s9-band px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
           <div className="section-body">
             <div className="s9-card text-center flex flex-col gap-4 items-center">

@@ -249,7 +249,7 @@ export const SonarPage: React.FC<SonarPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* PROBLEM SECTION */}
-      <section className="px-4 sm:px-6 max-w-5xl mx-auto">
+      <section className="s9-band px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
           <div className="section-head">
             <div className="s9-badge bg-[rgba(53,182,240,0.08)] border border-[rgba(53,182,240,0.2)] text-[#35B6F0] text-xs font-semibold uppercase tracking-wider">

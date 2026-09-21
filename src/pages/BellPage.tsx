@@ -32,6 +32,7 @@ export const BellPage: React.FC<BellPageProps> = ({ onNavigate }) => (
     sections={[
       {
         id: 'problem',
+        band: true,
         headBs: 'Klasična telefonska centrala nema nikakav uvid u Vaše klijente.',
         headEn: 'Legacy phone systems operate with zero customer context.',
         wide: true,

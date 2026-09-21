@@ -246,7 +246,7 @@ export const LibraPage: React.FC<LibraPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* SECTION: WHAT YOU GET */}
-      <section className="px-4 sm:px-6 max-w-5xl mx-auto">
+      <section className="s9-band px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
           <div className="section-body">
             <div className="s9-card">

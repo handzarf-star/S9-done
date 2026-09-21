@@ -281,7 +281,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           actually got, which is the stronger form of the same answer. */}
 
       {/* 2. WHY WE ARE WRITING THIS AT ALL (Enemy Section - Unboxed layout) */}
-      <section className="px-4 sm:px-6 max-w-5xl mx-auto">
+      <section className="s9-band px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
           <div className="section-head">
             <div className="s9-badge bg-[rgba(var(--danger-rgb),0.10)] border border-[rgba(var(--danger-rgb),0.20)] text-[var(--danger)] text-xs font-semibold uppercase tracking-wider">
@@ -370,7 +370,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       </section>
 
       {/* 4. CUSTOM SOLUTION (Unboxed Section, styled like "Where you recognise yourself") */}
-      <section id="pomjeri" className="px-4 sm:px-6 max-w-5xl mx-auto scroll-mt-24">
+      <section id="pomjeri" className="s9-band px-4 sm:px-6 max-w-5xl mx-auto scroll-mt-24">
         <ScrollReveal>
           <div className="section-head">
             <div className="s9-badge bg-[rgba(var(--cyan-rgb),0.08)] border border-[rgba(var(--cyan-rgb),0.2)] text-[var(--cyan)] text-xs font-semibold uppercase tracking-wider">

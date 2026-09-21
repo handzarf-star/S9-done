@@ -68,6 +68,7 @@ export const HivePage: React.FC<HivePageProps> = ({ onNavigate }) => (
       },
       {
         id: 'custom',
+        band: true,
         badgeIcon: Wrench,
         badgeBs: 'Razvoj po mjeri Vaše prodaje',
         badgeEn: 'Custom CRM architecture',

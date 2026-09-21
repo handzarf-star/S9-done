@@ -133,34 +133,56 @@ def generate_ceo_docx():
     # Title
     body.append(build_p("Shape9 · Ko želi biti CEO?", bold=True, size=48, color="006E8B", space_after=60))
     body.append(build_p("SCENSKI KVIZ ZNANJA · PROGRAMERSKA KONFERENCIJA TRAVNIK", bold=True, size=22, font="JetBrains Mono", color="64748B", space_after=180))
-    body.append(build_p("Perspektiva: Vi ste CEO kompanije koji donosi strateške odluke i rješava skupe operativne probleme pomoću Shape9 sistema: Mode, Pulse, Atlas, Libra i Vesta. Rječnik pitanja prilagođen je srednjoškolcima, studentima i posjetiocima bez poslovnog predznanja.", italic=True, size=24, color="334155", space_after=300))
+    body.append(build_p("Perspektiva: Vi ste CEO kompanije koji donosi strateške odluke i rješava skupe operativne probleme. Rječnik i situacije prilagođeni su učenicima i studentima sa jasnim metaforama za dedukciju tačnih rješenja.", italic=True, size=24, color="334155", space_after=300))
 
-    # Section 1: Intro Briefing for 5 Solutions
-    body.append(build_p("1. Uvodni briefing prije početka igre (Za takmičare i prezentere)", bold=True, size=32, color="010D13", space_before=240, space_after=120))
-    body.append(build_p("Prije nego što započne kviz, takmičar na ekranu (ili od strane voditelja) dobija kratak uvod od jedne do dvije jasne rečenice za svako od 5 Shape9 softverskih rješenja:", size=22, space_after=120))
+    # Section 1: Fun & Comparative Briefing
+    body.append(build_p("1. Uvodni vodič kroz 5 Shape9 rješenja (Jednostavne i zabavne metafore)", bold=True, size=32, color="010D13", space_before=240, space_after=120))
+    body.append(build_p("Svako rješenje ima jasnu esenciju i 'formulu za prepoznavanje' tako da igrač iz 2–3 rečenice može odmah dedukovati šta treba odabrati:", size=22, space_after=120))
 
     prod_table = [
-        ["Rješenje (Brend boja)", "Čemu služi (1–2 jednostavne rečenice razumljive mladima)"],
-        ["Mode (#FF6170 · Koraljna)", "Softver za modne radnje i butike. Povezuje kase, zalihe i brzu poštu u realnom vremenu tako da radnik na kasi u sekundi vidi ima li tražena veličina dukserice ili jakne u bilo kojoj radnji."],
-        ["Pulse (#A98CFF · Ljubičasta)", "Sistem koji automatski preslušava i analizira 100% obavljenih poziva u korisničkoj podršci. Odmah javlja ako je agent rekao pogrešnu cijenu ili prekršio pravilo razgovora."],
-        ["Atlas (#FFA658 · Narandžasta)", "Pametni sistem za velika skladišta (WMS). Vodi radnike skenerom tačno do prave police i provjerava svaki artikal prije slanja, kako kupac nikada ne bi dobio pogrešan proizvod."],
-        ["Libra (#3DD68C · Zelena)", "Digitalni asistent za ulazne račune i dokumente. Sam prepoznaje tekst i brojeve sa fotografija računa slikanih mobitelom i PDF faktura, bez dosadnog ručnog prekucavanja."],
-        ["Vesta (#588DFA · Tehnološko plava)", "Registar cjelokupne opreme i imovine firme. U svakom trenutku tačno zna ko duži koji radni laptop, telefon, službeno vozilo ili mašinu i gdje se oprema nalazi."],
+        ["Rješenje i metafora", "Čemu služi (Essence u 2 rečenice)", "🎯 Kako igrač prepoznaje tačan odgovor"],
+        [
+            "Mode (#FF6170 · Koraljna)\n„Mozak za modne radnje”",
+            "Dok obične kase samo kucaju račun, Mode u sekundi zna ima li ta dukserica ili jakna u veličini L u bilo kojoj tvojoj radnji i jednim klikom šalje nalog kuriru brze pošte.",
+            "Ako je u pitanju prodaja odjeće, veličine (S/M/L) ili slanje paketa iz butika – odgovor je Mode!"
+        ],
+        [
+            "Pulse (#A98CFF · Ljubičasta)\n„Inspektor sa super-sluhom”",
+            "Dok čovjek može preslušati jedva 15 poziva mjesečno, Pulse automatski presluša i provjeri 100% svih telefonskih razgovora u podršci i odmah alarmira ako je agent slagao za cijenu ili prekršio pravilo.",
+            "Ako se priča o telefonskim pozivima, agentima na slušalicama ili audio snimcima – odgovor je Pulse!"
+        ],
+        [
+            "Atlas (#FFA658 · Narandžasta)\n„GPS i radar za skladište”",
+            "Vodi radnika sa skenerom u ruci tačno do prave police i ne da mu da spakuje paket dok ne skenira tačan barkod, tako da kupac nikad ne dobije pogrešan model.",
+            "Ako se roba slaže na palete, broji na policama ili šalje iz skladišta kupcima – odgovor je Atlas!"
+        ],
+        [
+            "Libra (#3DD68C · Zelena)\n„Čitač računa koji mrzi papir”",
+            "Samo proslijediš PDF fakturu na mail ili uslikaš račun mobitelom na benzinskoj pumpi, a Libra sama 'pročita' brojeve i troškove bez ijednog ručnog prekucavanja u tabelu.",
+            "Ako se spominju ulazni računi, fotografije troškova sa terena ili gomile PDF faktura – odgovor je Libra!"
+        ],
+        [
+            "Vesta (#588DFA · Plava)\n„Čuvar imovine tvoje firme”",
+            "Dok Atlas prati robu koju prodaješ kupcima, Vesta prati stvari koje firma posjeduje: u svakom trenu zna ko duži koji radni laptop, ko vozi koje auto i gdje se nalazi koja mašina.",
+            "Ako se traži ko je zadužio opremu firme (laptope, telefone, auta, alate) – odgovor je Vesta!"
+        ],
     ]
-    body.append(build_table(prod_table[0], prod_table[1:], [2600, 7000]))
+    body.append(build_table(prod_table[0], prod_table[1:], [2600, 4400, 2600]))
 
-    # Section 2: Game Rules and Hint System
-    body.append(build_p("2. Pravila igre i sistem pomoći (Hint mehanika)", bold=True, size=32, color="010D13", space_before=240, space_after=120))
+    # Section 2: Comparative Cheat-Sheet
+    body.append(build_p("2. Uporedni trikovi za igrače (Dvojbe koje mogu zbuniti)", bold=True, size=28, color="010D13", space_before=200, space_after=100))
+    body.append(build_p("• 📦 Atlas vs Vesta: Atlas je roba na policama za kupce (zalihe za prodaju). Vesta je oprema koju firma posjeduje i ne prodaje (laptopi, vozila, alati).", bold=True, size=22, space_after=60))
+    body.append(build_p("• 🎙️ Pulse vs Libra: Pulse 'sluša' uši i glas (telefonski pozivi). Libra 'čita' oči i papire (fakture i slike računa s mobitela).", bold=True, size=22, space_after=60))
+    body.append(build_p("• 👗 Mode: Vlada butikom — povezuje kase, provjerava veličine odjeće i šalje brzu poštu.", bold=True, size=22, space_after=140))
+
+    # Section 3: Game Rules and Hint System
+    body.append(build_p("3. Pravila igre i sistem pomoći (Hint mehanika)", bold=True, size=32, color="010D13", space_before=240, space_after=120))
     body.append(build_p("• Uloga takmičara: Takmičar je CEO / vlasnik kompanije kroz svih 10 pitanja.", bold=True, size=22, space_after=60))
-    body.append(build_p("• Značenje naziva nivoa: Junior, Medior, Senior i CEO označavaju isključivo TEŽINU PITANJA, a ne nečiji staž.", size=22, space_after=60))
-    body.append(build_p("• Pomoć uz odgovor (Hint): Dostupna je ISKLJUČIVO u Junior sekciji (pitanja 1, 2 i 3). Takmičar može kliknuti 'Zatraži pomoć' kako bi dobio usmjerenje. Od 4. pitanja (Medior, Senior, CEO) pomoć je trajno zaključana jer pravi direktor na ozbiljnim izazovima odlučuje samostalno.", size=22, space_after=120))
+    body.append(build_p("• Značenje naziva nivoa: Junior, Medior, Senior i CEO označavaju isključivo TEŽINU PITANJA.", size=22, space_after=60))
+    body.append(build_p("• Pomoć uz odgovor (Hint): Dostupna je ISKLJUČIVO u Junior sekciji (pitanja 1, 2 i 3). Takmičar može kliknuti 'Zatraži pomoć' kako bi dobio usmjerenje. Od 4. pitanja (Medior, Senior, CEO) pomoć je trajno zaključana jer pravi direktor na ozbiljnim izazovima odlučuje samostalno.", size=22, space_after=240))
 
-    body.append(build_p("Dvije distinkcije koje voditelj naglašava naglas:", bold=True, size=24, color="010D13", space_before=140, space_after=80))
-    body.append(build_p("1. Atlas vs Vesta: Atlas prati robu koja prolazi KROZ firmu (zalihe za prodaju). Vesta prati opremu koju firma POSJEDUJE i koristi (laptopi, vozila, radni alati).", size=22, space_after=60))
-    body.append(build_p("2. Switch-on vs Roll-out: Pulse i Libra se uključuju na postojeće podatke. Atlas, Mode i Vesta se uvode na terenu označavanjem barkodovima i policama.", size=22, space_after=240))
-
-    # Section 3: 10 Questions
-    body.append(build_p("3. Cjelokupan set od 10 pitanja iz CEO perspektive (Jasno za učenike i studente)", bold=True, size=32, color="010D13", space_before=240, space_after=140))
+    # Section 4: 10 Questions
+    body.append(build_p("4. Cjelokupan set od 10 pitanja iz CEO perspektive", bold=True, size=32, color="010D13", space_before=240, space_after=140))
 
     # Q1
     body.append(build_question_box(
@@ -168,7 +190,7 @@ def generate_ceo_docx():
         "Vlasnik ste firme čiji agenti u korisničkoj podršci svaki dan obave 1.000 poziva s kupcima. Vaša šefica podrške vam kaže: „Preslušala sam 15 poziva, sve je super!”, dok vam nezadovoljni kupci na društvenim mrežama pišu da im podrška daje netačne informacije. Koji sistem vam treba da biste automatski znali šta je rečeno u svakom pozivu?",
         ["A. Pulse: automatska provjera svakog obavljenog poziva", "B. Atlas: praćenje kretanja kroz skladište", "C. Libra: automatsko sortiranje ulaznih računa", "D. Vesta: evidencija ko duži koji laptop"],
         "A", "15 nasumično preslušanih poziva od 1.000 nije kontrola kvaliteta nego puko nagađanje. Niko ne bi trebao voditi firmu na pretpostavkama.",
-        hint="Treba vam softver koji umjesto čovjeka može preslušati hiljade audio razgovora i odmah prijaviti greške.",
+        hint="Sjetite se inspektora sa super-sluhom. Koji softver sluša glasove i audio snimke umjesto čovjeka?",
         product_color="A98CFF"
     ))
 
@@ -178,7 +200,7 @@ def generate_ceo_docx():
         "Vlasnik ste modnog brenda s tri butika u gradu. Kupac ulazi u radnju i traži crnu jaknu u veličini L. Radnik ne zna ima li te veličine u vašem drugom butiku, pa troši 15 minuta zovući kolegicu telefonom dok kupac nervozno čeka, izgubi strpljenje i ode bez kupovine. Koji softver rješava ovaj problem u sekundi?",
         ["A. Vesta: registar klupskog namještaja i opreme", "B. Libra: sanduče za skenirane račune", "C. Mode: prikaz zaliha po radnjama i veličinama u realnom vremenu", "D. Atlas: slaganje visokih paleta u skladištu"],
         "C", "Kupac ne želi čekati telefonske pozive između radnji. Prodaja u butiku se dobija ili gubi u prvih trideset sekundi na kasi.",
-        hint="Tražite rješenje specijalizovano za butike koje na samoj kasi odmah prikazuje stanje zaliha u svim radnjama.",
+        hint="Sjetite se mozga za modne radnje koji na samoj kasi odmah prikazuje stanje veličina u svim buticima.",
         product_color="FF6170"
     ))
 
@@ -188,7 +210,7 @@ def generate_ceo_docx():
         "Direktor ste firme i primjećujete da vaša asistentica prva četiri radna dana u mjesecu samo otvara mailove, skida stotine računa i slika s mobitela, ručno im mijenja imena i slaže ih po folderima. Posao kasni jer se troši vrijeme na dosadno prepisivanje. Koji vam softver treba?",
         ["A. Mode: kase i prodaja u butiku", "B. Libra: automatsko prepoznavanje i raspoređivanje dokumenata", "C. Pulse: kontrola telefonskih poziva", "D. Atlas: barkod naljepnice za police"],
         "B", "Niko nije zaposlen da bi trećinu radnog vremena proveo preimenujući PDF fajlove i raspoređujući ih po folderima.",
-        hint="Traži se sistem koji sam 'pročita' poslani račun ili sliku i automatski ga arhivira na pravo mjesto.",
+        hint="Sjetite se čitača računa koji mrzi papir i sam skenira slike troškova sa mobitela bez ručnog prekucavanja.",
         product_color="3DD68C"
     ))
 
@@ -245,7 +267,7 @@ def generate_ceo_docx():
     # Q9
     body.append(build_question_box(
         "9", "Senior težina (Visoki ulozi / Pravni i revizorski rizik)",
-        "Kao CEO planirate veliku novu nabavku, ali finansijski direktor i šef skladišta imaju ogromnu razliku od 300.000 KM u procjeni trenutnih zaliha. Na papiru piše jedno, a skladištari tvrde da police ne odgovaraju tom stanju. Zbog ovog haosa ne znate stvarno stanje firme. Šta uvodi potpunu tačnost zaliha?",
+        "Kao CEO planirate veliku novu nabavku, ali finansijski direktor i šef skladišta imaju ogromnu razliku od 300.000 KM u procjeni trenutnih zaliha robe za prodaju. Na papiru piše jedno, a police skladišta su poluprazne. Zbog ovog haosa ne znate stvarno stanje firme. Šta uvodi potpunu tačnost zaliha?",
         ["A. Mode", "B. Libra", "C. Pulse", "D. Atlas"],
         "D", "Naš klijent sa 12 skladišta podigao je tačnost zaliha sa 81% na 99,4% za samo šest sedmica, jer Atlas prati svako fizičko pomjeranje kutije i palete.",
         hint=None,

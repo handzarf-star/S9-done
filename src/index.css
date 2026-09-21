@@ -577,8 +577,15 @@ h4, h5, h6 { font-size: 1rem; }
 
 /* ---------- Two surfaces, alternating ----------
    Sections were separated by 112px of nothing, on one unbroken colour, so
-   a long page read as a single strip. They are separated by surface now,
-   the way cake.com does it, and the gap drops to 96.
+   a long page read as a single strip. The gap drops to 96 and a surface
+   does the separating.
+
+   Not every other section, though. Mechanical alternation put a band under
+   whatever happened to land in an even slot, including grids of twenty
+   four cards, which is how a page ends up striped rather than structured.
+   A section asks for the band by carrying `s9-band`, and the ones that ask
+   are the ones that are a single argument: a claim, an invitation, a list
+   of what a product does. Faris picked them, 2026-09-21.
 
    Adapted rather than copied. Cake alternates white against off white, a
    step you cannot miss. Here the step is --ground against --panel, which
@@ -593,7 +600,7 @@ h4, h5, h6 { font-size: 1rem; }
 main > div > section { position: relative; padding-block: 56px; }
 @media (min-width: 640px) { main > div > section { padding-block: 96px; } }
 
-main > div > section:nth-of-type(even)::before {
+main > div > section.s9-band::before {
   content: "";
   position: absolute;
   inset-block: 0;
@@ -623,7 +630,43 @@ main > div > section.page-hero::before { content: none; }
 
 /* The band right under the hero would otherwise draw a second hairline on
    top of the hero's, two lines one pixel apart. */
-main > div > section.page-hero + section::before { border-top: 0; }
+main > div > section.page-hero + section.s9-band::before { border-top: 0; }
+
+/* ---------- The seam under a product film ----------
+   The film holds for half a viewport, so the first scroll is absorbed and
+   the second carries the reader into the page. That second scroll used to
+   land wherever it landed, which was usually halfway across the join: the
+   film's bottom edge and the hero's first line both on screen, neither one
+   the thing you are looking at.
+
+   A snap point at the top of the hero fixes where that scroll ends. Note
+   what this is not: the component this sits in rejects a wheel handler at
+   length, because `preventDefault` on wheel traps the visitor and takes the
+   keyboard, the scrollbar, touch momentum and every assistive tool with it.
+   Scroll snap is the browser's own mechanism, it cannot trap anybody, and
+   it leaves all of those working.
+
+   `proximity`, never `mandatory`: mandatory would yank the reader to the
+   nearest point from anywhere on a nine section page. Proximity only acts
+   when the point is already close, which is exactly the moment in question.
+   Only two elements carry a point, the film and the hero, so the rest of
+   the page scrolls the way it always did.
+
+   Scoped with `:has()` so a page without a film is untouched. */
+html:has(.video-hero-wrap) { scroll-snap-type: y proximity; }
+
+.video-hero-wrap { scroll-snap-align: start; }
+
+main > div > .video-hero-wrap + section.page-hero {
+  scroll-snap-align: start;
+  /* Clears the floating header, which is 82px tall at its resting size. */
+  scroll-margin-top: 90px;
+}
+
+/* Someone who has asked for less motion is not scroll-snapped either. */
+@media (prefers-reduced-motion: reduce) {
+  html:has(.video-hero-wrap) { scroll-snap-type: none; }
+}
 
 /* ---------- No card inside a band ----------
    A card's fill is --deck, which is the same colour as the band it sits
@@ -636,12 +679,12 @@ main > div > section.page-hero + section::before { border-top: 0; }
    what holds the grid's rhythm. The gap between cards does the separating
    there, the way it already does between paragraphs. On an unbanded
    section nothing changes: there the card is the only surface there is. */
-main > div > section:nth-of-type(even) :is(.s9-card, .s9-card-nested, .product-card, .bento-card) {
+main > div > section.s9-band :is(.s9-card, .s9-card-nested, .product-card, .bento-card) {
   background: transparent;
   border-color: transparent;
   box-shadow: none;
 }
-main > div > section:nth-of-type(even) :is(.s9-card, .product-card):hover {
+main > div > section.s9-band :is(.s9-card, .product-card):hover {
   background: rgba(255, 255, 255, 0.025);
   border-color: transparent;
   box-shadow: none;

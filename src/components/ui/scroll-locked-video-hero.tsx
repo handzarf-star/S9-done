@@ -189,7 +189,9 @@ export const VideoHero: React.FC<VideoHeroProps> = ({
     <div
       ref={wrapRef}
       style={{ height: `calc(100dvh * ${1 + holdViewports})` }}
-      className="relative w-full"
+      /* `video-hero-wrap` is what the snap rule in index.css looks for. It
+         does not style anything here. */
+      className="video-hero-wrap relative w-full"
     >
       <div className="sticky top-0 h-[100dvh] w-full overflow-hidden bg-[var(--ground)]">
         {/* Both cases fill the frame. The wide one is overscanned by 6% so the

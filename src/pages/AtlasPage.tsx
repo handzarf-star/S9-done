@@ -384,7 +384,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* FIRST CONVERSATION */}
-      <section className="px-4 sm:px-6 max-w-5xl mx-auto">
+      <section className="s9-band px-4 sm:px-6 max-w-5xl mx-auto">
         <ScrollReveal>
           <div className="section-body">
             <div className="s9-card border-[rgba(255,166,88,0.28)] bg-[rgba(255,166,88,0.035)] text-center">
