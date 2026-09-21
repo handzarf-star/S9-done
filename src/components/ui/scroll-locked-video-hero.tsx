@@ -189,8 +189,9 @@ export const VideoHero: React.FC<VideoHeroProps> = ({
     <div
       ref={wrapRef}
       style={{ height: `calc(100dvh * ${1 + holdViewports})` }}
-      /* `video-hero-wrap` is what the snap rule in index.css looks for. It
-         does not style anything here. */
+      /* `video-hero-wrap` is the hook the header used for the snap rule,
+         which is gone now that the join itself is fixed. Kept because it is
+         still the only way to ask "does this page open with a film". */
       className="video-hero-wrap relative w-full"
     >
       <div className="sticky top-0 h-[100dvh] w-full overflow-hidden bg-[var(--ground)]">

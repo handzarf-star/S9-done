@@ -632,47 +632,25 @@ main > div > section.page-hero.page-hero {
   border-bottom: 1px solid var(--line-subtle);
 }
 @media (min-width: 640px) { main > div > section.page-hero.page-hero { padding-bottom: 96px; } }
+
+/* A hero with no film above it is the first thing on the page, and it was
+   inheriting the 96px every section gets plus its own top spacing: 166px
+   between the bottom of the header and the first line, which on a page
+   that opens with a headline is a screenful of nothing.
+
+   `:first-child` is exactly the test. Where a film opens the page the film
+   holds that slot and the hero is the second child, so it keeps the larger
+   opening it needs to clear the join. Where there is no film the hero is
+   first, and it starts sooner. */
+main > div > section.page-hero.page-hero:first-child { padding-top: 24px; }
+@media (min-width: 640px) {
+  main > div > section.page-hero.page-hero:first-child { padding-top: 32px; }
+}
 main > div > section.page-hero::before { content: none; }
 
 /* The band right under the hero would otherwise draw a second hairline on
    top of the hero's, two lines one pixel apart. */
 main > div > section.page-hero + section.s9-band::before { border-top: 0; }
-
-/* ---------- The seam under a product film ----------
-   The film holds for half a viewport, so the first scroll is absorbed and
-   the second carries the reader into the page. That second scroll used to
-   land wherever it landed, which was usually halfway across the join: the
-   film's bottom edge and the hero's first line both on screen, neither one
-   the thing you are looking at.
-
-   A snap point at the top of the hero fixes where that scroll ends. Note
-   what this is not: the component this sits in rejects a wheel handler at
-   length, because `preventDefault` on wheel traps the visitor and takes the
-   keyboard, the scrollbar, touch momentum and every assistive tool with it.
-   Scroll snap is the browser's own mechanism, it cannot trap anybody, and
-   it leaves all of those working.
-
-   `proximity`, never `mandatory`: mandatory would yank the reader to the
-   nearest point from anywhere on a nine section page. Proximity only acts
-   when the point is already close, which is exactly the moment in question.
-   Only two elements carry a point, the film and the hero, so the rest of
-   the page scrolls the way it always did.
-
-   Scoped with `:has()` so a page without a film is untouched. */
-html:has(.video-hero-wrap) { scroll-snap-type: y proximity; }
-
-.video-hero-wrap { scroll-snap-align: start; }
-
-main > div > .video-hero-wrap + section.page-hero {
-  scroll-snap-align: start;
-  /* Clears the floating header, which is 82px tall at its resting size. */
-  scroll-margin-top: 90px;
-}
-
-/* Someone who has asked for less motion is not scroll-snapped either. */
-@media (prefers-reduced-motion: reduce) {
-  html:has(.video-hero-wrap) { scroll-snap-type: none; }
-}
 
 /* ---------- No card inside a band ----------
    A card's fill is --deck, which is the same colour as the band it sits
