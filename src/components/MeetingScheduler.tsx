@@ -1,5 +1,5 @@
-import React, { useState, useId } from 'react';
-import { Calendar, Clock, CheckCircle2, AlertCircle, ArrowRight, Download, ExternalLink, User } from 'lucide-react';
+import React, { useState, useId, useEffect } from 'react';
+import { Calendar, Clock, CheckCircle2, AlertCircle, ArrowRight, Download, ExternalLink, User, ChevronDown } from 'lucide-react';
 import { WEB3FORMS_KEY, FORM_IS_LIVE, CONTACT } from '../config';
 import { getUpcomingBusinessDays, MEETING_CONFIG, getGoogleCalendarLink, downloadIcsFile, MeetingDetails } from '../utils/calendarUtils';
 
@@ -22,11 +22,28 @@ export const MeetingScheduler: React.FC<MeetingSchedulerProps> = ({ productChip 
   const [status, setStatus] = useState<SchedulerStatus>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
+  /* <option> text cannot be styled, so the two language spans this site uses
+     everywhere else would print both labels into one line. Read it in JS and
+     react to the toggle, which only flips an attribute on <html>. */
+  const [uiLang, setUiLang] = useState<'bs' | 'en'>(
+    () => (typeof document !== 'undefined' && document.documentElement.getAttribute('data-lang') === 'en' ? 'en' : 'bs'),
+  );
+  useEffect(() => {
+    const root = document.documentElement;
+    const read = () => setUiLang(root.getAttribute('data-lang') === 'en' ? 'en' : 'bs');
+    read();
+    const obs = new MutationObserver(read);
+    obs.observe(root, { attributes: true, attributeFilter: ['data-lang'] });
+    return () => obs.disconnect();
+  }, []);
+
   const nameId = useId();
   const emailId = useId();
   const companyId = useId();
   const phoneId = useId();
   const topicId = useId();
+  const dateId = useId();
+  const timeId = useId();
 
   const selectedDayObj = businessDays.find((d) => d.dateStr === selectedDate) || businessDays[0];
 
@@ -215,67 +232,87 @@ export const MeetingScheduler: React.FC<MeetingSchedulerProps> = ({ productChip 
         </div>
       )}
 
-      {/* STEP 1: DATE SELECTION */}
-      <div>
-        <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--muted)] mb-2.5 flex items-center gap-1.5">
-          <Calendar className="w-3.5 h-3.5 text-[var(--cyan)]" />
-          <span className="l-bs">1. Odaberite radni dan</span>
-          <span className="l-en">1. Select a business day</span>
-        </label>
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
-          {businessDays.slice(0, 10).map((day) => {
-            const isSelected = selectedDate === day.dateStr;
-            return (
-              <button
-                key={day.dateStr}
-                type="button"
-                onClick={() => setSelectedDate(day.dateStr)}
-                className={`p-2.5 rounded-xl text-center border transition-all cursor-pointer focus-ring flex flex-col items-center justify-center ${
-                  isSelected
-                    ? 'border-[var(--cyan)] bg-[rgba(var(--cyan-rgb),0.12)] text-[var(--cyan)] font-semibold shadow-md'
-                    : 'border-[var(--line)] bg-[var(--navy)]/50 text-[var(--body)] hover:border-white/20 hover:bg-[var(--navy)]'
-                }`}
-              >
-                <span className="text-[10px] uppercase font-semibold text-[var(--muted)]">
-                  <span className="l-bs">{day.dayNameBs}</span>
-                  <span className="l-en">{day.dayNameEn}</span>
-                </span>
-                <span className="text-sm font-bold mt-0.5">
-                  <span className="l-bs">{day.labelBs.split(',')[1]}</span>
-                  <span className="l-en">{day.labelEn.split(',')[1]}</span>
-                </span>
-              </button>
-            );
-          })}
+      {/* Two dropdowns, not seventeen buttons.
+          This was a ten cell day grid and a seven cell time grid. On a phone
+          that cost eight rows of targets and 445px before the form even
+          started, and the dialog needed 547px of scrolling. A select is the
+          same control the contact form uses, it is one tap on a phone, and
+          the native picker handles the list. */}
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label
+            htmlFor={dateId}
+            className="mb-2.5 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[var(--muted)]"
+          >
+            <Calendar className="h-3.5 w-3.5 text-[var(--cyan)]" />
+            <span className="l-bs">1. Radni dan</span>
+            <span className="l-en">1. Business day</span>
+          </label>
+          <div className="relative">
+            <select
+              id={dateId}
+              value={selectedDate}
+              onChange={(e) => setSelectedDate(e.target.value)}
+              className="s9-select cursor-pointer appearance-none pr-11"
+            >
+              {businessDays.slice(0, 10).map((day) => (
+                <option key={day.dateStr} value={day.dateStr}>
+                  {uiLang === 'en' ? day.labelEn : day.labelBs}
+                </option>
+              ))}
+            </select>
+            <ChevronDown
+              aria-hidden="true"
+              className="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--muted)]"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label
+            htmlFor={timeId}
+            className="mb-2.5 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[var(--muted)]"
+          >
+            <Clock className="h-3.5 w-3.5 text-[var(--cyan)]" />
+            <span className="l-bs">2. Vrijeme · CET · 25 min</span>
+            <span className="l-en">2. Time · CET · 25 min</span>
+          </label>
+          <div className="relative">
+            <select
+              id={timeId}
+              value={selectedTime}
+              onChange={(e) => setSelectedTime(e.target.value)}
+              className="s9-select cursor-pointer appearance-none pr-11"
+              style={{ fontFamily: 'var(--f-mono)' }}
+            >
+              {MEETING_CONFIG.timeSlots.map((slot) => (
+                <option key={slot} value={slot}>
+                  {slot}
+                </option>
+              ))}
+            </select>
+            <ChevronDown
+              aria-hidden="true"
+              className="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--muted)]"
+            />
+          </div>
         </div>
       </div>
 
-      {/* STEP 2: TIME SLOT SELECTION */}
-      <div>
-        <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--muted)] mb-2.5 flex items-center gap-1.5">
-          <Clock className="w-3.5 h-3.5 text-[var(--cyan)]" />
-          <span className="l-bs">2. Odaberite vrijeme (CET / Sarajevo) · 25 min</span>
-          <span className="l-en">2. Select time slot (CET) · 25 min</span>
-        </label>
-        <div className="grid grid-cols-3 sm:grid-cols-7 gap-2">
-          {MEETING_CONFIG.timeSlots.map((slot) => {
-            const isSelected = selectedTime === slot;
-            return (
-              <button
-                key={slot}
-                type="button"
-                onClick={() => setSelectedTime(slot)}
-                className={`py-2 px-2 rounded-xl text-center border text-xs font-mono font-semibold transition-all cursor-pointer focus-ring ${
-                  isSelected
-                    ? 'border-[var(--cyan)] bg-[rgba(var(--cyan-rgb),0.15)] text-[var(--cyan)] shadow-md'
-                    : 'border-[var(--line)] bg-[var(--navy)]/50 text-[var(--body)] hover:border-white/20 hover:bg-[var(--navy)]'
-                }`}
-              >
-                {slot}
-              </button>
-            );
-          })}
-        </div>
+      {/* What was chosen, stated once. The dialog needs 1307px of scroll on
+          a phone, so by the time someone is filling in a name the day and
+          the time are far above the fold. This line keeps the answer in
+          view instead of making them scroll back to check. */}
+      <div className="flex items-center gap-2 rounded-xl border border-[rgba(var(--cyan-rgb),0.25)] bg-[rgba(var(--cyan-rgb),0.07)] px-3.5 py-2.5">
+        <Calendar className="h-4 w-4 shrink-0 text-[var(--cyan)]" />
+        <p className="m-0 text-sm text-[var(--ink)]">
+          <span className="l-bs">
+            {selectedDayObj?.labelBs} u <strong className="font-semibold">{selectedTime}</strong>
+          </span>
+          <span className="l-en">
+            {selectedDayObj?.labelEn} at <strong className="font-semibold">{selectedTime}</strong>
+          </span>
+        </p>
       </div>
 
       {/* STEP 3: ATTENDEE DETAILS */}

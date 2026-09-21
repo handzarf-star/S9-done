@@ -1,10 +1,12 @@
 import React from 'react';
+import { ArrowRight } from 'lucide-react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 
 export interface ClientRef {
   id: string;
-  /** File in /public/logos */
-  logo: string;
+  /** File in /public/logos. Absent where no logo exists or the client is
+      deliberately unnamed, and then the name carries the card instead. */
+  logo?: string;
   /** Company name, used as the image alt and never rendered as a heading. */
   name: string;
   industryBs: string;
@@ -15,11 +17,16 @@ export interface ClientRef {
   /** What changed. No adjectives, no claims about us. */
   afterBs: string;
   afterEn: string;
+  /** Set where a full case study exists; adds the link at the foot. */
+  caseHref?: string;
+  /** The product's colour, for the case study link on that card only. */
+  accent?: string;
 }
 
 interface ClientCardProps {
   client: ClientRef;
   className?: string;
+  onNavigate?: (path: string) => void;
 }
 
 /**
@@ -40,7 +47,7 @@ interface ClientCardProps {
  * monochrome instead: it fixes the contrast, and it stops a row of client
  * marks from reading as six competing brands sitting on our page.
  */
-export const ClientCard: React.FC<ClientCardProps> = ({ client, className = '' }) => {
+export const ClientCard: React.FC<ClientCardProps> = ({ client, className = '', onNavigate }) => {
   // shadcn Card from the registry rather than a bare div. The registry
   // default is a card on --color-card with its own padding and gap; that is
   // overridden here to the nested-card treatment this site already uses,
@@ -52,12 +59,21 @@ export const ClientCard: React.FC<ClientCardProps> = ({ client, className = '' }
       className={`s9-card-nested border-0 bg-transparent p-6 gap-0 flex flex-col h-full ${className}`}
     >
       <CardHeader className="p-0 gap-0 block">
-      <img
-        src={`/logos/${client.logo}`}
-        alt={client.name}
-        loading="lazy"
-        className="client-logo h-8 w-auto self-start mb-5"
-      />
+      {/* A logo where one exists. The two case study clients have none on
+          file, so their name is set at the same height the mark occupies
+          and the row of cards keeps one baseline. */}
+      {client.logo ? (
+        <img
+          src={`/logos/${client.logo}`}
+          alt={client.name}
+          loading="lazy"
+          className="client-logo h-8 w-auto self-start mb-5"
+        />
+      ) : (
+        <div className="mb-5 flex h-8 items-center text-base font-semibold text-[var(--ink)]">
+          {client.name}
+        </div>
+      )}
 
       <div className="text-xs font-mono uppercase tracking-[0.13em] text-[var(--muted)] mb-4">
         <span className="l-bs">{client.industryBs}</span>
@@ -89,6 +105,23 @@ export const ClientCard: React.FC<ClientCardProps> = ({ client, className = '' }
           </dd>
         </div>
       </dl>
+
+      {client.caseHref && (
+        <a
+          href={client.caseHref}
+          onClick={(e) => {
+            if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0 || !onNavigate) return;
+            e.preventDefault();
+            onNavigate(client.caseHref!);
+          }}
+          className="focus-ring mt-4 inline-flex items-center gap-1.5 rounded-sm border-t border-[var(--line)] pt-3 text-xs font-semibold hover:underline"
+          style={{ color: client.accent || 'var(--cyan)' }}
+        >
+          <span className="l-bs">Pogledajte studiju slučaja</span>
+          <span className="l-en">Read case study</span>
+          <ArrowRight className="h-3.5 w-3.5" />
+        </a>
+      )}
       </CardContent>
     </Card>
   );
@@ -120,5 +153,32 @@ export const CLIENTS: Record<string, ClientRef> = {
     beforeEn: 'Orders arriving by Viber, by phone and by email, each one landing somewhere different.',
     afterBs: 'Kupci naručuju kroz sistem, vide stanje zaliha i prate svoju narudžbu do isporuke.',
     afterEn: 'Customers order through the system, see stock levels and follow their own order through to delivery.',
+  },
+
+  /* The two below have a full case study on this site and no logo on file.
+     Every figure here is taken from those pages, not written for this card. */
+  monad: {
+    id: 'monad',
+    name: 'Monad Lead',
+    industryBs: 'Affiliate platforma, hiljade leadova dnevno',
+    industryEn: 'Affiliate platform, thousands of leads a day',
+    beforeBs: 'Metrike je neko morao gledati ručno. Partner koji je tiho prestao slati i dvadeset pet dana lažnog prometa nisu se vidjeli na vrijeme.',
+    beforeEn: 'Someone had to watch the metrics by hand. An affiliate that quietly stopped, and twenty five days of fake traffic, were not caught in time.',
+    afterBs: 'Agent radi dvadeset četiri analitička zadatka svakog radnog dana. Deset dana pilota, nula grešaka.',
+    afterEn: 'The agent runs twenty four analytical tasks every working day. Ten days of piloting, zero errors.',
+    caseHref: '/radovi/monad-lead',
+    accent: '#35B6F0',
+  },
+  wms: {
+    id: 'wms',
+    name: 'Organizacija u dvanaest država',
+    industryBs: 'Dvanaest skladišnih centara, preko 10.000 artikala',
+    industryEn: 'Twelve warehouses, more than 10.000 items',
+    beforeBs: 'Tačnost zaliha 81%. Artikli koji su postojali samo na papiru i transferi između skladišta koje niko nije mogao vidjeti.',
+    beforeEn: 'Stock accuracy at 81 percent. Items that existed only on paper, and transfers between warehouses nobody could see.',
+    afterBs: 'Dvanaest skladišta u jednom sistemu. Šest sedmica do pune produkcije, tačnost 99,4% i 91% manje grešaka pri pakovanju.',
+    afterEn: 'Twelve warehouses in one system. Six weeks to full production, accuracy at 99,4 percent and 91 percent fewer packing errors.',
+    caseHref: '/radovi/wms',
+    accent: '#FFA658',
   },
 };

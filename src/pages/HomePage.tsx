@@ -456,122 +456,21 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </p>
           </div>
 
+          {/* Four references, one format. The Monad Lead and warehouse cards
+              were written out by hand here in a different shape: a coloured
+              product chip, a headline and a paragraph. Two ways of saying the
+              same thing sat in the same grid. They are ClientCards now, so
+              every card on this page reads before, then after.
+
+              The Body Edit and Residence Montis were removed, Faris
+              2026-09-21. They are web builds rather than operational systems
+              and they live on the portfolio page, which the button below
+              leads to. */}
           <div className="section-body grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-10">
             <ClientCard client={CLIENTS.empress} />
             <ClientCard client={CLIENTS.bhlog} />
-
-            {/* 1. Monad Lead (Sonar) */}
-            <div className="s9-card-nested p-5 sm:p-6 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="px-2.5 py-1 rounded-full text-xs font-semibold text-[#35B6F0] bg-[rgba(53,182,240,0.1)] border border-[rgba(53,182,240,0.25)]">
-                    <span className="l-bs">Shape9 Sonar · AI analitika</span>
-                    <span className="l-en">Shape9 Sonar · AI analytics</span>
-                  </span>
-                </div>
-                <h3 className="text-base font-bold text-[var(--ink)] mb-2">
-                  Monad Lead: AI analitičar za affiliate platformu
-                </h3>
-                <p className="text-sm text-[var(--body)] leading-relaxed mb-4">
-                  <span className="l-bs">AI agent koji kontinuirano nadzire metrike, automatski pronalazi anomalije i šalje notifikacije.</span>
-                  <span className="l-en">An AI agent that continuously monitors metrics and opens tickets on its own.</span>
-                </p>
-              </div>
-              <a
-                href="/radovi/monad-lead"
-                onClick={(e) => go(e, '/radovi/monad-lead')}
-                className="text-xs font-semibold text-[#35B6F0] hover:underline inline-flex items-center gap-1.5 pt-3 border-t border-[var(--line)]"
-              >
-                <span className="l-bs">Pogledajte studiju slučaja</span>
-                <span className="l-en">Read case study</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </a>
-            </div>
-
-            {/* 2. Regionalni WMS (Atlas) */}
-            <div className="s9-card-nested p-5 sm:p-6 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="px-2.5 py-1 rounded-full text-xs font-semibold text-[#FFA658] bg-[rgba(255,166,88,0.1)] border border-[rgba(255,166,88,0.25)]">
-                    <span className="l-bs">Shape9 Atlas · Napredno upravljanje skladištem</span>
-                    <span className="l-en">Shape9 Atlas · Advanced Warehouse management</span>
-                  </span>
-                </div>
-                <h3 className="text-base font-bold text-[var(--ink)] mb-2">
-                  <span className="l-bs">Regionalni WMS u 12 država: 12 lokacija</span>
-                  <span className="l-en">A warehouse system across twelve locations</span>
-                </h3>
-                <p className="text-sm text-[var(--body)] leading-relaxed mb-4">
-                  <span className="l-bs">Centralizovali smo 12 skladišta i preko 10.000 artikala: tačnost zaliha porasla je sa 81% na 99,4% za samo šest sedmica.</span>
-                  <span className="l-en">Inventory accuracy raised from 81 to 99.4 percent in six weeks.</span>
-                </p>
-              </div>
-              <a
-                href="/radovi/wms"
-                onClick={(e) => go(e, '/radovi/wms')}
-                className="text-xs font-semibold text-[#FFA658] hover:underline inline-flex items-center gap-1.5 pt-3 border-t border-[var(--line)]"
-              >
-                <span className="l-bs">Pogledajte studiju slučaja</span>
-                <span className="l-en">Read case study</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </a>
-            </div>
-
-            {/* 3. The Body Edit */}
-            <div className="s9-card-nested p-5 sm:p-6 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="px-2.5 py-1 rounded-full text-xs font-semibold text-[var(--ink)] bg-[rgba(255,255,255,0.06)] border border-[var(--line)]">
-                    <span className="l-bs">Rješenje po mjeri</span>
-                    <span className="l-en">Custom Solution</span>
-                  </span>
-                </div>
-                <h3 className="text-base font-bold text-[var(--ink)] mb-2">
-                  The Body Edit: Platforma za pilates studio
-                </h3>
-                <p className="text-sm text-[var(--body)] leading-relaxed mb-4">
-                  <span className="l-bs">Platforma: Razvili smo web sajt, korisnički portal, administrativni panel i aplikaciju za instruktore.</span>
-                  <span className="l-en">A comprehensive platform: website, client portal, and instructor app.</span>
-                </p>
-              </div>
-              <a
-                href="https://thebodyedit.ba/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs font-semibold text-[var(--cyan)] hover:underline inline-flex items-center gap-1.5 pt-3 border-t border-[var(--line)]"
-              >
-                <span>thebodyedit.ba</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </a>
-            </div>
-
-            {/* 4. Residence Montis */}
-            <div className="s9-card-nested p-5 sm:p-6 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="px-2.5 py-1 rounded-full text-xs font-semibold text-[var(--ink)] bg-[rgba(255,255,255,0.06)] border border-[var(--line)]">
-                    <span className="l-bs">Web prezentacija</span>
-                    <span className="l-en">Web presentation</span>
-                  </span>
-                </div>
-                <h3 className="text-base font-bold text-[var(--ink)] mb-2">
-                  Residence Montis: Prezentacija apartmana
-                </h3>
-                <p className="text-sm text-[var(--body)] leading-relaxed mb-4">
-                  <span className="l-bs">Moderna platforma za prezentacije luksuznih apartmana s integrisanim online rezervacijama.</span>
-                  <span className="l-en">A modern presentation platform for luxury apartments with online bookings.</span>
-                </p>
-              </div>
-              <a
-                href="https://www.residencemontis.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs font-semibold text-[var(--cyan)] hover:underline inline-flex items-center gap-1.5 pt-3 border-t border-[var(--line)]"
-              >
-                <span>residencemontis.com</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </a>
-            </div>
+            <ClientCard client={CLIENTS.monad} onNavigate={onNavigate} />
+            <ClientCard client={CLIENTS.wms} onNavigate={onNavigate} />
           </div>
 
           <div className="section-body">
