@@ -248,6 +248,32 @@ export const VideoHero: React.FC<VideoHeroProps> = ({
           }}
         />
 
+        {/* The page's lift, carried across the film's closing band.
+            Background.tsx paints a fixed layer over the viewport that runs
+            from --panel-raise at the top down to --ground by 42%. At the
+            height where the film ends, roughly a tenth of the way down the
+            screen, that puts the page at about rgb(13, 34, 42) while the
+            film's ramp has landed it on rgb(1, 13, 19). Measured, and it is
+            a far bigger step than the grid was.
+
+            Same treatment as the grid below: the identical gradient,
+            attached to the viewport so it lines up with the fixed layer
+            behind it, masked on the ramp's curve so it arrives exactly as
+            the ground goes solid. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2"
+          style={{
+            backgroundAttachment: 'fixed',
+            backgroundImage:
+              'linear-gradient(to bottom, var(--panel-raise) 0%, var(--ground) 42%, var(--ground) 100%)',
+            WebkitMaskImage:
+              'linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.72) 62%, #000 100%)',
+            maskImage:
+              'linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.72) 62%, #000 100%)',
+          }}
+        />
+
         {/* The page's own grid, carried across the film's closing band.
             The ramp above already lands the film on --ground, and the hero
             underneath starts on --ground too, so the two were never a
