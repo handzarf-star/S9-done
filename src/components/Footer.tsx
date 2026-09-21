@@ -60,7 +60,19 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <img src="/logo.svg" alt="" className="h-6 w-auto" />
         </a>
 
-        <p className="mt-4 max-w-[22ch] text-2xl font-semibold leading-[1.15] tracking-[-0.03em] text-[var(--ink)] sm:text-[28px]">
+        {/* Sized and set to belong to the mark above it, not to compete with
+            it. At 28px against a 24px logo the line read as a headline that
+            happened to have a logo on top; in mono, a step under the mark and
+            close to it, the two read as one item. Mono because everything
+            instrument-like on this site is mono, and a tagline is a label on
+            the company rather than a sentence in a paragraph. */}
+        <p
+          className="mt-2.5 max-w-[34ch] text-[13px] leading-[1.5] text-[var(--ink-dim)] sm:text-[14px]"
+          /* `font-mono` is a layered utility and `p { font-family: var(--f-sans) }`
+             in index.css is not, so the class lost and this stayed Inter.
+             Inline wins outright. */
+          style={{ fontFamily: 'var(--f-mono)', letterSpacing: '-0.005em' }}
+        >
           <span className="l-bs">Gradimo digitalna iskustva koja prave razliku.</span>
           <span className="l-en">We Build Digital Experiences That Matter.</span>
         </p>
