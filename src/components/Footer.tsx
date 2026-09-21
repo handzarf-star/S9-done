@@ -1,10 +1,29 @@
 import React from 'react';
 import { CONTACT, COMPANY } from '../config';
-import { Linkedin, Mail, MapPin } from 'lucide-react';
+import { ArrowRight, Linkedin, Mail, MapPin } from 'lucide-react';
 
 interface FooterProps {
   onNavigate: (path: string) => void;
 }
+
+/* Four products, then a way to the rest.
+   The footer used to list all eleven, which made the solutions column twice
+   the height of every other one and was the main reason the whole footer ran
+   to 570px, 63% of a laptop screen. Four is Faris's pick, 2026-09-21, and the
+   fifth line goes to the section where a visitor chooses by department. */
+const FOOTER_PRODUCTS = [
+  { path: '/mode', name: 'Mode' },
+  { path: '/pulse', name: 'Pulse' },
+  { path: '/atlas', name: 'Atlas' },
+  { path: '/hive', name: 'Hive' },
+];
+
+const COMPANY_LINKS = [
+  { path: '/radovi', bs: 'Portfolio', en: 'Portfolio' },
+  { path: '/po-mjeri', bs: 'Po mjeri', en: 'Custom Built' },
+  { path: '/o-nama', bs: 'O nama', en: 'About Us' },
+  { path: '/privatnost', bs: 'Politika privatnosti', en: 'Privacy Policy' },
+];
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const currentYear = new Date().getFullYear();
@@ -17,222 +36,117 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
     onNavigate(target);
   };
 
+  const linkClass =
+    'text-sm text-[var(--body)] hover:text-[var(--ink)] transition-colors focus-ring rounded-sm';
+
   return (
-    <footer className="border-t border-[var(--line)] bg-[#080B10] text-[#8B95A7] py-12 sm:py-16 relative z-10">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-10 mb-12">
-          {/* BRAND & CONTACT BLOCK */}
-          <div className="md:col-span-2 space-y-4">
-            <a
-              href="/"
-              onClick={(e) => go(e, '/')}
-              className="inline-flex items-center focus-ring"
-              aria-label="Shape9"
-            >
-              <img src="/logo.svg" alt="" className="h-6 w-auto" />
-            </a>
+    <footer className="relative z-10 border-t border-[var(--line)] bg-[#080B10] py-10 sm:py-12">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+        {/* The statement sits beside the columns, not above them. Stacked, it
+            and its margin added 139px to a footer whose own measurement
+            showed 212px of the 552 was nothing but spacing. Side by side the
+            two blocks share the tallest one's height instead of summing. */}
+        <div className="grid gap-y-10 sm:grid-cols-[minmax(0,1fr)_auto] sm:gap-x-16">
+        <div>
+        {/* The line the footer is built around. It was 14px, tucked under the
+            logo beside the address, which is a caption and not a statement.
+            It is the one thing here worth reading, so it is set like one. */}
+        <a
+          href="/"
+          onClick={(e) => go(e, '/')}
+          className="focus-ring inline-block rounded-lg"
+          aria-label="Shape9"
+        >
+          <img src="/logo.svg" alt="" className="h-6 w-auto" />
+        </a>
 
-            <p className="text-sm max-w-md leading-relaxed">
-              <span className="l-bs">
-                Gradimo digitalna iskustva koja prave razliku. Sarajevo, od 2015. godine.
-              </span>
-              <span className="l-en">
-                We Build Digital Experiences That Matter. Sarajevo, since 2015.
-              </span>
-            </p>
+        <p className="mt-4 max-w-[22ch] text-2xl font-semibold leading-[1.15] tracking-[-0.03em] text-[var(--ink)] sm:text-[28px]">
+          <span className="l-bs">Gradimo digitalna iskustva koja prave razliku.</span>
+          <span className="l-en">We Build Digital Experiences That Matter.</span>
+        </p>
+        </div>
 
-            <div className="pt-2 space-y-2 text-xs sm:text-sm text-[var(--ink)]">
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-[var(--cyan)] shrink-0" />
+        <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 sm:gap-x-12">
+          <div>
+            <h3 className="readout pb-3">
+              <span className="l-bs">Rješenja</span>
+              <span className="l-en">Solutions</span>
+            </h3>
+            <ul className="space-y-2">
+              {FOOTER_PRODUCTS.map((p) => (
+                <li key={p.path}>
+                  <a href={p.path} onClick={(e) => go(e, p.path)} className={linkClass}>
+                    {p.name}
+                  </a>
+                </li>
+              ))}
+              <li className="pt-0.5">
+                <a
+                  href="/#izazov"
+                  onClick={(e) => go(e, '#izazov')}
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--cyan)] transition-colors hover:text-[var(--ink)] focus-ring rounded-sm"
+                >
+                  <span className="l-bs">Sva rješenja</span>
+                  <span className="l-en">All solutions</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="readout pb-3">
+              <span className="l-bs">Kompanija</span>
+              <span className="l-en">Company</span>
+            </h3>
+            <ul className="space-y-2">
+              {COMPANY_LINKS.map((l) => (
+                <li key={l.path}>
+                  <a href={l.path} onClick={(e) => go(e, l.path)} className={linkClass}>
+                    <span className="l-bs">{l.bs}</span>
+                    <span className="l-en">{l.en}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="col-span-2 sm:col-span-1">
+            <h3 className="readout pb-3">
+              <span className="l-bs">Kontakt</span>
+              <span className="l-en">Contact</span>
+            </h3>
+            <ul className="space-y-2 text-sm text-[var(--body)]">
+              <li className="flex items-center gap-2">
+                <MapPin className="h-4 w-4 shrink-0 text-[var(--cyan)]" />
                 <span>Sarajevo</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-[var(--cyan)] shrink-0" />
-                <a href={`mailto:${CONTACT.email}`} className="hover:text-[var(--cyan)] transition-colors focus-ring">
+              </li>
+              <li className="flex items-center gap-2">
+                <Mail className="h-4 w-4 shrink-0 text-[var(--cyan)]" />
+                <a href={`mailto:${CONTACT.email}`} className={linkClass}>
                   {CONTACT.email}
                 </a>
-              </div>
+              </li>
               {CONTACT.linkedin && (
-                <div className="flex items-center gap-2 pt-1">
-                  <Linkedin className="w-4 h-4 text-[var(--cyan)] shrink-0" />
+                <li className="flex items-center gap-2">
+                  <Linkedin className="h-4 w-4 shrink-0 text-[var(--cyan)]" />
                   <a
                     href={CONTACT.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-[var(--cyan)] transition-colors focus-ring"
+                    className={linkClass}
                   >
                     LinkedIn
                   </a>
-                </div>
+                </li>
               )}
-            </div>
-          </div>
-
-          {/* COLUMN 1: RJEŠENJA */}
-          <div>
-            <h3 className="text-xs font-extrabold uppercase tracking-wider text-[var(--ink)] mb-4">
-              <span className="l-bs">Rješenja</span>
-              <span className="l-en">Solutions</span>
-            </h3>
-            <ul className="space-y-2.5 text-sm">
-              {/* Same order as the header menu, category by category:
-                  call centre, sales and stock, marketing, back office,
-                  AI analytics. One order everywhere on the site. */}
-              <li>
-                <a
-                  href="/pulse"
-                  onClick={(e) => go(e, '/pulse')}
-                  className="hover:text-[var(--ink)] transition-colors focus-ring"
-                >
-                  Shape9 Pulse
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/bell"
-                  onClick={(e) => go(e, '/bell')}
-                  className="hover:text-[var(--ink)] transition-colors focus-ring"
-                >
-                  Shape9 Bell
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/mode"
-                  onClick={(e) => go(e, '/mode')}
-                  className="hover:text-[var(--ink)] transition-colors focus-ring"
-                >
-                  Shape9 Mode
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/atlas"
-                  onClick={(e) => go(e, '/atlas')}
-                  className="hover:text-[var(--ink)] transition-colors focus-ring"
-                >
-                  Shape9 Atlas
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/hive"
-                  onClick={(e) => go(e, '/hive')}
-                  className="hover:text-[var(--ink)] transition-colors focus-ring"
-                >
-                  Shape9 Hive
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/echo"
-                  onClick={(e) => go(e, '/echo')}
-                  className="hover:text-[var(--ink)] transition-colors focus-ring"
-                >
-                  Shape9 Echo
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/neon"
-                  onClick={(e) => go(e, '/neon')}
-                  className="hover:text-[var(--ink)] transition-colors focus-ring"
-                >
-                  Shape9 Neon
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/libra"
-                  onClick={(e) => go(e, '/libra')}
-                  className="hover:text-[var(--ink)] transition-colors focus-ring"
-                >
-                  Shape9 Libra
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/vesta"
-                  onClick={(e) => go(e, '/vesta')}
-                  className="hover:text-[var(--ink)] transition-colors focus-ring"
-                >
-                  Shape9 Vesta
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/sonar"
-                  onClick={(e) => go(e, '/sonar')}
-                  className="hover:text-[var(--ink)] transition-colors focus-ring"
-                >
-                  Shape9 Sonar
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/aris"
-                  onClick={(e) => go(e, '/aris')}
-                  className="hover:text-[var(--ink)] transition-colors focus-ring"
-                >
-                  Shape9 Aris
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* COLUMN 2: FIRMA */}
-          <div>
-            <h3 className="text-xs font-extrabold uppercase tracking-wider text-[var(--ink)] mb-4">
-              <span className="l-bs">Kompanija</span>
-              <span className="l-en">Company</span>
-            </h3>
-            <ul className="space-y-2.5 text-sm">
-              <li>
-                <a
-                  href="/radovi"
-                  onClick={(e) => go(e, '/radovi')}
-                  className="hover:text-[var(--ink)] transition-colors focus-ring"
-                >
-                  <span className="l-bs">Portfolio</span>
-                  <span className="l-en">Portfolio</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/po-mjeri"
-                  onClick={(e) => go(e, '/po-mjeri')}
-                  className="hover:text-[var(--ink)] transition-colors focus-ring"
-                >
-                  <span className="l-bs">Po mjeri</span>
-                  <span className="l-en">Custom Built</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/o-nama"
-                  onClick={(e) => go(e, '/o-nama')}
-                  className="hover:text-[var(--ink)] transition-colors focus-ring"
-                >
-                  <span className="l-bs">O nama</span>
-                  <span className="l-en">About Us</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/privatnost"
-                  onClick={(e) => go(e, '/privatnost')}
-                  className="hover:text-[var(--ink)] transition-colors focus-ring"
-                >
-                  <span className="l-bs">Politika privatnosti</span>
-                  <span className="l-en">Privacy Policy</span>
-                </a>
-              </li>
             </ul>
           </div>
         </div>
 
-        {/* BOTTOM COPYRIGHT LINE */}
-        <div className="pt-8 border-t border-[var(--line)] text-xs flex flex-col sm:flex-row items-center justify-between gap-4 text-[var(--muted)]">
+        </div>
+
+        <div className="mt-9 flex flex-col items-start justify-between gap-2 border-t border-[var(--line-subtle)] pt-5 text-xs text-[var(--muted)] sm:flex-row sm:items-center">
           <div>
             © {currentYear} {COMPANY.legalName}.
             {COMPANY.idNumber && ` ID: ${COMPANY.idNumber}.`}

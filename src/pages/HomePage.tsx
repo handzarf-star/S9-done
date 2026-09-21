@@ -221,10 +221,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           the cards are the evidence for it, then the two actions. The horizon
           disc is off here: the cards carry the eye now. */}
       <Hero
+        /* The company line, Faris 2026-09-21. It replaces „Gradimo digitalna
+           rješenja koja donose opipljive rezultate", which was a second,
+           longer sentence saying the same thing in different words. One
+           tagline, and it is the one already carried in the footer, so the
+           page opens and closes on the same sentence. */
         eyebrow={
           <>
-            <span className="l-bs">Gradimo digitalna rješenja koja donose opipljive rezultate</span>
-            <span className="l-en">We build digital systems that produce measurable results</span>
+            <span className="l-bs">Gradimo digitalna iskustva koja prave razliku</span>
+            <span className="l-en">We Build Digital Experiences That Matter</span>
           </>
         }
         title={
