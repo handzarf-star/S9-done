@@ -1,0 +1,457 @@
+# Generates a clean, beautifully formatted HTML ready for Google Docs import or copy-paste
+html_content = '''<!DOCTYPE html>
+<html lang="bs">
+<head>
+  <meta charset="UTF-8">
+  <title>Shape9 Pulse · Specifikacija za izradu mini-igre (QA Simulator)</title>
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #0F172A;
+      line-height: 1.6;
+      max-width: 860px;
+      margin: 40px auto;
+      padding: 0 24px;
+      background: #FFFFFF;
+    }
+    h1 {
+      color: #6D3BF0;
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
+    }
+    .subhead {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #64748B;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      border-bottom: 2px solid #E2E8F0;
+      padding-bottom: 12px;
+    }
+    h2 {
+      color: #010D13;
+      font-size: 20px;
+      font-weight: 700;
+      margin-top: 36px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #E2E8F0;
+      padding-bottom: 6px;
+    }
+    h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #334155;
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+    p {
+      margin-bottom: 14px;
+      font-size: 14px;
+      color: #334155;
+    }
+    .callout-lead {
+      background: #F5F3FF;
+      border-left: 4px solid #A98CFF;
+      padding: 14px 18px;
+      border-radius: 6px;
+      font-weight: 600;
+      color: #4C1D95;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+      font-size: 13px;
+    }
+    th, td {
+      border: 1px solid #E2E8F0;
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #F8FAFC;
+      font-weight: 700;
+      color: #475569;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+    }
+    .token-cell {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .icon-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: #6D3BF0;
+    }
+    .icon-badge svg {
+      width: 18px;
+      height: 18px;
+      stroke: #6D3BF0;
+    }
+    /* Dialogue & Mistakes */
+    .dialogue-box {
+      margin: 10px 0;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+    .dialogue-normal {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+    }
+    .dialogue-mistake {
+      background: #FFF1F2;
+      border: 1px solid #FECDD3;
+      border-left: 4px solid #E11D48;
+    }
+    .speaker {
+      font-weight: 700;
+      color: #0F172A;
+      margin-right: 6px;
+    }
+    .mistake-badge {
+      display: block;
+      margin-top: 8px;
+      padding: 8px 12px;
+      background: #FFFFFF;
+      border: 1px solid #FDA4AF;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #9F1239;
+    }
+    .mistake-title {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 2px;
+    }
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Shape9 Pulse · Specifikacija za izradu mini-igre</h1>
+  <div class="subhead">QA SIMULATOR · KONFERENCIJA TRAVNIK (OKTOBAR) · VERZIJA 1.0</div>
+
+  <div class="callout-lead">
+    Glavna poruka štanda: „Vaša kompanija ne treba poslovati na pretpostavkama.”
+  </div>
+
+  <h2>1. Pregled koncepta i cilj</h2>
+  <p>
+    Na programerskoj konferenciji u Travniku Shape9 nastupa sa interaktivnim štandom. Cilj je privući mlade programere i studente, ali i njihove roditelje koji su vlasnici kompanija (trgovine, distribucija, proizvodnja, usluge).
+  </p>
+  <p>
+    Posjetilac stavlja profesionalne over-ear slušalice, preuzima ulogu QA kontrolora u call centru i sluša 60 sekundi razgovora. Tokom poziva na ekranu ima pristup 3 taba iz sistema sa podacima iz baze (Pravila, Adresa, Finansije). Nakon poziva odgovara na 6 jednostavnih pitanja (Da / Ne / Ne znam). Na kraju dobija poređenje: njegov parcijalni ulov (prosjek 2 od 6) naspram Pulse tačnosti (100 / 100), koja automatski u djeliću sekunde poredi svaku riječ sa bazom podataka.
+  </p>
+
+  <h2>2. Službene ikone sistema Pulse (Shape9 Design Specification)</h2>
+  <p>
+    Prema službenoj Shape9 Design Specifikaciji (<code>_spec.html</code>, kartica 21), za Pulse se koristi definisan set od 6 ikona koje predstavljaju njegove funkcije:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Ikona</th>
+        <th style="width: 35%;">Funkcija u specifikaciji</th>
+        <th style="width: 40%;">Primjena u igri</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <span class="icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
+            phone
+          </span>
+        </td>
+        <td>Telefonska centrala i audio pozivi</td>
+        <td>Prikazuje se uz audio status, vezu i dolazni poziv</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19v3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><rect x="9" y="2" width="6" height="13" rx="3"/></svg>
+            mic
+          </span>
+        </td>
+        <td>Transkripcija govora u tekst</td>
+        <td>Prikazuje se uz vizualizator govora i audio zapis</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5H3"/><path d="M12 19H3"/><path d="M14 3v4"/><path d="M16 17v4"/><path d="M21 12h-9"/><path d="M21 19h-5"/><path d="M21 5h-7"/><path d="M8 10v4"/><path d="M8 12H3"/></svg>
+            sliders-horizontal
+          </span>
+        </td>
+        <td>Prilagođena interna pravila</td>
+        <td>Prikazuje se na tabu Pravila i u upitniku</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+            file-text
+          </span>
+        </td>
+        <td>Izvještaj o svakom pozivu</td>
+        <td>Prikazuje se uz karton narudžbe i završni nalaz</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+            shield-check
+          </span>
+        </td>
+        <td>Pravna i regulatorna usklađenost</td>
+        <td>Prikazuje se uz najavu snimanja i GDPR odjavu</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+            bar-chart-3
+          </span>
+        </td>
+        <td>Analitika i QA metrika tima</td>
+        <td>Prikazuje se uz score badge (Tvoj ulov vs Pulse 100/100)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. Cjeloviti scenarij poziva sa istaknutim propustima</h2>
+  <p>
+    Trajanje: 55–60 sekundi. Jasmin (Agent) govori profesionalno i brzo; Lejla (Kupac) je užurbana i sama postavlja pitanja. Svaki propust je označen crvenim okvirom:
+  </p>
+
+  <!-- LINE 1: Missed Recording -->
+  <div class="dialogue-box dialogue-mistake">
+    <span class="speaker">[0:00 - 0:04] AGENT:</span>
+    Dobar dan, modni studio "Aura", Jasmin pri telefonu. Jesam li dobio gospođu Lejlu Hodžić?
+    <div class="mistake-badge">
+      <div class="mistake-title">❌ PROPUST 1: ZAKONSKI OBAVEZNA NAJAVA SNIMANJA</div>
+      Agent je odmah počeo razgovor bez obavezne izjave: "Poziv se snima u svrhu unapređenja usluge". Pravni i regulatorni rizik za kompaniju.
+    </div>
+  </div>
+
+  <div class="dialogue-box dialogue-normal">
+    <span class="speaker">[0:05] KUPAC:</span>
+    Dobar dan Jasmine, jeste, Lejla pri telefonu. Recite?
+  </div>
+
+  <div class="dialogue-box dialogue-normal">
+    <span class="speaker">[0:06 - 0:13] AGENT:</span>
+    Zovem samo za kratku potvrdu narudžbe... zimska jakna "Nordic", teget plava, veličina M.
+    <div style="font-size: 11px; color: #16A34A; margin-top: 4px; font-weight: 600;">
+      ✔ IDENTIFIKACIJA: Artikal i veličina su tačno navedeni po bazi.
+    </div>
+  </div>
+
+  <div class="dialogue-box dialogue-normal">
+    <span class="speaker">[0:14 - 0:18] KUPAC:</span>
+    (Upada u riječ) Joj jeste, super! Samo mi recite pošto je na kraju tačno, zaboravila sam koliko je pisalo na stranici sa popustom?
+  </div>
+
+  <!-- LINE 3: Price Mismatch -->
+  <div class="dialogue-box dialogue-mistake">
+    <span class="speaker">[0:19 - 0:24] AGENT:</span>
+    Sa uračunatim popustom i dostavom to Vam dođe tačno <b>89 maraka</b>, plaćate kuriru pri preuzimanju.
+    <div class="mistake-badge">
+      <div class="mistake-title">❌ PROPUST 2: SISTEMSKA NEUSKLAĐENOST CIJENE (-40,00 KM)</div>
+      U sistemu i tabu "Finansije" stoji <b>129,00 KM</b>. Agent izgovara <b>89 KM</b>. Kupac pristaje, a firma trpi direktan finansijski gubitak od 40 KM. Ljudsko uho ovo označava kao "Prošlo" jer zvuči tečno; samo poređenjem sa bazom ovaj propust postaje vidljiv.
+    </div>
+  </div>
+
+  <div class="dialogue-box dialogue-normal">
+    <span class="speaker">[0:25 - 0:28] KUPAC:</span>
+    E odlično, super, odgovara.
+  </div>
+
+  <div class="dialogue-box dialogue-normal">
+    <span class="speaker">[0:29 - 0:34] KUPAC:</span>
+    A recite mi kad otprilike stiže? Na putu sam od petka pa da znam hoće li prije stići?
+  </div>
+
+  <!-- LINE 4: Delivery Time -->
+  <div class="dialogue-box dialogue-mistake">
+    <span class="speaker">[0:35 - 0:40] AGENT:</span>
+    Ma nema brige, javit će se Vama kurir na ovaj broj prije nego krene na adresu.
+    <div class="mistake-badge">
+      <div class="mistake-title">❌ PROPUST 3: IZBJEGAVANJE NAVOĐENJA ROKA DOSTAVE</div>
+      Kupac izričito pita za termin prije petka. Pravilo nalaže saopštavanje tačnog roka od <b>2 do 4 radna dana</b>. Agent daje neodređen odgovor, stvarajući rizik propale dostave.
+    </div>
+  </div>
+
+  <div class="dialogue-box dialogue-normal">
+    <span class="speaker">[0:41 - 0:48] KUPAC:</span>
+    Važi. I dajte molim Vas samo zabilježite tamo da mi više ne šaljete one promotivne poruke na Viber, stalno mi telefon zvoni na sastancima.
+  </div>
+
+  <!-- LINE 5: Opt-out Skipped -->
+  <div class="dialogue-box dialogue-mistake">
+    <span class="speaker">[0:49 - 0:52] AGENT:</span>
+    Naravno, sve u redu, zabilježeno.
+    <div class="mistake-badge">
+      <div class="mistake-title">❌ PROPUST 4: IGNORISANJE ZAHTJEVA ZA DEREGISTRACIJU (GDPR RIZIK)</div>
+      Pravilo nalaže obavezan unos broja telefona u registar odjave. Agent samo verbalno prelazi preko zahtjeva bez formalne potvrde unosa, što stvara rizik od ponovljenog prigovora i prijave.
+    </div>
+  </div>
+
+  <!-- LINE 6: Address Mismatch -->
+  <div class="dialogue-box dialogue-mistake">
+    <span class="speaker">[0:53 - 0:57] AGENT:</span>
+    I samo još da potvrdimo lokaciju: šaljemo na <b>Maršala Tita broj 11</b>, Sarajevo?
+    <div class="mistake-badge">
+      <div class="mistake-title">❌ PROPUST 5: SISTEMSKA NEUSKLAĐENOST ADRESE (BROJ 11 vs 1)</div>
+      U sistemu i tabu "Adresa" stoji <b>Maršala Tita broj 1</b>. Agent izgovara broj <b>11</b>. Paket odlazi na pogrešnu zgradu/ulaz, kurir ne pronalazi kupca, a trošak povrata ide firmi.
+    </div>
+  </div>
+
+  <div class="dialogue-box dialogue-normal">
+    <span class="speaker">[0:58] KUPAC:</span>
+    Tako je, stan 4.
+  </div>
+
+  <div class="dialogue-box dialogue-normal">
+    <span class="speaker">[0:59] AGENT:</span>
+    Dogovoreno. Hvala Vam puno na kupovini i ugodan dan!
+  </div>
+
+  <div class="dialogue-box dialogue-normal">
+    <span class="speaker">[1:00] KUPAC:</span>
+    Hvala Vam, prijatno.
+  </div>
+
+  <p style="font-size: 12px; color: #64748B; font-style: italic; margin-top: 10px;">
+    [1:01] (Zvuk spuštanja slušalice centrale)
+  </p>
+
+  <h2>4. Prikaz 3 Taba tokom poziva</h2>
+  <p>
+    Igrač tokom slušanja poziva klikće između 3 taba. Klik na jedan tab skriva ostale:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Tab</th>
+        <th style="width: 45%;">Podaci na ekranu</th>
+        <th style="width: 30%;">Kritični podatak</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>📋 PRAVILA</b></td>
+        <td>
+          • Pravilo 1: Najava snimanja na početku<br>
+          • Pravilo 2: Rok isporuke (2 do 4 radna dana)<br>
+          • Pravilo 3: Registar odjave sa poruka
+        </td>
+        <td>Agent mora ispoštovati sve 3 procedure</td>
+      </tr>
+      <tr>
+        <td><b>📍 ADRESA</b></td>
+        <td>
+          • Kupac: Lejla Hodžić<br>
+          • Telefon: +387 61 234 567<br>
+          • Adresa: Maršala Tita broj 1, Stan 4
+        </td>
+        <td><b>U bazi je broj 1</b> (agent kaže 11)</td>
+      </tr>
+      <tr>
+        <td><b>💳 FINANSIJE</b></td>
+        <td>
+          • Artikal: Jakna Nordic (Teget, M)<br>
+          • Plaćanje: Pouzećem kuriru<br>
+          • Iznos: 129,00 KM (sa PDV-om i dostavom)
+        </td>
+        <td><b>U bazi je 129 KM</b> (agent kaže 89 KM)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>5. Upitnik za posjetioca (Da / Ne / Ne znam)</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 8%;">#</th>
+        <th style="width: 47%;">Pitanje</th>
+        <th style="width: 15%;">Tačan odgovor</th>
+        <th style="width: 30%;">Zašto je tačan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Da li je agent na početku najavio da se poziv snima?</td>
+        <td><b>Ne</b></td>
+        <td>Preskočio zakonsku napomenu</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Da li je artikal i veličina tačno potvrđena?</td>
+        <td><b>Da</b></td>
+        <td>Jakna Nordic, teget plava, veličina M</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Da li je agent izgovorio tačan iznos za plaćanje iz baze?</td>
+        <td><b>Ne</b></td>
+        <td>Rekao 89 KM umjesto 129 KM iz baze</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Da li je agent naveo tačan rok isporuke (2 do 4 dana)?</td>
+        <td><b>Ne</b></td>
+        <td>Rekao neodređeno 'javiće se kurir'</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Da li je propisno evidentiran zahtjev za odjavu sa poruka?</td>
+        <td><b>Ne</b></td>
+        <td>Rekao samo 'važi' bez unosa u nalog</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Da li je agent potvrdio tačnu adresu kupca iz baze?</td>
+        <td><b>Ne</b></td>
+        <td>Rekao broj 11 umjesto broj 1</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>6. Ekran rezultata (The Pulse Reveal)</h2>
+  <p>
+    <b>Zaglavlje:</b> Tvoj ulov: <b>X / 6</b> &nbsp;|&nbsp; Pulse Tačnost: <b style="color:#6D3BF0;">100 / 100</b>
+  </p>
+  <p>
+    • <b>Zeleni blok (Uočeno pažnjom):</b> Pohvali korisnika za stavke koje je pogodio (najava snimanja, model artikla).<br>
+    • <b>Ljubičasti blok (Promaklo zbog prebacivanja tabova):</b> Istakni cijenu (89 KM vs 129 KM) i adresu (11 vs 1) koje čovjek ne može uhvatiti dok prebacuje tabove i sluša.<br>
+    • <b>CTA za kompanije:</b> <i>„Za vlasnike kompanija: Testirajte Pulse na 50 Vaših poziva besplatno na <b>shape9.agency/pulse</b>”</i>
+  </p>
+
+</body>
+</html>
+'''
+
+with open('public/Pulse_QA_Simulator_GoogleDocs.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("Generated public/Pulse_QA_Simulator_GoogleDocs.html")

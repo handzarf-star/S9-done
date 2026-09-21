@@ -605,9 +605,47 @@ main > div > section:nth-of-type(even)::before {
   z-index: -1;
 }
 
-/* The hero sets its own top padding and is never a band. */
-main > div > section.page-hero { padding-block: 0; }
+/* The hero is never a band, but it still has to close. On a product page
+   it is the middle of three stacked fields: the scroll locked video above
+   it, itself, then the first band below. All three met on accidental edges,
+   the video's own ramp and then nothing at all, so they read as one long
+   smear rather than three things.
+
+   It keeps its own top padding, which the Hero component sets, and gains a
+   bottom one plus the same hairline every band uses. Three fields, two
+   deliberate seams. */
+main > div > section.page-hero.page-hero {
+  padding-block: 0 72px;
+  border-bottom: 1px solid var(--line-subtle);
+}
+@media (min-width: 640px) { main > div > section.page-hero.page-hero { padding-block: 0 96px; } }
 main > div > section.page-hero::before { content: none; }
+
+/* The band right under the hero would otherwise draw a second hairline on
+   top of the hero's, two lines one pixel apart. */
+main > div > section.page-hero + section::before { border-top: 0; }
+
+/* ---------- No card inside a band ----------
+   A card's fill is --deck, which is the same colour as the band it sits
+   on, so on a banded section the card was a box drawn in the band's own
+   colour: a border around nothing, a second box inside a box. Faris,
+   2026-09-21.
+
+   Inside a band the surface is the band, so the card gives up its fill,
+   its border and its top highlight, and keeps only the padding, which is
+   what holds the grid's rhythm. The gap between cards does the separating
+   there, the way it already does between paragraphs. On an unbanded
+   section nothing changes: there the card is the only surface there is. */
+main > div > section:nth-of-type(even) :is(.s9-card, .s9-card-nested, .product-card, .bento-card) {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+main > div > section:nth-of-type(even) :is(.s9-card, .product-card):hover {
+  background: rgba(255, 255, 255, 0.025);
+  border-color: transparent;
+  box-shadow: none;
+}
 
 /* ---------- No measure caps inside a section ----------
    Faris, 2026-09-21: every element in every section fills the column. The
@@ -746,10 +784,12 @@ strong, b { color: var(--ink-dim); font-weight: 600; }
 .page-hero .kick-line { text-align: center; margin-left: auto; margin-right: auto; }
 .page-hero .s9-badge { margin-left: auto; margin-right: auto; }
 
-/* A product or case hero that is not the home page just ends. It does not
-   need its own closing mark; the section-head that follows already opens
-   on a rule, and a signature repeated on every page stops being one. */
-.page-hero:not(:has(.horizon)) { padding-bottom: 8px; }
+/* This used to close a product hero with 8px, on the reasoning that the
+   section head below opened on a rule of its own. That reasoning expired
+   when sections became bands: the head no longer carries a rule, the band
+   does, and 8px left the hero's last button pressed against the band's
+   top edge. The closing distance is now set once, with the band rhythm,
+   further up. Kept as a no-op so the note survives. */
 
 /* ---------- One axis ----------
    Every section header starts at the same left edge as the content column.
