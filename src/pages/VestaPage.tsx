@@ -265,7 +265,7 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
        badge carries the first line rather than the film's eyebrow. */
     <div className="pt-28 sm:pt-40 pb-24 sm:pb-28 relative z-10 w-full max-w-full overflow-x-clip">
       <section className="page-hero px-4 sm:px-6 max-w-5xl mx-auto relative">
-        <div className="hero-animate-1 mb-4 sm:mb-6">
+        <div className="hero-animate-1 mb-6 sm:mb-8">
           <span
             className="s9-badge inline-flex items-center gap-2 mx-auto"
             style={{ color: ACCENT, backgroundColor: `rgba(${ACCENT_RGB}, 0.1)`, borderColor: `rgba(${ACCENT_RGB}, 0.25)` }}

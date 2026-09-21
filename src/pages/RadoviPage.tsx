@@ -21,7 +21,7 @@ export const RadoviPage: React.FC<RadoviPageProps> = ({ onNavigate }) => {
     <div className="pt-32 sm:pt-40 pb-28 relative z-10 w-full max-w-full overflow-x-clip">
       {/* PAGE HEADER */}
       <section className="page-hero px-4 sm:px-6 max-w-5xl mx-auto relative">
-        <div className="hero-animate-1 mb-4 sm:mb-6">
+        <div className="hero-animate-1 mb-6 sm:mb-8">
           <span className="s9-badge text-[#35C6E3] bg-[rgba(53,198,227,0.1)] border border-[rgba(53,198,227,0.25)] inline-flex items-center gap-2 mx-auto">
             <Sparkles className="w-3.5 h-3.5" />
             <span className="l-bs">Portfolio</span>

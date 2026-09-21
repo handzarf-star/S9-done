@@ -622,10 +622,16 @@ main > div > section.s9-band::before {
    bottom one plus the same hairline every band uses. Three fields, two
    deliberate seams. */
 main > div > section.page-hero.page-hero {
-  padding-block: 0 72px;
+  /* Only the bottom. `padding-block: 0 72px` also zeroed the top, which is
+     where every product page writes its own `pt-16 sm:pt-24`, so the badge
+     ended up thirty pixels under the film's closing edge, one line almost
+     touching another. The closing distance is set here; the opening one
+     belongs to the page, because it changes with whether a film sits above
+     the hero or not. */
+  padding-bottom: 72px;
   border-bottom: 1px solid var(--line-subtle);
 }
-@media (min-width: 640px) { main > div > section.page-hero.page-hero { padding-block: 0 96px; } }
+@media (min-width: 640px) { main > div > section.page-hero.page-hero { padding-bottom: 96px; } }
 main > div > section.page-hero::before { content: none; }
 
 /* The band right under the hero would otherwise draw a second hairline on

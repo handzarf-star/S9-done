@@ -161,7 +161,7 @@ export const AtlasPage: React.FC<AtlasPageProps> = ({ onNavigate }) => {
       {/* HERO SECTION. Now the first block after the video, so it carries
           the top padding the page wrapper used to provide. */}
       <section className="page-hero px-4 sm:px-6 max-w-5xl mx-auto relative pt-16 sm:pt-24">
-        <div className="hero-animate-1 mb-4 sm:mb-6">
+        <div className="hero-animate-1 mb-6 sm:mb-8">
           <span className="s9-badge text-[#FFA658] bg-[rgba(255,166,88,0.1)] border border-[rgba(255,166,88,0.25)] inline-flex items-center gap-2 mx-auto">
             <Package className="w-3.5 h-3.5" />
             <span className="l-bs">Shape9 Atlas · Napredno upravljanje skladištem (WMS)</span>

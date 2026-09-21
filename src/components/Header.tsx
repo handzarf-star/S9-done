@@ -340,6 +340,7 @@ export const Header: React.FC<HeaderProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+
   useEffect(() => {
     const handleOpenModal = () => setIsMeetingModalOpen(true);
     window.addEventListener('open-meeting-modal', handleOpenModal);

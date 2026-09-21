@@ -57,7 +57,7 @@ export function Hero({
     <section id="hero" className="page-hero w-full overflow-hidden">
       <div className="relative z-10 mx-auto w-full max-w-5xl px-4 pt-28 pb-0 text-center sm:px-6 sm:pt-36">
         {eyebrow && (
-          <div className="hero-animate-1 mb-7 flex justify-center">
+          <div className="hero-animate-1 mb-8 flex justify-center">
             <span className="eyebrow-chip">{eyebrow}</span>
           </div>
         )}
