@@ -247,6 +247,39 @@ export const VideoHero: React.FC<VideoHeroProps> = ({
           }}
         />
 
+        {/* The page's own grid, carried across the film's closing band.
+            The ramp above already lands the film on --ground, and the hero
+            underneath starts on --ground too, so the two were never a
+            different colour. What made a visible line was texture: the page
+            draws a 32px grid, `.bg-grid` in index.css, and the film is an
+            opaque lid over it. Ground with a grid met ground without one,
+            and that edge is what reads as a seam under the header.
+
+            So the grid continues through the fade instead of stopping at
+            it. Same 32px, same 0.026 white, masked on the same curve as the
+            ramp so it arrives exactly as the ground becomes solid.
+
+            `background-attachment: fixed` is the part that matters.
+            `.bg-grid` is fixed to the viewport; this panel is sticky and by
+            the time the join is on screen it has been pushed up 810px,
+            which is not a multiple of 32, so a panel-anchored grid would
+            land a third of a cell out and the lines would visibly jog.
+            Anchored to the viewport, the two are the same grid. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2"
+          style={{
+            backgroundSize: 'var(--grid) var(--grid)',
+            backgroundAttachment: 'fixed',
+            backgroundImage:
+              'linear-gradient(to right, rgba(255,255,255,0.026) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.026) 1px, transparent 1px)',
+            WebkitMaskImage:
+              'linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.72) 62%, #000 100%)',
+            maskImage:
+              'linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.72) 62%, #000 100%)',
+          }}
+        />
+
         {(eyebrow || children) && (
           <div
             className="pointer-events-none absolute inset-x-0 bottom-0 px-4 pb-16 sm:px-6 sm:pb-20"
@@ -290,11 +323,20 @@ export const VideoHero: React.FC<VideoHeroProps> = ({
         </div>
 
         {/* Progress hairline in the product's own colour. It is the only
-            indication that the hero is holding, and it disappears with it. */}
+            indication that the hero is holding, and it disappears with it.
+
+            It did not, in fact, disappear. The track sat at a constant 0.16
+            and the fill reached full width, so at the end of the hold this
+            drew a solid one pixel line in the product's colour across the
+            whole screen, at exactly the height where the film meets the
+            hero. That line was the seam people were looking at. It now
+            fades on the same curve the film does, so by the time the panel
+            bottoms out there is nothing left of it, which is what the note
+            above always claimed. */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-x-0 bottom-0 h-px"
-          style={{ background: `rgba(${accentRgb}, 0.16)` }}
+          style={{ background: `rgba(${accentRgb}, 0.16)`, opacity: 1 - fade }}
         >
           <div
             className="h-full"
