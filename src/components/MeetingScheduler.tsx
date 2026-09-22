@@ -299,22 +299,6 @@ export const MeetingScheduler: React.FC<MeetingSchedulerProps> = ({ productChip 
         </div>
       </div>
 
-      {/* What was chosen, stated once. The dialog needs 1307px of scroll on
-          a phone, so by the time someone is filling in a name the day and
-          the time are far above the fold. This line keeps the answer in
-          view instead of making them scroll back to check. */}
-      <div className="flex items-center gap-2 rounded-xl border border-[rgba(var(--cyan-rgb),0.25)] bg-[rgba(var(--cyan-rgb),0.07)] px-3.5 py-2.5">
-        <Calendar className="h-4 w-4 shrink-0 text-[var(--cyan)]" />
-        <p className="m-0 text-sm text-[var(--ink)]">
-          <span className="l-bs">
-            {selectedDayObj?.labelBs} u <strong className="font-semibold">{selectedTime}</strong>
-          </span>
-          <span className="l-en">
-            {selectedDayObj?.labelEn} at <strong className="font-semibold">{selectedTime}</strong>
-          </span>
-        </p>
-      </div>
-
       {/* STEP 3: ATTENDEE DETAILS */}
       <div className="pt-2 border-t border-[var(--line)]">
         <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--muted)] mb-3 flex items-center gap-1.5">

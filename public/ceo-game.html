@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shape9 · Ko želi biti CEO?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ground: #010D13;
+      --panel: #061A21;
+      --panel-raise: #0D222B;
+      --panel-border: rgba(255, 255, 255, 0.12);
+      --ink: #F2F5F7;
+      --ink-dim: #C2C9D3;
+      --body: #98A1AE;
+      --muted: #808997;
+      --line: rgba(255, 255, 255, 0.12);
+      --line-subtle: rgba(255, 255, 255, 0.06);
+      
+      /* Shape9 Official Brand Colors */
+      --mode: #FF6170;
+      --pulse: #A98CFF;
+      --atlas: #FFA658;
+      --libra: #3DD68C;
+      --vesta: #588DFA;
+      --aris: #C661DC;
+
+      --gold: #F59E0B;
+      --danger: #EF4444;
+      --success: #10B981;
+      
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--ground);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      overflow-x: hidden;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 1140px;
+      min-height: 700px;
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 20px;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 40px -10px rgba(0, 110, 139, 0.25);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--panel-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-logo {
+      height: 22px;
+      width: auto;
+      display: block;
+    }
+
+    .brand-tag {
+      background: rgba(78, 172, 205, 0.12);
+      color: #4EACCD;
+      border: 1px solid rgba(78, 172, 205, 0.3);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    /* 30s Countdown Timer */
+    .timer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 6px;
+      background: rgba(78, 172, 205, 0.15);
+      border: 1px solid rgba(78, 172, 205, 0.4);
+      color: #4EACCD;
+      transition: all 0.25s ease;
+    }
+
+    .timer-badge.warning {
+      background: rgba(245, 158, 11, 0.2);
+      border-color: rgba(245, 158, 11, 0.7);
+      color: #F59E0B;
+    }
+
+    .timer-badge.danger {
+      background: rgba(239, 68, 68, 0.25);
+      border-color: rgba(239, 68, 68, 0.9);
+      color: #EF4444;
+      animation: pulseDanger 0.7s infinite alternate;
+    }
+
+    @keyframes pulseDanger {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.08); box-shadow: 0 0 16px rgba(239, 68, 68, 0.6); }
+    }
+
+    .station-id {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* SCREEN 1: INTRO (For Business Owners & Decision Makers) */
+    .intro-screen {
+      padding: 36px 44px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+      overflow-y: auto;
+    }
+
+    .intro-header {
+      margin-bottom: 20px;
+    }
+
+    .intro-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .intro-subtitle {
+      font-size: 15px;
+      color: var(--body);
+      line-height: 1.5;
+      max-width: 820px;
+    }
+
+    .one-liner-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .one-liner-card {
+      background: var(--panel-raise);
+      border: 1px solid var(--panel-border);
+      border-radius: 12px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-left: 4px solid var(--card-color);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .one-liner-card:hover {
+      transform: translateX(4px);
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--card-color);
+    }
+
+    .card-icon-wrap {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--card-color);
+      flex-shrink: 0;
+    }
+
+    .card-category-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--card-color);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      white-space: nowrap;
+    }
+
+    .card-name {
+      width: 60px;
+      font-family: var(--font-mono);
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--card-color);
+      flex-shrink: 0;
+    }
+
+    .card-desc {
+      font-size: 13.5px;
+      color: var(--ink);
+      font-weight: 500;
+      line-height: 1.4;
+      flex: 1;
+    }
+
+    .btn-card-expand {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--card-color);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .btn-card-expand:hover {
+      background: var(--card-color);
+      color: #010D13;
+      font-weight: 700;
+    }
+
+    .intro-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--panel-border);
+      padding-top: 20px;
+      gap: 16px;
+    }
+
+    .intro-note {
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      line-height: 1.4;
+    }
+
+    /* SCREEN 2: MAIN ARENA */
+    .arena {
+      flex: 1;
+      display: none;
+      grid-template-columns: 1fr 270px;
+      min-height: 0;
+    }
+
+    /* Left Stage */
+    .stage {
+      padding: 28px 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid var(--panel-border);
+      overflow-y: auto;
+    }
+
+    .stage-top-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .level-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .level-badge b {
+      color: #4EACCD;
+    }
+
+    .stake-amount {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: 0.02em;
+    }
+
+    .scenario-card {
+      background: var(--panel-raise);
+      border: 1px solid var(--panel-border);
+      border-radius: 14px;
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    .scenario-role-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #4EACCD;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .scenario-text {
+      font-size: 16px;
+      line-height: 1.55;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    /* 4 Clean Options: ONLY PRODUCT NAMES */
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .opt-btn {
+      background: var(--panel-raise);
+      border: 1px solid var(--panel-border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.16s ease;
+      min-height: 64px;
+      user-select: none;
+    }
+
+    .opt-btn:hover:not(.locked) {
+      border-color: #4EACCD;
+      background: rgba(78, 172, 205, 0.1);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    }
+
+    .opt-key {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--panel-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 13.5px;
+      color: var(--ink-dim);
+      flex-shrink: 0;
+      transition: all 0.16s ease;
+    }
+
+    .opt-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+
+    /* Option States */
+    .opt-btn.selected {
+      border-color: var(--gold);
+      background: rgba(245, 158, 11, 0.16);
+    }
+    .opt-btn.selected .opt-key {
+      background: var(--gold);
+      color: #010D13;
+      border-color: var(--gold);
+    }
+
+    .opt-btn.correct {
+      border-color: var(--success) !important;
+      background: rgba(16, 185, 129, 0.22) !important;
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.35) !important;
+    }
+    .opt-btn.correct .opt-key {
+      background: var(--success);
+      color: #010D13;
+      border-color: var(--success);
+    }
+
+    .opt-btn.wrong {
+      border-color: var(--danger) !important;
+      background: rgba(239, 68, 68, 0.2) !important;
+      opacity: 0.6;
+    }
+    .opt-btn.wrong .opt-key {
+      background: var(--danger);
+      color: #010D13;
+      border-color: var(--danger);
+    }
+
+    /* NON-CLICKABLE Category Legend Ribbon (Informational only during game) */
+    .product-legend-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.28);
+      border: 1px solid var(--panel-border);
+      border-radius: 10px;
+      padding: 8px 16px;
+      margin-bottom: 14px;
+      font-size: 11.5px;
+      font-family: var(--font-mono);
+      user-select: none;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--ink-dim);
+    }
+
+    .legend-item b {
+      color: var(--item-color);
+      font-weight: 700;
+    }
+
+    /* Host Takeaway (Ultra-short, dopamine-packed) */
+    .takeaway-box {
+      display: none;
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--success);
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin-bottom: 14px;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .takeaway-text {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.45;
+      color: var(--ink);
+    }
+
+    /* Action Row */
+    .action-row {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .btn-action {
+      background: #006E8B;
+      color: #FFFFFF;
+      border: none;
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 13px 28px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 0.04em;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(0, 110, 139, 0.35);
+    }
+
+    .btn-action:hover:not(:disabled) {
+      background: #0087AA;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0, 110, 139, 0.5);
+    }
+
+    .btn-action:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--panel-border);
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 11px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: #4EACCD;
+      color: #4EACCD;
+    }
+
+    /* Right Millionaire Ladder */
+    .ladder {
+      background: rgba(0, 0, 0, 0.25);
+      padding: 22px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .ladder-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+
+    .ladder-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 5px;
+    }
+
+    .ladder-step {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 7px 12px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--muted);
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .ladder-step.active {
+      background: rgba(78, 172, 205, 0.18);
+      border-color: #4EACCD;
+      color: #4EACCD;
+      font-weight: 700;
+      transform: scale(1.03);
+    }
+
+    .ladder-step.completed {
+      color: var(--success);
+    }
+
+    .ladder-step.completed .ladder-num {
+      color: var(--success);
+    }
+
+    .ladder-step.milestone {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .ladder-step.milestone.active {
+      color: var(--gold);
+      border-color: var(--gold);
+      background: rgba(245, 158, 11, 0.2);
+    }
+
+    .ladder-num {
+      color: var(--muted);
+      font-size: 11px;
+      width: 22px;
+    }
+
+    .ladder-prize {
+      font-size: 12px;
+      letter-spacing: 0.02em;
+    }
+
+    /* SCREEN 3: GAME OVER (LOSE SCREEN) */
+    .lose-screen {
+      padding: 44px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      text-align: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .lose-icon {
+      font-size: 68px;
+      margin-bottom: 16px;
+      animation: shake 0.6s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
+    }
+
+    .lose-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: #EF4444;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .lose-desc {
+      font-size: 15px;
+      color: var(--body);
+      max-width: 580px;
+      line-height: 1.5;
+      margin-bottom: 22px;
+    }
+
+    .lose-summary-card {
+      background: var(--panel-raise);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      border-radius: 12px;
+      padding: 18px 24px;
+      max-width: 560px;
+      width: 100%;
+      margin-bottom: 26px;
+      text-align: left;
+    }
+
+    .lose-summary-line {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--panel-border);
+      font-size: 13.5px;
+    }
+
+    .lose-summary-line:last-child {
+      border-bottom: none;
+      padding-top: 10px;
+    }
+
+    /* SCREEN 4: FINISH (WIN SCREEN) */
+    .finish-screen {
+      padding: 44px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      text-align: center;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .finish-trophy {
+      font-size: 72px;
+      margin-bottom: 16px;
+      animation: floatTrophy 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatTrophy {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    .finish-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .finish-desc {
+      font-size: 15px;
+      color: var(--body);
+      max-width: 580px;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    .belief-badge {
+      background: rgba(0, 110, 139, 0.15);
+      border: 1px solid rgba(0, 110, 139, 0.4);
+      color: #4EACCD;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    /* FLOATING ARIS CHATBOT BUBBLE IN CORNER */
+    .aris-floating-widget {
+      position: fixed;
+      bottom: 24px;
+      right: 28px;
+      z-index: 950;
+      display: none; /* Shown during quiz */
+    }
+
+    .aris-launcher-btn {
+      background: rgba(18, 42, 51, 0.95);
+      border: 1px solid rgba(198, 97, 220, 0.6);
+      color: #F2F5F7;
+      padding: 10px 18px;
+      border-radius: 30px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(198, 97, 220, 0.35);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      font-weight: 700;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .aris-launcher-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(198, 97, 220, 0.55);
+      border-color: var(--aris);
+    }
+
+    .aris-launcher-btn.spent {
+      opacity: 0.55;
+      border-color: rgba(255, 255, 255, 0.15);
+      box-shadow: none;
+    }
+
+    .aris-launcher-btn .bot-icon-bubble {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(198, 97, 220, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--aris);
+      flex-shrink: 0;
+    }
+
+    .aris-online-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 8px #10B981;
+    }
+
+    .aris-uses-badge {
+      background: var(--aris);
+      color: #010D13;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 10px;
+      margin-left: 4px;
+    }
+
+    /* Floating Chat Window Pop-Up */
+    .aris-popup-card {
+      display: none;
+      position: absolute;
+      bottom: 56px;
+      right: 0;
+      width: 340px;
+      background: rgba(6, 26, 33, 0.98);
+      border: 1px solid rgba(198, 97, 220, 0.5);
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(198, 97, 220, 0.2);
+      overflow: hidden;
+      animation: popUpChat 0.2s ease;
+      backdrop-filter: blur(12px);
+    }
+
+    @keyframes popUpChat {
+      from { opacity: 0; transform: translateY(12px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .aris-popup-header {
+      padding: 12px 16px;
+      background: rgba(0, 0, 0, 0.35);
+      border-bottom: 1px solid var(--panel-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .aris-popup-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--aris);
+      text-transform: uppercase;
+    }
+
+    .aris-popup-close {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 16px;
+      line-height: 1;
+      padding: 2px;
+    }
+    .aris-popup-close:hover { color: #FFF; }
+
+    .aris-popup-body {
+      padding: 14px 16px;
+      font-size: 13.5px;
+      color: #F2F5F7;
+      line-height: 1.5;
+    }
+
+    .aris-popup-footer {
+      padding: 8px 16px;
+      background: rgba(0, 0, 0, 0.2);
+      border-top: 1px solid var(--panel-border);
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* DEDICATED SINGLE-PRODUCT EXPLAINER MODAL (NO CROSS-TABS, OPENED FROM INTRO ONLY) */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(1, 13, 19, 0.9);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .modal-card {
+      width: 100%;
+      max-width: 820px;
+      max-height: 86vh;
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 18px;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .modal-top {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--panel-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-top-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .modal-close-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--panel-border);
+      color: var(--ink-dim);
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 700;
+      transition: all 0.15s ease;
+    }
+
+    .modal-close-btn:hover {
+      background: rgba(239, 68, 68, 0.2);
+      border-color: #EF4444;
+      color: #EF4444;
+    }
+
+    .modal-body {
+      padding: 24px 28px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .prod-lead-box {
+      background: var(--panel-raise);
+      border-left: 4px solid var(--modal-color);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+    }
+
+    .prod-lead-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--modal-color);
+      margin-bottom: 4px;
+    }
+
+    .prod-lead-desc {
+      font-size: 14.5px;
+      color: var(--body);
+      line-height: 1.5;
+    }
+
+    /* Comparison Cards (Prije / Sada) */
+    .comp-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .comp-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--panel-border);
+      border-radius: 12px;
+      padding: 14px 18px;
+    }
+
+    .comp-header {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .comp-sub {
+      font-size: 12.5px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .comp-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .comp-box {
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .comp-box.before {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      color: #E2E8F0;
+    }
+
+    .comp-box.before b {
+      color: #EF4444;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .comp-box.after {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      color: #E2E8F0;
+    }
+
+    .comp-box.after b {
+      color: #10B981;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .feat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .feat-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--panel-border);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+
+    .feat-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--modal-color);
+      margin-bottom: 6px;
+    }
+
+    .feat-desc {
+      font-size: 13px;
+      color: var(--ink-dim);
+      line-height: 1.45;
+    }
+
+    .callout-issue {
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 3px solid #FFA658;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--ink-dim);
+    }
+
+    .callout-issue b {
+      color: #FFA658;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .step-card {
+      background: rgba(61, 214, 140, 0.04);
+      border: 1px solid rgba(61, 214, 140, 0.2);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+
+    .step-num {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 800;
+      color: #3DD68C;
+      margin-bottom: 4px;
+    }
+
+    .step-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .step-desc {
+      font-size: 12.5px;
+      color: var(--ink-dim);
+      line-height: 1.45;
+    }
+
+    .modal-footer {
+      padding: 14px 24px;
+      border-top: 1px solid var(--panel-border);
+      display: flex;
+      justify-content: flex-end;
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 860px) {
+      .arena { grid-template-columns: 1fr; }
+      .ladder { display: none; }
+      .options-grid { grid-template-columns: 1fr; }
+      .comp-cols { grid-template-columns: 1fr; }
+      .feat-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .product-legend-strip { flex-wrap: wrap; gap: 8px; }
+      .aris-floating-widget { bottom: 16px; right: 16px; }
+      .aris-popup-card { width: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="brand">
+        <img src="logo.svg" alt="Shape9" class="brand-logo">
+        <span class="brand-tag">Ko želi biti CEO?</span>
+      </div>
+      
+      <div class="header-right">
+        <div class="timer-badge" id="timer-badge" style="display: none;">
+          <span>⏱</span>
+          <span id="timer-count">30s</span>
+        </div>
+        <div class="station-id" id="progress-indicator">UVODNI VODIČ KROZ SOFTVERE</div>
+      </div>
+    </div>
+
+    <!-- Screen 1: Intro / Briefing Screen (For Business Owners & Decision Makers) -->
+    <div class="intro-screen" id="intro-screen">
+      <div class="intro-header">
+        <h1 class="intro-title">Dobrodošli u stolicu generalnog direktora</h1>
+        <p class="intro-subtitle">
+          Vodite kompaniju kroz 10 kriznih operativnih izazova. Svaka odluka direktno utiče na profit, zalihe i stabilnost firme. Imate 30 sekundi po odluci i 2 Aris AI asistencije. Jedna pogrešna odluka znači gubitak direktorske pozicije.
+        </p>
+      </div>
+
+      <!-- 5 Clean Cards (Clickable only here on Intro) -->
+      <div class="one-liner-grid">
+        <!-- Mode -->
+        <div class="one-liner-card" style="--card-color: var(--mode);" onclick="openSingleProduct('mode')">
+          <div class="card-icon-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12 2 2 0 0 1 2 10V7"/></svg>
+          </div>
+          <div class="card-name">Mode</div>
+          <span class="card-category-badge">Butici i maloprodaja</span>
+          <div class="card-desc">Sistem za butike i maloprodaju. Od prijema robe do isporuke artikla kupcu. Mode Vas prati svaki korak.</div>
+          <button class="btn-card-expand">Pogledaj detalje →</button>
+        </div>
+
+        <!-- Pulse -->
+        <div class="one-liner-card" style="--card-color: var(--pulse);" onclick="openSingleProduct('pulse')">
+          <div class="card-icon-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/><path d="M14.05 2a9 9 0 0 1 8 7.94"/><path d="M14.05 6A5 5 0 0 1 18 10"/></svg>
+          </div>
+          <div class="card-name">Pulse</div>
+          <span class="card-category-badge">Kontakt centri</span>
+          <div class="card-desc">Sluša i analizira pozive umjesto Vas. Provjeri hiljade poziva s kupcima ili klijentima i napravi detaljan izvještaj.</div>
+          <button class="btn-card-expand">Pogledaj detalje →</button>
+        </div>
+
+        <!-- Atlas -->
+        <div class="one-liner-card" style="--card-color: var(--atlas);" onclick="openSingleProduct('atlas')">
+          <div class="card-icon-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+          </div>
+          <div class="card-name">Atlas</div>
+          <span class="card-category-badge">Skladište</span>
+          <div class="card-desc">Napredno upravljanje skladištem (WMS). Tačno stanje zaliha, tačna polica na kojoj se artikal nalazi i red u isporuci.</div>
+          <button class="btn-card-expand">Pogledaj detalje →</button>
+        </div>
+
+        <!-- Libra -->
+        <div class="one-liner-card" style="--card-color: var(--libra);" onclick="openSingleProduct('libra')">
+          <div class="card-icon-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+          </div>
+          <div class="card-name">Libra</div>
+          <span class="card-category-badge">Dokumenti i računovodstvo</span>
+          <div class="card-desc">Kraj ručnom prekucavanju. Skenirani računi, PDF ugovori i slike sa terena automatski se razvrstavaju u foldere.</div>
+          <button class="btn-card-expand">Pogledaj detalje →</button>
+        </div>
+
+        <!-- Vesta -->
+        <div class="one-liner-card" style="--card-color: var(--vesta);" onclick="openSingleProduct('vesta')">
+          <div class="card-icon-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z"/><path d="m7 16.5-4.74-2.85"/><path d="m7 16.5 5-3"/><path d="M7 16.5v5.17"/><path d="M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z"/><path d="m17 16.5-5-3"/><path d="m17 16.5 4.74-2.85"/><path d="M17 16.5v5.17"/><path d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z"/><path d="M12 8 7.26 5.15"/><path d="m12 8 4.74-2.85"/><path d="M12 13.5V8"/></svg>
+          </div>
+          <div class="card-name">Vesta</div>
+          <span class="card-category-badge">Imovina i inventar</span>
+          <div class="card-desc">Cjelokupna imovina kompanije pod kontrolom. U svakom trenutku zna ko duži koji radni laptop, vozilo ili mašinu.</div>
+          <button class="btn-card-expand">Pogledaj detalje →</button>
+        </div>
+      </div>
+
+      <div class="intro-footer">
+        <div class="intro-note">
+          <span style="color: var(--aris); font-size: 16px;">🤖</span>
+          <span>Za sva pitanja dostupan Vam je <b>Aris AI asistent</b> u donjem desnom uglu (najviše 2 puta tokom igre).</span>
+        </div>
+        <button class="btn-action" onclick="startGame()">
+          <span>PREUZMI ULOGU CEO (START) →</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Screen 2: Arena (Question Stage + Millionaire Ladder) -->
+    <div class="arena" id="arena-box">
+      <!-- Left Stage -->
+      <div class="stage">
+        <div>
+          <div class="stage-top-meta">
+            <div class="level-badge" id="tier-badge">
+              <span>NIVO:</span> <b id="level-name">JUNIOR</b>
+            </div>
+            <div class="stake-amount" id="stake-amount">1.000 KM</div>
+          </div>
+
+          <div class="scenario-card">
+            <div class="scenario-role-tag">KRITIČNA ODLUKA UPRAVE</div>
+            <div class="scenario-text" id="scenario-text">
+              Učitavanje pitanja...
+            </div>
+          </div>
+
+          <!-- 4 Clean Options: ONLY PRODUCT NAMES -->
+          <div class="options-grid">
+            <div class="opt-btn" id="opt-A" onclick="selectOption('A')">
+              <span class="opt-key">A</span>
+              <span class="opt-name" id="opt-text-A">Mode</span>
+            </div>
+            <div class="opt-btn" id="opt-B" onclick="selectOption('B')">
+              <span class="opt-key">B</span>
+              <span class="opt-name" id="opt-text-B">Pulse</span>
+            </div>
+            <div class="opt-btn" id="opt-C" onclick="selectOption('C')">
+              <span class="opt-key">C</span>
+              <span class="opt-name" id="opt-text-C">Atlas</span>
+            </div>
+            <div class="opt-btn" id="opt-D" onclick="selectOption('D')">
+              <span class="opt-key">D</span>
+              <span class="opt-name" id="opt-text-D">Libra</span>
+            </div>
+          </div>
+
+          <!-- NON-CLICKABLE Category Legend Ribbon (Informational only during game) -->
+          <div class="product-legend-strip">
+            <div class="legend-item" style="--item-color: var(--mode);">
+              <b>Mode:</b> Butici i maloprodaja
+            </div>
+            <span style="color: var(--line);">·</span>
+            <div class="legend-item" style="--item-color: var(--pulse);">
+              <b>Pulse:</b> Kontakt centri
+            </div>
+            <span style="color: var(--line);">·</span>
+            <div class="legend-item" style="--item-color: var(--atlas);">
+              <b>Atlas:</b> Skladište
+            </div>
+            <span style="color: var(--line);">·</span>
+            <div class="legend-item" style="--item-color: var(--libra);">
+              <b>Libra:</b> Dokumenti i računovodstvo
+            </div>
+            <span style="color: var(--line);">·</span>
+            <div class="legend-item" style="--item-color: var(--vesta);">
+              <b>Vesta:</b> Imovina i inventar
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <!-- Host Takeaway (Ultra-short, dopamine-packed) -->
+          <div class="takeaway-box" id="takeaway-box">
+            <div class="takeaway-text" id="takeaway-text">
+              Tačno.
+            </div>
+          </div>
+
+          <div class="action-row">
+            <button class="btn-action" id="btn-next" onclick="nextStep()">
+              <span>POTVRDI IZBOR</span>
+              <span>→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Millionaire Ladder -->
+      <div class="ladder">
+        <div class="ladder-title">Ljestvica nagrade</div>
+        <ul class="ladder-list" id="ladder-list">
+          <!-- Injected by JS: 1.000 KM up to 1.000.000 KM -->
+        </ul>
+      </div>
+    </div>
+
+    <!-- Screen 3: Game Over Screen (On wrong answer or timeout) -->
+    <div class="lose-screen" id="lose-screen">
+      <div class="lose-icon">🚨</div>
+      <h2 class="lose-title">Kraj igre: Izgubili ste direktorsku poziciju!</h2>
+      <p class="lose-desc">
+        Pogrešna poslovna odluka donijela je prevelike finansijske gubitke i ugrozila poslovanje kompanije.
+      </p>
+
+      <div class="lose-summary-card">
+        <div class="lose-summary-line">
+          <span style="color: var(--muted);">Dosegnuti nivo:</span>
+          <b id="lose-level-reached" style="color: var(--ink);">Pitanje 1</b>
+        </div>
+        <div class="lose-summary-line">
+          <span style="color: var(--muted);">Osvojeni iznos:</span>
+          <b id="lose-prize-won" style="color: var(--gold);">0 KM</b>
+        </div>
+        <div class="lose-summary-line">
+          <span style="color: var(--muted);">Rješenje koje je trebalo spasiti firmu:</span>
+          <b id="lose-correct-winner" style="color: var(--success);">Atlas</b>
+        </div>
+        <div class="lose-summary-line">
+          <span id="lose-explanation" style="color: var(--ink-dim); font-size: 13.5px; font-weight: 500;"></span>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 12px;">
+        <button class="btn-secondary" onclick="showIntro()">
+          <span>UVODNI VODIČ ℹ</span>
+        </button>
+        <button class="btn-action" onclick="restartGame()">
+          <span>POKUŠAJ PONOVO ↺</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Screen 4: Grand CEO Victory (Win Screen) -->
+    <div class="finish-screen" id="finish-screen">
+      <div class="finish-trophy">🏆</div>
+      <h2 class="finish-title">Čestitamo! Osvojili ste 1.000.000 KM i CEO poziciju!</h2>
+      <p class="finish-desc">
+        Dokazali ste vrhunsko strateško upravljanje kompanijom i riješili svih 10 operativnih kriza pomoću pravih Shape9 sistema.
+      </p>
+
+      <div class="belief-badge">
+        „Vaša kompanija ne posluje na pretpostavkama.”
+      </div>
+
+      <button class="btn-action" onclick="restartGame()">
+        <span>IGRAJ PONOVO ↺</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- FLOATING ARIS CHATBOT IN BOTTOM RIGHT CORNER -->
+  <div class="aris-floating-widget" id="aris-floating-widget">
+    <!-- Pop-up chat window -->
+    <div class="aris-popup-card" id="aris-popup-card">
+      <div class="aris-popup-header">
+        <div class="aris-popup-title">
+          <div class="aris-online-dot"></div>
+          <span>Aris · Digitalni analitičar</span>
+        </div>
+        <button class="aris-popup-close" onclick="toggleArisPopup()">×</button>
+      </div>
+      <div class="aris-popup-body" id="aris-popup-body">
+        Učitavanje analize...
+      </div>
+      <div class="aris-popup-footer">
+        <span id="aris-uses-text">Preostalo pomoći: 2/2</span>
+        <span style="color: var(--aris);">Shape9 AI</span>
+      </div>
+    </div>
+
+    <!-- Floating launcher button -->
+    <div class="aris-launcher-btn" id="aris-launcher-btn" onclick="toggleArisPopup()">
+      <div class="bot-icon-bubble">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+      </div>
+      <span>PITAJ ARISA</span>
+      <span class="aris-uses-badge" id="aris-badge-count">2</span>
+    </div>
+  </div>
+
+  <!-- DEDICATED SINGLE-PRODUCT EXPLAINER MODAL (NO CROSS-TABS, OPENED ONLY FROM INTRO) -->
+  <div class="modal-overlay" id="product-modal" onclick="closeProductModal()">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <div class="modal-top">
+        <div class="modal-top-title" id="modal-product-title">
+          Detalji rješenja
+        </div>
+        <button class="modal-close-btn" onclick="closeProductModal()" title="Zatvori">×</button>
+      </div>
+      <div class="modal-body" id="modal-product-body">
+        <!-- Dynamically injected for that single product only -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn-action" onclick="closeProductModal()">
+          <span>ZATVORI VODIČ</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Audio Synthesizer for instant dopamine feedback without external files
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+      if (!audioCtx) audioCtx = new AudioCtx();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+    }
+
+    function playTone(freq, type, duration, delay = 0) {
+      try {
+        initAudio();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime + delay);
+        gain.gain.setValueAtTime(0.12, audioCtx.currentTime + delay);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + delay + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(audioCtx.currentTime + delay);
+        osc.stop(audioCtx.currentTime + delay + duration);
+      } catch (e) {}
+    }
+
+    function soundSelect() {
+      playTone(540, 'sine', 0.08);
+    }
+
+    function soundCorrect() {
+      playTone(523.25, 'triangle', 0.15, 0.0);   // C5
+      playTone(659.25, 'triangle', 0.18, 0.08);  // E5
+      playTone(783.99, 'triangle', 0.22, 0.16);  // G5
+      playTone(1046.50, 'triangle', 0.35, 0.24); // C6
+    }
+
+    function soundWrong() {
+      playTone(160, 'sawtooth', 0.4, 0.0);
+      playTone(120, 'sawtooth', 0.5, 0.15);
+    }
+
+    function soundWin() {
+      [523, 659, 783, 1046, 783, 1046].forEach((f, i) => {
+        playTone(f, 'triangle', 0.25, i * 0.12);
+      });
+    }
+
+    // Single product rich details definitions
+    const PRODUCT_SPECS = {
+      mode: {
+        name: "Mode",
+        color: "#FF6170",
+        lead: "Sistem za butike i maloprodaju. Od prijema robe do isporuke artikla kupcu. Mode Vas prati svaki korak.",
+        html: `
+          <div class="prod-lead-box" style="--modal-color: var(--mode);">
+            <div class="prod-lead-title">Mode: Butici i maloprodaja</div>
+            <div class="prod-lead-desc">Od prijema robe do isporuke artikla kupcu. Mode Vas prati svaki korak.</div>
+          </div>
+          <div class="comp-grid">
+            <div class="comp-card">
+              <div class="comp-header">1. Prijem robe <span class="comp-sub">· Niko ne potpisuje otpremnicu naslijepo</span></div>
+              <div class="comp-cols">
+                <div class="comp-box before"><b>Prije</b>Roba se prebroji na brzinu, otpremnica se potpiše. Manjak se otkrije kada je već kasno.</div>
+                <div class="comp-box after"><b>Sada</b>Skenirate, Mode sam utvrdi manjak ili višak. Problem je spriječen pri prijemu robe.</div>
+              </div>
+            </div>
+            <div class="comp-card">
+              <div class="comp-header">2. Prodaja <span class="comp-sub">· Prodali ste artikal: šta još iskoristiti?</span></div>
+              <div class="comp-cols">
+                <div class="comp-box before"><b>Prije</b>Kupac ode i to je kraj. Nemate dodatnih informacija.</div>
+                <div class="comp-box after"><b>Sada</b>Uz prodaju ostaje profil kupca: veličina, spol, kontakt i podaci za bolje targetiranje.</div>
+              </div>
+            </div>
+            <div class="comp-card">
+              <div class="comp-header">3. Kupci <span class="comp-sub">· Stigla nova kolekcija: koga obavijestiti?</span></div>
+              <div class="comp-cols">
+                <div class="comp-box before"><b>Prije</b>Objava na Instagramu uz nadu da će je prava osoba vidjeti.</div>
+                <div class="comp-box after"><b>Sada</b>Ponuda ide onim kupcima koji odgovaraju profilu, uz automatske poruke koje Vi odredite.</div>
+              </div>
+            </div>
+            <div class="comp-card">
+              <div class="comp-header">4. Stanje zaliha <span class="comp-sub">· Kupac traži drugi model ili veličinu</span></div>
+              <div class="comp-cols">
+                <div class="comp-box before"><b>Prije</b>Prodavač zove druge radnje ili ide u magacin dok kupac gubi strpljenje i ode.</div>
+                <div class="comp-box after"><b>Sada</b>Prodavač skenira artikal na mobitelu i vidi stanje u svim radnjama i magacinu odmah.</div>
+              </div>
+            </div>
+            <div class="comp-card">
+              <div class="comp-header">5. Dostava <span class="comp-sub">· Mode je povezan sa partnerom za dostavu</span></div>
+              <div class="comp-cols">
+                <div class="comp-box before"><b>Prije</b>Adresa se prepisuje ručno u kurirski obrazac. Greška znači paket koji se vraća.</div>
+                <div class="comp-box after"><b>Sada</b>Najava dostave se generiše iz narudžbe. Kupac dobija notifikaciju s brojem pošiljke.</div>
+              </div>
+            </div>
+            <div class="comp-card">
+              <div class="comp-header">6. Promet i marža <span class="comp-sub">· Vrijedne metrike i statistika</span></div>
+              <div class="comp-cols">
+                <div class="comp-box before"><b>Prije</b>Rezultati kojima ne možete vjerovati. Ne znate koja promocija je uspjela.</div>
+                <div class="comp-box after"><b>Sada</b>Realtime izvještaj o prodaji po prodavaču, lokaciji, artiklu i maržama.</div>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      pulse: {
+        name: "Pulse",
+        color: "#A98CFF",
+        lead: "Sluša i analizira pozive umjesto Vas. Provjeri hiljade poziva s kupcima ili klijentima i napravi detaljan izvještaj. Od audio snimka do jasnog izvještaja, potpuno automatizovano.",
+        html: `
+          <div class="prod-lead-box" style="--modal-color: var(--pulse);">
+            <div class="prod-lead-title">Pulse: Kontakt centri i analiza govora</div>
+            <div class="prod-lead-desc">Sluša i analizira pozive umjesto Vas. Provjeri hiljade poziva s kupcima ili klijentima i napravi detaljan izvještaj. Od audio snimka do jasnog izvještaja, potpuno automatizovano.</div>
+          </div>
+          <div class="feat-grid" style="--modal-color: var(--pulse);">
+            <div class="feat-card"><div class="feat-title">Transkripcija govora u tekst</div><div class="feat-desc">Precizno prepoznavanje lokalnog govora s razdvajanjem govornika i mogućnošću pretrage.</div></div>
+            <div class="feat-card"><div class="feat-title">Vaša prilagođena pravila</div><div class="feat-desc">Vi odredite šta se provjerava, Pulse to primijeni na svaki poziv jednako: je li najavljeno snimanje, jesu li objašnjeni cijena, uslovi i rok, i šta se desilo kad je klijent tražio prekid kontakta.</div></div>
+            <div class="feat-card"><div class="feat-title">Izvještaj o svakom pozivu</div><div class="feat-desc">Za svaki poziv dobijete sažetak i oznaku za ono što odstupa od Vaših pravila. Radite po popisu, ne po snimcima.</div></div>
+            <div class="feat-card"><div class="feat-title">Direktna integracija s centralom</div><div class="feat-desc">Snimci se automatski preuzimaju direktno s Vaše telefonije, bez ručnog eksporta.</div></div>
+            <div class="feat-card"><div class="feat-title">Analitika i trendovi tima</div><div class="feat-desc">Performanse agenata, učestalost pitanja i kretanje korisničkog zadovoljstva kroz vrijeme.</div></div>
+            <div class="feat-card"><div class="feat-title">Sigurnost i usklađenost</div><div class="feat-desc">Napredna enkripcija podataka i automatizovano brisanje u skladu s propisima.</div></div>
+          </div>
+        `
+      },
+      atlas: {
+        name: "Atlas",
+        color: "#FFA658",
+        lead: "Napredno upravljanje skladištem (WMS). Tačno stanje zaliha, tačna polica na kojoj se artikal nalazi i obavještenje za nabavku robe. Sve funkcije skladišnog poslovanja u jedinstvenom sistemu.",
+        html: `
+          <div class="prod-lead-box" style="--modal-color: var(--atlas);">
+            <div class="prod-lead-title">Atlas: Skladište i napredni WMS</div>
+            <div class="prod-lead-desc">Tačno stanje zaliha, tačna polica na kojoj se artikal nalazi i obavještenje za nabavku robe. Sve funkcije skladišnog poslovanja u jedinstvenom sistemu.</div>
+          </div>
+          <div class="feat-grid" style="--modal-color: var(--atlas);">
+            <div class="feat-card"><div class="feat-title">Stanje i mikrolokacije</div><div class="feat-desc">Tačan uvid u količinu, poziciju na polici i historiju kretanja artikala na svim lokacijama.</div></div>
+            <div class="feat-card"><div class="feat-title">Nabavka i dobavljači</div><div class="feat-desc">Uporedite šta je stvarno stiglo sa dostavnicom, po kojoj je cijeni roba ušla, ko ju je dostavio i kada, i je li plaćena.</div></div>
+            <div class="feat-card"><div class="feat-title">Komisioniranje i otprema</div><div class="feat-desc">Optimizovane rute kretanja kroz skladište i dvostruka verifikacija skeniranjem prije predaje kurirskoj službi.</div></div>
+            <div class="feat-card"><div class="feat-title">Međuskladišni transferi</div><div class="feat-desc">Potpuna kontrola kretanja robe između centralnih i regionalnih skladišta bez gubitaka.</div></div>
+            <div class="feat-card"><div class="feat-title">Mobilna aplikacija za radnike</div><div class="feat-desc">Intuitivno skeniranje barkodova putem industrijskih terminala ili Android pametnih telefona.</div></div>
+            <div class="feat-card"><div class="feat-title">Prodaja, kupci i šta premjestiti</div><div class="feat-desc">Vidite šta brzo napušta skladište, šta stoji mjesecima, kako se prodaje i kome.</div></div>
+          </div>
+        `
+      },
+      libra: {
+        name: "Libra",
+        color: "#3DD68C",
+        lead: "Dokumenti pristižu na različite načine. Neko ih mora ručno otvoriti i razvrstati svaki od njih. Skenirani računi, PDF ugovori, bankovni izvodi ili fotografije troškova sa terena. Libra prepoznaje o čemu je riječ, čiji je dokument i odmah ga pohranjuje u odgovarajući folder. Vi otvarate fasciklu klijenta, a dokument je već tamo.",
+        html: `
+          <div class="prod-lead-box" style="--modal-color: var(--libra);">
+            <div class="prod-lead-title">Libra: Dokumenti i računovodstvo</div>
+            <div class="prod-lead-desc">Dokumenti pristižu na različite načine: skenirani računi, PDF ugovori, bankovni izvodi ili fotografije troškova sa terena. Libra prepoznaje o čemu je riječ, čiji je dokument i odmah ga pohranjuje u odgovarajući folder. Vi otvarate fasciklu klijenta, a dokument je već tamo.</div>
+          </div>
+          <div class="callout-issue">
+            <b>Gubitak produktivnosti bez Libre:</b>
+            Najskuplji radni sat u računovodstvu je onaj potrošen na preimenovanje i sortiranje fajlova. Klijenti šalju račune bez reda i standarda. Vaši stručnjaci svakodnevno otvaraju priloge, preimenuju fajlove, kreiraju foldere i ručno ih razvrstavaju. Kada to pomnožite sa desetinama klijenata, dobijate sate izgubljene na administrativnu rutinu umjesto na stručni finansijski rad. Vrijednost Vašeg tima je u analizi i savjetovanju, a ne u ručnoj administraciji.
+          </div>
+          <div style="font-weight: 700; font-size: 14px; margin-bottom: 8px; color: var(--ink);">
+            Kako radi: Od dolazne pošte do urednog foldera u 3 jednostavna koraka
+          </div>
+          <div class="steps-grid">
+            <div class="step-card"><div class="step-num">01</div><div class="step-title">Automatski prijem</div><div class="step-desc">Dokumenti stižu na Vaš postojeći email ili u portal. Za svakog klijenta sistem zna šta je za taj mjesec već stiglo, a šta još fali.</div></div>
+            <div class="step-card"><div class="step-num">02</div><div class="step-title">Libra pročita i prepozna</div><div class="step-desc">Libra analizira sadržaj: identifikuje izdavača, period, vrstu troška i automatski pridružuje dokument tačnom klijentu.</div></div>
+            <div class="step-card"><div class="step-num">03</div><div class="step-title">Uredno arhiviranje</div><div class="step-desc">Fajl dobije uredno ime i sjedne u folder klijenta, po Vašoj strukturi. Klijent vidi dokle je stiglo i dobije obavijest. Svaka izmjena ostaje zapisana.</div></div>
+          </div>
+        `
+      },
+      vesta: {
+        name: "Vesta",
+        color: "#588DFA",
+        lead: "Cjelokupna imovina kompanije pod kontrolom, od narudžbenice do konačnog otpisa. „Kod koga se trenutno nalazi uređaj?” To je pitanje koje se u praksi ponavlja gotovo svake sedmice i redovno troši pola radnog dana.",
+        html: `
+          <div class="prod-lead-box" style="--modal-color: var(--vesta);">
+            <div class="prod-lead-title">Vesta: Imovina i inventar kompanije</div>
+            <div class="prod-lead-desc">Od narudžbenice do konačnog otpisa. „Kod koga se trenutno nalazi uređaj?” To je pitanje koje se u praksi ponavlja gotovo svake sedmice i redovno troši pola radnog dana.</div>
+          </div>
+          <div class="callout-issue">
+            <b>Problem godišnjeg popisa i terena:</b>
+            Popis radite jednom godišnje, a oprema se kreće svakodnevno. Kada je imovina raspoređena na više lokacija i pravnih lica, niko nema tačan uvid u to šta kompanija posjeduje niti gdje se pojedinačna sredstva nalaze.
+          </div>
+          <div class="feat-grid" style="--modal-color: var(--vesta);">
+            <div class="feat-card"><div class="feat-title">Tabele ne mogu pratiti dinamiku na terenu</div><div class="feat-desc">Ko je zadužen za opremu, kolika joj je knjigovodstvena vrijednost, kada ističe garancija i šta je na njoj servisirano: svi ti podaci u tabelama zastarijevaju već za nekoliko sedmica.</div></div>
+            <div class="feat-card"><div class="feat-title">Kretanje imovine bez gubitka traga</div><div class="feat-desc">Interni zakup, ustupanje ili povrat između povezanih firmi ostaje trajno zabilježen, tako da se u svakom trenutku može brzo pronaći i revidirati.</div></div>
+            <div class="feat-card"><div class="feat-title">Operativni alati za terensko osoblje</div><div class="feat-desc">Radnici na terenu mobitelom skeniraju barkod naljepnicu na sredstvu, ažuriraju status opreme na licu mjesta i odmah vide ko je zadužen.</div></div>
+            <div class="feat-card"><div class="feat-title">Sigurna revizija i otpisi</div><div class="feat-desc">Pratite amortizaciju, servisne cikluse i historiju kvarova sve do momenta rashodovanja i otpisa.</div></div>
+          </div>
+        `
+      }
+    };
+
+    // 10 Millionaire questions tailored for business owners (options are strictly product names)
+    const QUIZ_DATA = [
+      {
+        id: 1,
+        level: "Junior",
+        prize: "1.000 KM",
+        scenario: "Vlasnik ste firme čiji agenti u korisničkoj podršci svaki dan obave 1.000 poziva s kupcima. Voditeljica podrške Vam kaže: „Preslušala sam 15 poziva, sve je super!”, dok Vam nezadovoljni kupci na društvenim mrežama pišu da im podrška daje netačne informacije. Koji sistem Vam treba da biste automatski znali šta je rečeno u svakom pozivu?",
+        options: { A: "Pulse", B: "Atlas", C: "Libra", D: "Vesta" },
+        correct: "A",
+        winner: "Pulse",
+        takeaway: "Tako je. Pulse automatski provjeri svaki poziv i javi greške agenata.",
+        aris: "Pregledao sam baze. Ovaj problem se rješava automatizovanom provjerom audio poziva. Razmislite o sistemu koji sluša agente: Pulse."
+      },
+      {
+        id: 2,
+        level: "Junior",
+        prize: "2.000 KM",
+        scenario: "Vlasnik ste modnog brenda s tri butika u gradu. Kupac ulazi u radnju i traži crnu jaknu u veličini L. Radnik ne zna ima li te veličine u Vašem drugom butiku, pa troši 15 minuta zovući kolegicu telefonom dok kupac nervozno čeka, izgubi strpljenje i ode bez kupovine. Koji softver rješava ovaj problem u sekundi?",
+        options: { A: "Vesta", B: "Libra", C: "Mode", D: "Atlas" },
+        correct: "C",
+        winner: "Mode",
+        takeaway: "Tačno. Mode u realnom vremenu vidi zalihe i veličine u svim buticima.",
+        aris: "U evidenciji vidim da kupac čeka na kasi zbog veličine jakne. Za radnje, butike i veličine u svim objektima koristimo Mode."
+      },
+      {
+        id: 3,
+        level: "Junior",
+        prize: "4.000 KM",
+        scenario: "Direktor ste firme i primjećujete da Vaša asistentica prva četiri radna dana u mjesecu samo otvara mailove, skida stotine računa i slika s mobitela, ručno im mijenja imena i slaže ih po folderima. Posao kasni jer se troši vrijeme na dosadno prepisivanje. Koji Vam softver treba?",
+        options: { A: "Mode", B: "Libra", C: "Pulse", D: "Atlas" },
+        correct: "B",
+        winner: "Libra",
+        takeaway: "Tako je. Libra automatski prepozna i posloži račune bez prekucavanja.",
+        aris: "Ovo je gubljenje vremena na ručno slaganje ulaznih računa. Libra to rješava automatskim čitanjem i arhiviranjem bez prekucavanja."
+      },
+      {
+        id: 4,
+        level: "Medior",
+        prize: "8.000 KM",
+        scenario: "Kao direktor odobravate kupovinu tri nova skupa laptopa za novozaposlene radnike, jer se niko u firmi ne može sjetiti kod koga su završili računari kupljeni prije pola godine, a papirni spiskovi su odavno izgubljeni. Koji softver sprečava ovo bacanje novca?",
+        options: { A: "Mode", B: "Atlas", C: "Libra", D: "Vesta" },
+        correct: "D",
+        winner: "Vesta",
+        takeaway: "Tačno. Vesta u svakom trenutku zna ko duži koji komad opreme.",
+        aris: "U pitanju su osnovna sredstva i laptopi koji pripadaju firmi. Vesta u svakom trenutku prati ko šta duži i gdje se oprema nalazi."
+      },
+      {
+        id: 5,
+        level: "Medior",
+        prize: "16.000 KM",
+        scenario: "Direktor ste online trgovine i suočavate se s lavinom reklamacija: kupci Vam ljutito vraćaju pakete jer su umjesto naručenih bežičnih slušalica dobili obične sa kablom. Skladištari priznaju da su kutije sa sličnim šiframa bile pomiješane na istim policama i da su ih uzimali napamet. Šta uvodi red u skladište?",
+        options: { A: "Atlas", B: "Pulse", C: "Mode", D: "Vesta" },
+        correct: "A",
+        winner: "Atlas",
+        takeaway: "Tako je. Atlas skeniranjem police osigurava slanje tačnog artikla.",
+        aris: "Kupac je dobio pogrešne slušalice jer radnik nije skenirao policu. Atlas uvodi red u skladište i vodi radnika do tačne lokacije."
+      },
+      {
+        id: 6,
+        level: "Medior",
+        prize: "32.000 KM",
+        scenario: "Vlasnik ste butika i uveli ste slanje odjeće brzom poštom na kućnu adresu. Na kraju mjeseca vidite da se čak 15% paketa vratilo neuručeno, jer radnici u radnji rukom prepisuju adrese kupaca s Instagrama na papire brze pošte pa prave slovne greške. Šta rješava ovaj problem?",
+        options: { A: "Libra", B: "Mode", C: "Atlas", D: "Pulse" },
+        correct: "B",
+        winner: "Mode",
+        takeaway: "Tačno. Mode jednim klikom šalje nalog kuriru direktno sa kase.",
+        aris: "Adrese sa Instagrama se ručno prepisuju, što stvara skupe greške. Mode je povezan s kuririma i rješava dostavu jednim klikom sa kase."
+      },
+      {
+        id: 7,
+        level: "Senior",
+        prize: "64.000 KM",
+        scenario: "Na Vaš sto generalnog direktora stiže pismo advokata od klijenta koji prijeti tužbom, tvrdeći da mu je Vaš agent preko telefona obećao besplatnu uslugu i 50% popusta. Advokat traži tačan snimak razgovora, a Vaš IT tim kaže da u arhivi ima 20.000 snimaka i da bi im trebali mjeseci da to ručno preslušaju. Šta Vam treba?",
+        options: { A: "Atlas", B: "Vesta", C: "Pulse", D: "Libra" },
+        correct: "C",
+        winner: "Pulse",
+        takeaway: "Tačno. Pulse u par sekundi pronađe tačnu rečenicu u 20.000 poziva.",
+        aris: "Analizirao sam pravni rizik: traži se pronalazak tačnog obećanja u 20.000 audio zapisa. Treba Vam sistem za automatsku transkripciju i pretragu govora: Pulse."
+      },
+      {
+        id: 8,
+        level: "Senior",
+        prize: "125.000 KM",
+        scenario: "Vodite grupu od nekoliko povezanih firmi. Dolazi porezna inspekcija i traži tačan spisak svih službenih automobila, laptopa i industrijskih mašina: gdje se tačno nalaze, ko ih vozi i kolika im je trenutna vrijednost. Direktori Vam donose tri različite Excel tabele koje se uopšte ne slažu. Koji Vam sistem treba?",
+        options: { A: "Vesta", B: "Atlas", C: "Mode", D: "Pulse" },
+        correct: "A",
+        winner: "Vesta",
+        takeaway: "Tako je. Vesta vodi centralni registar kompletne imovine kompanije.",
+        aris: "Ovdje se ne radi o robi za prodaju kupcima, već o internoj imovini firme (automobili, laptopi, mašine). Za praćenje ko šta duži i gdje se nalazi zadužena je Vesta."
+      },
+      {
+        id: 9,
+        level: "Senior",
+        prize: "250.000 KM",
+        scenario: "Kao CEO planirate veliku novu nabavku, ali finansijski direktor i šef skladišta imaju ogromnu razliku od 300.000 KM u procjeni trenutnih zaliha robe za prodaju. Na papiru piše jedno, a police skladišta su poluprazne. Zbog ovog haosa ne znate stvarno stanje firme. Šta uvodi potpunu tačnost zaliha?",
+        options: { A: "Mode", B: "Libra", C: "Pulse", D: "Atlas" },
+        correct: "D",
+        winner: "Atlas",
+        takeaway: "Tačno. Atlas vodi radnika skenerom i drži tačnost zaliha iznad 99%.",
+        aris: "Problem je neusklađenost stanja u skladištu i na papiru za robu na stanju. WMS sistem sa barkod skenerima i mikrolokacijama polica je Atlas."
+      },
+      {
+        id: 10,
+        level: "CEO",
+        prize: "1.000.000 KM",
+        scenario: "Vodite računovodstvenu firmu sa 100 klijenata. Zadnji je dan u mjesecu za predaju poreza, a klijenti Vam odjednom pošalju na stotine slika računa sa pumpi, prodavnica i kafića. Vaš tim radi cijelu noć premoren prepisujući iznose sa slika, greške se gomilaju, a klijenti prijete odlaskom zbog mogućih kazni inspekcije. Koji sistem spašava firmu od ovog haosa?",
+        options: { A: "Mode", B: "Libra", C: "Atlas", D: "Pulse" },
+        correct: "B",
+        winner: "Libra",
+        takeaway: "Tako je. Libra očitava račune sa slika i automatizuje kraj mjeseca.",
+        aris: "Analiziram problem: gomila fotografija ulaznih računa i ručno prekucavanje troškova pred kraj mjeseca. Sistem koji sam prepoznaje stavke i razvrstava dokumentaciju je Libra."
+      }
+    ];
+
+    let currentIndex = 0;
+    let selectedKey = null;
+    let isRevealed = false;
+    
+    // Aris AI State: Unlocked for all levels, max 2 uses per game
+    let arisUsesLeft = 2;
+    let arisUsedInCurrentQuestion = false;
+
+    // Timer variables
+    let timerSecondsLeft = 30;
+    let timerInterval = null;
+
+    function startTimer() {
+      clearInterval(timerInterval);
+      timerSecondsLeft = 30;
+      updateTimerBadge();
+      document.getElementById('timer-badge').style.display = 'inline-flex';
+
+      timerInterval = setInterval(() => {
+        timerSecondsLeft--;
+        updateTimerBadge();
+
+        if (timerSecondsLeft <= 0) {
+          clearInterval(timerInterval);
+          handleTimeExpired();
+        }
+      }, 1000);
+    }
+
+    function stopTimer() {
+      clearInterval(timerInterval);
+    }
+
+    function updateTimerBadge() {
+      const badge = document.getElementById('timer-badge');
+      const count = document.getElementById('timer-count');
+      count.innerText = `${timerSecondsLeft}s`;
+
+      badge.classList.remove('warning', 'danger');
+      if (timerSecondsLeft <= 5) {
+        badge.classList.add('danger');
+      } else if (timerSecondsLeft <= 10) {
+        badge.classList.add('warning');
+      }
+    }
+
+    function handleTimeExpired() {
+      if (isRevealed) return;
+      handleLoss(true);
+    }
+
+    function startGame() {
+      initAudio();
+      document.getElementById('intro-screen').style.display = 'none';
+      document.getElementById('arena-box').style.display = 'grid';
+      document.getElementById('aris-floating-widget').style.display = 'block';
+      currentIndex = 0;
+      arisUsesLeft = 2;
+      updateArisLauncherBadge();
+      buildLadder();
+      renderQuestion();
+    }
+
+    function showIntro() {
+      stopTimer();
+      document.getElementById('lose-screen').style.display = 'none';
+      document.getElementById('finish-screen').style.display = 'none';
+      document.getElementById('arena-box').style.display = 'none';
+      document.getElementById('timer-badge').style.display = 'none';
+      document.getElementById('aris-floating-widget').style.display = 'none';
+      document.getElementById('intro-screen').style.display = 'flex';
+    }
+
+    function restartGame() {
+      stopTimer();
+      document.getElementById('lose-screen').style.display = 'none';
+      document.getElementById('finish-screen').style.display = 'none';
+      document.getElementById('arena-box').style.display = 'grid';
+      document.getElementById('aris-floating-widget').style.display = 'block';
+      currentIndex = 0;
+      arisUsesLeft = 2;
+      updateArisLauncherBadge();
+      buildLadder();
+      renderQuestion();
+    }
+
+    function buildLadder() {
+      const list = document.getElementById('ladder-list');
+      list.innerHTML = '';
+      QUIZ_DATA.forEach((q, idx) => {
+        const li = document.createElement('li');
+        const isMilestone = (idx === 4 || idx === 9); // 16.000 KM and 1.000.000 KM
+        li.className = 'ladder-step' + (isMilestone ? ' milestone' : '');
+        li.id = `ladder-step-${idx}`;
+        li.innerHTML = `
+          <span class="ladder-num">${idx + 1}</span>
+          <span class="ladder-prize">${q.prize} ${idx === 9 ? '👑' : (isMilestone ? '★' : '')}</span>
+        `;
+        list.appendChild(li);
+      });
+    }
+
+    function updateLadder() {
+      QUIZ_DATA.forEach((_, idx) => {
+        const el = document.getElementById(`ladder-step-${idx}`);
+        if (!el) return;
+        el.classList.remove('active', 'completed');
+        if (idx === currentIndex) {
+          el.classList.add('active');
+        } else if (idx < currentIndex) {
+          el.classList.add('completed');
+        }
+      });
+    }
+
+    function renderQuestion() {
+      const q = QUIZ_DATA[currentIndex];
+      selectedKey = null;
+      isRevealed = false;
+      arisUsedInCurrentQuestion = false;
+
+      // Close Aris popup if open
+      document.getElementById('aris-popup-card').style.display = 'none';
+
+      // Update ladder & header
+      updateLadder();
+      document.getElementById('progress-indicator').innerText = `PITANJE ${q.id} OD 10`;
+      document.getElementById('level-name').innerText = q.level.toUpperCase();
+      document.getElementById('stake-amount').innerText = q.prize;
+
+      // Scenario
+      document.getElementById('scenario-text').innerText = q.scenario;
+
+      // Options: ONLY product names
+      ['A', 'B', 'C', 'D'].forEach(key => {
+        const btn = document.getElementById(`opt-${key}`);
+        const txt = document.getElementById(`opt-text-${key}`);
+        btn.className = 'opt-btn';
+        txt.innerText = q.options[key];
+      });
+
+      // Hide Takeaway
+      document.getElementById('takeaway-box').style.display = 'none';
+
+      // Action button
+      const nextBtn = document.getElementById('btn-next');
+      nextBtn.disabled = true;
+      nextBtn.innerHTML = '<span>POTVRDI IZBOR</span><span>→</span>';
+
+      startTimer();
+    }
+
+    function selectOption(key) {
+      if (isRevealed) return;
+      soundSelect();
+      selectedKey = key;
+      ['A', 'B', 'C', 'D'].forEach(k => {
+        const el = document.getElementById(`opt-${k}`);
+        if (k === key) {
+          el.classList.add('selected');
+        } else {
+          el.classList.remove('selected');
+        }
+      });
+      document.getElementById('btn-next').disabled = false;
+    }
+
+    function nextStep() {
+      if (!isRevealed) {
+        verifyAnswer();
+      } else {
+        if (currentIndex < QUIZ_DATA.length - 1) {
+          currentIndex++;
+          renderQuestion();
+        } else {
+          finishGame();
+        }
+      }
+    }
+
+    function verifyAnswer() {
+      isRevealed = true;
+      stopTimer();
+
+      const q = QUIZ_DATA[currentIndex];
+      const isCorrect = (selectedKey === q.correct);
+
+      // Lock buttons
+      ['A', 'B', 'C', 'D'].forEach(key => {
+        const el = document.getElementById(`opt-${key}`);
+        el.classList.add('locked');
+        if (key === q.correct) {
+          el.classList.add('correct');
+        } else if (key === selectedKey) {
+          el.classList.add('wrong');
+        }
+      });
+
+      if (isCorrect) {
+        soundCorrect();
+        // Show short, punchy dopamine takeaway
+        const takeawayBox = document.getElementById('takeaway-box');
+        const takeawayText = document.getElementById('takeaway-text');
+        takeawayBox.style.display = 'block';
+        takeawayText.innerText = q.takeaway;
+
+        const nextBtn = document.getElementById('btn-next');
+        nextBtn.disabled = false;
+        if (currentIndex === QUIZ_DATA.length - 1) {
+          nextBtn.innerHTML = '<span>PREUZMI CEO POZICIJU</span><span>🏆</span>';
+        } else {
+          nextBtn.innerHTML = '<span>SLJEDEĆE PITANJE</span><span>→</span>';
+        }
+      } else {
+        // WRONG ANSWER: Immediate transition to Game Over screen!
+        soundWrong();
+        setTimeout(() => {
+          handleLoss(false);
+        }, 1200);
+      }
+    }
+
+    function handleLoss(isTimeout) {
+      stopTimer();
+      soundWrong();
+      document.getElementById('arena-box').style.display = 'none';
+      document.getElementById('timer-badge').style.display = 'none';
+      document.getElementById('aris-floating-widget').style.display = 'none';
+
+      const q = QUIZ_DATA[currentIndex];
+      document.getElementById('lose-level-reached').innerText = `Pitanje ${q.id} (${q.level} nivo)`;
+      
+      // Calculate guaranteed money milestone (like Millionaire)
+      let wonMoney = "0 KM";
+      if (currentIndex >= 5) {
+        wonMoney = "16.000 KM (Sigurni prag)";
+      }
+      document.getElementById('lose-prize-won').innerText = wonMoney;
+      document.getElementById('lose-correct-winner').innerText = `${q.correct}: ${q.winner}`;
+      document.getElementById('lose-explanation').innerText = isTimeout ? 
+        `Vrijeme od 30 sekundi je isteklo! Rješenje: ${q.takeaway}` : 
+        q.takeaway;
+
+      document.getElementById('lose-screen').style.display = 'flex';
+    }
+
+    function finishGame() {
+      stopTimer();
+      soundWin();
+      document.getElementById('arena-box').style.display = 'none';
+      document.getElementById('timer-badge').style.display = 'none';
+      document.getElementById('aris-floating-widget').style.display = 'none';
+      document.getElementById('finish-screen').style.display = 'flex';
+    }
+
+    // ARIS CHATBOT FLOATING BUBBLE LOGIC
+    function toggleArisPopup() {
+      const popup = document.getElementById('aris-popup-card');
+      const body = document.getElementById('aris-popup-body');
+      const q = QUIZ_DATA[currentIndex];
+
+      if (popup.style.display === 'block') {
+        popup.style.display = 'none';
+        return;
+      }
+
+      // If already unlocked on this question
+      if (arisUsedInCurrentQuestion) {
+        body.innerHTML = `<b>Aris:</b> „${q.aris}”`;
+        popup.style.display = 'block';
+        return;
+      }
+
+      // Check remaining uses
+      if (arisUsesLeft <= 0) {
+        body.innerHTML = `<span style="color: #F87171;">Iskoristili ste obje Aris AI pomoći tokom ove igre. Kao CEO, preostale odluke donosite samostalno!</span>`;
+        popup.style.display = 'block';
+        return;
+      }
+
+      // Consume 1 use
+      arisUsesLeft--;
+      arisUsedInCurrentQuestion = true;
+      updateArisLauncherBadge();
+
+      body.innerHTML = '<span style="color: var(--muted);">Aris pretražuje operativne baze...</span>';
+      popup.style.display = 'block';
+      setTimeout(() => {
+        body.innerHTML = `<b>Aris:</b> „${q.aris}”`;
+      }, 350);
+    }
+
+    function updateArisLauncherBadge() {
+      const badge = document.getElementById('aris-badge-count');
+      const btn = document.getElementById('aris-launcher-btn');
+      const usesText = document.getElementById('aris-uses-text');
+
+      badge.innerText = arisUsesLeft;
+      usesText.innerText = `Preostalo pomoći: ${arisUsesLeft}/2`;
+
+      if (arisUsesLeft === 0) {
+        btn.classList.add('spent');
+      } else {
+        btn.classList.remove('spent');
+      }
+    }
+
+    // SINGLE-PRODUCT DEDICATED MODAL (OPENED FROM INTRO ONLY)
+    function openSingleProduct(productKey) {
+      const spec = PRODUCT_SPECS[productKey];
+      if (!spec) return;
+
+      const titleEl = document.getElementById('modal-product-title');
+      const bodyEl = document.getElementById('modal-product-body');
+
+      titleEl.innerHTML = `
+        <span style="color: ${spec.color};">${spec.name}</span>
+        <span style="font-size: 13px; font-weight: 500; color: var(--muted); margin-left: 8px;">· Detaljan pregled rješenja</span>
+      `;
+      bodyEl.innerHTML = spec.html;
+
+      document.getElementById('product-modal').style.display = 'flex';
+    }
+
+    function closeProductModal() {
+      document.getElementById('product-modal').style.display = 'none';
+    }
+
+    // Keyboard support
+    document.addEventListener('keydown', (e) => {
+      if (document.getElementById('product-modal').style.display === 'flex') {
+        if (e.key === 'Escape') closeProductModal();
+        return;
+      }
+
+      if (document.getElementById('arena-box').style.display === 'grid') {
+        const key = e.key.toUpperCase();
+        if (['A', 'B', 'C', 'D'].includes(key) && !isRevealed) {
+          selectOption(key);
+        } else if (e.key === 'Enter') {
+          const nextBtn = document.getElementById('btn-next');
+          if (!nextBtn.disabled) nextStep();
+        } else if (e.key === ' ') {
+          toggleArisPopup();
+        }
+      }
+    });
+  </script>
+</body>
+</html>

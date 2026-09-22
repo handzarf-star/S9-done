@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shape9 Pulse · QA Simulator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #010D13;
+      --panel: #061A21;
+      --panel-raise: #122A33;
+      --panel-border: rgba(255, 255, 255, 0.12);
+      --pulse: #A98CFF;
+      --pulse-rgb: 169, 140, 255;
+      --pulse-deep: #6D3BF0;
+      --pulse-glow: rgba(169, 140, 255, 0.12);
+      --danger: #F87171;
+      --danger-bg: rgba(248, 113, 113, 0.12);
+      --success: #3DD68C;
+      --success-bg: rgba(61, 214, 140, 0.12);
+      --ink: #F2F5F7;
+      --ink-dim: #C2C9D3;
+      --body: #98A1AE;
+      --muted: #808997;
+      --line: rgba(255, 255, 255, 0.12);
+      --line-subtle: rgba(255, 255, 255, 0.06);
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      padding: 20px;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 1060px;
+      min-height: 700px;
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 24px;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 40px -10px var(--pulse-glow);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      padding: 16px 28px;
+      border-bottom: 1px solid var(--panel-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-tag {
+      background: rgba(var(--pulse-rgb), 0.12);
+      color: var(--pulse);
+      border: 1px solid rgba(var(--pulse-rgb), 0.3);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .station-id {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* Main Screens */
+    .screen {
+      display: none;
+      flex: 1;
+      padding: 36px 40px;
+      flex-direction: column;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .screen.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* SCREEN 1: INTRO */
+    .intro-layout {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin: auto 0;
+      max-width: 680px;
+      align-self: center;
+    }
+
+    .headset-badge {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: rgba(var(--pulse-rgb), 0.1);
+      border: 1px solid rgba(var(--pulse-rgb), 0.25);
+      color: var(--pulse);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      margin-bottom: 24px;
+      box-shadow: 0 0 30px var(--pulse-glow);
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+      margin-bottom: 14px;
+    }
+
+    h1 span {
+      color: var(--pulse);
+    }
+
+    .intro-desc {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .btn-primary {
+      background: var(--pulse);
+      color: #06080C;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 16px 36px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 20px rgba(var(--pulse-rgb), 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(var(--pulse-rgb), 0.5);
+    }
+
+    /* SCREEN 2: CALL PLAYER WITH TABS */
+    .call-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 28px;
+      height: 100%;
+      flex: 1;
+    }
+
+    /* The System Info & Tabs */
+    .system-panel {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--panel-border);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .tab-bar {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      background: rgba(0, 0, 0, 0.35);
+      border-bottom: 1px solid var(--panel-border);
+    }
+
+    .tab-btn {
+      padding: 12px 8px;
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      cursor: pointer;
+      text-align: center;
+      border-bottom: 2px solid transparent;
+      transition: all 0.15s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .tab-btn.active {
+      color: var(--pulse);
+      border-bottom-color: var(--pulse);
+      background: rgba(var(--pulse-rgb), 0.07);
+    }
+
+    .tab-content {
+      padding: 20px;
+      flex: 1;
+      display: none;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .tab-content.active {
+      display: flex;
+    }
+
+    .info-group {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+
+    .info-lbl {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .info-val {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .info-val.highlight {
+      color: var(--pulse);
+      font-family: var(--font-mono);
+      font-size: 16px;
+    }
+
+    .tab-tip {
+      font-size: 11px;
+      color: var(--dim);
+      font-style: italic;
+      margin-top: auto;
+      text-align: center;
+    }
+
+    /* Player Panel Right */
+    .player-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--panel-border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .call-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .caller-info h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .caller-info p {
+      font-size: 12px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+    }
+
+    .live-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--danger);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--danger);
+      box-shadow: 0 0 10px var(--danger);
+      animation: pulseAnim 1.2s infinite;
+    }
+
+    @keyframes pulseAnim {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+    }
+
+    .waveform-box {
+      height: 110px;
+      background: #070A0F;
+      border: 1px solid var(--panel-border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 0 16px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .wave-bar {
+      width: 4px;
+      background: var(--pulse);
+      border-radius: 2px;
+      transition: height 0.1s ease;
+      opacity: 0.6;
+    }
+
+    .wave-bar.speaking {
+      opacity: 1;
+      box-shadow: 0 0 8px rgba(var(--pulse-rgb), 0.5);
+    }
+
+    .timer-display {
+      font-family: var(--font-mono);
+      font-size: 24px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--ink);
+    }
+
+    .flag-btn {
+      background: var(--danger-bg);
+      color: var(--danger);
+      border: 1px solid rgba(255, 92, 92, 0.3);
+      padding: 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.15s ease;
+    }
+
+    .flag-btn:active {
+      transform: scale(0.97);
+      background: rgba(255, 92, 92, 0.25);
+    }
+
+    .flags-count {
+      margin-top: 10px;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* SCREEN 3: QUIZ (DA / NE / NE ZNAM) */
+    .quiz-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .quiz-subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .questions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .question-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--panel-border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .q-text {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .q-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+    }
+
+    .q-btn {
+      padding: 10px 4px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 8px;
+      border: 1px solid var(--panel-border);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--muted);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s ease;
+    }
+
+    .q-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--ink);
+    }
+
+    .q-btn.selected-da {
+      background: var(--success-bg);
+      border-color: rgba(61, 214, 140, 0.5);
+      color: var(--success);
+    }
+
+    .q-btn.selected-ne {
+      background: var(--danger-bg);
+      border-color: rgba(255, 92, 92, 0.5);
+      color: var(--danger);
+    }
+
+    .q-btn.selected-neznam {
+      background: rgba(var(--pulse-rgb), 0.14);
+      border-color: rgba(var(--pulse-rgb), 0.45);
+      color: var(--pulse);
+    }
+
+    /* SCREEN 4: REVEAL */
+    .reveal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--panel-border);
+    }
+
+    .score-badge {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .score-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--panel-border);
+      padding: 8px 14px;
+      border-radius: 10px;
+      text-align: right;
+    }
+
+    .score-val {
+      font-size: 20px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+    }
+
+    .score-lbl {
+      font-size: 10px;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+    }
+
+    .reveal-sections {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      flex: 1;
+    }
+
+    .reveal-card {
+      border-radius: 12px;
+      padding: 14px 16px;
+      border: 1px solid var(--panel-border);
+    }
+
+    .card-good {
+      background: rgba(61, 214, 140, 0.04);
+      border-color: rgba(61, 214, 140, 0.18);
+    }
+
+    .card-missed {
+      background: rgba(var(--pulse-rgb), 0.04);
+      border-color: rgba(var(--pulse-rgb), 0.25);
+    }
+
+    .reveal-card-title {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .finding-row {
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 6px;
+      color: #D1D7E0;
+    }
+
+    .finding-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .finding-row b {
+      color: var(--ink);
+    }
+
+    .kicker-explanation {
+      font-size: 12px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 10px 14px;
+      border-radius: 8px;
+      margin-top: 8px;
+      border-left: 3px solid var(--pulse);
+      color: #E2E8F0;
+      line-height: 1.5;
+    }
+
+    .reveal-cta-bar {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid var(--panel-border);
+    }
+
+    .cta-text {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .cta-text b {
+      color: var(--ink);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--panel-border);
+      color: var(--ink);
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="brand">
+        <img src="logo.svg" alt="Shape9" style="height: 22px; width: auto; display: block;">
+        <span style="color: var(--pulse); font-weight: 700; font-size: 14px; letter-spacing: -0.01em;">Pulse</span>
+        <span class="brand-tag">QA Simulator</span>
+      </div>
+      <div class="station-id">ŠTAND TRAVNIK · STANICA 1</div>
+    </div>
+
+    <!-- SCREEN 1: INTRO -->
+    <div id="screen-intro" class="screen active">
+      <div class="intro-layout">
+        <div class="headset-badge">🎧</div>
+        <h1>Možeš li zamijeniti <span>AI kontrolora kvaliteta?</span></h1>
+        <p class="intro-desc">
+          Stavi slušalice. Tokom poziva na raspolaganju imaš <b>3 taba iz sistema</b> (Pravila, Adresa, Narudžba).<br>
+          Poslušaj 60 sekundi razgovora agenta sa kupcem i provjeri da li je sve urađeno tačno po podacima iz baze.
+        </p>
+        <button class="btn-primary" onclick="startCall()">
+          <span>STAVI SLUŠALICE I ZAPOČNI</span>
+          <span>→</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- SCREEN 2: CALL PLAYER WITH TABS -->
+    <div id="screen-call" class="screen">
+      <div class="call-layout">
+        <!-- Left: Interactive Tabbed CRM System -->
+        <div class="system-panel">
+          <div class="tab-bar">
+            <button class="tab-btn active" id="btn-tab-rules" onclick="switchTab('rules')">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:text-bottom;margin-right:4px;"><path d="M10 5H3"/><path d="M12 19H3"/><path d="M14 3v4"/><path d="M16 17v4"/><path d="M21 12h-9"/><path d="M21 19h-5"/><path d="M21 5h-7"/><path d="M8 10v4"/><path d="M8 12H3"/></svg>
+              PRAVILA
+            </button>
+            <button class="tab-btn" id="btn-tab-address" onclick="switchTab('address')">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:text-bottom;margin-right:4px;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              ADRESA
+            </button>
+            <button class="tab-btn" id="btn-tab-order" onclick="switchTab('order')">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:text-bottom;margin-right:4px;"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+              FINANSIJE
+            </button>
+          </div>
+
+          <!-- TAB 1: RULES -->
+          <div class="tab-content active" id="tab-rules">
+            <div class="info-group">
+              <div class="info-lbl">Pravilo 1: Najava snimanja</div>
+              <div class="info-val">Agent mora na početku naglasiti da se poziv snima.</div>
+            </div>
+            <div class="info-group">
+              <div class="info-lbl">Pravilo 2: Rok isporuke</div>
+              <div class="info-val">Obavezno komunicirati rok: <span style="color:var(--pulse);font-weight:700;">2 do 4 radna dana</span>.</div>
+            </div>
+            <div class="info-group">
+              <div class="info-lbl">Pravilo 3: Zahtjev za odjavu sa poruka</div>
+              <div class="info-val">Zahtjev za prestanak Viber poruka mora se unijeti u registar.</div>
+            </div>
+            <div class="tab-tip">Prebaci tab da provjeriš adresu ili iznos narudžbe.</div>
+          </div>
+
+          <!-- TAB 2: ADDRESS -->
+          <div class="tab-content" id="tab-address">
+            <div class="info-group">
+              <div class="info-lbl">Kupac</div>
+              <div class="info-val">Lejla Hodžić</div>
+            </div>
+            <div class="info-group">
+              <div class="info-lbl">Telefon</div>
+              <div class="info-val">+387 61 234 567</div>
+            </div>
+            <div class="info-group">
+              <div class="info-lbl">Adresa u bazi</div>
+              <div class="info-val highlight">Maršala Tita broj 1</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:2px;">Centar, Sarajevo (Stan 4)</div>
+            </div>
+            <div class="tab-tip">Dok gledaš adresu, ne vidiš finansije i pravila.</div>
+          </div>
+
+          <!-- TAB 3: ORDER / FINANCE -->
+          <div class="tab-content" id="tab-order">
+            <div class="info-group">
+              <div class="info-lbl">Naručeni artikal</div>
+              <div class="info-val">Zimska jakna "Nordic" (Teget plava, M)</div>
+            </div>
+            <div class="info-group">
+              <div class="info-lbl">Način plaćanja</div>
+              <div class="info-val">Pouzećem (kuriru pri dostavi)</div>
+            </div>
+            <div class="info-group">
+              <div class="info-lbl">Iznos za naplatu u bazi</div>
+              <div class="info-val highlight">129,00 KM</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:2px;">(Uračunata dostava i PDV)</div>
+            </div>
+            <div class="tab-tip">Dok gledaš finansije, ne vidiš adresu i pravila.</div>
+          </div>
+        </div>
+
+        <!-- Right: Audio Player & Action Button -->
+        <div class="player-panel">
+          <div>
+            <div class="call-meta">
+              <div class="caller-info">
+                <h3>Poziv #4418 · Audio zapis</h3>
+                <p>Agent: Jasmin | Kupac: Lejla H.</p>
+              </div>
+              <div class="live-status">
+                <span class="pulse-dot"></span>
+                <span>U TOKU</span>
+              </div>
+            </div>
+
+            <div class="waveform-box" id="waveform">
+              <!-- Bars injected by JS -->
+            </div>
+
+            <div class="timer-display" id="timer">00:00 / 00:58</div>
+          </div>
+
+          <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--panel-border); border-radius: 12px; padding: 18px; text-align: center;">
+            <div style="font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 6px;">🎧 Slušajte pažljivo i provjeravajte tabove</div>
+            <div style="font-size: 12px; color: var(--muted); line-height: 1.5;">
+              Ocjenjivanje poziva i bilježenje propusta slijedi odmah nakon što se poziv završi.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 3: QUIZ (DA / NE / NE ZNAM) -->
+    <div id="screen-quiz" class="screen">
+      <h2 class="quiz-title">Tvoja ocjena poziva</h2>
+      <p class="quiz-subtitle">Na osnovu onoga što si čuo u slušalicama i podataka iz tabova, odgovori na 6 pitanja:</p>
+
+      <div class="questions-grid">
+        <!-- Q1 -->
+        <div class="question-card" data-q="q1">
+          <div class="q-text">1. Da li je agent na početku najavio da se poziv snima?</div>
+          <div class="q-options">
+            <button class="q-btn" onclick="selectAnswer('q1', 'da')">Da</button>
+            <button class="q-btn" onclick="selectAnswer('q1', 'ne')">Ne</button>
+            <button class="q-btn" onclick="selectAnswer('q1', 'neznam')">Ne znam</button>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="question-card" data-q="q2">
+          <div class="q-text">2. Da li je artikal i veličina tačno potvrđena?</div>
+          <div class="q-options">
+            <button class="q-btn" onclick="selectAnswer('q2', 'da')">Da</button>
+            <button class="q-btn" onclick="selectAnswer('q2', 'ne')">Ne</button>
+            <button class="q-btn" onclick="selectAnswer('q2', 'neznam')">Ne znam</button>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="question-card" data-q="q3">
+          <div class="q-text">3. Da li je agent izgovorio tačan iznos za plaćanje iz baze?</div>
+          <div class="q-options">
+            <button class="q-btn" onclick="selectAnswer('q3', 'da')">Da</button>
+            <button class="q-btn" onclick="selectAnswer('q3', 'ne')">Ne</button>
+            <button class="q-btn" onclick="selectAnswer('q3', 'neznam')">Ne znam</button>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="question-card" data-q="q4">
+          <div class="q-text">4. Da li je agent naveo tačan rok isporuke (2 do 4 radna dana)?</div>
+          <div class="q-options">
+            <button class="q-btn" onclick="selectAnswer('q4', 'da')">Da</button>
+            <button class="q-btn" onclick="selectAnswer('q4', 'ne')">Ne</button>
+            <button class="q-btn" onclick="selectAnswer('q4', 'neznam')">Ne znam</button>
+          </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="question-card" data-q="q5">
+          <div class="q-text">5. Da li je propisno evidentiran zahtjev za odjavu sa Viber poruka?</div>
+          <div class="q-options">
+            <button class="q-btn" onclick="selectAnswer('q5', 'da')">Da</button>
+            <button class="q-btn" onclick="selectAnswer('q5', 'ne')">Ne</button>
+            <button class="q-btn" onclick="selectAnswer('q5', 'neznam')">Ne znam</button>
+          </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="question-card" data-q="q6">
+          <div class="q-text">6. Da li je agent potvrdio tačnu adresu kupca iz baze?</div>
+          <div class="q-options">
+            <button class="q-btn" onclick="selectAnswer('q6', 'da')">Da</button>
+            <button class="q-btn" onclick="selectAnswer('q6', 'ne')">Ne</button>
+            <button class="q-btn" onclick="selectAnswer('q6', 'neznam')">Ne znam</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-primary" style="align-self: flex-end;" onclick="showReveal()">
+        <span>UPOREDI SA PULSE NALAZOM</span>
+        <span>→</span>
+      </button>
+    </div>
+
+    <!-- SCREEN 4: REVEAL -->
+    <div id="screen-reveal" class="screen">
+      <div class="reveal-header">
+        <div>
+          <h2>Rezultat evaluacije poziva</h2>
+          <p style="font-size: 13px; color: var(--muted); font-family: var(--font-mono);">POZIV #4418 · UPOREDBA SA CRM BAZOM</p>
+        </div>
+        <div class="score-badge">
+          <div class="score-box">
+            <div class="score-lbl">Tvoj ulov</div>
+            <div class="score-val" id="user-score">2 / 6</div>
+          </div>
+          <div class="score-box" style="border-color: rgba(var(--pulse-rgb), 0.4); background: rgba(var(--pulse-rgb), 0.08);">
+            <div class="score-lbl" style="color: var(--pulse);">Pulse Tačnost</div>
+            <div class="score-val" style="color: var(--pulse);">100 / 100</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal-sections">
+        <!-- Good catches -->
+        <div class="reveal-card card-good">
+          <div class="reveal-card-title" style="color: var(--success);">
+            <span>✔</span>
+            <span>Šta si tačno procijenio</span>
+          </div>
+          <div class="finding-row" id="reveal-q1">
+            • <b>Najava snimanja:</b> Agent je odmah započeo razgovor bez obavezne zakonske najave snimanja.
+          </div>
+          <div class="finding-row" id="reveal-q2">
+            • <b>Artikal i model:</b> Zimska jakna Nordic (teget, M) je tačno specificirana.
+          </div>
+        </div>
+
+        <!-- Missed due to tabs/multi-tasking -->
+        <div class="reveal-card card-missed">
+          <div class="reveal-card-title" style="color: var(--pulse);">
+            <span>✖</span>
+            <span>Šta ti je promaklo dok si prebacivao tabove i slušao</span>
+          </div>
+          <div class="finding-row">
+            • <b>Iznos za naplatu:</b> Agent je izgovorio <b>89 KM</b>. U bazi stoji <b>129 KM</b>. <i>(Gubitak na narudžbi: 40 KM)</i>.
+          </div>
+          <div class="finding-row">
+            • <b>Adresa isporuke:</b> Agent je rekao <b>Maršala Tita 11</b>. U bazi stoji <b>Maršala Tita 1</b>. <i>(Paket odlazi na krivi ulaz/zgradu)</i>.
+          </div>
+          <div class="finding-row">
+            • <b>Rok isporuke:</b> Agent je izbjegao odgovor i rekao samo 'javiće se kurir', umjesto obaveznih <b>2 do 4 radna dana</b>.
+          </div>
+          <div class="finding-row">
+            • <b>Zahtjev za odjavu:</b> Agent je samo rekao 'važi', bez formalnog unosa broja u registar odjave.
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal-cta-bar">
+        <div class="cta-text">
+          <b>Za vlasnike kompanija:</b> Testirajte Pulse na 50 Vaših poziva besplatno na <b>shape9.agency/pulse</b>
+        </div>
+        <button class="btn-ghost" onclick="resetGame()">Ponovi igru ↺</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentScreen = 'intro';
+    let callTimer = null;
+    let secondsElapsed = 0;
+    const totalDuration = 58;
+    let answers = {};
+
+    // Initialize waveform
+    const waveformBox = document.getElementById('waveform');
+    for (let i = 0; i < 46; i++) {
+      const bar = document.createElement('div');
+      bar.className = 'wave-bar';
+      bar.style.height = `${Math.floor(Math.random() * 35) + 10}%`;
+      waveformBox.appendChild(bar);
+    }
+
+    function setScreen(screenId) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(`screen-${screenId}`).classList.add('active');
+      currentScreen = screenId;
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+      
+      document.getElementById(`btn-tab-${tabId}`).classList.add('active');
+      document.getElementById(`tab-${tabId}`).classList.add('active');
+    }
+
+    function startCall() {
+      setScreen('call');
+      switchTab('rules');
+      secondsElapsed = 0;
+      
+      const bars = document.querySelectorAll('.wave-bar');
+      
+      callTimer = setInterval(() => {
+        secondsElapsed++;
+        const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
+        const secs = String(secondsElapsed % 60).padStart(2, '0');
+        document.getElementById('timer').innerText = `${mins}:${secs} / 00:58`;
+
+        // Animate speech waves
+        bars.forEach(bar => {
+          const isSpeaking = Math.random() > 0.25;
+          if (isSpeaking) {
+            bar.style.height = `${Math.floor(Math.random() * 85) + 15}%`;
+            bar.classList.add('speaking');
+          } else {
+            bar.style.height = '10%';
+            bar.classList.remove('speaking');
+          }
+        });
+
+        if (secondsElapsed >= totalDuration) {
+          clearInterval(callTimer);
+          setTimeout(() => {
+            setScreen('quiz');
+          }, 800);
+        }
+      }, 1000);
+    }
+
+    function selectAnswer(questionId, value) {
+      answers[questionId] = value;
+      const card = document.querySelector(`[data-q="${questionId}"]`);
+      card.querySelectorAll('.q-btn').forEach(btn => {
+        btn.className = 'q-btn';
+      });
+
+      const clickedBtn = event.target;
+      if (value === 'da') clickedBtn.classList.add('selected-da');
+      if (value === 'ne') clickedBtn.classList.add('selected-ne');
+      if (value === 'neznam') clickedBtn.classList.add('selected-neznam');
+    }
+
+    function showReveal() {
+      // Correct answers:
+      // q1 (najava): NE
+      // q2 (artikal): DA
+      // q3 (iznos): NE (jer je rekao 89 umjesto 129)
+      // q4 (rok): NE (jer nije naveo 2-4 dana)
+      // q5 (odjava): NE (jer nije formalno unio)
+      // q6 (adresa): NE (jer je rekao 11 umjesto 1)
+      let score = 0;
+      if (answers['q1'] === 'ne') score++;
+      if (answers['q2'] === 'da') score++;
+      if (answers['q3'] === 'ne') score++;
+      if (answers['q4'] === 'ne') score++;
+      if (answers['q5'] === 'ne') score++;
+      if (answers['q6'] === 'ne') score++;
+
+      document.getElementById('user-score').innerText = `${score} / 6`;
+      setScreen('reveal');
+    }
+
+    function resetGame() {
+      clearInterval(callTimer);
+      answers = {};
+      document.querySelectorAll('.q-btn').forEach(btn => btn.className = 'q-btn');
+      setScreen('intro');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,634 @@
+import os
+
+html_content = '''<!DOCTYPE html>
+<html lang="bs">
+<head>
+  <meta charset="UTF-8">
+  <title>Shape9 · Ko želi biti CEO? (Specifikacija kviza)</title>
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #0F172A;
+      line-height: 1.6;
+      max-width: 920px;
+      margin: 40px auto;
+      padding: 0 24px;
+      background: #FFFFFF;
+    }
+    .header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #E2E8F0;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-img {
+      height: 28px;
+      width: auto;
+    }
+    .badge-event {
+      background: #F1F5F9;
+      color: #475569;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid #CBD5E1;
+      text-transform: uppercase;
+    }
+    h1 {
+      color: #006E8B;
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
+    }
+    .subhead {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #64748B;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    h2 {
+      color: #010D13;
+      font-size: 19px;
+      font-weight: 700;
+      margin-top: 36px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid #E2E8F0;
+      padding-bottom: 6px;
+    }
+    .callout-lead {
+      background: #F0FDF4;
+      border-left: 4px solid #3DD68C;
+      padding: 14px 18px;
+      border-radius: 6px;
+      font-weight: 600;
+      color: #166534;
+      margin-bottom: 20px;
+    }
+    .callout-info {
+      background: #F8FAFC;
+      border-left: 4px solid #006E8B;
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-size: 13.5px;
+      color: #334155;
+      margin-bottom: 16px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 20px;
+      font-size: 13px;
+    }
+    th, td {
+      border: 1px solid #E2E8F0;
+      padding: 10px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #F8FAFC;
+      font-weight: 700;
+      color: #475569;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+    }
+    .prod-section {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin-bottom: 20px;
+    }
+    .prod-badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    .comp-table th {
+      background: #EDF2F7;
+    }
+    .comp-before {
+      color: #991B1B;
+      background: #FEF2F2;
+      font-weight: 500;
+    }
+    .comp-after {
+      color: #166534;
+      background: #F0FDF4;
+      font-weight: 600;
+    }
+    .q-card {
+      margin: 20px 0;
+      padding: 16px 20px;
+      border-radius: 8px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-left: 5px solid #006E8B;
+    }
+    .q-header {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: #006E8B;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .q-scenario {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #1E293B;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .q-aris-hint {
+      background: #FAF5FF;
+      border: 1px solid #E9D5FF;
+      color: #6B21A8;
+      font-size: 13px;
+      padding: 10px 14px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .q-aris-badge {
+      background: #C661DC;
+      color: #FFFFFF;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .q-options {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 12px 0;
+      font-size: 14px;
+    }
+    .q-options li {
+      padding: 4px 0;
+      color: #334155;
+    }
+    .q-options li.correct {
+      color: #15803D;
+      font-weight: 700;
+    }
+    .q-takeaway {
+      font-size: 13px;
+      color: #166534;
+      background: #F0FDF4;
+      padding: 8px 12px;
+      border-radius: 4px;
+      border: 1px solid #BBF7D0;
+      font-weight: 600;
+    }
+    .timer-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #006E8B;
+      font-weight: 600;
+      float: right;
+    }
+    .prize-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #D97706;
+      font-weight: 700;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-bar">
+    <div class="logo-wrap">
+      <img src="logo.svg" alt="Shape9" class="logo-img">
+    </div>
+    <div class="badge-event">IT.reboot vol 6.0 · Travnik 2026</div>
+  </div>
+
+  <h1>Shape9 · Ko želi biti CEO?</h1>
+  <div class="subhead">Kompletna specifikacija kviza znanja za donosioce odluka i vlasnike firmi</div>
+
+  <div class="callout-lead">
+    <b>Segmentacija publike:</b> Dok je Pulse QA Simulator namijenjen i mlađoj i starijoj publici, igra „Ko želi biti CEO?” je dizajnirana specifično za poslovne ljude, direktore i poduzetnike sa sajma. Format je visoko kompetitivan u stilu Milionera: 10 kriznih situacija, novčana ljestvica do 1.000.000 KM, tačni odgovori su samo nazivi rješenja, a pogrešan odgovor odmah vodi na ekran poraza (gubitak direktorske pozicije).
+  </div>
+
+  <h2>1. Detaljan vodič kroz 5 Shape9 rješenja (Operativni kontekst i mogućnosti)</h2>
+  <p>Igrači i posjetioci štanda mogu pristupiti detaljima na najviše dva mjesta (kartica na uvodu i statusna traka na dnu). Svaki prozor otvara isključivo traženi proizvod bez ometajućih dodatnih tabova:</p>
+
+  <!-- MODE -->
+  <div class="prod-section" style="border-left: 4px solid #FF6170;">
+    <div class="prod-badge" style="background: rgba(255, 97, 112, 0.15); color: #FF6170;">MODE · MALOPRODAJA I BUTICI</div>
+    <div style="font-size: 15px; font-weight: 700; color: #0F172A; margin-bottom: 6px;">
+      Sistem za butike i maloprodaju. Od prijema robe do isporuke artikla kupcu. Mode Vas prati svaki korak.
+    </div>
+
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th style="width: 26%;">Segment poslovanja</th>
+          <th style="width: 37%;">Prije (Uobičajeni problemi)</th>
+          <th style="width: 37%;">Sada (Sa Mode sistemom)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>1. Prijem robe</b><br><small style="color: #64748B;">Niko ne potpisuje otpremnicu naslijepo</small></td>
+          <td class="comp-before">Roba se prebroji na brzinu, otpremnica se potpiše. Manjak se otkrije kada je već kasno.</td>
+          <td class="comp-after">Skenirate, Mode sam utvrdi manjak ili višak. Problem je spriječen pri prijemu robe.</td>
+        </tr>
+        <tr>
+          <td><b>2. Prodaja</b><br><small style="color: #64748B;">Prodali ste artikal: šta još iskoristiti?</small></td>
+          <td class="comp-before">Kupac ode i to je kraj. Nemate dodatnih informacija.</td>
+          <td class="comp-after">Uz prodaju ostaje profil kupca: veličina, spol, kontakt i podaci za bolje targetiranje.</td>
+        </tr>
+        <tr>
+          <td><b>3. Kupci</b><br><small style="color: #64748B;">Stigla nova kolekcija: koga obavijestiti?</small></td>
+          <td class="comp-before">Objava na Instagramu uz nadu da će je prava osoba vidjeti.</td>
+          <td class="comp-after">Ponuda ide onim kupcima koji odgovaraju profilu, uz automatske poruke koje Vi odredite.</td>
+        </tr>
+        <tr>
+          <td><b>4. Stanje zaliha</b><br><small style="color: #64748B;">Kupac traži drugi model ili veličinu</small></td>
+          <td class="comp-before">Prodavač zove druge radnje ili ide u magacin dok kupac gubi strpljenje i ode.</td>
+          <td class="comp-after">Prodavač skenira artikal na mobitelu i vidi stanje u svim radnjama i magacinu odmah.</td>
+        </tr>
+        <tr>
+          <td><b>5. Dostava</b><br><small style="color: #64748B;">Povezanost sa partnerom za dostavu</small></td>
+          <td class="comp-before">Adresa se prepisuje ručno u kurirski obrazac. Greška znači vraćen paket.</td>
+          <td class="comp-after">Najava dostave se generiše iz narudžbe. Kupac dobija notifikaciju s brojem pošiljke.</td>
+        </tr>
+        <tr>
+          <td><b>6. Promet i marža</b><br><small style="color: #64748B;">Vrijedne metrike i statistika</small></td>
+          <td class="comp-before">Rezultati kojima ne možete vjerovati. Ne znate koja je promocija uspjela.</td>
+          <td class="comp-after">Realtime izvještaj o prodaji po prodavaču, lokaciji, artiklu i maržama.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PULSE -->
+  <div class="prod-section" style="border-left: 4px solid #A98CFF;">
+    <div class="prod-badge" style="background: rgba(169, 140, 255, 0.15); color: #7C3AED;">PULSE · KONTROLA I ANALITIKA POZIVA</div>
+    <div style="font-size: 15px; font-weight: 700; color: #0F172A; margin-bottom: 4px;">
+      Sluša i analizira pozive umjesto Vas. Provjeri hiljade poziva s kupcima ili klijentima i napravi detaljan izvještaj.
+    </div>
+    <div style="font-size: 13.5px; color: #475569; margin-bottom: 12px;">
+      Od audio snimka do jasnog izvještaja, potpuno automatizovano.
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 32%;">Mogućnost</th>
+          <th>Operativni opis</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>Transkripcija govora u tekst</b></td>
+          <td>Precizno prepoznavanje lokalnog govora s razdvajanjem govornika i mogućnošću pretrage.</td>
+        </tr>
+        <tr>
+          <td><b>Vaša prilagođena pravila</b></td>
+          <td>Vi odredite šta se provjerava, Pulse to primijeni na svaki poziv jednako: je li najavljeno snimanje, jesu li objašnjeni cijena, uslovi i rok, i šta se desilo kad je klijent tražio prekid kontakta.</td>
+        </tr>
+        <tr>
+          <td><b>Izvještaj o svakom pozivu</b></td>
+          <td>Za svaki poziv dobijete sažetak i oznaku za ono što odstupa od Vaših pravila. Radite po popisu, ne po snimcima.</td>
+        </tr>
+        <tr>
+          <td><b>Direktna integracija s centralom</b></td>
+          <td>Snimci se automatski preuzimaju direktno s Vaše telefonije, bez ručnog eksporta.</td>
+        </tr>
+        <tr>
+          <td><b>Analitika i trendovi tima</b></td>
+          <td>Performanse agenata, učestalost pitanja i kretanje korisničkog zadovoljstva kroz vrijeme.</td>
+        </tr>
+        <tr>
+          <td><b>Sigurnost i usklađenost</b></td>
+          <td>Napredna enkripcija podataka i automatizovano brisanje u skladu s propisima.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ATLAS -->
+  <div class="prod-section" style="border-left: 4px solid #FFA658;">
+    <div class="prod-badge" style="background: rgba(255, 166, 88, 0.15); color: #C2410C;">ATLAS · NAPREDNI WMS ZA SKLADIŠTE</div>
+    <div style="font-size: 15px; font-weight: 700; color: #0F172A; margin-bottom: 4px;">
+      Napredno upravljanje skladištem (WMS). Tačno stanje zaliha, tačna polica na kojoj se artikal nalazi i obavještenje za nabavku robe.
+    </div>
+    <div style="font-size: 13.5px; color: #475569; margin-bottom: 12px;">
+      Sve funkcije skladišnog poslovanja u jedinstvenom sistemu.
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 32%;">Funkcija skladišta</th>
+          <th>Operativni opis</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>Stanje i mikrolokacije</b></td>
+          <td>Tačan uvid u količinu, poziciju na polici i historiju kretanja artikala na svim lokacijama.</td>
+        </tr>
+        <tr>
+          <td><b>Nabavka i dobavljači</b></td>
+          <td>Uporedite šta je stvarno stiglo sa dostavnicom, po kojoj je cijeni roba ušla, ko ju je dostavio i kada, i je li plaćena.</td>
+        </tr>
+        <tr>
+          <td><b>Komisioniranje i otprema</b></td>
+          <td>Optimizovane rute kretanja kroz skladište i dvostruka verifikacija skeniranjem prije predaje kurirskoj službi.</td>
+        </tr>
+        <tr>
+          <td><b>Međuskladišni transferi</b></td>
+          <td>Potpuna kontrola kretanja robe između centralnih i regionalnih skladišta bez gubitaka.</td>
+        </tr>
+        <tr>
+          <td><b>Mobilna aplikacija za radnike</b></td>
+          <td>Intuitivno skeniranje barkodova putem industrijskih terminala ili Android pametnih telefona.</td>
+        </tr>
+        <tr>
+          <td><b>Prodaja, kupci i premještanje</b></td>
+          <td>Vidite šta brzo napušta skladište, šta stoji mjesecima, kako se prodaje i kome.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- LIBRA -->
+  <div class="prod-section" style="border-left: 4px solid #3DD68C;">
+    <div class="prod-badge" style="background: rgba(61, 214, 140, 0.15); color: #15803D;">LIBRA · PAMETNA DOKUMENTACIJA I ARHIVA</div>
+    <div style="font-size: 15px; font-weight: 700; color: #0F172A; margin-bottom: 6px;">
+      Dokumenti pristižu na različite načine. Neko ih mora ručno otvoriti i razvrstati svaki od njih.
+    </div>
+    <div style="font-size: 13.5px; color: #475569; margin-bottom: 10px;">
+      Skenirani računi, PDF ugovori, bankovni izvodi ili fotografije troškova sa terena. Libra prepoznaje o čemu je riječ, čiji je dokument i odmah ga pohranjuje u odgovarajući folder. Vi otvarate fasciklu klijenta, a dokument je već tamo.
+    </div>
+    <div style="background: #FEF3C7; border-left: 3px solid #D97706; padding: 10px 14px; border-radius: 4px; font-size: 12.5px; color: #92400E; margin-bottom: 12px;">
+      <b>Gubitak produktivnosti:</b> Najskuplji radni sat u računovodstvu je onaj potrošen na preimenovanje i sortiranje fajlova. Klijenti šalju račune bez reda i standarda. Vaši stručnjaci svakodnevno otvaraju priloge, preimenuju fajlove, kreiraju foldere i ručno ih razvrstavaju. Kada to pomnožite sa desetinama klijenata, dobijate sate izgubljene na administrativnu rutinu umjesto na stručni finansijski rad. Vrijednost Vašeg tima je u analizi i savjetovanju, a ne u ručnoj administraciji.
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 25%;">Korak</th>
+          <th style="width: 25%;">Faza</th>
+          <th>Opis procesa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>01</b></td>
+          <td><b>Automatski prijem</b></td>
+          <td>Dokumenti stižu na Vaš postojeći email ili u portal. Za svakog klijenta sistem zna šta je za taj mjesec već stiglo, a šta još fali.</td>
+        </tr>
+        <tr>
+          <td><b>02</b></td>
+          <td><b>Libra pročita i prepozna</b></td>
+          <td>Libra analizira sadržaj: identifikuje izdavača, period, vrstu troška i automatski pridružuje dokument tačnom klijentu.</td>
+        </tr>
+        <tr>
+          <td><b>03</b></td>
+          <td><b>Uredno arhiviranje</b></td>
+          <td>Fajl dobije uredno ime i sjedne u folder klijenta, po Vašoj strukturi. Klijent vidi dokle je stiglo i dobije obavijest. Obje strane imaju potvrdu, svaka izmjena ostaje zapisana.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- VESTA -->
+  <div class="prod-section" style="border-left: 4px solid #588DFA;">
+    <div class="prod-badge" style="background: rgba(88, 141, 250, 0.15); color: #1D4ED8;">VESTA · KONTROLA IMOVINE KOMPANIJE</div>
+    <div style="font-size: 15px; font-weight: 700; color: #0F172A; margin-bottom: 6px;">
+      Cjelokupna imovina kompanije pod kontrolom, od narudžbenice do konačnog otpisa.
+    </div>
+    <div style="font-size: 13.5px; color: #475569; margin-bottom: 10px;">
+      „Kod koga se trenutno nalazi uređaj?” To je pitanje koje se u praksi ponavlja gotovo svake sedmice i redovno troši pola radnog dana.
+    </div>
+    <div style="background: #EFF6FF; border-left: 3px solid #3B82F6; padding: 10px 14px; border-radius: 4px; font-size: 12.5px; color: #1E40AF; margin-bottom: 12px;">
+      <b>Problem godišnjeg popisa i terena:</b> Popis radite jednom godišnje, a oprema se kreće svakodnevno. Kada je imovina raspoređena na više lokacija i pravnih lica, niko nema tačan uvid u to šta kompanija posjeduje niti gdje se pojedinačna sredstva nalaze.
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 35%;">Izazov u praksi</th>
+          <th>Kako Vesta rješava problem</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>Tabele ne mogu pratiti stvarnu dinamiku na terenu</b></td>
+          <td>Ko je zadužen za opremu, kolika joj je knjigovodstvena vrijednost, kada ističe garancija i šta je na njoj servisirano: svi ti podaci u tabelama zastarijevaju već za nekoliko sedmica. Vesta nudi živi registar u realnom vremenu.</td>
+        </tr>
+        <tr>
+          <td><b>Kretanje imovine između povezanih firmi ne ostavlja trag</b></td>
+          <td>Interni zakup, ustupanje ili povrat: ništa od toga u tabelama nije evidentirano na način da se kasnije može brzo pronaći i revidirati. Vesta prati svaki prelaz sa pravnog lica na pravno lice.</td>
+        </tr>
+        <tr>
+          <td><b>Terenskom osoblju nedostaju operativni alati</b></td>
+          <td>Radnici mogu na licu mjesta skenirati barkod naljepnicu na sredstvu, vidjeti zaduženje i ažurirati status opreme putem pametnog telefona.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>2. Mehanika Milionera, Aris Chatbot i Pravila eliminacije</h2>
+  <div class="callout-info">
+    <b>Pravila za štand i binu:</b>
+    <ul>
+      <li><b>Opcije odgovora bez teksta objašnjenja:</b> Igrač bira isključivo između naziva proizvoda: <b>[A] Mode, [B] Pulse, [C] Atlas, [D] Libra</b> ili <b>Vesta</b>. Time je ekran čist, a fokus na donošenju odluke.</li>
+      <li><b>Ekran poraza (Game Over):</b> Ukoliko igrač pogriješi ili istekne 30 sekundi, igra se prekida i prikazuje se ekran poraza sa detaljima o propustu i dugmetom za restart.</li>
+      <li><b>Ljestvica nagrade:</b> Na desnoj strani nalazi se skala iznosa (1.000 KM do 1.000.000 KM) bez otkrivanja tačnih odgovora unaprijed. Sigurni prag je na 16.000 KM (pitanje 5).</li>
+      <li><b>Aris Chatbot u uglu ekrana:</b> Aris je stilizovan kao plutajući chatbot balončić u donjem desnom uglu sa brojačem preostalih pomoći (2/2 preostalo) i dostupan je na svim pitanjima.</li>
+      <li><b>Kratka i upečatljiva potvrda:</b> Nakon tačnog odgovora prikazuje se ultra-kratka potvrda (npr. <i>„Tačno. Mode u realnom vremenu vidi zalihe i veličine u svim buticima.”</i>).</li>
+    </ul>
+  </div>
+
+  <h2>3. Pitanja, opcije, tačni odgovori i Aris AI savjeti</h2>
+'''
+
+questions_data = [
+    {
+        "num": 1,
+        "level": "Junior",
+        "prize": "1.000 KM",
+        "scenario": "Vlasnik ste firme čiji agenti u korisničkoj podršci svaki dan obave 1.000 poziva s kupcima. Voditeljica podrške Vam kaže: „Preslušala sam 15 poziva, sve je super!”, dok Vam nezadovoljni kupci na društvenim mrežama pišu da im podrška daje netačne informacije. Koji sistem Vam treba da biste automatski znali šta je rečeno u svakom pozivu?",
+        "options": ["A. Pulse", "B. Atlas", "C. Libra", "D. Vesta"],
+        "correct": "A",
+        "takeaway": "Tako je. Pulse automatski provjeri svaki poziv i odmah javi greške agenata.",
+        "aris": "Pregledao sam baze. Ovaj problem se rješava automatizovanom provjerom audio poziva. Razmislite o sistemu koji sluša agente: Pulse."
+    },
+    {
+        "num": 2,
+        "level": "Junior",
+        "prize": "2.000 KM",
+        "scenario": "Vlasnik ste modnog brenda s tri butika u gradu. Kupac ulazi u radnju i traži crnu jaknu u veličini L. Radnik ne zna ima li te veličine u Vašem drugom butiku, pa troši 15 minuta zovući kolegicu telefonom dok kupac nervozno čeka, izgubi strpljenje i ode bez kupovine. Koji softver rješava ovaj problem u sekundi?",
+        "options": ["A. Vesta", "B. Libra", "C. Mode", "D. Atlas"],
+        "correct": "C",
+        "takeaway": "Tačno. Mode u realnom vremenu vidi zalihe i veličine u svim buticima.",
+        "aris": "U evidenciji vidim da kupac čeka na kasi zbog veličine jakne. Za radnje, butike i veličine u svim objektima koristimo Mode."
+    },
+    {
+        "num": 3,
+        "level": "Junior",
+        "prize": "4.000 KM",
+        "scenario": "Direktor ste firme i primjećujete da Vaša asistentica prva četiri radna dana u mjesecu samo otvara mailove, skida stotine računa i slika s mobitela, ručno im mijenja imena i slaže ih po folderima. Posao kasni jer se troši vrijeme na dosadno prepisivanje. Koji Vam softver treba?",
+        "options": ["A. Mode", "B. Libra", "C. Pulse", "D. Atlas"],
+        "correct": "B",
+        "takeaway": "Tako je. Libra sama prepozna račune i posloži ih u foldere bez prekucavanja.",
+        "aris": "Ovo je gubljenje vremena na ručno slaganje ulaznih računa. Libra to rješava automatskim čitanjem i arhiviranjem bez prekucavanja."
+    },
+    {
+        "num": 4,
+        "level": "Medior",
+        "prize": "8.000 KM",
+        "scenario": "Kao direktor odobravate kupovinu tri nova skupa laptopa za novozaposlene radnike, jer se niko u firmi ne može sjetiti kod koga su završili računari kupljeni prije pola godine, a papirni spiskovi su odavno izgubljeni. Koji softver sprečava ovo bacanje novca?",
+        "options": ["A. Mode", "B. Atlas", "C. Libra", "D. Vesta"],
+        "correct": "D",
+        "takeaway": "Tačno. Vesta u svakom trenutku zna ko duži koji laptop i komad opreme.",
+        "aris": "U pitanju su osnovna sredstva i laptopi koji pripadaju firmi. Vesta u svakom trenutku prati ko šta duži i gdje se oprema nalazi."
+    },
+    {
+        "num": 5,
+        "level": "Medior",
+        "prize": "16.000 KM",
+        "scenario": "Direktor ste online trgovine i suočavate se s lavinom reklamacija: kupci Vam ljutito vraćaju pakete jer su umjesto naručenih bežičnih slušalica dobili obične sa kablom. Skladištari priznaju da su kutije sa sličnim šiframa bile pomiješane na istim policama i da su ih uzimali napamet. Šta uvodi red u skladište?",
+        "options": ["A. Atlas", "B. Pulse", "C. Mode", "D. Vesta"],
+        "correct": "A",
+        "takeaway": "Tako je. Atlas skeniranjem police osigurava da kupac dobije tačan artikal.",
+        "aris": "Kupac je dobio pogrešne slušalice jer radnik nije skenirao policu. Atlas uvodi red u skladište i vodi radnika do tačne lokacije."
+    },
+    {
+        "num": 6,
+        "level": "Medior",
+        "prize": "32.000 KM",
+        "scenario": "Vlasnik ste butika i uveli ste slanje odjeće brzom poštom na kućnu adresu. Na kraju mjeseca vidite da se čak 15% paketa vratilo neuručeno, jer radnici u radnji rukom prepisuju adrese kupaca s Instagrama na papire brze pošte pa prave slovne greške. Šta rješava ovaj problem?",
+        "options": ["A. Libra", "B. Mode", "C. Atlas", "D. Pulse"],
+        "correct": "B",
+        "takeaway": "Tačno. Mode jednim klikom šalje nalog kuriru direktno sa kase.",
+        "aris": "Adrese sa Instagrama se ručno prepisuju, što stvara skupe greške. Mode je povezan s kuririma i rješava dostavu jednim klikom sa kase."
+    },
+    {
+        "num": 7,
+        "level": "Senior",
+        "prize": "64.000 KM",
+        "scenario": "Na Vaš sto generalnog direktora stiže pismo advokata od klijenta koji prijeti tužbom, tvrdeći da mu je Vaš agent preko telefona obećao besplatnu uslugu i 50% popusta. Advokat traži tačan snimak razgovora, a Vaš IT tim kaže da u arhivi ima 20.000 snimaka i da bi im trebali mjeseci da to ručno preslušaju. Šta Vam treba?",
+        "options": ["A. Atlas", "B. Vesta", "C. Pulse", "D. Libra"],
+        "correct": "C",
+        "takeaway": "Tako je. Pulse za par sekundi pronađe tačnu rečenicu u hiljadama audio snimaka.",
+        "aris": "Analizirao sam pravni rizik: traži se pronalazak tačnog obećanja u 20.000 audio zapisa. Treba Vam sistem za automatsku transkripciju i pretragu govora: Pulse."
+    },
+    {
+        "num": 8,
+        "level": "Senior",
+        "prize": "125.000 KM",
+        "scenario": "Vodite grupu od nekoliko povezanih firmi. Dolazi porezna inspekcija i traži tačan spisak svih službenih automobila, laptopa i industrijskih mašina: gdje se tačno nalaze, ko ih vozi i kolika im je trenutna vrijednost. Direktori Vam donose tri različite Excel tabele koje se uopšte ne slažu. Koji Vam sistem treba?",
+        "options": ["A. Vesta", "B. Atlas", "C. Mode", "D. Pulse"],
+        "correct": "A",
+        "takeaway": "Tačno. Vesta vodi tačan centralni registar kompletne imovine kompanije.",
+        "aris": "Ovdje se ne radi o robi za prodaju kupcima, već o internoj imovini firme (automobili, laptopi, mašine). Za praćenje ko šta duži i gdje se nalazi zadužena je Vesta."
+    },
+    {
+        "num": 9,
+        "level": "Senior",
+        "prize": "250.000 KM",
+        "scenario": "Kao CEO planirate veliku novu nabavku, ali finansijski direktor i šef skladišta imaju ogromnu razliku od 300.000 KM u procjeni trenutnih zaliha robe za prodaju. Na papiru piše jedno, a police skladišta su poluprazne. Zbog ovog haosa ne znate stvarno stanje firme. Šta uvodi potpunu tačnost zaliha?",
+        "options": ["A. Mode", "B. Libra", "C. Pulse", "D. Atlas"],
+        "correct": "D",
+        "takeaway": "Tako je. Atlas vodi radnika skenerom do police i drži tačnost zaliha iznad 99%.",
+        "aris": "Problem je neusklađenost stanja u skladištu i na papiru za robu na stanju. WMS sistem sa barkod skenerima i mikrolokacijama polica je Atlas."
+    },
+    {
+        "num": 10,
+        "level": "CEO",
+        "prize": "1.000.000 KM",
+        "scenario": "Vodite računovodstvenu firmu sa 100 klijenata. Zadnji je dan u mjesecu za predaju poreza, a klijenti Vam odjednom pošalju na stotine slika računa sa pumpi, prodavnica i kafića. Vaš tim radi cijelu noć premoren prepisujući iznose sa slika, greške se gomilaju, a klijenti prijete odlaskom zbog mogućih kazni inspekcije. Koji sistem spašava firmu od ovog haosa?",
+        "options": ["A. Mode", "B. Libra", "C. Atlas", "D. Pulse"],
+        "correct": "B",
+        "takeaway": "Tako je. Libra očitava račune sa slika i automatizuje kraj mjeseca.",
+        "aris": "Analiziram problem: gomila fotografija ulaznih računa i ručno prekucavanje troškova pred kraj mjeseca. Sistem koji sam prepoznaje stavke i razvrstava dokumentaciju je Libra."
+    }
+]
+
+for q in questions_data:
+    html_content += f'''
+  <div class="q-card">
+    <div class="q-header">
+      <span class="timer-tag">⏱ 30 SEKUNDI</span>
+      Pitanje {q["num"]} · Težina: {q["level"].upper()} <span class="prize-tag">[{q["prize"]}]</span>
+    </div>
+    <div class="q-scenario">„{q["scenario"]}”</div>
+
+    <div class="q-aris-hint">
+      <span class="q-aris-badge">Aris AI</span>
+      <span>{q["aris"]}</span>
+    </div>
+
+    <ul class="q-options">
+'''
+    for opt in q["options"]:
+        is_corr = opt.startswith(q["correct"] + ".")
+        cls = ' class="correct"' if is_corr else ''
+        check = " ✔ (ODOBRENO RJEŠENJE)" if is_corr else ""
+        html_content += f'      <li{cls}>{opt}{check}</li>\n'
+
+    html_content += f'''    </ul>
+    <div class="q-takeaway">
+      <b>Direktorski zaključak:</b> {q["takeaway"]}
+    </div>
+  </div>
+'''
+
+html_content += '''
+</body>
+</html>
+'''
+
+# Verify zero em-dashes and zero en-dashes
+if '—' in html_content:
+    raise ValueError("EM DASH FOUND IN HTML!")
+if '–' in html_content:
+    raise ValueError("EN DASH FOUND IN HTML!")
+
+# Output to workspace public
+out_path1 = "/Users/farishandzar/antigravity/Shape9-—-Software-Product-House/public/Ko_Zeli_Biti_CEO_GoogleDocs.html"
+with open(out_path1, "w", encoding="utf-8") as f:
+    f.write(html_content)
+print(f"Written: {out_path1} ({len(html_content)} chars)")
+
+# Output to Claude games public
+out_path2 = "/Users/farishandzar/Claude/Projects/Shape9/_Kod/Igre/public/Ko_Zeli_Biti_CEO_GoogleDocs.html"
+try:
+    with open(out_path2, "w", encoding="utf-8") as f:
+        f.write(html_content)
+    print(f"Written: {out_path2}")
+except Exception as e:
+    print(f"Could not write {out_path2} directly: {e}")
