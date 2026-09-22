@@ -89,16 +89,16 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
         </div>
 
         <h1 className="hero-animate-2 hero-title max-w-4xl">
-          <span className="l-bs">Razumijemo i prioritet stavljamo na poslovanje. Tehnologija je samo naš alat.</span>
-          <span className="l-en">We understand and prioritise business. Technology is only our tool.</span>
+          <span className="l-bs">Razumijemo Vaše poslovanje. Tehnologija je samo naš alat.</span>
+          <span className="l-en">We understand your business. Technology is only our tool.</span>
         </h1>
 
         <p className="hero-animate-3 lead mx-auto mb-8 sm:mb-12 text-[var(--body)] max-w-3xl leading-relaxed">
           <span className="l-bs">
-            Razvoj započinjemo od Vaših stvarnih operacija: prodaje, logistike i upravljanja troškovima. Tek kada u potpunosti razumijemo kako Vaš posao diše, prelazimo na programiranje.
+            Razvoj započinjemo od Vaših stvarnih operacija, bilo da je riječ o marketingu, prodaji, logistici, upravljanju troškovima ili bilo kojem drugom dijelu Vašeg poslovanja. Tek kada u potpunosti razumijemo kako Vaš posao diše, prelazimo na programiranje.
           </span>
           <span className="l-en">
-            We start with your actual operations: sales, logistics, what things cost. Only once we understand how the business breathes do we start writing anything.
+            We start with your actual operations, whether that means marketing, sales, logistics, cost control, or any other part of your business. Only once we fully understand how it breathes do we start writing code.
           </span>
         </p>
 

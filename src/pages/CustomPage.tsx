@@ -139,8 +139,8 @@ export const CustomPage: React.FC<CustomPageProps> = ({ onNavigate }) => {
         </div>
 
         <h1 className="hero-animate-2 hero-title max-w-4xl">
-          <span className="l-bs">Razvoj softvera koji se prilagođava Vašem poslovanju, a ne tuđim šablonima.</span>
-          <span className="l-en">Enterprise software built around how your business actually operates, not rigid industry templates.</span>
+          <span className="l-bs">Softver prilagođen Vašem poslovanju, ne tuđim šablonima.</span>
+          <span className="l-en">Software built around your business, not a template.</span>
         </h1>
 
         <p className="hero-animate-3 lead mx-auto mb-8 sm:mb-12 text-[var(--body)] max-w-3xl leading-relaxed">

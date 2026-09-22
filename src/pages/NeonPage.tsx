@@ -22,8 +22,8 @@ export const NeonPage: React.FC<NeonPageProps> = ({ onNavigate }) => (
     badgeIcon={Sparkles}
     badgeBs="Ciljane Viber poruke kupcima"
     badgeEn="Targeted Viber messages"
-    h1Bs={['Ponuda sa vizualom, usmjerena tačno profilu kupca koji joj', 'odgovara.']}
-    h1En={['An offer with a picture, aimed at exactly the customer profile it', 'suits.']}
+    h1Bs={['Ponuda sa vizualom, tačno profilu kupca kojem', 'odgovara.']}
+    h1En={['An offer with a picture, aimed at the customer it', 'suits.']}
     questionBs={'„Koliko se kupaca odjavilo s Vaše liste samo zato što su dobili ponudu koja ih uopšte ne zanima?"'}
     questionEn={'"How many people left your list simply because they got an offer that had nothing to do with them?"'}
     ledeBs="Kada svi kupci prime potpuno istu poruku, dio kupaca gubi interes i odjavljuje se s liste, ne zato što ne žele kupovati kod Vas. Neon kombinuje vizual, prodajni tekst i direktan link, te poruke automatski usmjerava prema historiji ranijih kupovina i profilu korisnika."

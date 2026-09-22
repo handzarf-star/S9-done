@@ -278,11 +278,11 @@ export const VestaPage: React.FC<VestaPageProps> = ({ onNavigate }) => {
 
         <h1 className="hero-animate-2 hero-title max-w-4xl">
           <span className="l-bs">
-            Cjelokupna imovina kompanije pod kontrolom, od narudžbenice do konačnog{' '}
+            Cjelokupna imovina kompanije, od narudžbenice do{' '}
             <span style={{ color: ACCENT }}>otpisa.</span>
           </span>
           <span className="l-en">
-            Complete control of what the company owns, from the purchase order to the final{' '}
+            The company's full inventory, from purchase order to{' '}
             <span style={{ color: ACCENT }}>write-off.</span>
           </span>
         </h1>

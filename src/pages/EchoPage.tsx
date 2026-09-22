@@ -20,8 +20,8 @@ export const EchoPage: React.FC<EchoPageProps> = ({ onNavigate }) => (
     badgeIcon={MessageSquareText}
     badgeBs="Brendirane SMS poruke"
     badgeEn="Branded SMS messages"
-    h1Bs={['Jedna poruka i trenutan doseg do cijele baze kupaca, uz tačan uvid u svaki ostvareni', 'klik.']}
-    h1En={['One message, your whole customer base at once, and an exact view of every', 'click.']}
+    h1Bs={['Jedna poruka, trenutan doseg do cijele baze', 'kupaca.']}
+    h1En={['One message, instant reach to your whole customer', 'base.']}
     questionBs={'„Nova ponuda kreće sutra: koliko Vaših kupaca uopšte zna za nju?"'}
     questionEn={'"A new offer starts tomorrow. How many of your customers even know?"'}
     ledeBs="Kontakti kupaca već stoje u Vašim tabelama ili bazi, ali komunikacija zapinje jer nemate pouzdan sistem da im se obratite svima u istom trenutku. Echo omogućava da pripremljenu ponudu pošaljete pod zvaničnim imenom kompanije, tačno u onaj dan i sat kada donosi najveći prodajni efekat, uz mjerljivu analitiku ko je zaista reagovao na link."

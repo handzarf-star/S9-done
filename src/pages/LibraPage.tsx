@@ -124,10 +124,10 @@ export const LibraPage: React.FC<LibraPageProps> = ({ onNavigate }) => {
 
         <h1 className="hero-animate-2 hero-title max-w-4xl">
           <span className="l-bs">
-            Dokumenti pristižu na različite načine. Neko ih mora ručno otvoriti i <span className="text-[#3DD68C]">razvrstati svaki od njih.</span>
+            Dokumenti stižu na razne načine. Neko ih ručno <span className="text-[#3DD68C]">razvrstava.</span>
           </span>
           <span className="l-en">
-            Documents arrive all day. Someone has to <span className="text-[#3DD68C]">sort</span> every single one.
+            Documents arrive in different ways. Someone <span className="text-[#3DD68C]">sorts them.</span>
           </span>
         </h1>
 

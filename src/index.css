@@ -467,8 +467,18 @@ h2 { font-size: clamp(1.4rem, 3.6vw, 2.25rem); }
   /* Was clamp(2.4rem, 6.2vw, 4.5rem), pinned at 38.4px on every phone
      regardless of width. See the note on h2 just above, same fix, other
      end: the hero's floor moves up so it reads as a hero on a phone
-     instead of a slightly large paragraph. */
-  font-size: clamp(2.75rem, 8vw, 4.5rem);
+     instead of a slightly large paragraph.
+
+     Scaled again, 2026-09-22, by a uniform 89% (72px to 64px at 1440):
+     Faris measured that fifteen product heroes were landing anywhere from
+     one to four lines on the same sentence-length copy, with no shared
+     ceiling. A single step down, applied to the whole clamp rather than
+     just the desktop value, took eight headlines straight to two lines
+     with no text touched, and the six that still ran long got shortened
+     copy on top of it, in this same pass. `--compact`, home page only,
+     is untouched: it is already its own smaller scale and was already at
+     two lines before this. */
+  font-size: clamp(2.45rem, 7.1vw, 4rem);
   line-height: 1.02;
   letter-spacing: -0.035em;
   color: var(--ink);
