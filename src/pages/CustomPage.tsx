@@ -208,9 +208,11 @@ export const CustomPage: React.FC<CustomPageProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            {/* Tile 2 */}
+            {/* Tile 2. Was 12+, its own third number for the same claim
+                Home and About make at 30+. One figure, everywhere, Stat
+                Bank E3. */}
             <div className="s9-card p-6 text-center flex flex-col justify-center items-center rounded-2xl sm:rounded-3xl">
-              <div className="text-3xl sm:text-4xl font-extrabold text-[var(--cyan)] font-mono mb-2">12+</div>
+              <div className="text-3xl sm:text-4xl font-extrabold text-[var(--cyan)] font-mono mb-2">30+</div>
               <div className="text-sm font-bold text-[var(--ink)] mb-1">
                 <span className="l-bs">Marketi na kojima radimo</span>
                 <span className="l-en">Markets served</span>
@@ -221,16 +223,18 @@ export const CustomPage: React.FC<CustomPageProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            {/* Tile 3 */}
+            {/* Tile 3. Was 98% zadovoljstvo klijenata, the figure Stat Bank
+                flagged as highest risk. Replaced with the industries figure,
+                Stat Bank E4, same as Home and About. */}
             <div className="s9-card p-6 text-center flex flex-col justify-center items-center rounded-2xl sm:rounded-3xl">
-              <div className="text-3xl sm:text-4xl font-extrabold text-[var(--cyan)] font-mono mb-2">98%</div>
+              <div className="text-3xl sm:text-4xl font-extrabold text-[var(--cyan)] font-mono mb-2">15+</div>
               <div className="text-sm font-bold text-[var(--ink)] mb-1">
-                <span className="l-bs">Zadovoljstvo klijenata</span>
-                <span className="l-en">Client retention & satisfaction</span>
+                <span className="l-bs">Industrija</span>
+                <span className="l-en">Industries</span>
               </div>
               <div className="text-xs text-[var(--muted)]">
-                <span className="l-bs">Dugoročna strateška partnerstva</span>
-                <span className="l-en">Long-term enterprise partnerships</span>
+                <span className="l-bs">U kojima imamo iskustvo</span>
+                <span className="l-en">Where we have delivered work</span>
               </div>
             </div>
 

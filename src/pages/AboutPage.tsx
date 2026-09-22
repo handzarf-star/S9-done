@@ -135,8 +135,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               <span className="l-en">Who trusts us</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-tight">
-              <span className="l-bs">Deset godina rada, iza nas su isporučeni projekti.</span>
-              <span className="l-en">Ten years in, with the work behind us to show for it.</span>
+              <span className="l-bs">Deset godina rada iza nas, niz isporučenih projekata koji to dokazuju.</span>
+              <span className="l-en">Ten years behind us, and a string of delivered projects to show for it.</span>
             </h2>
           </div>
 
@@ -156,25 +156,28 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                   <span className="l-en">Projects Delivered</span>
                 </div>
               </div>
-              {/* These two came off the home page hero, where the cards now
-                  carry the opening. Both replace vaguer versions of themselves
-                  that used to sit here: "15+ zemalja poslovanja" became the
-                  twelve the warehouse system actually runs in, which is the
-                  number the WMS case study can show, and "98% zadovoljstvo
-                  klijenata" gave way to a figure that describes the product
-                  rather than our own opinion of ourselves. */}
+              {/* These two used to be product-specific, deliberately: "12
+                  Država u kojima radi naš skladišni sistem" (the WMS case,
+                  the only number that traced to anything) and "100%
+                  Analiziranih poziva" (a Pulse product fact, not an opinion
+                  of ourselves). Faris asked for the general figures back,
+                  2026-09-22: these are not about one product, they are
+                  Mersad's own track record before the agency existed. Source
+                  in Stat Bank E3/E4, matches the home page cards exactly so
+                  the same claim does not carry two different numbers on two
+                  pages. */}
               <div className="p-4 sm:p-5 rounded-2xl bg-[rgba(255,255,255,0.02)] border border-[var(--line)] text-center flex flex-col items-center justify-center h-full">
-                <div className="text-2xl sm:text-3xl font-bold text-[var(--cyan)] font-mono leading-tight">12</div>
+                <div className="text-2xl sm:text-3xl font-bold text-[var(--cyan)] font-mono leading-tight">30+</div>
                 <div className="text-xs text-[var(--muted)] mt-1.5 font-medium leading-snug">
-                  <span className="l-bs">Država u kojima radi naš skladišni sistem</span>
-                  <span className="l-en">Countries running our warehouse system</span>
+                  <span className="l-bs">Zemalja poslovanja</span>
+                  <span className="l-en">Countries Served</span>
                 </div>
               </div>
               <div className="p-4 sm:p-5 rounded-2xl bg-[rgba(255,255,255,0.02)] border border-[var(--line)] text-center flex flex-col items-center justify-center h-full">
-                <div className="text-2xl sm:text-3xl font-bold text-[var(--cyan)] font-mono leading-tight">100%</div>
+                <div className="text-2xl sm:text-3xl font-bold text-[var(--cyan)] font-mono leading-tight">15+</div>
                 <div className="text-xs text-[var(--muted)] mt-1.5 font-medium leading-snug">
-                  <span className="l-bs">Analiziranih poziva, umjesto uzorka od 2%</span>
-                  <span className="l-en">Of calls checked, instead of a 2% sample</span>
+                  <span className="l-bs">Industrija</span>
+                  <span className="l-en">Industries</span>
                 </div>
               </div>
             </div>

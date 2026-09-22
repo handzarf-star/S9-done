@@ -592,18 +592,23 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </div>
 
             <div className="p-4 sm:p-5 rounded-2xl bg-[rgba(255,255,255,0.02)] border border-[var(--line)] text-center flex flex-col items-center justify-center h-full">
-              <div className="text-2xl sm:text-3xl font-bold text-[var(--cyan)] font-mono leading-tight">15+</div>
+              <div className="text-2xl sm:text-3xl font-bold text-[var(--cyan)] font-mono leading-tight">30+</div>
               <div className="text-xs text-[var(--muted)] mt-1.5 font-medium leading-snug">
                 <span className="l-bs">Zemalja poslovanja</span>
                 <span className="l-en">Countries Served</span>
               </div>
             </div>
 
+            {/* Was 98% zadovoljstvo klijenata. Stat Bank flagged that one as
+                the weakest of the four, a percentage that implies a measured
+                programme that does not exist. Replaced, not reworded, per
+                Faris 2026-09-22, source: Mersad's own pre-agency track
+                record. See Stat Bank E4. */}
             <div className="p-4 sm:p-5 rounded-2xl bg-[rgba(255,255,255,0.02)] border border-[var(--line)] text-center flex flex-col items-center justify-center h-full">
-              <div className="text-2xl sm:text-3xl font-bold text-[var(--cyan)] font-mono leading-tight">98%</div>
+              <div className="text-2xl sm:text-3xl font-bold text-[var(--cyan)] font-mono leading-tight">15+</div>
               <div className="text-xs text-[var(--muted)] mt-1.5 font-medium leading-snug">
-                <span className="l-bs">Zadovoljstvo klijenata</span>
-                <span className="l-en">Client Satisfaction</span>
+                <span className="l-bs">Industrija</span>
+                <span className="l-en">Industries</span>
               </div>
             </div>
           </div>
