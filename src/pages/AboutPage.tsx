@@ -212,7 +212,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               <span className="l-en">How we work</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight leading-tight">
-              <span className="l-bs">Prilagodimo se Vašem poslovanju, ne obrnuto.</span>
+              <span className="l-bs">Prilagođavamo se Vašem poslovanju, ne obrnuto.</span>
               <span className="l-en">We fit to you, not the other way round.</span>
             </h2>
           </div>
